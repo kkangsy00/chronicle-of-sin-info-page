@@ -1,0 +1,63 @@
+{
+  "name": "반응형",
+  "title": "반응형 디자인",
+  "image": "./src/data/tabs/2/image.svg",
+  "intro": "반응형 디자인은 다양한 기기와 화면 크기에 적응하는 웹 디자인 접근 방식입니다.",
+  "sections": [
+    {
+      "index": 1,
+      "header": "Vue.js와 반응형",
+      "colorClass": "color-a",
+      "content": [
+        "Vue.js의 반응형 시스템은 데이터가 변경될 때 자동으로 DOM을 업데이트합니다. 이는 개발자가 직접 DOM을 조작할 필요가 없게 만듭니다.",
+        "• <code>ref()</code>와 <code>reactive()</code>로 반응형 데이터 생성",
+        "• <code>computed()</code>로 파생된 상태 관리",
+        "• <code>watch()</code>로 데이터 변화 감지"
+      ]
+    },
+    {
+      "index": 2,
+      "header": "미디어 쿼리 (Media Queries)",
+      "colorClass": "color-b",
+      "content": [
+        "CSS 미디어 쿼리를 사용하여 화면 크기에 따라 다른 스타일을 적용할 수 있습니다. 데스크톱, 태블릿, 모바일에 최적화된 레이아웃을 제공할 수 있습니다.",
+        "• <code>@media (max-width: 768px)</code> 모바일 대응",
+        "• <code>@media (min-width: 1024px)</code> 데스크톱 최적화",
+        "• 중단점(Breakpoint) 전략 수립"
+      ]
+    },
+    {
+      "index": 3,
+      "header": "플렉스박스 (Flexbox)",
+      "colorClass": "color-a",
+      "content": [
+        "Flexbox는 유연한 레이아웃을 만들기 위한 CSS 모듈입니다. Vue.js 컴포넌트와 함께 사용하면 더욱 강력합니다.",
+        "• <code>display: flex</code>로 유연한 컨테이너 생성",
+        "• <code>justify-content</code>, <code>align-items</code>로 정렬",
+        "• <code>flex-grow</code>, <code>flex-shrink</code>로 공간 분배"
+      ]
+    },
+    {
+      "index": 4,
+      "header": "CSS 그리드 (CSS Grid)",
+      "colorClass": "color-b",
+      "content": [
+        "CSS Grid는 2차원 레이아웃 시스템으로, 복잡한 웹 레이아웃을 쉽게 구현할 수 있습니다.",
+        "• <code>grid-template-columns</code>로 컬럼 정의",
+        "• <code>grid-area</code>로 영역 배치",
+        "• <code>gap</code>으로 간격 조정"
+      ]
+    },
+    {
+      "index": 5,
+      "header": "모바일 퍼스트 접근법",
+      "colorClass": "color-a",
+      "content": [
+        "모바일 기기를 우선으로 디자인한 후, 더 큰 화면으로 확장하는 방식입니다. Vue.js의 컴포넌트 시스템과 잘 어울립니다.",
+        "• 작은 화면부터 설계 시작",
+        "• 점진적 향상(Progressive Enhancement)",
+        "• 성능 최적화와 사용자 경험 개선"
+      ]
+    }
+  ]
+}

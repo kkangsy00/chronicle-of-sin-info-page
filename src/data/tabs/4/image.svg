@@ -1,0 +1,36 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFB347;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8C42;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#grad4)"/>
+  <text x="200" y="120" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">Vue 프로젝트 배포</text>
+  <text x="200" y="150" font-family="Arial, sans-serif" font-size="18" fill="white" text-anchor="middle">GitHub Pages</text>
+  <!-- 배포 프로세스 아이콘들 -->
+  <!-- 코드 -->
+  <rect x="50" y="180" width="40" height="30" rx="5" fill="white" opacity="0.9"/>
+  <rect x="55" y="185" width="30" height="3" fill="#FFB347"/>
+  <rect x="55" y="190" width="25" height="3" fill="#FFB347"/>
+  <rect x="55" y="195" width="30" height="3" fill="#FFB347"/>
+  <rect x="55" y="200" width="20" height="3" fill="#FFB347"/>
+  <!-- 화살표 -->
+  <polygon points="110,195 130,190 130,200" fill="white" opacity="0.9"/>
+  <!-- 빌드 -->
+  <circle cx="170" cy="195" r="20" fill="white" opacity="0.9"/>
+  <text x="170" y="200" font-family="Arial, sans-serif" font-size="12" fill="#FFB347" text-anchor="middle">Build</text>
+  <!-- 화살표 -->
+  <polygon points="210,195 230,190 230,200" fill="white" opacity="0.9"/>
+  <!-- 배포 -->
+  <rect x="250" y="180" width="50" height="30" rx="5" fill="white" opacity="0.9"/>
+  <circle cx="265" cy="190" r="3" fill="#FFB347"/>
+  <circle cx="275" cy="190" r="3" fill="#FFB347"/>
+  <circle cx="285" cy="190" r="3" fill="#FFB347"/>
+  <text x="275" y="205" font-family="Arial, sans-serif" font-size="10" fill="#FFB347" text-anchor="middle">Deploy</text>
+  <!-- 화살표 -->
+  <polygon points="320,195 340,190 340,200" fill="white" opacity="0.9"/>
+  <!-- 웹사이트 -->
+  <circle cx="360" cy="195" r="15" fill="white" opacity="0.9"/>
+  <text x="360" y="200" font-family="Arial, sans-serif" font-size="10" fill="#FFB347" text-anchor="middle">Web</text>
+</svg>

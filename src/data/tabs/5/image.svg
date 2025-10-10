@@ -1,0 +1,30 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9C27B0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#673AB7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#grad5)"/>
+  <text x="200" y="120" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">동적 스캔 테스트</text>
+  <text x="200" y="150" font-family="Arial, sans-serif" font-size="18" fill="white" text-anchor="middle">자동 감지 성공!</text>
+  <!-- 검색/스캔 아이콘 -->
+  <circle cx="150" cy="200" r="25" fill="none" stroke="white" stroke-width="3" opacity="0.8"/>
+  <line x1="169" y1="219" x2="185" y2="235" stroke="white" stroke-width="3" opacity="0.8"/>
+  <!-- 폴더들 -->
+  <rect x="220" y="180" width="30" height="20" rx="2" fill="white" opacity="0.7"/>
+  <rect x="220" y="175" width="30" height="5" rx="2" fill="white" opacity="0.9"/>
+  <text x="235" y="192" font-family="Arial, sans-serif" font-size="8" fill="#9C27B0" text-anchor="middle">1</text>
+  
+  <rect x="255" y="180" width="30" height="20" rx="2" fill="white" opacity="0.7"/>
+  <rect x="255" y="175" width="30" height="5" rx="2" fill="white" opacity="0.9"/>
+  <text x="270" y="192" font-family="Arial, sans-serif" font-size="8" fill="#9C27B0" text-anchor="middle">2</text>
+  
+  <rect x="290" y="180" width="30" height="20" rx="2" fill="white" opacity="0.7"/>
+  <rect x="290" y="175" width="30" height="5" rx="2" fill="white" opacity="0.9"/>
+  <text x="305" y="192" font-family="Arial, sans-serif" font-size="8" fill="#9C27B0" text-anchor="middle">3</text>
+  
+  <!-- 화살표 -->
+  <polygon points="200,230 210,225 210,235" fill="white" opacity="0.8"/>
+  <text x="200" y="250" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Auto Scan</text>
+</svg>

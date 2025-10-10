@@ -1,0 +1,600 @@
+/* 전체 초기화 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  height: 100vh;
+  overflow-x: auto; /* 가로 스크롤 허용 */
+  overflow-y: hidden;
+}
+
+#app {
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 1200px;
+  min-width: 850px; /* 1:2 비율에 맞게 조정 (약 280 + 560 + gap + padding) */
+  margin: 0 auto;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* 메인 콘텐츠 영역 */
+.main-content {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+  height: 100vh; /* 전체 높이 사용 */
+  min-height: 400px; /* 최소 높이 설정 */
+}
+
+/* 좌측 이미지 영역 */
+.image-section {
+  flex: 1; /* 1의 비율 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px; /* 최소 너비 보장 */
+}
+
+.image-container {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px; /* 1:2 비율에 맞게 조정 */
+  min-width: 220px; /* 최소 너비 */
+  height: 100%;
+  min-height: 300px; /* 최소 높이 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
+}
+
+/* 우측 정보 영역 */
+.info-section {
+  flex: 2; /* 2의 비율 (이미지 영역의 2배) */
+  display: flex;
+  min-width: 350px; /* 최소 너비 보장 */
+}
+
+.info-container {
+  background: transparent;
+  border-radius: 15px;
+  padding: 0;
+  box-shadow: none; /* 그림자 제거로 완전히 투명하게 */
+  width: 100%;
+  height: 100%;
+  min-height: 300px; /* 최소 높이 */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; /* 세로 방향 플렉스 */
+}
+
+.info-content {
+  padding: 0; /* 패딩 제거 */
+  flex: 1; /* 남은 공간 모두 차지 */
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #667eea #f1f1f1;
+}
+
+/* 커스텀 스크롤바 (Webkit 브라우저) */
+.info-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.info-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.info-content::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 10px;
+}
+
+.info-content::-webkit-scrollbar-thumb:hover {
+  background: #764ba2;
+}
+
+.info-content h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 24px;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.info-content h3 {
+  color: #444;
+  margin: 20px 0 10px 0;
+  font-size: 18px;
+}
+
+.info-content p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.info-content code {
+  background: #f4f4f4;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  color: #e83e8c;
+}
+
+.info-content strong {
+  color: #333;
+  font-weight: 600;
+}
+
+/* 탭 영역 (정보영역 하단에 고정) */
+.tab-section {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 20px;
+  border-top: 1px solid #e5e7eb;
+  background: linear-gradient(135deg, #f8f9ff 0%, #e3e7ff 100%);
+  border-radius: 0 0 15px 15px; /* 하단 모서리만 둥글게 */
+}
+
+.tab-container {
+  background: rgba(102, 126, 234, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  padding: 8px;
+  display: flex;
+  gap: 8px;
+  box-shadow: 0 3px 15px rgba(102, 126, 234, 0.2);
+  width: 100%; /* 정보영역과 동일한 너비 */
+  max-width: 100%;
+  justify-content: center;
+}
+
+.tab-button {
+  background: transparent;
+  border: none;
+  color: #667eea;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  flex: 1; /* 동일한 너비로 분배 */
+  text-align: center;
+}
+
+.tab-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.tab-button:hover::before {
+  left: 100%;
+}
+
+.tab-button:hover {
+  background: rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
+  color: #4338ca;
+}
+
+.tab-button.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+  transform: translateY(-1px);
+}
+
+.tab-button.active:hover {
+  background: linear-gradient(135deg, #764ba2, #667eea);
+  color: white;
+}
+
+.tab-button:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Vue 전환 애니메이션 */
+.fade-transition {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+/* 콘텐츠 카드 스타일 */
+.content-card {
+  margin: 0; /* 상하좌우 마진 제거 */
+  padding: 25px 30px; /* 내부 패딩만 유지 */
+  border-radius: 0; /* 모서리 둥글기 제거 */
+  box-shadow: none; /* 그림자 제거 */
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* 카드 간 구분선 */
+}
+
+.content-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  opacity: 0.6;
+}
+
+.content-card:hover {
+  transform: none; /* 호버 시 움직임 제거 */
+  box-shadow: inset 0 0 0 1px rgba(102, 126, 234, 0.1); /* 미묘한 인셋 그림자 */
+  background-color: rgba(102, 126, 234, 0.02); /* 미묘한 배경색 변화 */
+}
+
+/* 첫 번째 카드 상단 모서리 */
+.content-card:first-child {
+  border-radius: 15px 15px 0 0; /* 상단만 둥글게 */
+}
+
+/* 마지막 카드 하단 모서리 */
+.content-card:last-child {
+  border-radius: 0 0 0 0; /* 탭 영역이 있으므로 하단은 둥글지 않게 */
+  border-bottom: none; /* 마지막 카드 하단 구분선 제거 */
+}
+
+/* 카드 색상 변형 - A, B 두 색상만 번갈아 적용 */
+.content-card.color-a {
+  background: linear-gradient(135deg, rgba(248, 249, 255, 0.8) 0%, rgba(227, 231, 255, 0.8) 100%);
+}
+
+.content-card.color-a::before {
+  background: linear-gradient(90deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+}
+
+.content-card.color-b {
+  background: linear-gradient(135deg, rgba(240, 253, 244, 0.8) 0%, rgba(220, 252, 231, 0.8) 100%);
+}
+
+.content-card.color-b::before {
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.8), rgba(22, 163, 74, 0.8));
+}
+
+/* 카드 내부 제목 스타일 */
+.content-card h3 {
+  color: #1f2937;
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.content-card h3::before {
+  content: attr(data-index);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content-card p {
+  color: #4b5563;
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.content-card code {
+  background: rgba(99, 102, 241, 0.1);
+  color: #4338ca;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 0.9em;
+}
+
+.content-card strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* 반응형 디자인 - 비율 유지 축소 */
+@media (max-width: 1000px) {
+  .container {
+    min-width: 750px; /* 1:2 비율에 맞게 조정 */
+    padding: 15px;
+    gap: 15px;
+  }
+  
+  .main-content {
+    gap: 15px;
+    min-height: 350px;
+  }
+  
+  .image-section {
+    min-width: 220px; /* 1:2 비율 유지 */
+  }
+  
+  .info-section {
+    min-width: 440px; /* 이미지 영역의 2배 */
+  }
+  
+  .image-container,
+  .info-container {
+    min-height: 250px;
+  }
+  
+  .tab-button {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+  
+  .tab-section {
+    height: 70px;
+    padding: 12px 15px;
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    min-width: 500px; /* 더 작은 최소 너비로 변경 */
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .main-content {
+    gap: 10px;
+    min-height: 300px;
+    position: relative; /* 오버랩을 위한 relative 포지션 */
+  }
+  
+  .image-section {
+    min-width: 180px; /* 1:2 비율의 1 */
+    position: relative;
+    z-index: 1; /* 정보 영역보다 아래 */
+  }
+  
+  .info-section {
+    min-width: 280px; /* 줄어든 최소 너비 */
+    position: relative;
+    z-index: 2; /* 이미지 영역보다 위 */
+  }
+  
+  .image-container,
+  .info-container {
+    min-height: 200px;
+  }
+  
+  .image-container {
+    min-width: 180px;
+    padding: 15px;
+  }
+  
+  .tab-container {
+    gap: 4px;
+    padding: 6px;
+  }
+  
+  .tab-button {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+  
+  .tab-section {
+    height: 60px;
+    padding: 10px 12px;
+  }
+  
+  .info-content {
+    padding: 0; /* 패딩 제거 유지 */
+  }
+  
+  .info-content h2 {
+    font-size: 20px;
+  }
+  
+  .info-content h3 {
+    font-size: 16px;
+  }
+  
+  .info-content p {
+    font-size: 14px;
+  }
+}
+
+/* 중간 단계 - 살짝 겹치기 시작 */
+@media (max-width: 750px) {
+  .container {
+    min-width: 450px;
+    padding: 9px;
+    gap: 8px;
+  }
+  
+  .main-content {
+    gap: 5px; /* 갭 줄이기 시작 */
+  }
+  
+  .image-section {
+    min-width: 160px;
+    z-index: 1;
+  }
+  
+  .info-section {
+    min-width: 260px;
+    margin-left: -10px; /* 살짝 겹치기 시작 */
+    z-index: 2;
+  }
+  
+  .info-container {
+    padding-left: 35px; /* 이미지가 살짝 보이도록 */
+    background: rgba(255, 255, 255, 0.98);
+  }
+  
+  .tab-section {
+    background: rgba(248, 249, 255, 0.98);
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+    min-width: 400px;
+    padding: 8px;
+    gap: 6px;
+  }
+  
+  .main-content {
+    gap: 0px; /* 갭 거의 제거 */
+  }
+  
+  .image-section {
+    min-width: 140px;
+    z-index: 1;
+  }
+  
+  .info-section {
+    min-width: 240px;
+    margin-left: -25px; /* 더 많이 겹침 */
+    z-index: 2;
+  }
+  
+  .info-container {
+    padding-left: 50px; /* 이미지가 절반 정도 보이도록 */
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(2px);
+  }
+  
+  .tab-section {
+    background: rgba(248, 249, 255, 0.96);
+    backdrop-filter: blur(2px);
+  }
+}
+
+/* 오버랩 모드 - 정보 영역이 이미지를 조금씩 가리는 구간 */
+@media (max-width: 650px) {
+  .container {
+    min-width: 320px; /* 최소 너비 더 축소 */
+    padding: 8px;
+    gap: 5px;
+  }
+  
+  .main-content {
+    gap: -40px; /* 음수 갭으로 겹침 시작 */
+    position: relative;
+  }
+  
+  .image-section {
+    flex: 1;
+    min-width: 120px; /* 이미지 최소 크기 유지 */
+    display: flex;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    align-items: center;
+    z-index: 1; /* 정보 영역보다 아래 */
+  }
+  
+  .image-container {
+    min-width: 120px;
+    max-width: 140px;
+    min-height: 180px;
+    padding: 8px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0.9; /* 약간 투명 */
+  }
+  
+  .info-section {
+    flex: 2;
+    min-width: 200px;
+    margin-left: -60px; /* 음수 마진으로 이미지 위로 겹침 */
+    position: relative;
+    z-index: 3; /* 이미지 영역보다 위 */
+  }
+  
+  .info-container {
+    padding-left: 70px; /* 이미지가 보일 수 있도록 왼쪽 패딩 */
+    min-height: 250px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(3px);
+  }
+  
+  .tab-section {
+    height: 50px;
+    padding: 8px 10px;
+    background: rgba(248, 249, 255, 0.95);
+    backdrop-filter: blur(3px);
+  }
+  
+  .tab-button {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+  
+  .info-content {
+    padding: 0; /* 패딩 제거 유지 */
+  }
+  
+  .content-card {
+    padding: 15px 20px; /* 작은 화면에서 카드 내부 패딩 축소 */
+  }
+  
+  .info-content h2 {
+    font-size: 18px;
+  }
+  
+  .info-content h3 {
+    font-size: 14px;
+  }
+  
+  .info-content p {
+    font-size: 13px;
+  }
+}
