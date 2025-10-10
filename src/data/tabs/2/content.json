@@ -4,7 +4,6 @@
   "image": "./src/data/tabs/2/image.svg",
   "imgTxt": "",
   "overlayImage": "./src/data/tabs/2/image.svg",
-  "intro": "반응형 디자인은 다양한 기기와 화면 크기에 적응하는 웹 디자인 접근 방식입니다.",
   "sections": [
     {
       "index": 1,

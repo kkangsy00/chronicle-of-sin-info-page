@@ -4,7 +4,6 @@
   "image": "./src/data/tabs/5/image.svg",
   "imgTxt": "",
   "overlayImage": "./src/data/tabs/5/image.svg",
-  "intro": "이것은 동적 스캔 테스트를 위한 새로운 탭입니다.",
   "sections": [
     {
       "index": 1,

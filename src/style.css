@@ -1,3 +1,4 @@
+
 /* 전체 초기화 */
 * {
   margin: 0;
@@ -6,8 +7,11 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Nanum Gothic', sans-serif;
+  background: linear-gradient(170deg, rgba(68,59,36,0.8) 0%, rgba(48,76,77,0.8) 100%), url('./data/statics/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   height: 100vh;
   overflow-x: auto; /* 가로 스크롤 허용 */
   overflow-y: hidden;
@@ -76,7 +80,6 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.7);
   color: #fff;
   padding: 10px 10px 10px 10px;
   font-size: 14px;
@@ -279,10 +282,7 @@ body {
 
 /* 콘텐츠 카드 스타일 */
 .content-card {
-  margin: 0; /* 상하좌우 마진 제거 */
   padding: 25px 30px; /* 내부 패딩만 유지 */
-  border-radius: 0; /* 모서리 둥글기 제거 */
-  box-shadow: none; /* 그림자 제거 */
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -295,7 +295,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 2px;
   opacity: 0.6;
 }
 
@@ -318,50 +318,59 @@ body {
 
 /* 카드 색상 변형 - A, B 두 색상만 번갈아 적용 */
 .content-card.color-a {
-  background: linear-gradient(135deg, rgba(248, 249, 255, 0.8) 0%, rgba(227, 231, 255, 0.8) 100%);
+  background: linear-gradient(90deg, rgba(22, 22, 0, 1) 0%, rgba(41, 38, 21, 0.5) 100%);
 }
 
 .content-card.color-a::before {
-  background: linear-gradient(90deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .content-card.color-b {
-  background: linear-gradient(135deg, rgba(240, 253, 244, 0.8) 0%, rgba(220, 252, 231, 0.8) 100%);
+  background: linear-gradient(90deg, rgba(22, 21, 0, 0.8) 0%, rgba(41, 38, 21, 0.3) 100%);
 }
 
 .content-card.color-b::before {
-  background: linear-gradient(90deg, rgba(34, 197, 94, 0.8), rgba(22, 163, 74, 0.8));
+  background: rgba(0, 0, 0, 0.8);
 }
 
 /* 카드 내부 제목 스타일 */
 .content-card h3 {
-  color: #1f2937;
-  margin: 0 0 12px 0;
-  font-size: 18px;
+  color: #d8d7c1;
+  margin: 0 0 12px 10px;
+  font-size: 24px;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: block;
   position: relative;
 }
 
 .content-card h3::before {
   content: attr(data-index);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   width: 24px;
   height: 24px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  font-size: 12px;
-  font-weight: 700;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: #4c4d3e;
+  color: #3d3b2f;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 1px 5px 1px 5px;
+  margin-right: 8px;
+  text-align: center;
+  line-height: 24px;
+  vertical-align: middle;
+}
+
+.content-card h3::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  opacity: 0.18;
+  margin: 5px 0 12px 0;
 }
 
 .content-card p {
-  color: #4b5563;
+  color: #84836e;
   margin: 8px 0;
   line-height: 1.6;
 }
@@ -375,10 +384,10 @@ body {
   font-size: 0.9em;
 }
 
-.content-card strong {
+/* .content-card strong {
   color: #1f2937;
   font-weight: 600;
-}
+} */
 
 /* 반응형 디자인 - 비율 유지 축소 */
 @media (max-width: 1000px) {

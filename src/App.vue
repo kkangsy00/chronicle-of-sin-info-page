@@ -108,8 +108,7 @@ export default {
         return contentModule.default
       } catch (error) {
         console.error(`콘텐츠 로드 실패 (탭 ${tabId}):`, error)
-        return { 
-          intro: '콘텐츠를 불러올 수 없습니다.', 
+        return {
           name: '오류',
           title: '콘텐츠 로드 실패',
           image: 'https://via.placeholder.com/400x300/CCCCCC/666666?text=오류',
