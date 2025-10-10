@@ -2,6 +2,7 @@
   "name": "vue-tab-project",
   "version": "1.0.0",
   "description": "Vue.js를 사용한 탭 기반 정보 페이지",
+  "homepage": "https://sykang1.github.io/test_vue/",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
