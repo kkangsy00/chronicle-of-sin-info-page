@@ -1,7 +1,9 @@
 {
   "name": "웹 개발",
   "title": "웹 개발 기초",
-  "image": "./src/data/tabs/1/image.svg",
+  "image": "./src/data/tabs/1/shs.png",
+  "imgTxt": "crepe @delion",
+  "overlayImage": "./src/data/tabs/1/overlay_shs.png",
   "intro": "웹 개발은 현대 디지털 세상에서 매우 중요한 기술입니다. HTML, CSS, JavaScript는 웹 개발의 기본 삼총사라고 할 수 있습니다.",
   "sections": [
     {

@@ -4,14 +4,26 @@
     <div class="main-content">
       <!-- 좌측 이미지 영역 -->
       <div class="image-section">
-        <div class="image-container">
+        <div class="image-container" @mouseenter="showImgTxt = true" @mouseleave="showImgTxt = false" style="position:relative;">
           <img 
             :src="currentTab.image" 
             :alt="currentTab.title"
-            class="fade-transition"
+            class="fade-transition main-image"
             @error="handleImageError"
           >
+          <transition name="fade">
+            <div v-if="showImgTxt && currentTab.imgTxt" class="main-image-txt">
+              {{ currentTab.imgTxt }}
+            </div>
+          </transition>
         </div>
+        <img
+          :src="currentTab.overlayImage"
+          alt="overlay"
+          class="overlay-image"
+          v-if="currentTab.overlayImage"
+          @error="handleImageError"
+        >
       </div>
 
       <!-- 우측 정보 영역 -->
@@ -51,7 +63,8 @@ export default {
   name: 'App',
   setup() {
     const activeTabId = ref(1)
-    const infoContent = ref(null)
+  const infoContent = ref(null)
+  const showImgTxt = ref(false)
 
     // 탭 메타데이터와 콘텐츠를 합친 완전한 탭 데이터
     const tabs = ref([])
@@ -126,6 +139,8 @@ export default {
           name: contentData.name,
           title: contentData.title,
           image: contentData.image,
+          imgTxt: contentData.imgTxt,
+          overlayImage: contentData.overlayImage,
           content: contentHTML,
           rawContent: contentData // 원본 데이터도 보관
         })
@@ -146,7 +161,9 @@ export default {
         name: '로딩중...',
         title: '로딩중...',
         content: '<p>콘텐츠를 불러오는 중입니다...</p>',
-        image: 'https://via.placeholder.com/400x300/CCCCCC/666666?text=Loading...'
+        image: '',
+        imgTxt: '',
+        overlayImage: ''
       }
     })
 
@@ -158,9 +175,9 @@ export default {
       
       // 해당 탭의 콘텐츠를 다시 로드하고 HTML 생성
       const currentTabData = tabs.value.find(tab => tab.id === tabId)
-      if (currentTabData && currentTabData.rawContent) {
+      if (currentTabData && currentTabData.sections) {
         // 제목 업데이트를 위해 다시 HTML 생성
-        currentTabData.content = generateContentHTML(currentTabData.rawContent)
+        currentTabData.content = generateContentHTML(currentTabData.sections)
       }
       
       // 다음 틱에서 스크롤을 맨 위로 이동
@@ -202,7 +219,8 @@ export default {
       currentTab,
       infoContent,
       switchTab,
-      handleImageError
+      handleImageError,
+      showImgTxt
     }
   }
 }

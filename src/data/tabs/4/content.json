@@ -2,6 +2,8 @@
   "name": "배포",
   "title": "Vue 프로젝트 배포",
   "image": "./src/data/tabs/4/image.svg",
+  "imgTxt": "",
+  "overlayImage": "./src/data/tabs/4/image.svg",
   "intro": "Vue.js 프로젝트를 GitHub Pages에 배포하는 방법을 알아보겠습니다.",
   "sections": [
     {

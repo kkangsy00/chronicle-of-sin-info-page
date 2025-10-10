@@ -2,6 +2,8 @@
   "name": "Vue.js",
   "title": "Vue.js 프레임워크",
   "image": "./src/data/tabs/3/image.svg",
+  "imgTxt": "",
+  "overlayImage": "./src/data/tabs/3/image.svg",
   "intro": "Vue.js는 사용자 인터페이스를 구축하기 위한 프로그레시브 JavaScript 프레임워크입니다.",
   "sections": [
     {
