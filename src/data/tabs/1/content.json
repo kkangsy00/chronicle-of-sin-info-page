@@ -1,50 +1,79 @@
 {
-  "name": "웹 개발",
-  "title": "웹 개발 기초",
+  "name": "손효성",
+  "title": "son hyoseong",
   "image": "./src/data/tabs/1/shs.png",
   "imgTxt": "crepe @delion",
   "overlayImage": "./src/data/tabs/1/overlay_shs.png",
   "sections": [
     {
       "index": "01",
-      "header": "HTML (HyperText Markup Language)",
+      "header": "경사",
       "colorClass": "color-a",
       "content": [
-        "HTML은 웹 페이지의 구조를 만드는 마크업 언어입니다. 제목, 문단, 링크, 이미지 등의 요소들을 정의할 수 있습니다.",
-        "• 시맨틱 태그로 의미있는 구조 작성",
-        "• 접근성을 고려한 마크업"]
+        "서빛지방경찰청 경사. 적성화파 소탕작전을 담당한 강력1팀 소속 형사다."
+      ]
     },
     {
       "index": "02",
-      "header": "CSS (Cascading Style Sheets)",
+      "header": "인형",
       "colorClass": "color-b",
       "content": [
-        "CSS는 웹 페이지의 스타일과 레이아웃을 담당합니다. 색상, 폰트, 크기, 위치 등을 조정하여 아름다운 디자인을 만들 수 있습니다.",
-        "• Flexbox와 Grid로 현대적인 레이아웃",
-        "• 반응형 디자인을 위한 미디어 쿼리",
-        "• CSS 변수와 커스텀 속성 활용"
+        "알베르트라고 부르는, 손인형 혹은 왼손의 엄지와 검지.",
+        "대화에 참여하며 의사를 함께 전한다."
       ]
     },
     {
       "index": "03",
-      "header": "JavaScript",
+      "header": "aa",
       "colorClass": "color-a",
       "content": [
-        "JavaScript는 웹 페이지에 동적인 기능을 추가하는 프로그래밍 언어입니다. 사용자와의 상호작용, 데이터 처리, 애니메이션 등을 구현할 수 있습니다.",
-        "• ES6+ 문법으로 모던한 코드 작성",
-        "• 비동기 처리 (Promise, async/await)",
-        "• DOM 조작과 이벤트 처리"
+        "asdfasdfasdfas",
+        "aaaaaaaaaaaaaaaaa"
       ]
     },
     {
       "index": "04",
-      "header": "Vue.js의 장점",
+      "header": "aa",
       "colorClass": "color-b",
       "content": [
-        "Vue.js는 사용하기 쉽고 직관적인 프레임워크입니다. 컴포넌트 기반 개발로 코드의 재사용성과 유지보수성을 크게 향상시킵니다.",
-        "• 학습 곡선이 완만하여 입문자에게 친화적",
-        "• 점진적 적용이 가능한 프레임워크",
-        "• 강력한 개발자 도구와 생태계 지원"
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
+      ]
+    },
+    {
+      "index": "05",
+      "header": "aa",
+      "colorClass": "color-a",
+      "content": [
+        "asdfasdfasdfas",
+        "aaaaaaaaaaaaaaaaa"
+      ]
+    },
+    {
+      "index": "06",
+      "header": "aa",
+      "colorClass": "color-b",
+      "content": [
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
+      ]
+    },
+    {
+      "index": "07",
+      "header": "aa",
+      "colorClass": "color-a",
+      "content": [
+        "asdfasdfasdfas",
+        "aaaaaaaaaaaaaaaaa"
+      ]
+    },
+    {
+      "index": "08",
+      "header": "aa",
+      "colorClass": "color-b",
+      "content": [
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
       ]
     }
   ]

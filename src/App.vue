@@ -7,7 +7,6 @@
         <div class="image-container" @mouseenter="showImgTxt = true" @mouseleave="showImgTxt = false" style="position:relative;">
           <img 
             :src="currentTab.image" 
-            :alt="currentTab.title"
             class="fade-transition main-image"
             @error="handleImageError"
           >
@@ -35,7 +34,7 @@
             v-html="currentTab.content"
           ></div>
           
-          <!-- 하단 탭 영역 (정보영역 내부로 이동) -->
+          <!-- 하단 탭 영역 (정보영역 내부) -->
           <div class="tab-section">
             <div class="tab-container">
               <button 
@@ -47,6 +46,7 @@
                 @keydown.space="switchTab(tab.id)"
               >
                 {{ tab.name }}
+                <div class="pct-txt" v-text="'100%'"></div>
               </button>
             </div>
           </div>
