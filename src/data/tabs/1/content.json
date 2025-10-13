@@ -1,51 +1,45 @@
 {
-  "name": "웹 개발",
-  "title": "웹 개발 기초",
-  "image": "./src/data/tabs/1/image.svg",
-  "intro": "웹 개발은 현대 디지털 세상에서 매우 중요한 기술입니다. HTML, CSS, JavaScript는 웹 개발의 기본 삼총사라고 할 수 있습니다.",
+  "name": "박영숙",
+  "title": "반응형 디자인",
+  "overlayImage": "./src/data/tabs/1/image.svg",
+  "images": [
+    { "id": 1, "name": "실루엣", "src": "./src/data/tabs/1/pys_silhouette.png", "txt": "crepe @ZNMAJJI" }
+  ],
   "sections": [
     {
-      "index": 1,
-      "header": "HTML (HyperText Markup Language)",
+      "index": "01",
+      "header": "111",
       "colorClass": "color-a",
       "content": [
-        "HTML은 웹 페이지의 구조를 만드는 마크업 언어입니다. 제목, 문단, 링크, 이미지 등의 요소들을 정의할 수 있습니다.",
-        "• 시맨틱 태그로 의미있는 구조 작성",
-        "• 접근성을 고려한 마크업",
-        "• SEO 최적화를 위한 메타 태그 활용"
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
       ]
     },
     {
-      "index": 2,
-      "header": "CSS (Cascading Style Sheets)",
+      "index": "02",
+      "header": "ababababaaaaa",
       "colorClass": "color-b",
       "content": [
-        "CSS는 웹 페이지의 스타일과 레이아웃을 담당합니다. 색상, 폰트, 크기, 위치 등을 조정하여 아름다운 디자인을 만들 수 있습니다.",
-        "• Flexbox와 Grid로 현대적인 레이아웃",
-        "• 반응형 디자인을 위한 미디어 쿼리",
-        "• CSS 변수와 커스텀 속성 활용"
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
       ]
     },
     {
-      "index": 3,
-      "header": "JavaScript",
+      "index": "03",
+      "header": "ababbababab",
       "colorClass": "color-a",
       "content": [
-        "JavaScript는 웹 페이지에 동적인 기능을 추가하는 프로그래밍 언어입니다. 사용자와의 상호작용, 데이터 처리, 애니메이션 등을 구현할 수 있습니다.",
-        "• ES6+ 문법으로 모던한 코드 작성",
-        "• 비동기 처리 (Promise, async/await)",
-        "• DOM 조작과 이벤트 처리"
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
       ]
     },
     {
-      "index": 4,
-      "header": "Vue.js의 장점",
+      "index": "04",
+      "header": "bbbbbb",
       "colorClass": "color-b",
       "content": [
-        "Vue.js는 사용하기 쉽고 직관적인 프레임워크입니다. 컴포넌트 기반 개발로 코드의 재사용성과 유지보수성을 크게 향상시킵니다.",
-        "• 학습 곡선이 완만하여 입문자에게 친화적",
-        "• 점진적 적용이 가능한 프레임워크",
-        "• 강력한 개발자 도구와 생태계 지원"
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
       ]
     }
   ]

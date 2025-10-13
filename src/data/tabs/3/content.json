@@ -1,66 +1,45 @@
 {
-  "name": "Vue.js",
-  "title": "Vue.js 프레임워크",
-  "image": "./src/data/tabs/3/image.svg",
-  "intro": "Vue.js는 사용자 인터페이스를 구축하기 위한 프로그레시브 JavaScript 프레임워크입니다.",
+  "name": "하인성",
+  "title": "반응형 디자인",
+  "overlayImage": "./src/data/tabs/3/image.svg",
+  "images": [
+    { "id": 1, "name": "실루엣", "src": "./src/data/tabs/3/his_silhouette.png", "txt": "crepe @ZNMAJJI" }
+  ],
   "sections": [
     {
-      "index": 1,
-      "header": "핵심 특징",
+      "index": "01",
+      "header": "111",
       "colorClass": "color-a",
       "content": [
-        "• <strong>반응형 데이터 바인딩</strong>: 데이터 변경 시 자동 UI 업데이트",
-        "• <strong>컴포넌트 기반</strong>: 재사용 가능한 컴포넌트로 개발",
-        "• <strong>가상 DOM</strong>: 효율적인 렌더링 성능",
-        "• <strong>단방향 데이터 흐름</strong>: 예측 가능한 상태 관리",
-        "• <strong>템플릿 기반</strong>: HTML과 유사한 문법"
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
       ]
     },
     {
-      "index": 2,
-      "header": "Composition API",
+      "index": "02",
+      "header": "ababababaaaaa",
       "colorClass": "color-b",
       "content": [
-        "Vue 3의 Composition API는 더 유연하고 재사용 가능한 로직을 작성할 수 있게 해줍니다. <code>setup()</code> 함수를 통해 컴포넌트 로직을 구성합니다.",
-        "• <code>ref()</code>, <code>reactive()</code>로 반응형 상태 생성",
-        "• <code>computed()</code>로 계산된 속성 정의",
-        "• <code>onMounted()</code> 등 라이프사이클 훅 사용",
-        "• 로직의 재사용성과 테스트 용이성 향상"
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
       ]
     },
     {
-      "index": 3,
-      "header": "개발 도구",
+      "index": "03",
+      "header": "ababbababab",
       "colorClass": "color-a",
       "content": [
-        "Vue.js는 강력한 개발 도구 생태계를 제공합니다.",
-        "• <strong>Vite</strong>: 빠른 개발 서버와 빌드 도구",
-        "• <strong>Vue DevTools</strong>: 브라우저 확장 프로그램으로 디버깅",
-        "• <strong>Vue CLI</strong>: 프로젝트 생성 및 관리 도구",
-        "• <strong>VS Code Extensions</strong>: Vetur, Vue 3 Snippets"
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
       ]
     },
     {
-      "index": 4,
-      "header": "생태계",
+      "index": "04",
+      "header": "bbbbbb",
       "colorClass": "color-b",
       "content": [
-        "Vue.js는 풍부한 생태계와 라이브러리를 제공합니다.",
-        "• <strong>Vue Router</strong>: SPA를 위한 공식 라우터",
-        "• <strong>Pinia</strong>: 현대적인 상태 관리 라이브러리",
-        "• <strong>Nuxt.js</strong>: 풀스택 Vue 프레임워크",
-        "• <strong>Quasar</strong>: 크로스 플랫폼 UI 프레임워크"
-      ]
-    },
-    {
-      "index": 5,
-      "header": "학습 친화성",
-      "colorClass": "color-a",
-      "content": [
-        "Vue.js는 학습 곡선이 완만하면서도 강력한 기능을 제공하여, 입문자부터 전문가까지 모두에게 적합한 프레임워크입니다.",
-        "• HTML, CSS, JS 지식만으로도 시작 가능",
-        "• 점진적 적용으로 기존 프로젝트 통합 용이",
-        "• 훌륭한 공식 문서와 커뮤니티 지원"
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
       ]
     }
   ]

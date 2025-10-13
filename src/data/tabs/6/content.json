@@ -1,9 +1,9 @@
 {
-  "name": "강세현",
+  "name": "심재경",
   "title": "테스트 탭",
-  "overlayImage": "./src/data/tabs/5/image.svg",
+  "overlayImage": "./src/data/tabs/6/image.svg",
   "images": [
-    { "id": 1, "name": "실루엣", "src": "./src/data/tabs/5/ksh_silhouette.png", "txt": "crepe @ZNMAJJI" }
+    { "id": 1, "name": "실루엣", "src": "./src/data/tabs/6/sjk_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
   "sections": [
     {
