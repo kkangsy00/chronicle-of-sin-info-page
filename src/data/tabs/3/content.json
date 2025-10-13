@@ -1,7 +1,7 @@
 {
   "name": "하인성",
-  "title": "반응형 디자인",
-  "overlayImage": "./src/data/tabs/3/image.svg",
+  "title": "ha insung",
+  "overlayImage": "./src/data/tabs/3/his_name.png",
   "images": [
     { "id": 1, "name": "실루엣", "src": "./src/data/tabs/3/his_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
