@@ -1,75 +1,81 @@
 {
-  "name": "AAAA",
-  "title": "Vue 프로젝트 배포",
+  "name": "손효성",
+  "title": "son hyoseong",
+  "overlayImage": "./src/data/tabs/4/overlay_shs.png",
   "images": [
-    { "id": 1, "name": "기본 이미지", "src": "./src/data/tabs/4/image.svg" }
+    { "id": 1, "name": "기본", "src": "./src/data/tabs/4/shs.png", "txt": "crepe @delion" },
+    { "id": 2, "name": "실루엣", "src": "./src/data/tabs/4/shs_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
-  "imgTxt": "",
-  "overlayImage": "./src/data/tabs/4/image.svg",
   "sections": [
     {
-      "index": 1,
-      "header": "빌드 과정",
+      "index": "01",
+      "header": "경사",
       "colorClass": "color-a",
       "content": [
-        "프로덕션 배포를 위한 빌드 과정을 단계별로 살펴보겠습니다.",
-        "1. <code>npm run build</code> 명령어로 프로덕션 빌드 생성",
-        "2. <code>dist</code> 폴더에 최적화된 정적 파일들이 생성됨",
-        "3. GitHub Actions를 통한 자동 배포 설정 가능",
-        "• 코드 압축 및 번들링",
-        "• 에셋 최적화 및 해시 생성"
+        "서빛지방경찰청 경사. 적성화파 소탕작전을 담당한 강력1팀 소속 형사다."
       ]
     },
     {
-      "index": 2,
-      "header": "GitHub Pages 배포",
+      "index": "02",
+      "header": "인형",
       "colorClass": "color-b",
       "content": [
-        "GitHub의 무료 호스팅 서비스를 활용한 배포 방법입니다.",
-        "• Vite 설정에서 base 경로 설정",
-        "• GitHub Actions workflow 구성",
-        "• 자동 빌드 및 배포 파이프라인",
-        "• 커밋 시 자동 배포로 개발 효율성 향상",
-        "• HTTPS 자동 적용 및 커스텀 도메인 지원"
+        "알베르트라고 부르는, 손인형 혹은 왼손의 엄지와 검지.",
+        "대화에 참여하며 의사를 함께 전한다."
       ]
     },
     {
-      "index": 3,
-      "header": "배포 최적화",
+      "index": "03",
+      "header": "aa",
       "colorClass": "color-a",
       "content": [
-        "성능과 사용자 경험을 개선하는 최적화 기법들입니다.",
-        "• 코드 스플리팅으로 번들 크기 최적화",
-        "• 이미지 및 에셋 최적화 (WebP, 압축)",
-        "• PWA 설정으로 오프라인 지원",
-        "• 캐싱 전략 구현",
-        "• Tree shaking으로 불필요한 코드 제거"
+        "asdfasdfasdfas",
+        "aaaaaaaaaaaaaaaaa"
       ]
     },
     {
-      "index": 4,
-      "header": "성능 모니터링",
+      "index": "04",
+      "header": "aa",
       "colorClass": "color-b",
       "content": [
-        "배포된 애플리케이션의 성능을 지속적으로 관리하는 방법입니다.",
-        "• Lighthouse 점수 확인 및 개선",
-        "• Core Web Vitals 측정 (LCP, FID, CLS)",
-        "• 번들 분석 도구 활용",
-        "• 실시간 성능 모니터링 설정",
-        "• 사용자 피드백 수집 및 분석"
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
       ]
     },
     {
-      "index": 5,
-      "header": "배포 명령어",
+      "index": "05",
+      "header": "aa",
       "colorClass": "color-a",
       "content": [
-        "자주 사용하는 배포 관련 명령어들을 정리했습니다.",
-        "• <code>npm run build</code> - 프로덕션 빌드",
-        "• <code>npm run preview</code> - 빌드 결과 미리보기",
-        "• <code>npm run analyze</code> - 번들 크기 분석",
-        "• <code>git push origin main</code> - 자동 배포 트리거",
-        "Vue.js와 Vite를 사용하면 간단한 명령어로 최적화된 웹 애플리케이션을 배포할 수 있습니다."
+        "asdfasdfasdfas",
+        "aaaaaaaaaaaaaaaaa"
+      ]
+    },
+    {
+      "index": "06",
+      "header": "aa",
+      "colorClass": "color-b",
+      "content": [
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
+      ]
+    },
+    {
+      "index": "07",
+      "header": "aa",
+      "colorClass": "color-a",
+      "content": [
+        "asdfasdfasdfas",
+        "aaaaaaaaaaaaaaaaa"
+      ]
+    },
+    {
+      "index": "08",
+      "header": "aa",
+      "colorClass": "color-b",
+      "content": [
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
       ]
     }
   ]

@@ -198,10 +198,9 @@ body {
 .scroll-button {
   background: linear-gradient(180deg, #514f40, #3b423b);
   border: 1px solid #000000;
-  color: #8a8777;
+  color: #252317;
   cursor: pointer;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 50px;
   width: 10%;
   height: 80px;
   display: flex;
@@ -258,14 +257,14 @@ body {
 /* 상단 정보 탭 */
 .info-tabs {
   display: flex;
-  width: 50%;
-  background: rgba(0, 0, 0, 0.1);
+  width: 40%;
+  background: #666045;
   border: 1px solid #000000;
 }
 
 .info-tab-button {
   flex: 1;
-  background: transparent;
+  background: rgba(101, 94, 68, 0.6);
   border: none;
   color: #8a8777;
   cursor: pointer;
@@ -281,9 +280,9 @@ body {
 }
 
 .info-tab-button.active {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(35, 35, 9, 0.8);
+  text-shadow: 0 0 15px #00bbff;
   color: #d8d7c1;
-  border-bottom: 2px solid #8a8777;
 }
 
 /* 이미지 콘텐츠 영역 */

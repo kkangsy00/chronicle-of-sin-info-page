@@ -11,8 +11,8 @@
             @error="handleImageError"
           >
           <transition name="fade">
-            <div v-if="showImgTxt && currentTab.imgTxt" class="main-image-txt">
-              {{ currentTab.imgTxt }}
+            <div v-if="showImgTxt && currentImgTxt" class="main-image-txt">
+              {{ currentImgTxt }}
             </div>
           </transition>
         </div>
@@ -34,13 +34,13 @@
               :class="['info-tab-button', { active: activeInfoTab === 'info' }]"
               @click="switchInfoTab('info')"
             >
-              정보
+              인물정보
             </button>
             <button 
               :class="['info-tab-button', { active: activeInfoTab === 'images' }]"
               @click="switchInfoTab('images')"
             >
-              이미지
+              이미지변경
             </button>
           </div>
 
@@ -151,7 +151,7 @@ export default {
         return {
           name: '오류',
           title: '콘텐츠 로드 실패',
-          image: 'https://via.placeholder.com/400x300/CCCCCC/666666?text=오류',
+          images: 'https://via.placeholder.com/400x300/CCCCCC/666666?text=오류',
           sections: [{
             index: 1,
             header: '오류',
@@ -177,8 +177,6 @@ export default {
           id: tabId,
           name: contentData.name,
           title: contentData.title,
-          image: contentData.image,
-          imgTxt: contentData.imgTxt,
           overlayImage: contentData.overlayImage,
           content: contentHTML,
           images: contentData.images || []
@@ -200,7 +198,6 @@ export default {
         name: '로딩중...',
         title: '로딩중...',
         content: '<p>콘텐츠를 불러오는 중입니다...</p>',
-        image: '',
         imgTxt: '',
         overlayImage: '',
         images: []
@@ -211,6 +208,11 @@ export default {
     const currentImage = computed(() => {
       const selectedImage = currentTab.value.images?.find(img => img.id === selectedImageId.value)
       return selectedImage?.src || currentTab.value.image
+    })
+
+    const currentImgTxt = computed(() => {
+      const selectedImgTxt = currentTab.value.images?.find(img => img.id === selectedImageId.value)
+      return selectedImgTxt?.txt
     })
 
     // 탭 전환 함수
@@ -290,6 +292,7 @@ export default {
       tabs,
       currentTab,
       currentImage,
+      currentImgTxt,
       infoContent,
       tabContainer,
       switchTab,
