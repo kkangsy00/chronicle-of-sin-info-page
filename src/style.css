@@ -1,4 +1,3 @@
-
 /* 전체 초기화 */
 * {
   margin: 0;
@@ -166,9 +165,9 @@ body {
 .tab-section {
   height: 80px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
+  padding: 0;
   box-shadow: 0 3px 30px rgba(0, 0, 0, 0.8);
   background: linear-gradient(180deg, #514f40, #3b423b);
 }
@@ -176,17 +175,50 @@ body {
 .tab-container {
   backdrop-filter: blur(10px);
   display: flex;
-  width: 100%;
+  flex: 1;
   height: 80px;
-  max-width: 100%;
   justify-content: flex-start;
   white-space: nowrap;
-  overflow-x: auto; 
+  overflow-x: auto;
+  /* 스크롤바 숨기기 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
-.tab-container::-webkit-scrollbar-button {
-  width: 0px;
-  height: 0px;
+/* Webkit 브라우저에서 스크롤바 숨기기 */
+.tab-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Webkit 브라우저에서 스크롤바 숨기기 */
+.tab-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* 스크롤 제어 버튼 */
+.scroll-button {
+  background: linear-gradient(180deg, #514f40, #3b423b);
+  border: 1px solid #000000;
+  color: #8a8777;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  width: 10%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.scroll-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #545352;
+}
+
+.scroll-button:active {
+  transform: scale(0.95);
 }
 
 .tab-button {

@@ -36,6 +36,7 @@
           
           <!-- 하단 탭 영역 (정보영역 내부) -->
           <div class="tab-section">
+            <button class="scroll-button scroll-left" @click="scrollTabs('left')">&lt;</button>
             <div class="tab-container" ref="tabContainer">
               <button 
                 v-for="tab in tabs" 
@@ -49,6 +50,7 @@
                 <div class="pct-txt" v-text="'100%'"></div>
               </button>
             </div>
+            <button class="scroll-button scroll-right" @click="scrollTabs('right')">&gt;</button>
           </div>
         </div>
       </div>
@@ -179,6 +181,26 @@ export default {
       }
     }
 
+    // 탭 스크롤 제어 함수
+    const scrollTabs = (direction) => {
+      if (!tabContainer.value) return
+      
+      const scrollAmount = 100 // 한 번에 스크롤할 픽셀 수
+      const currentScroll = tabContainer.value.scrollLeft
+      
+      if (direction === 'left') {
+        tabContainer.value.scrollTo({
+          left: currentScroll - scrollAmount,
+          behavior: 'smooth'
+        })
+      } else if (direction === 'right') {
+        tabContainer.value.scrollTo({
+          left: currentScroll + scrollAmount,
+          behavior: 'smooth'
+        })
+      }
+    }
+
     // 이미지 로드 에러 처리
     const handleImageError = (event) => {
       event.target.src = 'https://via.placeholder.com/400x300/CCCCCC/666666?text=이미지를+불러올+수+없습니다'
@@ -212,6 +234,7 @@ export default {
       infoContent,
       tabContainer,
       switchTab,
+      scrollTabs,
       handleImageError,
       showImgTxt
     }
