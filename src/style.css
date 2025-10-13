@@ -108,7 +108,6 @@ body {
   display: flex;
   min-width: 350px;
   max-height: 1000px;
-  border: 2px solid #000000;
 }
 
 .info-container {
@@ -253,6 +252,73 @@ body {
 .tab-button.active {
   background: linear-gradient(180deg, #fdfdfc, #bdb7a0);
   color:#545352;
+  transform: translateY(-1px);
+}
+
+/* 상단 정보 탭 */
+.info-tabs {
+  display: flex;
+  width: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid #000000;
+}
+
+.info-tab-button {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #8a8777;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 15px 20px;
+  transition: all 0.3s ease;
+}
+
+.info-tab-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #545352;
+}
+
+.info-tab-button.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #d8d7c1;
+  border-bottom: 2px solid #8a8777;
+}
+
+/* 이미지 콘텐츠 영역 */
+.images-content {
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.image-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.image-button {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #000000;
+  color: #8a8777;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 15px 10px;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.image-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #545352;
+}
+
+.image-button.active {
+  background: linear-gradient(180deg, #fdfdfc, #bdb7a0);
+  color: #545352;
   transform: translateY(-1px);
 }
 

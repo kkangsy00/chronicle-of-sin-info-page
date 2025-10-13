@@ -1,7 +1,9 @@
 {
   "name": "AAAA",
   "title": "Vue 프로젝트 배포",
-  "image": "./src/data/tabs/4/image.svg",
+  "images": [
+    { "id": 1, "name": "기본 이미지", "src": "./src/data/tabs/4/image.svg" }
+  ],
   "imgTxt": "",
   "overlayImage": "./src/data/tabs/4/image.svg",
   "sections": [

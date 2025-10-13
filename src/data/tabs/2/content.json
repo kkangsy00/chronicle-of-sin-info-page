@@ -4,6 +4,9 @@
   "image": "./src/data/tabs/2/image.svg",
   "imgTxt": "",
   "overlayImage": "./src/data/tabs/2/image.svg",
+  "images": [
+    { "id": 1, "name": "기본 이미지", "src": "./src/data/tabs/2/image.svg" }
+  ],
   "sections": [
     {
       "index": 1,

@@ -1,7 +1,9 @@
 {
   "name": "AAA",
   "title": "Vue.js 프레임워크",
-  "image": "./src/data/tabs/3/image.svg",
+  "images": [
+    { "id": 1, "name": "기본 이미지", "src": "./src/data/tabs/3/image.svg" }
+  ],
   "imgTxt": "",
   "overlayImage": "./src/data/tabs/3/image.svg",
   "sections": [

@@ -4,6 +4,10 @@
   "image": "./src/data/tabs/1/shs.png",
   "imgTxt": "crepe @delion",
   "overlayImage": "./src/data/tabs/1/overlay_shs.png",
+  "images": [
+    { "id": 1, "name": "프로필", "src": "./src/data/tabs/1/shs.png" },
+    { "id": 2, "name": "작업 모습", "src": "./src/data/tabs/1/shs.png" }
+  ],
   "sections": [
     {
       "index": "01",

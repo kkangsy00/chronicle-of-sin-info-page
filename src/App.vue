@@ -6,7 +6,7 @@
       <div class="image-section">
         <div class="image-container" @mouseenter="showImgTxt = true" @mouseleave="showImgTxt = false" style="position:relative;">
           <img 
-            :src="currentTab.image" 
+            :src="currentImage" 
             class="fade-transition main-image"
             @error="handleImageError"
           >
@@ -28,11 +28,46 @@
       <!-- 우측 정보 영역 -->
       <div class="info-section">
         <div class="info-container">
+          <!-- 상단 정보 탭 -->
+          <div class="info-tabs">
+            <button 
+              :class="['info-tab-button', { active: activeInfoTab === 'info' }]"
+              @click="switchInfoTab('info')"
+            >
+              정보
+            </button>
+            <button 
+              :class="['info-tab-button', { active: activeInfoTab === 'images' }]"
+              @click="switchInfoTab('images')"
+            >
+              이미지
+            </button>
+          </div>
+
+          <!-- 정보 탭 콘텐츠 -->
           <div 
+            v-if="activeInfoTab === 'info'"
             class="info-content fade-transition" 
             ref="infoContent"
             v-html="currentTab.content"
           ></div>
+
+          <!-- 이미지 탭 콘텐츠 -->
+          <div 
+            v-if="activeInfoTab === 'images'"
+            class="images-content fade-transition"
+          >
+            <div class="image-buttons">
+              <button
+                v-for="image in currentTab.images"
+                :key="image.id"
+                :class="['image-button', { active: selectedImageId === image.id }]"
+                @click="selectImage(image.id)"
+              >
+                {{ image.name }}
+              </button>
+            </div>
+          </div>
           
           <!-- 하단 탭 영역 (정보영역 내부) -->
           <div class="tab-section">
@@ -65,6 +100,8 @@ export default {
   name: 'App',
   setup() {
     const activeTabId = ref(1)
+    const activeInfoTab = ref('info') // 'info' 또는 'images'
+    const selectedImageId = ref(1)
     const infoContent = ref(null)
     const showImgTxt = ref(false)
     const tabContainer = ref(null)
@@ -143,7 +180,8 @@ export default {
           image: contentData.image,
           imgTxt: contentData.imgTxt,
           overlayImage: contentData.overlayImage,
-          content: contentHTML
+          content: contentHTML,
+          images: contentData.images || []
         })
       }
       
@@ -164,8 +202,15 @@ export default {
         content: '<p>콘텐츠를 불러오는 중입니다...</p>',
         image: '',
         imgTxt: '',
-        overlayImage: ''
+        overlayImage: '',
+        images: []
       }
+    })
+
+    // 현재 선택된 이미지 계산
+    const currentImage = computed(() => {
+      const selectedImage = currentTab.value.images?.find(img => img.id === selectedImageId.value)
+      return selectedImage?.src || currentTab.value.image
     })
 
     // 탭 전환 함수
@@ -173,12 +218,23 @@ export default {
       if (activeTabId.value === tabId) return
       
       activeTabId.value = tabId
+      selectedImageId.value = 1 // 탭 전환 시 기본 이미지로 리셋
       
       // 다음 틱에서 스크롤을 맨 위로 이동
       await nextTick()
       if (infoContent.value) {
         infoContent.value.scrollTop = 0
       }
+    }
+
+    // 정보 탭 전환 함수
+    const switchInfoTab = (tabType) => {
+      activeInfoTab.value = tabType
+    }
+
+    // 이미지 선택 함수
+    const selectImage = (imageId) => {
+      selectedImageId.value = imageId
     }
 
     // 탭 스크롤 제어 함수
@@ -229,11 +285,16 @@ export default {
 
     return {
       activeTabId,
+      activeInfoTab,
+      selectedImageId,
       tabs,
       currentTab,
+      currentImage,
       infoContent,
       tabContainer,
       switchTab,
+      switchInfoTab,
+      selectImage,
       scrollTabs,
       handleImageError,
       showImgTxt
