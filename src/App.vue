@@ -36,7 +36,7 @@
           
           <!-- 하단 탭 영역 (정보영역 내부) -->
           <div class="tab-section">
-            <div class="tab-container">
+            <div class="tab-container" ref="tabContainer">
               <button 
                 v-for="tab in tabs" 
                 :key="tab.id"
@@ -63,8 +63,9 @@ export default {
   name: 'App',
   setup() {
     const activeTabId = ref(1)
-  const infoContent = ref(null)
-  const showImgTxt = ref(false)
+    const infoContent = ref(null)
+    const showImgTxt = ref(false)
+    const tabContainer = ref(null)
 
     // 탭 메타데이터와 콘텐츠를 합친 완전한 탭 데이터
     const tabs = ref([])
@@ -140,8 +141,7 @@ export default {
           image: contentData.image,
           imgTxt: contentData.imgTxt,
           overlayImage: contentData.overlayImage,
-          content: contentHTML,
-          rawContent: contentData // 원본 데이터도 보관
+          content: contentHTML
         })
       }
       
@@ -166,18 +166,11 @@ export default {
       }
     })
 
-    // 탭 전환 함수 (콘텐츠 동적 업데이트)
+    // 탭 전환 함수
     const switchTab = async (tabId) => {
       if (activeTabId.value === tabId) return
       
       activeTabId.value = tabId
-      
-      // 해당 탭의 콘텐츠를 다시 로드하고 HTML 생성
-      const currentTabData = tabs.value.find(tab => tab.id === tabId)
-      if (currentTabData && currentTabData.sections) {
-        // 제목 업데이트를 위해 다시 HTML 생성
-        currentTabData.content = generateContentHTML(currentTabData.sections)
-      }
       
       // 다음 틱에서 스크롤을 맨 위로 이동
       await nextTick()
@@ -217,6 +210,7 @@ export default {
       tabs,
       currentTab,
       infoContent,
+      tabContainer,
       switchTab,
       handleImageError,
       showImgTxt
