@@ -7,25 +7,21 @@
   ],
   "sections": [
     {
-      "index": 1,
-      "header": "동적 스캔 테스트",
+      "index": "01",
+      "header": "111",
       "colorClass": "color-a",
       "content": [
-        "이 탭은 코드 수정 없이 자동으로 감지되었습니다!",
-        "• import.meta.glob으로 자동 스캔",
-        "• 새 탭 추가가 매우 간편함",
-        "• 숫자 순서로 자동 정렬"
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
       ]
     },
     {
-      "index": 2,
-      "header": "확장성",
+      "index": "02",
+      "header": "ababababaaaaa",
       "colorClass": "color-b",
       "content": [
-        "이제 새로운 탭을 추가할 때:",
-        "1. 새 폴더 생성 (예: tabs/6/)",
-        "2. content.json과 image.svg 추가",
-        "3. 코드 수정 없이 자동으로 인식!"
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
       ]
     }
   ]

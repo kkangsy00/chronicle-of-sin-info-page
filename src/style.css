@@ -259,7 +259,9 @@ body {
   display: flex;
   width: 40%;
   background: #666045;
-  border: 1px solid #000000;
+  border-top: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
 }
 
 .info-tab-button {
@@ -287,6 +289,8 @@ body {
 
 /* 이미지 콘텐츠 영역 */
 .images-content {
+  background: linear-gradient(90deg, rgba(22, 21, 0, 0.8) 0%, rgba(41, 38, 21, 0.3) 100%);
+  border: 1px solid #000000;
   padding: 20px;
   flex: 1;
   overflow-y: auto;
@@ -300,10 +304,10 @@ body {
 
 .image-button {
   background: rgba(0, 0, 0, 0.3);
-  border: 1px solid #000000;
+  border  : 1px solid #000000;
   color: #8a8777;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   padding: 15px 10px;
   transition: all 0.3s ease;
@@ -341,6 +345,8 @@ body {
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* 카드 간 구분선 */
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
 }
 
 .content-card::before {
@@ -349,18 +355,8 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 1px;
   opacity: 0.6;
-}
-
-.content-card:hover {
-  box-shadow: inset 0 0 0 1px rgba(102, 126, 234, 0.1);
-  background-color: rgba(102, 126, 234, 0.02);
-}
-
-/* 마지막 카드 하단 구분선 제거 */
-.content-card:last-child {
-  border-bottom: none;
 }
 
 /* 카드 색상 변형 - A, B 두 색상만 번갈아 적용 */
