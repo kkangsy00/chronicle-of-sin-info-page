@@ -3,7 +3,9 @@
   "title": "ha insung",
   "overlayImage": "./src/data/tabs/3/his_name.png",
   "images": [
-    { "id": 1, "name": "실루엣", "src": "./src/data/tabs/3/his_silhouette.png", "txt": "crepe @ZNMAJJI" }
+    { "id": 1, "name": "기본", "src": "./src/data/tabs/3/his.png"},
+    { "id": 2, "name": "기본-전신", "src": "./src/data/tabs/3/his_.png"},
+    { "id": 3, "name": "실루엣", "src": "./src/data/tabs/3/his_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
   "sections": [
     {
