@@ -1,7 +1,7 @@
 {
   "name": "손효성",
   "title": "son hyoseong",
-  "overlayImage": "./src/data/tabs/4/overlay_shs.png",
+  "overlayImage": "./src/data/tabs/4/shs_name.png",
   "images": [
     { "id": 1, "name": "기본", "src": "./src/data/tabs/4/shs.png", "txt": "crepe @delion" },
     { "id": 2, "name": "실루엣", "src": "./src/data/tabs/4/shs_silhouette.png", "txt": "crepe @ZNMAJJI" }
