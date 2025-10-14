@@ -39,6 +39,7 @@ export default {
 
 .home-page {
   height: 100vh;
+  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,7 +62,6 @@ export default {
   font-family: "Nanum Myeongjo", serif;
   font-size: clamp(1.2rem, 3vw, 2rem);
   color: #bdb7a0;
-  margin-bottom: 15rem;
   opacity: 0.9;
 }
 
@@ -70,13 +70,13 @@ export default {
   color: white;
   opacity: 0.7;
   position: absolute;
-  bottom: 10px;
   width: 100%;
 }
 
 .nav-buttons {
   display: flex;
   gap: 2rem;
+  margin-top: 3rem;
   justify-content: center;
   flex-wrap: wrap;
 }
