@@ -160,6 +160,7 @@ export default {
     // 탭 데이터 초기화
     const initializeTabs = async () => {
       const tabsWithContent = []
+      const baseUrl = import.meta.env.BASE_URL
       
       // 동적으로 탭 ID들을 가져옴
       const availableTabIds = getAvailableTabIds()
@@ -168,13 +169,23 @@ export default {
         const contentData = await loadTabContent(tabId)
         const contentHTML = generateContentHTML(contentData)
         
+        // 이미지 경로를 절대 경로로 변환
+        const fixedImages = (contentData.images || []).map(img => ({
+          ...img,
+          src: img.src.startsWith('./') ? `${baseUrl}data/tabs/${tabId}/${img.src.slice(2)}` : img.src
+        }))
+        
+        const fixedOverlayImage = contentData.overlayImage && contentData.overlayImage.startsWith('./') 
+          ? `${baseUrl}data/tabs/${tabId}/${contentData.overlayImage.slice(2)}`
+          : contentData.overlayImage
+        
         tabsWithContent.push({
           id: tabId,
           name: contentData.name,
           title: contentData.title,
-          overlayImage: contentData.overlayImage,
+          overlayImage: fixedOverlayImage,
           content: contentHTML,
-          images: contentData.images || []
+          images: fixedImages
         })
       }
       
