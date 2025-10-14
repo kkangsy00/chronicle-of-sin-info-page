@@ -34,8 +34,6 @@ export default {
     font-weight: normal;
     font-display: swap;
 }
-@import url('//fonts.googleapis.com/earlyaccess/nanummyeongjo.css');
-
 
 .home-page {
   height: 100vh;
