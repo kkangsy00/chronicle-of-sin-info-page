@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Vue.js를 사용한 탭 기반 정보 페이지",
   "homepage": "https://sykang1.github.io/chronicle-of-sin-info-page/",
-  "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

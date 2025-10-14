@@ -303,31 +303,60 @@ body {
 
 .image-buttons {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
 }
 
 .image-button {
   background: rgba(0, 0, 0, 0.3);
-  border  : 1px solid #000000;
-  color: #8a8777;
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  border: 1px solid #000000;
+  color: #ffffff;
   cursor: pointer;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 700;
   padding: 15px 10px;
   transition: all 0.3s ease;
-  border-radius: 4px;
+  border-radius: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
-.image-button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #545352;
+.image-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.image-button span {
+  position: relative;
+  z-index: 2;
+}
+
+.image-button:hover::before {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .image-button.active {
-  background: linear-gradient(180deg, #fdfdfc, #bdb7a0);
-  color: #545352;
+  border: 2px solid #fdfdfc;
   transform: translateY(-1px);
+}
+
+.image-button.active::before {
+  background: rgba(253, 253, 252, 0.3);
 }
 
 /* Vue 전환 애니메이션 */

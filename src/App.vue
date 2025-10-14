@@ -62,9 +62,10 @@
                 v-for="image in currentTab.images"
                 :key="image.id"
                 :class="['image-button', { active: selectedImageId === image.id }]"
+                :style="{ backgroundImage: `url(${image.src})` }"
                 @click="selectImage(image.id)"
               >
-                {{ image.name }}
+                <span>{{ image.name }}</span>
               </button>
             </div>
           </div>
@@ -78,11 +79,9 @@
                 :key="tab.id"
                 :class="['tab-button', { active: activeTabId === tab.id }]"
                 @click="switchTab(tab.id)"
-                @keydown.enter="switchTab(tab.id)"
-                @keydown.space="switchTab(tab.id)"
               >
                 {{ tab.name }}
-                <div class="pct-txt" v-text="'100%'"></div>
+                <div class="pct-txt">100%</div>
               </button>
             </div>
             <button class="scroll-button scroll-right" @click="scrollTabs('right')">&gt;</button>
@@ -204,7 +203,6 @@ export default {
         name: '로딩중...',
         title: '로딩중...',
         content: '<p>콘텐츠를 불러오는 중입니다...</p>',
-        imgTxt: '',
         overlayImage: '',
         images: []
       }
@@ -213,7 +211,7 @@ export default {
     // 현재 선택된 이미지 계산
     const currentImage = computed(() => {
       const selectedImage = currentTab.value.images?.find(img => img.id === selectedImageId.value)
-      return selectedImage?.src || currentTab.value.image
+      return selectedImage?.src || ''
     })
 
     const currentImgTxt = computed(() => {
@@ -222,17 +220,18 @@ export default {
     })
 
     // 탭 전환 함수
-    const switchTab = async (tabId) => {
+    const switchTab = (tabId) => {
       if (activeTabId.value === tabId) return
       
       activeTabId.value = tabId
       selectedImageId.value = 1 // 탭 전환 시 기본 이미지로 리셋
       
-      // 다음 틱에서 스크롤을 맨 위로 이동
-      await nextTick()
-      if (infoContent.value) {
-        infoContent.value.scrollTop = 0
-      }
+      // 스크롤을 맨 위로 이동
+      nextTick(() => {
+        if (infoContent.value) {
+          infoContent.value.scrollTop = 0
+        }
+      })
     }
 
     // 정보 탭 전환 함수
