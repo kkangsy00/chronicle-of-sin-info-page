@@ -189,7 +189,9 @@ body::after {
 
 /* 탭 영역 (정보영역 하단에 고정) */
 .tab-section {
-  height: 80px;
+  height: 8vh;
+  min-height: 60px;
+  max-height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -202,7 +204,7 @@ body::after {
   backdrop-filter: blur(10px);
   display: flex;
   flex: 1;
-  height: 80px;
+  height: 100%;
   justify-content: flex-start;
   white-space: nowrap;
   overflow-x: auto;
@@ -222,9 +224,9 @@ body::after {
   border: 1px solid #000000;
   color: #252317;
   cursor: pointer;
-  font-size: 50px;
+  font-size: clamp(30px, 4vh, 60px);
   width: 10%;
-  height: 80px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -246,13 +248,14 @@ body::after {
   border: 1px solid #000000;
   color: #8a8777;
   cursor: pointer;
-  font-size: 20px;
+  font-size: clamp(14px, 2vh, 24px);
   font-weight: 500;
   transition: all 0.3s ease;
   position: relative;
-  min-width: 100px;
+  min-width: 80px;
   flex: 1; 
   text-align: center;
+  height: 100%;
 }
 
 .tab-button:hover {
@@ -269,7 +272,7 @@ body::after {
 /* 상단 정보 탭 */
 .info-tabs {
   display: flex;
-  width: 40%;
+  width: 60%;
   background: #666045;
   border-top: 1px solid #000000;
   border-left: 1px solid #000000;
@@ -522,6 +525,12 @@ body::after {
   .info-content p {
     font-size: 14px;
   }
+  
+  .tab-section {
+    height: 10vh;
+    min-height: 50px;
+    max-height: 80px;
+  }
 }
 
 @media (max-width: 650px) {
@@ -542,5 +551,15 @@ body::after {
   
   .content-card {
     padding: 15px 20px;
+  }
+  
+  .tab-section {
+    height: 12vh;
+    min-height: 60px;
+    max-height: 90px;
+  }
+  
+  .tab-button {
+    min-width: 60px;
   }
 }

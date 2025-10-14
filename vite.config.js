@@ -10,6 +10,9 @@ export default defineConfig({
   plugins: [vue()],
   base: process.env.VITE_BASE_PATH || 
         (homepage ? new URL(homepage).pathname : './'),
+  server: {
+    port: 5174
+  },
   build: {
     outDir: 'dist'
   }
