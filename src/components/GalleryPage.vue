@@ -176,16 +176,15 @@ export default {
   position: fixed;
   top: 20px;
   left: 20px;
-  background: #dc3545;
-  color: white;
+  background: #ce3a24;
+  color: black;
   border: none;
   width: 50px;
   height: 50px;
   border: 1px solid black;
   cursor: pointer;
   z-index: 1000;
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -194,7 +193,6 @@ export default {
 }
 
 .home-btn:hover {
-  background: #c82333;
   transform: scale(1.1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }

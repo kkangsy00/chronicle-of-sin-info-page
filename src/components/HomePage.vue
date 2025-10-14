@@ -53,7 +53,7 @@ export default {
   font-family: "KotraDoYak", sans-serif;
   font-size: clamp(3rem, 12vw, 8rem);
   margin-bottom: 1rem;
-  color: #cdcdcd;
+  color: rgba(255, 255, 255, 0.8);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
