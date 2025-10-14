@@ -1,9 +1,9 @@
 {
   "name": "주대현",
   "title": "반응형 디자인",
-  "overlayImage": "/chronicle-of-sin-info-page/data/tabs/2/jdh_name.png",
+  "overlayImage": "./jdh_name.png",
   "images": [
-    { "id": 1, "name": "실루엣", "src": "/chronicle-of-sin-info-page/data/tabs/2/jdh_silhouette.png", "txt": "crepe @ZNMAJJI" }
+    { "id": 1, "name": "실루엣", "src": "./jdh_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
   "sections": [
     {

@@ -1,10 +1,10 @@
 {
   "name": "손효성",
   "title": "son hyoseong",
-  "overlayImage": "/chronicle-of-sin-info-page/data/tabs/4/shs_name.png",
+  "overlayImage": "./shs_name.png",
   "images": [
-    { "id": 1, "name": "기본", "src": "/chronicle-of-sin-info-page/data/tabs/4/shs.png", "txt": "crepe @delion" },
-    { "id": 2, "name": "실루엣", "src": "/chronicle-of-sin-info-page/data/tabs/4/shs_silhouette.png", "txt": "crepe @ZNMAJJI" }
+    { "id": 1, "name": "기본", "src": "./shs.png", "txt": "crepe @delion" },
+    { "id": 2, "name": "실루엣", "src": "./shs_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
   "sections": [
     {

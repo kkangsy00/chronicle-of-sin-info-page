@@ -134,7 +134,7 @@ export default {
     // 동적으로 콘텐츠 로드
     const loadTabContent = async (tabId) => {
       try {
-        const response = await fetch(`/chronicle-of-sin-info-page/data/tabs/${tabId}/content.json`)
+        const response = await fetch(`./data/tabs/${tabId}/content.json`)
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
