@@ -1,8 +1,8 @@
 <template>
   <div class="home-page">
     <div class="hero-section">
-      <h1>Chronicle of Sin</h1>
-      <p>캐릭터 정보 페이지에 오신 것을 환영합니다</p>
+      <h1>죄의 연대기</h1>
+      <p>완전한 선인도 완전한 악인도 없다</p>
       
       <div class="nav-buttons">
         <button class="nav-btn info-btn" @click="$emit('navigate', 'info')">
@@ -24,6 +24,15 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+    font-family: 'KotraDoYak';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRALEAP.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+@import url('//fonts.googleapis.com/earlyaccess/nanummyeongjo.css');
+
+
 .home-page {
   height: 100vh;
   display: flex;
@@ -37,14 +46,16 @@ export default {
 }
 
 .hero-section h1 {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-family: "KotraDoYak", sans-serif;
+  font-size: clamp(3rem, 12vw, 8rem);
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .hero-section p {
+  font-family: "Nanum Myeongjo", serif;
   font-size: clamp(1.2rem, 3vw, 2rem);
-  margin-bottom: 3rem;
+  margin-bottom: 15rem;
   opacity: 0.9;
 }
 
@@ -65,6 +76,7 @@ export default {
   border-radius: 8px;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  width: 100%;
   min-width: 150px;
 }
 

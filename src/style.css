@@ -1,4 +1,5 @@
 /* 전체 초기화 */
+
 * {
   margin: 0;
   padding: 0;
@@ -43,6 +44,7 @@ body::after {
   height: 100vh;
 }
 
+/* ------------ 인물정보 -----------*/
 .container {
   display: flex;
   flex-direction: column;
