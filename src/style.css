@@ -7,13 +7,36 @@
 
 body {
   font-family: 'Nanum Gothic', sans-serif;
-  background: linear-gradient(170deg, rgba(68,59,36,0.8) 0%, rgba(48,76,77,0.8) 100%), url('./data/statics/background.jpg');
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./data/statics/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100vh;
-  overflow-x: auto; /* 가로 스크롤 허용 */
-  overflow-y: hidden;
+  z-index: -2;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(170deg, rgba(68,59,36,0.8) 0%, rgba(48,76,77,0.8) 100%);
+  z-index: -1;
 }
 
 #app {
@@ -78,7 +101,7 @@ body {
   right: 0;
   bottom: 0;
   color: #fff;
-  padding: 10px 10px 10px 10px;
+  padding: 10px;
   font-size: 14px;
   text-align: center;
   opacity: 1;
@@ -108,7 +131,6 @@ body {
   flex: 2; /* 2의 비율 (이미지 영역의 2배) */
   display: flex;
   min-width: 350px;
-  max-height: 1000px;
   position: relative;
   z-index: 10; /* 이미지 영역보다 앞에 위치 */
 }
@@ -118,17 +140,17 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  min-height: 300px; /* 최소 높이 */
+  min-height: 300px;
   overflow: hidden;
   display: flex;
-  flex-direction: column; /* 세로 방향 플렉스 */
+  flex-direction: column;
   position: relative;
   z-index: 10; /* 이미지보다 앞에 위치 */
 }
 
 .info-content {
-  padding: 0; /* 패딩 제거 */
-  flex: 1; /* 남은 공간 모두 차지 */
+  padding: 0;
+  flex: 1;
   overflow-y: auto;
 }
 
@@ -194,11 +216,6 @@ body {
   display: none;
 }
 
-/* Webkit 브라우저에서 스크롤바 숨기기 */
-.tab-container::-webkit-scrollbar {
-  display: none;
-}
-
 /* 스크롤 제어 버튼 */
 .scroll-button {
   background: linear-gradient(180deg, #514f40, #3b423b);
@@ -236,16 +253,6 @@ body {
   min-width: 100px;
   flex: 1; 
   text-align: center;
-}
-
-.tab-button.pct-txt {
-  font-size: 14px;
-  color: #8a8777;
-  vertical-align: middle;
-}
-
-.tab-button:hover::before {
-  left: 100%;
 }
 
 .tab-button:hover {
@@ -374,11 +381,11 @@ body {
 
 /* 콘텐츠 카드 스타일 */
 .content-card {
-  padding: 25px 30px; /* 내부 패딩만 유지 */
+  padding: 25px 30px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* 카드 간 구분선 */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   border-left: 1px solid #000000;
   border-right: 1px solid #000000;
 }

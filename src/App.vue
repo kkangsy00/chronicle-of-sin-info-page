@@ -4,7 +4,7 @@
     <div class="main-content">
       <!-- 좌측 이미지 영역 -->
       <div class="image-section">
-        <div class="image-container" @mouseenter="showImgTxt = true" @mouseleave="showImgTxt = false" style="position:relative;">
+        <div class="image-container" @mouseenter="showImgTxt = true" @mouseleave="showImgTxt = false">
           <img 
             :src="currentImage" 
             class="fade-transition main-image"
@@ -108,11 +108,8 @@ export default {
     // 탭 메타데이터와 콘텐츠를 합친 완전한 탭 데이터
     const tabs = ref([])
 
-    // 동적으로 사용 가능한 탭 ID들을 스캔
-    const getAvailableTabIds = () => {
-      // public/data/tabs 폴더에 있는 탭 ID들
-      return [1, 2, 3, 4, 5, 6, 10, 12]
-    }
+    // 사용 가능한 탭 ID들
+    const getAvailableTabIds = () => [1, 2, 3, 4, 5, 6, 10, 12]
     
     // 콘텐츠를 HTML로 변환하는 함수
     const generateContentHTML = (contentData) => {
@@ -193,15 +190,9 @@ export default {
 
     // 현재 활성 탭 계산
     const currentTab = computed(() => {
-      const tab = tabs.value.find(tab => tab.id === activeTabId.value)
-      if (tab) {
-        return tab
-      }
-      // 탭이 없을 때 기본값 반환
-      return {
+      return tabs.value.find(tab => tab.id === activeTabId.value) || {
         id: 1,
         name: '로딩중...',
-        title: '로딩중...',
         content: '<p>콘텐츠를 불러오는 중입니다...</p>',
         overlayImage: '',
         images: []
@@ -221,12 +212,9 @@ export default {
 
     // 탭 전환 함수
     const switchTab = (tabId) => {
-      if (activeTabId.value === tabId) return
-      
       activeTabId.value = tabId
-      selectedImageId.value = 1 // 탭 전환 시 기본 이미지로 리셋
+      selectedImageId.value = 1
       
-      // 스크롤을 맨 위로 이동
       nextTick(() => {
         if (infoContent.value) {
           infoContent.value.scrollTop = 0
@@ -235,14 +223,10 @@ export default {
     }
 
     // 정보 탭 전환 함수
-    const switchInfoTab = (tabType) => {
-      activeInfoTab.value = tabType
-    }
+    const switchInfoTab = (tabType) => activeInfoTab.value = tabType
 
     // 이미지 선택 함수
-    const selectImage = (imageId) => {
-      selectedImageId.value = imageId
-    }
+    const selectImage = (imageId) => selectedImageId.value = imageId
 
     // 탭 스크롤 제어 함수
     const scrollTabs = (direction) => {
@@ -281,13 +265,9 @@ export default {
     }
 
     // 마운트 시 초기화
-    onMounted(async () => {
-      try {
-        await initializeTabs()
-        document.addEventListener('keydown', handleKeydown)
-      } catch (error) {
-        console.error('초기화 에러:', error)
-      }
+    onMounted(() => {
+      initializeTabs()
+      document.addEventListener('keydown', handleKeydown)
     })
 
     return {
