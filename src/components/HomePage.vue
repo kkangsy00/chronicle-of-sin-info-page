@@ -14,6 +14,10 @@
       </div>
     </div>
   </div>
+  <div class="txt"> 
+    본 문서는 크툴루의 부름 7th 팬메이드 시나리오 「죄의 연대기」의 강한 스포일러를 포함합니다.
+    <br/> UI를 포함한 디자인 요소 일부는 모바일 게임 「회색도시 2」를 참고하였습니다.
+  </div>
 </template>
 
 <script>
@@ -49,14 +53,25 @@ export default {
   font-family: "KotraDoYak", sans-serif;
   font-size: clamp(3rem, 12vw, 8rem);
   margin-bottom: 1rem;
+  color: #cdcdcd;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .hero-section p {
   font-family: "Nanum Myeongjo", serif;
   font-size: clamp(1.2rem, 3vw, 2rem);
+  color: #bdb7a0;
   margin-bottom: 15rem;
   opacity: 0.9;
+}
+
+.txt {
+  text-align: center;
+  color: white;
+  opacity: 0.7;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
 }
 
 .nav-buttons {
