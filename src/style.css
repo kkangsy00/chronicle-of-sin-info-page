@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Nanum Gothic', sans-serif;
-  background: linear-gradient(170deg, rgba(68,59,36,0.8) 0%, rgba(48,76,77,0.8) 100%), url('./data/statics/background.jpg');
+  background: linear-gradient(170deg, rgba(68,59,36,0.8) 0%, rgba(48,76,77,0.8) 100%), url('/data/statics/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

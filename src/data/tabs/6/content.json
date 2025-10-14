@@ -1,9 +1,9 @@
 {
   "name": "심재경",
   "title": "sim jaekyung",
-  "overlayImage": "./src/data/tabs/6/sjk_name.png",
+  "overlayImage": "/data/tabs/6/sjk_name.png",
   "images": [
-    { "id": 1, "name": "실루엣", "src": "./src/data/tabs/6/sjk_silhouette.png", "txt": "crepe @ZNMAJJI" }
+    { "id": 1, "name": "실루엣", "src": "/data/tabs/6/sjk_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
   "sections": [
     {

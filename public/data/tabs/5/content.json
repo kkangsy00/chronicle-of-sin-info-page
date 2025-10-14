@@ -1,10 +1,10 @@
 {
   "name": "강세현",
   "title": "테스트 탭",
-  "overlayImage": "/data/tabs/5/image.svg",
+  "overlayImage": "./src/data/tabs/5/image.svg",
   "images": [
-    { "id": 1, "name": "인장", "src": "/data/tabs/5/ksh_.png", "txt": "Picrew 아홉시오분" },
-    { "id": 2, "name": "실루엣", "src": "/data/tabs/5/ksh_silhouette.png", "txt": "crepe @ZNMAJJI" }
+    { "id": 1, "name": "인장", "src": "./src/data/tabs/5/ksh_.png", "txt": "Picrew 아홉시오분" },
+    { "id": 2, "name": "실루엣", "src": "./src/data/tabs/5/ksh_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
   "sections": [
     {

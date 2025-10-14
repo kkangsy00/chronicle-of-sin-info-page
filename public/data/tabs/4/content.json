@@ -1,10 +1,10 @@
 {
   "name": "손효성",
   "title": "son hyoseong",
-  "overlayImage": "/data/tabs/4/shs_name.png",
+  "overlayImage": "./src/data/tabs/4/shs_name.png",
   "images": [
-    { "id": 1, "name": "기본", "src": "/data/tabs/4/shs.png", "txt": "crepe @delion" },
-    { "id": 2, "name": "실루엣", "src": "/data/tabs/4/shs_silhouette.png", "txt": "crepe @ZNMAJJI" }
+    { "id": 1, "name": "기본", "src": "./src/data/tabs/4/shs.png", "txt": "crepe @delion" },
+    { "id": 2, "name": "실루엣", "src": "./src/data/tabs/4/shs_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
   "sections": [
     {
