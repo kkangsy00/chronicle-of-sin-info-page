@@ -4,7 +4,8 @@
   "overlayImage": "./shs_name.png",
   "images": [
     { "id": 1, "name": "기본", "src": "./shs.png", "txt": "crepe @delion" },
-    { "id": 2, "name": "실루엣", "src": "./shs_silhouette.png", "txt": "crepe @ZNMAJJI" }
+    { "id": 2, "name": "인장", "src": "./shs_.png", "txt": "Picrew 긴급! 삼촌 메이커!" },
+    { "id": 3, "name": "실루엣", "src": "./shs_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
   "sections": [
     {

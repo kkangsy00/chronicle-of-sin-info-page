@@ -529,7 +529,6 @@ body::after {
   }
   
   .tab-section {
-    height: 10vh;
     min-height: 50px;
     max-height: 80px;
   }
@@ -556,9 +555,8 @@ body::after {
   }
   
   .tab-section {
-    height: 12vh;
-    min-height: 60px;
-    max-height: 90px;
+    min-height: 50px;
+    max-height: 80px;
   }
   
   .tab-button {

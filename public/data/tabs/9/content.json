@@ -1,0 +1,28 @@
+{
+  "name": "이념",
+  "title": "",
+  "overlayImage": "./image.svg",
+  "images": [
+    { "id": 1, "name": "인장", "src": "./.png", "txt": "Picrew " }
+  ],
+  "sections": [
+    {
+      "index": "01",
+      "header": "111",
+      "colorClass": "color-a",
+      "content": [
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
+      ]
+    },
+    {
+      "index": "02",
+      "header": "ababababaaaaa",
+      "colorClass": "color-b",
+      "content": [
+        "aaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaa"
+      ]
+    }
+  ]
+}

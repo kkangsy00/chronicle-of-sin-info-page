@@ -117,7 +117,7 @@ export default {
     const tabs = ref([])
 
     // 사용 가능한 탭 ID들
-    const getAvailableTabIds = () => [1, 2, 3, 4, 5, 6, 10, 11, 12]
+    const getAvailableTabIds = () => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     
     // 콘텐츠를 HTML로 변환하는 함수
     const generateContentHTML = (contentData) => {
