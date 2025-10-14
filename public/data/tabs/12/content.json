@@ -1,9 +1,9 @@
 {
   "name": "홍경아",
   "title": "hong kyunga",
-  "overlayImage": "./src/data/tabs/12/hka_name.png",
+  "overlayImage": "/chronicle-of-sin-info-page/data/tabs/12/hka_name.png",
   "images": [
-    { "id": 1, "name": "기본", "src": "./src/data/tabs/12/hka.png"}
+    { "id": 1, "name": "기본", "src": "/chronicle-of-sin-info-page/data/tabs/12/hka.png"}
   ],
   "sections": [
     {

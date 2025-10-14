@@ -111,18 +111,8 @@ export default {
 
     // 동적으로 사용 가능한 탭 ID들을 스캔
     const getAvailableTabIds = () => {
-      // Vite의 import.meta.glob을 사용하여 탭 폴더들을 스캔
-      const contentFiles = import.meta.glob('./data/tabs/*/content.json')
-      const tabIds = Object.keys(contentFiles)
-        .map(path => {
-          // './data/tabs/1/content.json' -> '1'
-          const match = path.match(/\/tabs\/(\d+)\/content\.json$/)
-          return match ? parseInt(match[1]) : null
-        })
-        .filter(id => id !== null)
-        .sort((a, b) => a - b) // 숫자 순서로 정렬
-      
-      return tabIds
+      // public/data/tabs 폴더에 있는 탭 ID들
+      return [1, 2, 3, 4, 5, 6, 10, 12]
     }
     
     // 콘텐츠를 HTML로 변환하는 함수
@@ -144,14 +134,18 @@ export default {
     // 동적으로 콘텐츠 로드
     const loadTabContent = async (tabId) => {
       try {
-        const contentModule = await import(`./data/tabs/${tabId}/content.json`)
-        return contentModule.default
+        const response = await fetch(`/chronicle-of-sin-info-page/data/tabs/${tabId}/content.json`)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const contentData = await response.json()
+        return contentData
       } catch (error) {
         console.error(`콘텐츠 로드 실패 (탭 ${tabId}):`, error)
         return {
           name: '오류',
           title: '콘텐츠 로드 실패',
-          images: 'https://via.placeholder.com/400x300/CCCCCC/666666?text=오류',
+          images: [],
           sections: [{
             index: 1,
             header: '오류',
