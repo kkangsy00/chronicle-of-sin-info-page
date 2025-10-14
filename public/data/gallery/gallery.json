@@ -1,0 +1,30 @@
+{
+  "title": "Chronicle of Sin 갤러리",
+  "description": "캐릭터 이미지 모음",
+  "images": [
+    {
+      "id": "img-001",
+      "filename": "pys_silhouette.png",
+      "title": "캐릭터 실루엣",
+      "description": "캐릭터 실루엣 이미지",
+      "character": "캐릭터1",
+      "tags": ["서빛청 강력 1팀"]
+    },
+    {
+      "id": "img-002",
+      "filename": "placeholder2.jpg",
+      "title": "아트워크 샘플",
+      "description": "아트워크 샘플 이미지",
+      "character": "아트워크",
+      "tags": ["서빛청 강력 1팀", "적성화파 동구 2팀"]
+    },
+    {
+      "id": "img-003",
+      "filename": "placeholder3.jpg",
+      "title": "게임 스크린샷",
+      "description": "게임 화면 스크린샷",
+      "character": "게임화면",
+      "tags": ["적성화파 동구 2팀"]
+    }
+  ]
+}
