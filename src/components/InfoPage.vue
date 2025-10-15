@@ -123,9 +123,13 @@ export default {
     const generateContentHTML = (contentData) => {
       let html = ''
       
-      contentData.sections.forEach(section => {
-        html += `<div class='content-card ${section.colorClass}'>`
-        html += `<h3 data-index="${section.index}">${section.header}</h3>`
+      contentData.sections.forEach((section, index) => {
+        // index, colorClass 자동 생성
+        const displayIndex = (index + 1).toString().padStart(2, '0')
+        const colorClass = section.colorClass || (index % 2 === 0 ? 'color-a' : 'color-b')
+        
+        html += `<div class='content-card ${colorClass}'>`
+        html += `<h3 data-index="${displayIndex}">${section.header}</h3>`
         section.content.forEach(paragraph => {
           html += `<p>${paragraph}</p>`
         })

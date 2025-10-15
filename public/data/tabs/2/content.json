@@ -1,6 +1,5 @@
 {
   "name": "주대현",
-  "title": "반응형 디자인",
   "overlayImage": "./jdh_name.png",
   "images": [
     { "id": 1, "name": "기본", "src": "./jdh.png"},
@@ -8,7 +7,6 @@
   ],
   "sections": [
     {
-      "index": "01",
       "header": "111",
       "colorClass": "color-a",
       "content": [
@@ -17,27 +15,21 @@
       ]
     },
     {
-      "index": "02",
       "header": "ababababaaaaa",
-      "colorClass": "color-b",
       "content": [
         "aaaaaaaaaaaaaaaaa",
         "aaaaaaaaaaaaaaaaa"
       ]
     },
     {
-      "index": "03",
       "header": "ababbababab",
-      "colorClass": "color-a",
       "content": [
         "aaaaaaaaaaaaaaaaa",
         "aaaaaaaaaaaaaaaaa"
       ]
     },
     {
-      "index": "04",
       "header": "bbbbbb",
-      "colorClass": "color-b",
       "content": [
         "aaaaaaaaaaaaaaaaa",
         "aaaaaaaaaaaaaaaaa"

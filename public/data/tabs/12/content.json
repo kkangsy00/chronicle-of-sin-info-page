@@ -1,24 +1,19 @@
 {
   "name": "홍경아",
-  "title": "hong kyunga",
   "overlayImage": "./hka_name.png",
   "images": [
     { "id": 1, "name": "기본", "src": "./hka.png"}
   ],
   "sections": [
     {
-      "index": "01",
       "header": "111",
-      "colorClass": "color-a",
       "content": [
         "aaaaaaaaaaaaaaaaa",
         "aaaaaaaaaaaaaaaaa"
       ]
     },
     {
-      "index": "02",
       "header": "ababababaaaaa",
-      "colorClass": "color-b",
       "content": [
         "aaaaaaaaaaaaaaaaa",
         "aaaaaaaaaaaaaaaaa"

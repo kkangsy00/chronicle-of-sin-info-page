@@ -1,6 +1,5 @@
 {
   "name": "문성경",
-  "title": "moon seonggyeong",
   "overlayImage": "./msg_name.png",
   "images": [
     { "id": 1, "name": "기본", "src": "./msg.png"},
@@ -8,18 +7,14 @@
   ],
   "sections": [
     {
-      "index": "01",
       "header": "111",
-      "colorClass": "color-a",
       "content": [
         "aaaaaaaaaaaaaaaaa",
         "aaaaaaaaaaaaaaaaa"
       ]
     },
     {
-      "index": "02",
       "header": "ababababaaaaa",
-      "colorClass": "color-b",
       "content": [
         "aaaaaaaaaaaaaaaaa",
         "aaaaaaaaaaaaaaaaa"

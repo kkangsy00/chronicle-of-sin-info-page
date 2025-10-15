@@ -1,24 +1,19 @@
 {
   "name": "양춘호",
-  "title": "yang chunho",
   "overlayImage": "./ych_name.png",
   "images": [
     { "id": 1, "name": "인장", "src": "./ych_.png", "txt": "Picrew 我流男青年" }
   ],
   "sections": [
     {
-      "index": "01",
       "header": "111",
-      "colorClass": "color-a",
       "content": [
         "aaaaaaaaaaaaaaaaa",
         "aaaaaaaaaaaaaaaaa"
       ]
     },
     {
-      "index": "02",
       "header": "ababababaaaaa",
-      "colorClass": "color-b",
       "content": [
         "aaaaaaaaaaaaaaaaa",
         "aaaaaaaaaaaaaaaaa"

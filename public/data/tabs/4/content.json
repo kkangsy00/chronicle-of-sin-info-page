@@ -1,6 +1,5 @@
 {
   "name": "손효성",
-  "title": "son hyoseong",
   "overlayImage": "./shs_name.png",
   "images": [
     { "id": 1, "name": "기본", "src": "./shs.png", "txt": "crepe @delion" },
@@ -9,73 +8,22 @@
   ],
   "sections": [
     {
-      "index": "01",
       "header": "경사",
-      "colorClass": "color-a",
       "content": [
         "서빛지방경찰청 경사. 적성화파 소탕작전을 담당한 강력1팀 소속 형사다."
       ]
     },
     {
-      "index": "02",
       "header": "인형",
-      "colorClass": "color-b",
       "content": [
         "알베르트라고 부르는, 손인형 혹은 왼손의 엄지와 검지.",
         "대화에 참여하며 의사를 함께 전한다."
       ]
     },
     {
-      "index": "03",
       "header": "aa",
-      "colorClass": "color-a",
       "content": [
         "asdfasdfasdfas",
-        "aaaaaaaaaaaaaaaaa"
-      ]
-    },
-    {
-      "index": "04",
-      "header": "aa",
-      "colorClass": "color-b",
-      "content": [
-        "aaaaaaaaaaaaaaaaa",
-        "aaaaaaaaaaaaaaaaa"
-      ]
-    },
-    {
-      "index": "05",
-      "header": "aa",
-      "colorClass": "color-a",
-      "content": [
-        "asdfasdfasdfas",
-        "aaaaaaaaaaaaaaaaa"
-      ]
-    },
-    {
-      "index": "06",
-      "header": "aa",
-      "colorClass": "color-b",
-      "content": [
-        "aaaaaaaaaaaaaaaaa",
-        "aaaaaaaaaaaaaaaaa"
-      ]
-    },
-    {
-      "index": "07",
-      "header": "aa",
-      "colorClass": "color-a",
-      "content": [
-        "asdfasdfasdfas",
-        "aaaaaaaaaaaaaaaaa"
-      ]
-    },
-    {
-      "index": "08",
-      "header": "aa",
-      "colorClass": "color-b",
-      "content": [
-        "aaaaaaaaaaaaaaaaa",
         "aaaaaaaaaaaaaaaaa"
       ]
     }
