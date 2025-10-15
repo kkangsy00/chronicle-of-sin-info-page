@@ -441,37 +441,25 @@ export default {
   overflow-y: auto;
 }
 
-.info-content::-webkit-scrollbar {
+/* 공통 스크롤바 스타일 */
+.info-content::-webkit-scrollbar,
+.images-content::-webkit-scrollbar {
   width: 15px;
 }
 
-.info-content::-webkit-scrollbar-track {
+.info-content::-webkit-scrollbar-track,
+.images-content::-webkit-scrollbar-track {
   background: #000000;
 }
 
-.info-content::-webkit-scrollbar-thumb {
+.info-content::-webkit-scrollbar-thumb,
+.images-content::-webkit-scrollbar-thumb {
   background: #545042;
   border: 2px solid #000000;
   border-radius: 0px;
 }
 
-.info-content h3 {
-  color: #444;
-  margin: 20px 0 10px 0;
-  font-size: 18px;
-}
-
-.info-content p {
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 15px;
-  font-size: 16px;
-}
-
-.info-content strong {
-  color: #333;
-  font-weight: 600;
-}
+/* info-content 내부 기본 스타일은 :deep()에서 처리 */
 
 .tab-section {
   height: 8vh;
@@ -516,8 +504,11 @@ export default {
   flex-shrink: 0;
 }
 
-.scroll-button:hover {
-  background: rgba(255, 255, 255, 0.2);
+/* 공통 버튼 호버 효과 */
+.scroll-button:hover,
+.tab-button:hover,
+.info-tab-button:hover {
+  background: rgba(255, 255, 255, 0.1);
   color: #545352;
 }
 
@@ -525,14 +516,20 @@ export default {
   transform: scale(0.95);
 }
 
+/* 공통 버튼 스타일 */
+.tab-button,
+.info-tab-button {
+  border: none;
+  color: #8a8777;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
 .tab-button {
   background: transparent;
   border: 1px solid #000000;
-  color: #8a8777;
-  cursor: pointer;
   font-size: clamp(14px, 2vh, 24px);
-  font-weight: 500;
-  transition: all 0.3s ease;
   position: relative;
   min-width: 100px;
   flex: 1;
@@ -540,15 +537,24 @@ export default {
   height: 100%;
 }
 
-.tab-button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #545352;
+.info-tab-button {
+  flex: 1;
+  background: rgba(101, 94, 68, 0.6);
+  font-size: 16px;
+  padding: 15px 20px;
 }
 
+/* 활성 상태 스타일 */
 .tab-button.active {
   background: linear-gradient(180deg, #fdfdfc, #bdb7a0);
   color: #545352;
   transform: translateY(-1px);
+}
+
+.info-tab-button.active {
+  background: rgba(35, 35, 9, 0.8);
+  text-shadow: 0 0 15px #00bbff;
+  color: #d8d7c1;
 }
 
 .info-tabs {
@@ -558,29 +564,6 @@ export default {
   border-top: 1px solid #000000;
   border-left: 1px solid #000000;
   border-right: 1px solid #000000;
-}
-
-.info-tab-button {
-  flex: 1;
-  background: rgba(101, 94, 68, 0.6);
-  border: none;
-  color: #8a8777;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
-  padding: 15px 20px;
-  transition: all 0.3s ease;
-}
-
-.info-tab-button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #545352;
-}
-
-.info-tab-button.active {
-  background: rgba(35, 35, 9, 0.8);
-  text-shadow: 0 0 15px #00bbff;
-  color: #d8d7c1;
 }
 
 .images-content {
@@ -649,7 +632,7 @@ export default {
   background: rgba(253, 253, 252, 0.3);
 }
 
-/* v-html로 동적 생성된 콘텐츠 카드에 스타일 적용 */
+/* v-html 동적 콘텐츠에 대한 :deep 스타일 통합 */
 :deep(.content-card) {
   padding: 25px 30px;
   transition: all 0.3s ease;
@@ -668,24 +651,19 @@ export default {
   right: 0;
   height: 1px;
   opacity: 0.6;
+  background: rgba(0, 0, 0, 0.8);
 }
 
+/* 콘텐츠 카드 색상 변형 */
 :deep(.content-card.color-a) {
   background: linear-gradient(90deg, rgba(22, 22, 0, 1) 0%, rgba(41, 38, 21, 0.5) 100%);
-}
-
-:deep(.content-card.color-a::before) {
-  background: rgba(0, 0, 0, 0.8);
 }
 
 :deep(.content-card.color-b) {
   background: linear-gradient(90deg, rgba(22, 21, 0, 0.8) 0%, rgba(41, 38, 21, 0.3) 100%);
 }
 
-:deep(.content-card.color-b::before) {
-  background: rgba(0, 0, 0, 0.8);
-}
-
+/* 콘텐츠 카드 내부 요소 */
 :deep(.content-card h3) {
   color: #d8d7c1;
   margin: 0 0 12px 10px;
@@ -727,7 +705,7 @@ export default {
   line-height: 1;
 }
 
-/* 반응형 디자인 */
+/* 반응형 디자인 - 공통 스타일 변경사항만 포함 */
 @media (max-width: 1000px) {
   .container {
     min-width: 750px;
@@ -779,21 +757,13 @@ export default {
     min-height: 200px;
   }
   
-  :deep(.content-card) {
-    padding: 20px 25px;
-  }
-  
-  :deep(.info-content h3) {
-    font-size: 16px;
-  }
-  
-  :deep(.info-content p) {
-    font-size: 14px;
-  }
-  
   .tab-section {
     min-height: 50px;
     max-height: 80px;
+  }
+  
+  :deep(.content-card) {
+    padding: 20px 25px;
   }
 }
 
@@ -813,10 +783,6 @@ export default {
     max-height: 300px;
   }
   
-  :deep(.content-card) {
-    padding: 15px 20px;
-  }
-  
   .tab-section {
     min-height: 50px;
     max-height: 80px;
@@ -824,6 +790,10 @@ export default {
   
   .tab-button {
     min-width: 60px;
+  }
+  
+  :deep(.content-card) {
+    padding: 15px 20px;
   }
 }
 </style>
