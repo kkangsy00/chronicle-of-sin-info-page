@@ -70,13 +70,9 @@ export default {
         const galleryData = await response.json()
         
         // 갤러리 데이터를 화면용 형태로 변환
-        const items = galleryData.images.map(img => ({
-          id: img.id,
-          title: img.title,
-          description: img.description,
-          character: img.character,
-          tags: img.tags || [],
-          uploadDate: img.uploadDate,
+        const items = galleryData.images.map((img, index) => ({
+          id: index + 1, // 자동 생성되는 ID
+          tags: img.tags.map(tagId => galleryData.tagMap[tagId.toString()]),
           thumbnail: `${baseUrl}data/gallery/images/${img.filename}`,
           fullImage: `${baseUrl}data/gallery/images/${img.filename}`
         }))

@@ -65,10 +65,10 @@ export default {
 
 .txt {
   text-align: center;
-  color: white;
-  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.7);
   position: absolute;
   width: 100%;
+  font-size: 0.8vw;
 }
 
 .nav-buttons {
