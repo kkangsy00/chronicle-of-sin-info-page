@@ -705,10 +705,10 @@ export default {
   line-height: 1;
 }
 
-/* 반응형 디자인 - 공통 스타일 변경사항만 포함 */
-@media (max-width: 1000px) {
+/* 반응형 디자인 - 모바일 가로화면 최적화 포함 */
+@media (max-width: 1024px) {
   .container {
-    min-width: 750px;
+    min-width: 768px;
     padding: 15px;
     gap: 15px;
   }
@@ -719,55 +719,101 @@ export default {
   }
   
   .image-section {
-    min-width: 220px;
+    min-width: 240px;
   }
   
   .info-section {
-    min-width: 440px;
+    min-width: 480px;
   }
   
   .image-container,
   .info-container {
-    min-height: 250px;
+    min-height: 280px;
+  }
+  
+  /* 모바일 가로화면용 카드 스타일 */
+  :deep(.content-card) {
+    padding: 20px 25px;
+  }
+  
+  :deep(.content-card h3) {
+    font-size: 22px;
+    margin: 0 0 15px 10px;
+  }
+  
+  :deep(.content-card p) {
+    font-size: 15px;
+    line-height: 1;
+    margin: 0 0 12px 12px;
   }
 }
 
 @media (max-width: 800px) {
   .container {
-    min-width: 600px;
-    padding: 10px;
-    gap: 10px;
+    min-width: 650px;
+    padding: 12px;
+    gap: 12px;
   }
   
   .main-content {
-    gap: 10px;
-    min-height: 300px;
+    gap: 12px;
+    min-height: 320px;
   }
   
   .image-section {
-    min-width: 180px;
+    min-width: 200px;
   }
   
   .info-section {
-    min-width: 360px;
+    min-width: 400px;
   }
   
   .image-container,
   .info-container {
-    min-height: 200px;
+    min-height: 220px;
   }
   
   .tab-section {
-    min-height: 50px;
-    max-height: 80px;
+    min-height: 55px;
+    max-height: 85px;
   }
   
+  /* 태블릿/모바일 가로화면 카드 최적화 */
   :deep(.content-card) {
-    padding: 20px 25px;
+    padding: 18px 22px;
+  }
+  
+  :deep(.content-card h3) {
+    font-size: 20px;
+    margin: 0 0 14px 8px;
+  }
+  
+  :deep(.content-card h3::before) {
+    width: 22px;
+    height: 22px;
+    font-size: 18px;
+    padding: 1px 7px 2px 7px;
+  }
+  
+  :deep(.content-card p) {
+    font-size: 14px;
+    line-height: 1;
+    margin: 0 0 11px 10px;
+  }
+  
+  /* 터치 친화적 버튼 크기 */
+  .tab-button {
+    min-width: 80px;
+    font-size: clamp(15px, 2.5vh, 22px);
+  }
+  
+  .info-tab-button {
+    padding: 12px 18px;
+    font-size: 15px;
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
   .main-content {
     flex-direction: column;
     gap: 15px;
@@ -780,7 +826,12 @@ export default {
   }
   
   .image-container {
-    max-height: 300px;
+    max-height: 350px;
+    min-height: 250px;
+  }
+  
+  .info-section {
+    min-height: 400px;
   }
   
   .tab-section {
@@ -789,11 +840,31 @@ export default {
   }
   
   .tab-button {
-    min-width: 60px;
+    min-width: 70px;
+    font-size: clamp(13px, 2vh, 20px);
   }
   
+  /* 세로 모드 카드 최적화 */
   :deep(.content-card) {
-    padding: 15px 20px;
+    padding: 16px 20px;
+  }
+  
+  :deep(.content-card h3) {
+    font-size: 19px;
+    margin: 0 0 12px 6px;
+  }
+  
+  :deep(.content-card h3::before) {
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+    padding: 1px 6px 2px 6px;
+  }
+  
+  :deep(.content-card p) {
+    font-size: 13px;
+    line-height: 1;
+    margin: 0 0 10px 8px;
   }
 }
 </style>
