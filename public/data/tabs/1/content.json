@@ -1,36 +1,15 @@
 {
   "name": "박영숙",
-  "overlayImage": "",
+  "overlayImage": "./pys_name.png",
   "images": [
     { "id": 1, "name": "실루엣", "src": "./pys_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
   "sections": [
     {
-      "header": "111",
+      "header": "경감",
       "content": [
-        "aaaaaaaaaaaaaaaaa",
-        "aaaaaaaaaaaaaaaaa"
-      ]
-    },
-    {
-      "header": "ababababaaaaa",
-      "content": [
-        "aaaaaaaaaaaaaaaaa",
-        "aaaaaaaaaaaaaaaaa"
-      ]
-    },
-    {
-      "header": "ababbababab",
-      "content": [
-        "aaaaaaaaaaaaaaaaa",
-        "aaaaaaaaaaaaaaaaa"
-      ]
-    },
-    {
-      "header": "bbbbbb",
-      "content": [
-        "aaaaaaaaaaaaaaaaa",
-        "aaaaaaaaaaaaaaaaa"
+        "서빛지방경찰청 경감.",
+        "적성화파 소탕작전을 전담하는 강력1팀을 이끈다."
       ]
     }
   ]

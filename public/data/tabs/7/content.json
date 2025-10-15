@@ -1,6 +1,6 @@
 {
   "name": "천진영",
-  "overlayImage": "./image.svg",
+  "overlayImage": "./cjy_name.png",
   "images": [
     { "id": 1, "name": "인장", "src": "./.png", "txt": "Picrew " }
   ],

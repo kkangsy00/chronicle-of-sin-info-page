@@ -7,7 +7,7 @@
       <div class="nav-buttons">
         <button class="nav-btn info-btn" @click="$emit('navigate', 'info')">
           <div class="btn-image info-image"></div>
-          <span class="btn-text">인물정보</span>
+          <span class="btn-text">인물</span>
         </button>
         <button class="nav-btn gallery-btn" @click="$emit('navigate', 'gallery')">
           <div class="btn-image gallery-image"></div>
@@ -88,8 +88,8 @@ export default {
   justify-content: center;
   width: 200px;
   height: 200px;
-  border: 2px solid rgba(0, 0, 0);
-  background: rgba(0, 0, 0, 0.5);
+  border: 3px solid rgba(0, 0, 0);
+  background: rgba(0, 0, 0, 0.4);
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
@@ -123,9 +123,8 @@ export default {
 
 .btn-text {
   color: #bdb7a0;
-  font-size: 1.1rem;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  font-size: 1.3rem;
+  font-weight: 400;
 }
 
 .nav-btn:hover .btn-text {

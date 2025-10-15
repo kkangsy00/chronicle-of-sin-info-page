@@ -7,32 +7,10 @@
   ],
   "sections": [
     {
-      "header": "111",
-      "colorClass": "color-a",
+      "header": "경위",
       "content": [
-        "aaaaaaaaaaaaaaaaa",
-        "aaaaaaaaaaaaaaaaa"
-      ]
-    },
-    {
-      "header": "ababababaaaaa",
-      "content": [
-        "aaaaaaaaaaaaaaaaa",
-        "aaaaaaaaaaaaaaaaa"
-      ]
-    },
-    {
-      "header": "ababbababab",
-      "content": [
-        "aaaaaaaaaaaaaaaaa",
-        "aaaaaaaaaaaaaaaaa"
-      ]
-    },
-    {
-      "header": "bbbbbb",
-      "content": [
-        "aaaaaaaaaaaaaaaaa",
-        "aaaaaaaaaaaaaaaaa"
+        "서빛지방경찰청 경위.",
+        "적성화파 소탕작전을 담당하는 강력1팀 소속 형사다."
       ]
     }
   ]

@@ -1,6 +1,6 @@
 {
   "name": "이념",
-  "overlayImage": "./image.svg",
+  "overlayImage": "./ln_name.png",
   "images": [
     { "id": 1, "name": "인장", "src": "./.png", "txt": "Picrew " }
   ],
