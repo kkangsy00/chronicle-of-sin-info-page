@@ -6,15 +6,17 @@
       
       <div class="nav-buttons">
         <button class="nav-btn info-btn" @click="$emit('navigate', 'info')">
-          인물정보
+          <div class="btn-image info-image"></div>
+          <span class="btn-text">인물정보</span>
         </button>
         <button class="nav-btn gallery-btn" @click="$emit('navigate', 'gallery')">
-          아트워크
+          <div class="btn-image gallery-image"></div>
+          <span class="btn-text">아트워크</span>
         </button>
       </div>
     </div>
   </div>
-  <div class="txt"> 
+  <div class="bottom-txt"> 
     본 문서는 크툴루의 부름 7th 팬메이드 시나리오 「죄의 연대기」의 강한 스포일러를 포함합니다.
     <br/> UI를 포함한 디자인 요소 일부는 모바일 게임 「회색도시 2」를 참고하였습니다.
   </div>
@@ -37,7 +39,7 @@ export default {
 
 .home-page {
   height: 100vh;
-  min-height: 400px;
+  min-height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,7 +65,7 @@ export default {
   opacity: 0.9;
 }
 
-.txt {
+.bottom-txt {
   text-align: center;
   color: rgba(255, 255, 255, 0.7);
   position: absolute;
@@ -73,50 +75,101 @@ export default {
 
 .nav-buttons {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   margin-top: 3rem;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .nav-btn {
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  background: rgba(0, 0, 0, 0.3);
-  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  border: 2px solid rgba(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5);
   cursor: pointer;
-  border-radius: 8px;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
-  width: 100%;
-  min-width: 150px;
+  padding: 20px;
 }
 
 .nav-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
-.info-btn:hover {
-  background: linear-gradient(135deg, rgba(81, 79, 64, 0.8), rgba(59, 66, 59, 0.8));
+.btn-image {
+  width: 120px;
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
 }
 
-.gallery-btn:hover {
-  background: linear-gradient(135deg, rgba(68, 59, 36, 0.8), rgba(48, 76, 77, 0.8));
+.info-image {
+  background-image: url('/data/statics/info.png');
+}
+
+.gallery-image {
+  background-image: url('/data/statics/gallery.png');
+}
+
+.btn-text {
+  color: #bdb7a0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-btn:hover .btn-text {
+  color: #fdfdfc;
 }
 
 @media (max-width: 650px) {
   .nav-buttons {
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
   }
   
   .nav-btn {
-    width: 200px;
+    width: 180px;
+    height: 180px;
+    padding: 15px;
+  }
+  
+  .btn-image {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .btn-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-btn {
+    width: 160px;
+    height: 160px;
+    padding: 10px;
+  }
+  
+  .btn-image {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .btn-text {
+    font-size: 0.9rem;
   }
 }
 </style>
