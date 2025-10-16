@@ -733,18 +733,18 @@ export default {
   
   /* 모바일 가로화면용 카드 스타일 */
   :deep(.content-card) {
-    padding: 20px 25px;
+    padding: 15px 25px;
   }
   
   :deep(.content-card h3) {
     font-size: 22px;
-    margin: 0 0 15px 10px;
+    margin: 0 0 10px 10px;
   }
   
   :deep(.content-card p) {
     font-size: 15px;
     line-height: 1;
-    margin: 0 0 12px 12px;
+    margin: 0 0 8px 12px;
   }
 }
 
@@ -780,12 +780,12 @@ export default {
   
   /* 태블릿/모바일 가로화면 카드 최적화 */
   :deep(.content-card) {
-    padding: 18px 22px;
+    padding: 12px 22px;
   }
   
   :deep(.content-card h3) {
     font-size: 20px;
-    margin: 0 0 14px 8px;
+    margin: 0 0 10px 8px;
   }
   
   :deep(.content-card h3::before) {
@@ -798,7 +798,7 @@ export default {
   :deep(.content-card p) {
     font-size: 14px;
     line-height: 1;
-    margin: 0 0 11px 10px;
+    margin: 0 0 8px 10px;
   }
   
   /* 터치 친화적 버튼 크기 */
