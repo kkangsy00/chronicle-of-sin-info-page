@@ -2,7 +2,7 @@
   "categories": [
     {
       "id": "chronicle-of-sin",
-      "title": "리플레이",
+      "title": "REPLAY",
       "links": [
         {
           "title": "tistory - 죄의 연대기 제 1장 추적자들 : 1부. 서빛시 지방경찰청",
@@ -10,7 +10,7 @@
           "url": "https://ysback.tistory.com/343"
         },
         {
-          "title": "tistory - 죄의 연대기 제 1장 추적자들 - 2부. 적성화파",
+          "title": "tistory - 죄의 연대기 제 1장 추적자들 : 2부. 적성화파",
           "desc": "서로를 믿을 수 있습니까?",
           "url": "https://app.roll20.net/"
         },
@@ -21,14 +21,14 @@
         },
         {
           "title": "Google spreadsheets - 죄대기 알리바이",
-          "desc": "",
+          "desc": "2017년 2월 21일, 총격 발생",
           "url": "https://docs.google.com/spreadsheets/d/1Zc60XYM4BhhQ5ozH45cSL6XNWxo6SVX0"
         }
       ]
     },
     {
       "id": "document",
-      "title": "단체 자료",
+      "title": "DOCUMENT",
       "links": [
         {
           "title": "Google spreadsheets - 죄의 연대기 캐릭터 시트",
