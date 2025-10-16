@@ -4,7 +4,6 @@
     <button class="home-btn" @click="$emit('go-home')" title="돌아가기">
       ×
     </button>
-    
     <div class="container">
       <div class="links-content">
         <div v-for="category in linkData.categories" :key="category.id" class="link-section">
