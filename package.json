@@ -1,7 +1,6 @@
 {
   "name": "chronicle-of-sin-info-page",
   "version": "1.0.0",
-  "description": "죄의 연대기 인물 정보",
   "homepage": "https://kkangsy00.github.io/chronicle-of-sin-info-page/",
   "scripts": {
     "dev": "vite",
