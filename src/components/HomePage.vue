@@ -110,7 +110,7 @@ export default {
 .btn-image {
   width: 120px;
   height: 120px;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   margin-bottom: 15px;

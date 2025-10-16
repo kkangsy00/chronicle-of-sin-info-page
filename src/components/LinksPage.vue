@@ -6,11 +6,6 @@
     </button>
     
     <div class="container">
-      <div class="header">
-        <h1>관련 링크</h1>
-        <p>죄의 연대기 관련 자료 및 참고 링크 모음</p>
-      </div>
-      
       <div class="links-content">
         <div v-for="category in linkData.categories" :key="category.id" class="link-section">
           <h2>{{ category.title }}</h2>
@@ -97,30 +92,7 @@ export default {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.header h1 {
-  font-size: clamp(2.5rem, 8vw, 4rem);
-  margin-bottom: 1rem;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-.header p {
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
-  color: #bdb7a0;
-  opacity: 0.8;
-}
-
-.links-content {
-  display: grid;
-  gap: 40px;
+  padding: 60px 20px;
 }
 
 .link-section {
@@ -129,6 +101,7 @@ export default {
   border-radius: 8px;
   padding: 30px;
   backdrop-filter: blur(10px);
+  margin-bottom: 20px;
 }
 
 .link-section h2 {
