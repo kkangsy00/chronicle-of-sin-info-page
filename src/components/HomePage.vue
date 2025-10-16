@@ -13,6 +13,10 @@
           <div class="btn-image gallery-image"></div>
           <span class="btn-text">아트워크</span>
         </button>
+        <button class="nav-btn links-btn" @click="$emit('navigate', 'links')">
+          <div class="btn-image links-image"></div>
+          <span class="btn-text">링크</span>
+        </button>
       </div>
     </div>
   </div>
@@ -39,7 +43,7 @@ export default {
 
 .home-page {
   height: 100vh;
-  min-height: 500px;
+  min-height: 700px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,6 +123,10 @@ export default {
 
 .gallery-image {
   background-image: url('/data/statics/gallery.png');
+}
+
+.links-image {
+  background-image: url('/data/statics/links.png');
 }
 
 .btn-text {
