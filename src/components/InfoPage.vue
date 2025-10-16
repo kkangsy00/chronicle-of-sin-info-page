@@ -337,7 +337,7 @@ export default {
   max-width: 1800px;
   min-width: 850px;
   margin: 0 auto;
-  padding: 20px;
+  /* padding: 20px; */
   gap: 20px;
 }
 
@@ -361,7 +361,6 @@ export default {
 
 .image-container {
   background: transparent;
-  padding: 20px;
   width: 100%;
   max-width: 500px;
   min-width: 220px;
@@ -418,6 +417,7 @@ export default {
   flex: 2;
   display: flex;
   min-width: 350px;
+  padding: 10px;
   position: relative;
   z-index: 10;
 }
