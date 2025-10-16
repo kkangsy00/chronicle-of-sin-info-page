@@ -38,7 +38,8 @@ export default {
     
     const loadLinks = async () => {
       try {
-        const response = await fetch('/data/links.json')
+        const baseUrl = import.meta.env.BASE_URL
+        const response = await fetch(`${baseUrl}data/links.json`)
         const data = await response.json()
         linkData.value = data
       } catch (error) {
