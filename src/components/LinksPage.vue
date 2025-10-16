@@ -1,7 +1,7 @@
 <template>
   <div class="links-page">
     <!-- 홈 버튼 -->
-    <button class="home-btn" @click="$emit('go-home')" title="홈으로 돌아가기">
+    <button class="home-btn" @click="$emit('go-home')" title="돌아가기">
       ×
     </button>
     
@@ -12,78 +12,19 @@
       </div>
       
       <div class="links-content">
-        <!-- TRPG 자료 섹션 -->
-        <div class="link-section">
-          <h2>🎲 TRPG 자료</h2>
+        <div v-for="category in linkData.categories" :key="category.id" class="link-section">
+          <h2>{{ category.title }}</h2>
           <div class="link-list">
-            <a href="https://www.chaosium.com/call-of-cthulhu-rpg/" target="_blank" rel="noopener noreferrer" class="link-item">
-              <span class="link-title">크툴루의 부름 공식 사이트</span>
-              <span class="link-desc">Chaosium 공식 룰북 및 자료</span>
-            </a>
-            <a href="https://www.drivethrurpg.com/browse/pub/24/Chaosium" target="_blank" rel="noopener noreferrer" class="link-item">
-              <span class="link-title">DriveThruRPG - Chaosium</span>
-              <span class="link-desc">디지털 룰북 및 시나리오 구매</span>
-            </a>
-            <a href="https://www.reddit.com/r/callofcthulhu/" target="_blank" rel="noopener noreferrer" class="link-item">
-              <span class="link-title">Reddit - Call of Cthulhu</span>
-              <span class="link-desc">커뮤니티 및 팬메이드 자료</span>
-            </a>
-          </div>
-        </div>
-        
-        <!-- 시각 자료 섹션 -->
-        <div class="link-section">
-          <h2>🎨 시각 자료</h2>
-          <div class="link-list">
-            <a href="https://www.artstation.com/search?query=cthulhu" target="_blank" rel="noopener noreferrer" class="link-item">
-              <span class="link-title">ArtStation - Cthulhu Art</span>
-              <span class="link-desc">크툴루 관련 컨셉 아트 및 일러스트</span>
-            </a>
-            <a href="https://www.pinterest.com/search/pins/?q=lovecraft%20aesthetic" target="_blank" rel="noopener noreferrer" class="link-item">
-              <span class="link-title">Pinterest - Lovecraft Aesthetic</span>
-              <span class="link-desc">러브크래프트 분위기 이미지 모음</span>
-            </a>
-            <a href="https://unsplash.com/s/photos/gothic-architecture" target="_blank" rel="noopener noreferrer" class="link-item">
-              <span class="link-title">Unsplash - Gothic Architecture</span>
-              <span class="link-desc">고딕 건축 및 분위기 사진</span>
-            </a>
-          </div>
-        </div>
-        
-        <!-- 음향 자료 섹션 -->
-        <div class="link-section">
-          <h2>🎵 음향 & 분위기</h2>
-          <div class="link-list">
-            <a href="https://tabletopaudio.com/" target="_blank" rel="noopener noreferrer" class="link-item">
-              <span class="link-title">Tabletop Audio</span>
-              <span class="link-desc">TRPG용 배경음악 및 효과음</span>
-            </a>
-            <a href="https://www.youtube.com/results?search_query=lovecraftian+ambient" target="_blank" rel="noopener noreferrer" class="link-item">
-              <span class="link-title">YouTube - Lovecraftian Ambient</span>
-              <span class="link-desc">러브크래프트 분위기 앰비언트 음악</span>
-            </a>
-            <a href="https://mynoise.net/NoiseMachines/thunderNoiseGenerator.php" target="_blank" rel="noopener noreferrer" class="link-item">
-              <span class="link-title">MyNoise - Thunder Generator</span>
-              <span class="link-desc">천둥소리 및 자연음 생성기</span>
-            </a>
-          </div>
-        </div>
-        
-        <!-- 도구 & 유틸리티 섹션 -->
-        <div class="link-section">
-          <h2>🛠️ 도구 & 유틸리티</h2>
-          <div class="link-list">
-            <a href="https://roll20.net/" target="_blank" rel="noopener noreferrer" class="link-item">
-              <span class="link-title">Roll20</span>
-              <span class="link-desc">온라인 TRPG 플랫폼</span>
-            </a>
-            <a href="https://www.notion.so/" target="_blank" rel="noopener noreferrer" class="link-item">
-              <span class="link-title">Notion</span>
-              <span class="link-desc">캠페인 노트 및 자료 정리</span>
-            </a>
-            <a href="https://donjon.bin.sh/coc/" target="_blank" rel="noopener noreferrer" class="link-item">
-              <span class="link-title">Donjon - CoC Generator</span>
-              <span class="link-desc">크툴루 캐릭터 및 시나리오 생성기</span>
+            <a 
+              v-for="link in category.links" 
+              :key="link.title"
+              :href="link.url" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="link-item"
+            >
+              <span class="link-title">{{ link.title }}</span>
+              <span class="link-desc">{{ link.desc }}</span>
             </a>
           </div>
         </div>
@@ -93,9 +34,32 @@
 </template>
 
 <script>
+import { ref, onMounted } from 'vue'
+
 export default {
   name: 'LinksPage',
-  emits: ['go-home']
+  emits: ['go-home'],
+  setup() {
+    const linkData = ref({ categories: [] })
+    
+    const loadLinks = async () => {
+      try {
+        const response = await fetch('/data/links.json')
+        const data = await response.json()
+        linkData.value = data
+      } catch (error) {
+        console.error('링크 데이터 로드 실패:', error)
+      }
+    }
+    
+    onMounted(() => {
+      loadLinks()
+    })
+    
+    return {
+      linkData
+    }
+  }
 }
 </script>
 

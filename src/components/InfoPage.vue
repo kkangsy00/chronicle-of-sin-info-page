@@ -1,7 +1,7 @@
 <template>
   <div class="info-page">
     <!-- 홈 버튼 -->
-    <button class="home-btn" @click="$emit('go-home')" title="홈으로 돌아가기">
+    <button class="home-btn" @click="$emit('go-home')" title="돌아가기">
       ×
     </button>
     
@@ -143,7 +143,7 @@ export default {
     const loadTabContent = async (tabId) => {
       try {
         const baseUrl = import.meta.env.BASE_URL
-        const response = await fetch(`${baseUrl}data/tabs/${tabId}/content.json`)
+        const response = await fetch(`${baseUrl}data/info/${tabId}/content.json`)
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
@@ -180,11 +180,11 @@ export default {
         // 이미지 경로를 절대 경로로 변환
         const fixedImages = (contentData.images || []).map(img => ({
           ...img,
-          src: img.src.startsWith('./') ? `${baseUrl}data/tabs/${tabId}/${img.src.slice(2)}` : img.src
+          src: img.src.startsWith('./') ? `${baseUrl}data/info/${tabId}/${img.src.slice(2)}` : img.src
         }))
         
         const fixedOverlayImage = contentData.overlayImage && contentData.overlayImage.startsWith('./') 
-          ? `${baseUrl}data/tabs/${tabId}/${contentData.overlayImage.slice(2)}`
+          ? `${baseUrl}data/info/${tabId}/${contentData.overlayImage.slice(2)}`
           : contentData.overlayImage
         
         tabsWithContent.push({

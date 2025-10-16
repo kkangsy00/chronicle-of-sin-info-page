@@ -1,7 +1,7 @@
 <template>
   <div class="gallery-page">
     <!-- 홈 버튼 -->
-    <button class="home-btn" @click="$emit('go-home')" title="홈으로 돌아가기">
+    <button class="home-btn" @click="$emit('go-home')" title="돌아가기">
       ×
     </button>
      <div class="gallery-container">
