@@ -709,7 +709,7 @@ export default {
 @media (max-width: 1024px) {
   .container {
     min-width: 768px;
-    padding: 15px;
+    /* padding: 15px; */
     gap: 15px;
   }
   
@@ -751,7 +751,7 @@ export default {
 @media (max-width: 800px) {
   .container {
     min-width: 650px;
-    padding: 12px;
+    /* padding: 12px; */
     gap: 12px;
   }
   
