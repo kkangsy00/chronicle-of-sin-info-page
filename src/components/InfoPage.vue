@@ -377,7 +377,6 @@ export default {
   max-width: 150%;
   max-height: 100%;
   object-fit: contain;
-  border-radius: 10px;
   transition: transform 0.3s ease;
 }
 
@@ -456,7 +455,6 @@ export default {
 .images-content::-webkit-scrollbar-thumb {
   background: #545042;
   border: 2px solid #000000;
-  border-radius: 0px;
 }
 
 /* info-content 내부 기본 스타일은 :deep()에서 처리 */
