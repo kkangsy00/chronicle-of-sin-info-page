@@ -4,6 +4,15 @@
     <button class="home-btn" @click="$emit('go-home')" title="돌아가기">
       ×
     </button>
+      <div class="header-section">
+        <transition :name="headerTransition" mode="out-in">
+          <div 
+            :key="selectedTag" 
+            class="header-image" 
+            :style="{ backgroundImage: `url(${headerImage})` }"
+          ></div>
+        </transition>
+      </div>
      <div class="gallery-container">
       <!-- 태그 필터 -->
       <div class="filter-section">
@@ -56,23 +65,27 @@ export default {
     const galleryItems = ref([])
     const selectedImage = ref(null)
     const selectedTag = ref('all')
+    const baseUrl = import.meta.env.BASE_URL
+    const galleryData = ref(null)
 
     // 갤러리 아이템 로드
     const loadGalleryItems = async () => {
       try {
-        const baseUrl = import.meta.env.BASE_URL
         const response = await fetch(`${baseUrl}data/gallery/gallery.json`)
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
         
-        const galleryData = await response.json()
+        const data = await response.json()
+        
+        // galleryData를 저장
+        galleryData.value = data
         
         // 갤러리 데이터를 화면용 형태로 변환
-        const items = galleryData.images.map((img, index) => ({
+        const items = data.images.map((img, index) => ({
           id: index + 1, // 자동 생성되는 ID
-          tags: img.tags.map(tagId => galleryData.tagMap[tagId.toString()]),
+          tags: img.tags.map(tagId => data.tagMap[tagId.toString()]),
           thumbnail: `${baseUrl}data/gallery/images/${img.filename}`,
           fullImage: `${baseUrl}data/gallery/images/${img.filename}`
         }))
@@ -94,6 +107,43 @@ export default {
         ]
       }
     }
+
+    // 헤더 정보 계산 (이미지 + 전환효과)
+    const headerInfo = computed(() => {
+      if (!galleryData.value) {
+        return {
+          image: `${baseUrl}data/gallery/header/header_0.png`,
+          transition: 'fade'
+        }
+      }
+      
+      // tagMap에서 현재 선택된 태그에 해당하는 ID 찾기
+      const tagId = Object.keys(galleryData.value.tagMap).find(
+        id => galleryData.value.tagMap[id] === selectedTag.value
+      )
+      
+      if (tagId) {
+        // header_2는 jpg 확장자
+        const extension = tagId === '2' ? 'jpg' : 'png'
+        const transition = tagId === '1' ? 'slide-left' : 
+                          tagId === '2' ? 'slide-right' : 'fade'
+        
+        return {
+          image: `${baseUrl}data/gallery/header/header_${tagId}.${extension}`,
+          transition
+        }
+      }
+      
+      // 기본 헤더 (전체 또는 매칭되지 않는 태그)
+      return {
+        image: `${baseUrl}data/gallery/header/header_0.png`,
+        transition: 'fade'
+      }
+    })
+
+    // 개별 속성들 (기존 코드 호환성을 위해)
+    const headerImage = computed(() => headerInfo.value.image)
+    const headerTransition = computed(() => headerInfo.value.transition)
 
     // 사용 가능한 모든 태그 추출
     const availableTags = computed(() => {
@@ -148,7 +198,10 @@ export default {
 
     return {
       galleryItems,
+      galleryData,
       selectedImage,
+      headerImage,
+      headerTransition,
       selectedTag,
       availableTags,
       filteredItems,
@@ -164,7 +217,7 @@ export default {
 <style scoped>
 .gallery-page {
   min-height: 100vh;
-  padding: 20px;
+  padding: 20px 0 20px 20px;
   color: white;
 }
 
@@ -193,10 +246,67 @@ export default {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+.header-section {
+  width: 100vw;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+
+.header-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+.header-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+}
+
+/* 헤더 전환 효과 */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+.slide-right-enter-active, .slide-right-leave-active {
+  transition: transform 0.3s ease;
+}
+.slide-right-enter-from {
+  transform: translateX(100%);
+}
+.slide-right-leave-to {
+  transform: translateX(-100%);
+}
+
+.slide-left-enter-active, .slide-left-leave-active {
+  transition: transform 0.3s ease;
+}
+.slide-left-enter-from {
+  transform: translateX(-100%);
+}
+.slide-left-leave-to {
+  transform: translateX(100%);
+}
+
 .gallery-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding-top: 80px;
+  padding-top: 20px;
 }
 
 .filter-section {
@@ -332,6 +442,15 @@ export default {
 
 
 @media (max-width: 650px) {
+  .gallery-page {
+    padding: 15px 0 15px 15px;
+  }
+  
+  .header-section {
+    height: 200px;
+    margin-left: -15px;
+  }
+  
   .gallery-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -339,7 +458,7 @@ export default {
   }
   
   .gallery-container {
-    padding-top: 60px;
+    padding-top: 15px;
   }
   
   .modal-content {
