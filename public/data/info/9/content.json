@@ -2,11 +2,11 @@
   "name": "이념",
   "overlayImage": "./ln_name.png",
   "images": [
-    { "id": 1, "name": "인장", "src": "./.png", "txt": "Picrew " }
+    { "id": 1, "name": "기본", "src": "./ln.png" }
   ],
   "sections": [
     {
-      "header": "111",
+      "header": "부장",
       "content": [
         "aaaaaaaaaaaaaaaaa",
         "aaaaaaaaaaaaaaaaa"
