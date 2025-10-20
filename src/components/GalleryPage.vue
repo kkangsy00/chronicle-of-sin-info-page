@@ -442,11 +442,6 @@ export default {
     padding: 15px 0 15px 15px;
   }
   
-  .header-section {
-    height: 600px;
-    margin-left: -15px;
-  }
-  
   .gallery-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
