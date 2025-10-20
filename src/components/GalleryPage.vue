@@ -244,8 +244,7 @@ export default {
 }
 
 .header-section {
-  width: 100vw;
-  height: 300px;
+  height: 23vw;
   position: relative;
   overflow: hidden;
   margin-bottom: 20px;
@@ -256,7 +255,7 @@ export default {
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: center;
+  background-position: center 40% ;
   background-repeat: no-repeat;
   transition: all 0.5s ease;
   position: relative;
@@ -274,14 +273,14 @@ export default {
 
 /* 헤더 전환 효과 */
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 .fade-enter-from, .fade-leave-to {
   opacity: 0;
 }
 
 .slide-right-enter-active, .slide-right-leave-active {
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
 }
 .slide-right-enter-from {
   transform: translateX(100%);
@@ -444,7 +443,7 @@ export default {
   }
   
   .header-section {
-    height: 200px;
+    height: 600px;
     margin-left: -15px;
   }
   
