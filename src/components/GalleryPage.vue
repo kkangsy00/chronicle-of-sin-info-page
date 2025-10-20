@@ -97,11 +97,8 @@ export default {
         galleryItems.value = [
           {
             id: 'placeholder-1',
-            title: '이미지 준비중',
-            description: '갤러리 이미지를 준비중입니다.',
             thumbnail: 'https://via.placeholder.com/300x400/CCCCCC/666666?text=준비중',
             fullImage: 'https://via.placeholder.com/800x600/CCCCCC/666666?text=준비중',
-            character: '준비중',
             tags: ['준비중']
           }
         ]
