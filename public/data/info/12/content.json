@@ -2,7 +2,8 @@
   "name": "홍경아",
   "overlayImage": "./hka_name.png",
   "images": [
-    { "id": 1, "name": "기본", "src": "./hka.png"}
+    { "id": 1, "name": "기본", "src": "./hka.png"},
+    { "id": 2, "name": "실루엣", "src": "./hka_silhouette.png" }
   ],
   "sections": [
     {

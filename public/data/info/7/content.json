@@ -2,7 +2,7 @@
   "name": "천진영",
   "overlayImage": "./cjy_name.png",
   "images": [
-    { "id": 1, "name": "인장", "src": "./.png", "txt": "Picrew " }
+    { "id": 1, "name": "실루엣", "src": "./cjy_silhouette.png"}
   ],
   "sections": [
     {

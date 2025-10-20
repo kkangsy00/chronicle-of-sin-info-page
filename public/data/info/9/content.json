@@ -2,7 +2,8 @@
   "name": "이념",
   "overlayImage": "./ln_name.png",
   "images": [
-    { "id": 1, "name": "기본", "src": "./ln.png" }
+    { "id": 1, "name": "기본", "src": "./ln.png" },
+    { "id": 2, "name": "실루엣", "src": "./ln_silhouette.png" }
   ],
   "sections": [
     {
