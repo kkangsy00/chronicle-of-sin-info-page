@@ -14,7 +14,6 @@
             <img 
               :src="currentImage" 
               class="fade-transition main-image"
-              @error="handleImageError"
             >
             <transition name="fade">
               <div v-if="showImgTxt && currentImgTxt" class="main-image-txt">
@@ -27,7 +26,6 @@
             alt="overlay"
             class="overlay-image"
             v-if="currentTab.overlayImage"
-            @error="handleImageError"
           >
         </div>
 
@@ -67,7 +65,7 @@
                 <button
                   v-for="image in currentTab.images"
                   :key="image.id"
-                  :class="['image-button', { active: selectedImageId === image.id }]"
+                  :class="['image-button', { active: currentSelectedImageId === image.id }]"
                   :style="{ backgroundImage: `url(${image.src})` }"
                   @click="selectImage(image.id)"
                 >
@@ -108,7 +106,7 @@ export default {
   setup() {
     const activeTabId = ref(1)
     const activeInfoTab = ref('info') // 'info' 또는 'images'
-    const selectedImageId = ref(1)
+    const selectedImagePerTab = ref({}) // 탭별 선택된 이미지 기억
     const infoContent = ref(null)
     const showImgTxt = ref(false)
     const tabContainer = ref(null)
@@ -150,17 +148,11 @@ export default {
         const contentData = await response.json()
         return contentData
       } catch (error) {
-        console.error(`콘텐츠 로드 실패 (탭 ${tabId}):`, error)
         return {
           name: '오류',
           title: '콘텐츠 로드 실패',
           images: [],
-          sections: [{
-            index: 1,
-            header: '오류',
-            colorClass: 'color-a',
-            content: ['콘텐츠 로드에 실패했습니다.']
-          }]
+          sections: [{ header: '오류', content: ['콘텐츠 로드에 실패했습니다.'] }]
         }
       }
     }
@@ -213,19 +205,27 @@ export default {
 
     // 현재 선택된 이미지 계산
     const currentImage = computed(() => {
-      const selectedImage = currentTab.value.images?.find(img => img.id === selectedImageId.value)
+      // 현재 탭에서 기억된 이미지 ID 가져오기
+      const rememberedImageId = selectedImagePerTab.value[activeTabId.value] || 1
+      const selectedImage = currentTab.value.images?.find(img => img.id === rememberedImageId)
       return selectedImage?.src || ''
     })
 
     const currentImgTxt = computed(() => {
-      const selectedImgTxt = currentTab.value.images?.find(img => img.id === selectedImageId.value)
+      // 현재 탭에서 기억된 이미지 ID 가져오기
+      const rememberedImageId = selectedImagePerTab.value[activeTabId.value] || 1
+      const selectedImgTxt = currentTab.value.images?.find(img => img.id === rememberedImageId)
       return selectedImgTxt?.txt
+    })
+
+    // 현재 탭에서 선택된 이미지 ID (UI 표시용)
+    const currentSelectedImageId = computed(() => {
+      return selectedImagePerTab.value[activeTabId.value] || 1
     })
 
     // 탭 전환 함수
     const switchTab = (tabId) => {
       activeTabId.value = tabId
-      selectedImageId.value = 1
       
       nextTick(() => {
         if (infoContent.value) {
@@ -238,7 +238,10 @@ export default {
     const switchInfoTab = (tabType) => activeInfoTab.value = tabType
 
     // 이미지 선택 함수
-    const selectImage = (imageId) => selectedImageId.value = imageId
+    const selectImage = (imageId) => {
+      // 현재 탭에서 선택된 이미지를 기억
+      selectedImagePerTab.value[activeTabId.value] = imageId
+    }
 
     // 탭 스크롤 제어 함수
     const scrollTabs = (direction) => {
@@ -260,32 +263,15 @@ export default {
       }
     }
 
-    // 이미지 로드 에러 처리
-    const handleImageError = (event) => {
-      event.target.src = 'https://via.placeholder.com/400x300/CCCCCC/666666?text=이미지를+불러올+수+없습니다'
-    }
-
-    // 키보드 네비게이션
-    const handleKeydown = (event) => {
-      const key = event.key
-      if (key >= '1' && key <= '9') {
-        const tabId = parseInt(key)
-        if (tabs.value.find(tab => tab.id === tabId)) {
-          switchTab(tabId)
-        }
-      }
-    }
-
-    // 마운트 시 초기화
     onMounted(() => {
       initializeTabs()
-      document.addEventListener('keydown', handleKeydown)
     })
 
     return {
       activeTabId,
       activeInfoTab,
-      selectedImageId,
+      selectedImagePerTab,
+      currentSelectedImageId,
       tabs,
       currentTab,
       currentImage,
@@ -296,7 +282,6 @@ export default {
       switchInfoTab,
       selectImage,
       scrollTabs,
-      handleImageError,
       showImgTxt
     }
   }
@@ -304,30 +289,7 @@ export default {
 </script>
 
 <style scoped>
-.home-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background: #ce3a24;
-  color: black;
-  border: 1px solid black;
-  width: 50px;
-  height: 50px;
-  border-radius: 0;
-  cursor: pointer;
-  z-index: 1000;
-  font-size: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  line-height: 1;
-}
 
-.home-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
 
 /* InfoPage 전용 스타일들 */
 .container {

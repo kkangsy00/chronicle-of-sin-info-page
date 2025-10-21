@@ -36,24 +36,12 @@ export default {
   setup() {
     const linkData = ref({ categories: [] })
     
-    const loadLinks = async () => {
-      try {
-        const baseUrl = import.meta.env.BASE_URL
-        const response = await fetch(`${baseUrl}data/links.json`)
-        const data = await response.json()
-        linkData.value = data
-      } catch (error) {
-        console.error('링크 데이터 로드 실패:', error)
-      }
-    }
-    
-    onMounted(() => {
-      loadLinks()
+    onMounted(async () => {
+      const response = await fetch(`${import.meta.env.BASE_URL}data/links.json`)
+      linkData.value = await response.json()
     })
     
-    return {
-      linkData
-    }
+    return { linkData }
   }
 }
 </script>
@@ -64,30 +52,7 @@ export default {
   color: white;
 }
 
-.home-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background: #ce3a24;
-  color: black;
-  border: 1px solid black;
-  width: 50px;
-  height: 50px;
-  border-radius: 0;
-  cursor: pointer;
-  z-index: 1000;
-  font-size: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  line-height: 1;
-}
 
-.home-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
 
 .container {
   max-width: 1200px;
