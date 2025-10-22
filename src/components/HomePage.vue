@@ -60,6 +60,7 @@ h1 {
 
 p {
   font-size: clamp(1.2rem, 3vw, 2rem);
+  font-family: "Nanum Myeongjo", serif;
   color: #bdb7a0;
 }
 

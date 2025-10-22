@@ -229,7 +229,7 @@ export default {
 }
 
 .slide-left-enter-active, .slide-left-leave-active {
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
 }
 .slide-left-enter-from {
   transform: translateX(-100%);
