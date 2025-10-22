@@ -1,9 +1,9 @@
 {
   "name": "심재경",
-  "overlayImage": "./sjk_name.png",
+  "overlayImage": "sjk_name.png",
   "images": [
-    { "id": 1, "name": "인장", "src": "./sjk_.png" },
-    { "id": 2, "name": "실루엣", "src": "./sjk_silhouette.png", "txt": "crepe @ZNMAJJI" }
+    { "id": 1, "name": "인장", "src": "sjk_.png" },
+    { "id": 2, "name": "실루엣", "src": "sjk_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
   "sections": [
     {

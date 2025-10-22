@@ -1,28 +1,27 @@
 <template>
   <div class="home-page">
-    <div class="hero-section">
-      <h1>죄의 연대기</h1>
-      <p>완전한 선인도 완전한 악인도 없다</p>
-      
-      <div class="nav-buttons">
-        <button class="nav-btn info-btn" @click="$emit('navigate', 'info')">
-          <div class="btn-image info-image"></div>
-          <span class="btn-text">인물</span>
-        </button>
-        <button class="nav-btn gallery-btn" @click="$emit('navigate', 'gallery')">
-          <div class="btn-image gallery-image"></div>
-          <span class="btn-text">아트워크</span>
-        </button>
-        <button class="nav-btn links-btn" @click="$emit('navigate', 'links')">
-          <div class="btn-image links-image"></div>
-          <span class="btn-text">링크</span>
-        </button>
-      </div>
+    <h1>죄의 연대기</h1>
+    <p>완전한 선인도 완전한 악인도 없다</p>
+    
+    <div class="nav-buttons">
+      <button class="nav-btn" @click="$emit('navigate', 'info')">
+        <div class="btn-image info-image"></div>
+        <span>인물</span>
+      </button>
+      <button class="nav-btn" @click="$emit('navigate', 'gallery')">
+        <div class="btn-image gallery-image"></div>
+        <span>아트워크</span>
+      </button>
+      <button class="nav-btn" @click="$emit('navigate', 'links')">
+        <div class="btn-image links-image"></div>
+        <span>링크</span>
+      </button>
     </div>
-  </div>
-  <div class="bottom-txt"> 
-    본 페이지는 크툴루의 부름 7판 팬메이드 시나리오 「죄의 연대기」의 스포일러를 포함합니다.
-    <br/> 디자인 요소는 모바일 게임 「회색도시 2」를 참고하여 제작되었습니다.
+    
+    <div class="bottom-txt"> 
+      본 페이지는 크툴루의 부름 7판 팬메이드 시나리오 「죄의 연대기」의 스포일러를 포함합니다.
+      <br/> 디자인 요소는 모바일 게임 「회색도시 2」를 참고하여 제작되었습니다.
+    </div>
   </div>
 </template>
 
@@ -43,45 +42,31 @@ export default {
 
 .home-page {
   height: 100vh;
-  min-height: 700px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   color: white;
 }
 
-.hero-section {
-  text-align: center;
-}
-
-.hero-section h1 {
-  font-family: "KotraDoYak", sans-serif;
+h1 {
+  font-family: 'KotraDoYak', sans-serif;
   font-size: clamp(3rem, 12vw, 8rem);
   margin-bottom: 1rem;
   color: rgba(255, 255, 255, 0.8);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-.hero-section p {
-  font-family: "Nanum Myeongjo", serif;
+p {
   font-size: clamp(1.2rem, 3vw, 2rem);
   color: #bdb7a0;
-  opacity: 0.9;
-}
-
-.bottom-txt {
-  text-align: center;
-  color: rgba(255, 255, 255, 0.7);
-  position: absolute;
-  width: 100%;
-  font-size: 0.8vw;
 }
 
 .nav-buttons {
   display: flex;
   gap: 3rem;
-  margin-top: 3rem;
-  justify-content: center;
+  margin: 3rem 0;
   flex-wrap: wrap;
 }
 
@@ -89,22 +74,19 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 200px;
   height: 200px;
-  border: 3px solid rgba(0, 0, 0);
+  border: 3px solid black;
   background: rgba(0, 0, 0, 0.4);
   cursor: pointer;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
   padding: 20px;
 }
 
 .nav-btn:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.8);
+  border-color: white;
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 .btn-image {
@@ -114,29 +96,24 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   margin-bottom: 15px;
-  transition: transform 0.3s ease;
 }
 
-.info-image {
-  background-image: url('/data/statics/info.png');
-}
+.info-image { background-image: url('/data/statics/info.png'); }
+.gallery-image { background-image: url('/data/statics/gallery.png'); }
+.links-image { background-image: url('/data/statics/links.png'); }
 
-.gallery-image {
-  background-image: url('/data/statics/gallery.png');
-}
-
-.links-image {
-  background-image: url('/data/statics/links.png');
-}
-
-.btn-text {
+.nav-btn span {
   color: #bdb7a0;
   font-size: 1.3rem;
-  font-weight: 400;
 }
 
-.nav-btn:hover .btn-text {
+.nav-btn:hover span {
   color: #fdfdfc;
+}
+
+.bottom-txt {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8vw;
 }
 
 @media (max-width: 650px) {

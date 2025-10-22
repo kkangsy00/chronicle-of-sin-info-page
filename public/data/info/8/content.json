@@ -1,8 +1,8 @@
 {
   "name": "곽필종",
-  "overlayImage": "./gpj_name.png",
+  "overlayImage": "gpj_name.png",
   "images": [
-    { "id": 1, "name": "실루엣", "src": "./gpj_silhouette.png"}
+    { "id": 1, "name": "실루엣", "src": "gpj_silhouette.png"}
   ],
   "sections": [
     {

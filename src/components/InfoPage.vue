@@ -14,7 +14,6 @@
             <img 
               :src="currentImage" 
               class="fade-transition main-image"
-              @error="handleImageError"
             >
             <transition name="fade">
               <div v-if="showImgTxt && currentImgTxt" class="main-image-txt">
@@ -27,7 +26,6 @@
             alt="overlay"
             class="overlay-image"
             v-if="currentTab.overlayImage"
-            @error="handleImageError"
           >
         </div>
 
@@ -67,7 +65,7 @@
                 <button
                   v-for="image in currentTab.images"
                   :key="image.id"
-                  :class="['image-button', { active: selectedImageId === image.id }]"
+                  :class="['image-button', { active: currentSelectedImageId === image.id }]"
                   :style="{ backgroundImage: `url(${image.src})` }"
                   @click="selectImage(image.id)"
                 >
@@ -107,227 +105,115 @@ export default {
   emits: ['go-home'],
   setup() {
     const activeTabId = ref(1)
-    const activeInfoTab = ref('info') // 'info' 또는 'images'
-    const selectedImageId = ref(1)
+    const activeInfoTab = ref('info')
+    const selectedImagePerTab = ref({})
     const infoContent = ref(null)
     const showImgTxt = ref(false)
     const tabContainer = ref(null)
-
-    // 탭 메타데이터와 콘텐츠를 합친 완전한 탭 데이터
     const tabs = ref([])
 
-    // 사용 가능한 탭 ID들
-    const getAvailableTabIds = () => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-    
-    // 콘텐츠를 HTML로 변환하는 함수
+    // 콘텐츠를 HTML로 변환
     const generateContentHTML = (contentData) => {
-      let html = ''
-      
-      contentData.sections.forEach((section, index) => {
-        // index, colorClass 자동 생성
+      return contentData.sections.map((section, index) => {
         const displayIndex = (index + 1).toString().padStart(2, '0')
-        const colorClass = section.colorClass || (index % 2 === 0 ? 'color-a' : 'color-b')
-        
-        html += `<div class='content-card ${colorClass}'>`
-        html += `<h3 data-index="${displayIndex}">${section.header}</h3>`
-        section.content.forEach(paragraph => {
-          html += `<p>${paragraph}</p>`
-        })
-        html += `</div>`
-      })
-      
-      return html
-    }
-
-    // 동적으로 콘텐츠 로드
-    const loadTabContent = async (tabId) => {
-      try {
-        const baseUrl = import.meta.env.BASE_URL
-        const response = await fetch(`${baseUrl}data/info/${tabId}/content.json`)
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
-        }
-        const contentData = await response.json()
-        return contentData
-      } catch (error) {
-        console.error(`콘텐츠 로드 실패 (탭 ${tabId}):`, error)
-        return {
-          name: '오류',
-          title: '콘텐츠 로드 실패',
-          images: [],
-          sections: [{
-            index: 1,
-            header: '오류',
-            colorClass: 'color-a',
-            content: ['콘텐츠 로드에 실패했습니다.']
-          }]
-        }
-      }
+        const colorClass = index % 2 === 0 ? 'color-a' : 'color-b'
+        return `<div class='content-card ${colorClass}'>
+          <h3 data-index="${displayIndex}">${section.header}</h3>
+          ${section.content.map(p => `<p>${p}</p>`).join('')}
+        </div>`
+      }).join('')
     }
 
     // 탭 데이터 초기화
     const initializeTabs = async () => {
-      const tabsWithContent = []
       const baseUrl = import.meta.env.BASE_URL
+      const tabIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
       
-      // 동적으로 탭 ID들을 가져옴
-      const availableTabIds = getAvailableTabIds()
-      
-      for (const tabId of availableTabIds) {
-        const contentData = await loadTabContent(tabId)
-        const contentHTML = generateContentHTML(contentData)
-        
-        // 이미지 경로를 절대 경로로 변환
-        const fixedImages = (contentData.images || []).map(img => ({
-          ...img,
-          src: img.src.startsWith('./') ? `${baseUrl}data/info/${tabId}/${img.src.slice(2)}` : img.src
-        }))
-        
-        const fixedOverlayImage = contentData.overlayImage && contentData.overlayImage.startsWith('./') 
-          ? `${baseUrl}data/info/${tabId}/${contentData.overlayImage.slice(2)}`
-          : contentData.overlayImage
-        
-        tabsWithContent.push({
-          id: tabId,
-          name: contentData.name,
-          title: contentData.title,
-          overlayImage: fixedOverlayImage,
-          content: contentHTML,
-          images: fixedImages
+      const tabsWithContent = await Promise.all(
+        tabIds.map(async (tabId) => {
+          const response = await fetch(`${baseUrl}data/info/${tabId}/content.json`)
+          const contentData = await response.json()
+          
+          return {
+            id: tabId,
+            name: contentData.name,
+            overlayImage: contentData.overlayImage 
+              ? `${baseUrl}data/info/${tabId}/${contentData.overlayImage}`
+              : null,
+            content: generateContentHTML(contentData),
+            images: (contentData.images || []).map(img => ({
+              ...img,
+              src: `${baseUrl}data/info/${tabId}/${img.src}`
+            }))
+          }
         })
-      }
+      )
       
       tabs.value = tabsWithContent
     }
 
-    // 현재 활성 탭 계산
-    const currentTab = computed(() => {
-      return tabs.value.find(tab => tab.id === activeTabId.value) || {
-        id: 1,
-        name: '로딩중...',
-        content: '<p>콘텐츠를 불러오는 중입니다...</p>',
-        overlayImage: '',
-        images: []
-      }
-    })
+    // 현재 활성 탭
+    const currentTab = computed(() => 
+      tabs.value.find(tab => tab.id === activeTabId.value) || tabs.value[0] || {}
+    )
 
-    // 현재 선택된 이미지 계산
-    const currentImage = computed(() => {
-      const selectedImage = currentTab.value.images?.find(img => img.id === selectedImageId.value)
-      return selectedImage?.src || ''
-    })
+    // 현재 선택된 이미지 ID
+    const currentSelectedImageId = computed(() => 
+      selectedImagePerTab.value[activeTabId.value] || 1
+    )
 
-    const currentImgTxt = computed(() => {
-      const selectedImgTxt = currentTab.value.images?.find(img => img.id === selectedImageId.value)
-      return selectedImgTxt?.txt
-    })
+    // 현재 선택된 이미지 정보
+    const currentImageData = computed(() => 
+      currentTab.value.images?.find(img => img.id === currentSelectedImageId.value) || {}
+    )
+    const currentImage = computed(() => currentImageData.value.src || '')
+    const currentImgTxt = computed(() => currentImageData.value.txt)
 
-    // 탭 전환 함수
+    // 탭 전환
     const switchTab = (tabId) => {
       activeTabId.value = tabId
-      selectedImageId.value = 1
-      
-      nextTick(() => {
-        if (infoContent.value) {
-          infoContent.value.scrollTop = 0
-        }
-      })
+      nextTick(() => infoContent.value?.scrollTo(0, 0))
     }
 
-    // 정보 탭 전환 함수
+    // 정보 탭 전환
     const switchInfoTab = (tabType) => activeInfoTab.value = tabType
 
-    // 이미지 선택 함수
-    const selectImage = (imageId) => selectedImageId.value = imageId
+    // 이미지 선택
+    const selectImage = (imageId) => {
+      selectedImagePerTab.value[activeTabId.value] = imageId
+    }
 
-    // 탭 스크롤 제어 함수
+    // 탭 스크롤
     const scrollTabs = (direction) => {
       if (!tabContainer.value) return
-      
-      const scrollAmount = 100 // 한 번에 스크롤할 픽셀 수
-      const currentScroll = tabContainer.value.scrollLeft
-      
-      if (direction === 'left') {
-        tabContainer.value.scrollTo({
-          left: currentScroll - scrollAmount,
-          behavior: 'smooth'
-        })
-      } else if (direction === 'right') {
-        tabContainer.value.scrollTo({
-          left: currentScroll + scrollAmount,
-          behavior: 'smooth'
-        })
-      }
+      const scrollAmount = direction === 'left' ? -100 : 100
+      tabContainer.value.scrollBy({ left: scrollAmount, behavior: 'smooth' })
     }
 
-    // 이미지 로드 에러 처리
-    const handleImageError = (event) => {
-      event.target.src = 'https://via.placeholder.com/400x300/CCCCCC/666666?text=이미지를+불러올+수+없습니다'
-    }
-
-    // 키보드 네비게이션
-    const handleKeydown = (event) => {
-      const key = event.key
-      if (key >= '1' && key <= '9') {
-        const tabId = parseInt(key)
-        if (tabs.value.find(tab => tab.id === tabId)) {
-          switchTab(tabId)
-        }
-      }
-    }
-
-    // 마운트 시 초기화
-    onMounted(() => {
-      initializeTabs()
-      document.addEventListener('keydown', handleKeydown)
-    })
+    onMounted(initializeTabs)
 
     return {
       activeTabId,
       activeInfoTab,
-      selectedImageId,
       tabs,
       currentTab,
       currentImage,
       currentImgTxt,
+      currentSelectedImageId,
       infoContent,
       tabContainer,
+      showImgTxt,
       switchTab,
       switchInfoTab,
       selectImage,
-      scrollTabs,
-      handleImageError,
-      showImgTxt
+      scrollTabs
     }
   }
 }
 </script>
 
 <style scoped>
-.home-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background: #ce3a24;
-  color: black;
-  border: 1px solid black;
-  width: 50px;
-  height: 50px;
-  border-radius: 0;
-  cursor: pointer;
-  z-index: 1000;
-  font-size: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  line-height: 1;
-}
 
-.home-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
 
 /* InfoPage 전용 스타일들 */
 .container {

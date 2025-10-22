@@ -37,8 +37,7 @@
       <div class="gallery-grid">
         <div v-for="item in filteredItems" :key="item.id" class="gallery-item">
           <div class="gallery-card" @click="openImage(item)">
-            <img :src="item.thumbnail" :alt="item.title" @error="handleImageError">
-
+            <img :src="item.thumbnail" :alt="item.title">
           </div>
         </div>
       </div>
@@ -48,7 +47,6 @@
         <div class="modal-content" @click.stop>
           <button class="close-btn" @click="closeImage">&times;</button>
           <img :src="selectedImage.fullImage" :alt="selectedImage.title">
-
         </div>
       </div>
     </div>
@@ -70,39 +68,17 @@ export default {
 
     // 갤러리 아이템 로드
     const loadGalleryItems = async () => {
-      try {
-        const response = await fetch(`${baseUrl}data/gallery/gallery.json`)
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
-        }
-        
-        const data = await response.json()
-        
-        // galleryData를 저장
-        galleryData.value = data
-        
-        // 갤러리 데이터를 화면용 형태로 변환
-        const items = data.images.map((img, index) => ({
-          id: index + 1, // 자동 생성되는 ID
-          tags: img.tags.map(tagId => data.tagMap[tagId.toString()]),
-          thumbnail: `${baseUrl}data/gallery/images/${img.filename}`,
-          fullImage: `${baseUrl}data/gallery/images/${img.filename}`
-        }))
-        
-        galleryItems.value = items
-      } catch (error) {
-        console.error('갤러리 로드 실패:', error)
-        // 기본 플레이스홀더 이미지들
-        galleryItems.value = [
-          {
-            id: 'placeholder-1',
-            thumbnail: 'https://via.placeholder.com/300x400/CCCCCC/666666?text=준비중',
-            fullImage: 'https://via.placeholder.com/800x600/CCCCCC/666666?text=준비중',
-            tags: ['준비중']
-          }
-        ]
-      }
+      const response = await fetch(`${baseUrl}data/gallery/gallery.json`)
+      const data = await response.json()
+      
+      galleryData.value = data
+      
+      galleryItems.value = data.images.map((img, index) => ({
+        id: index + 1,
+        tags: img.tags.map(tagId => data.tagMap[tagId.toString()]),
+        thumbnail: `${baseUrl}data/gallery/images/${img.filename}`,
+        fullImage: `${baseUrl}data/gallery/images/${img.filename}`
+      }))
     }
 
     // 헤더 정보 계산 (이미지 + 전환효과)
@@ -176,21 +152,8 @@ export default {
       selectedImage.value = null
     }
 
-    // 이미지 로드 에러 처리
-    const handleImageError = (event) => {
-      event.target.src = 'https://via.placeholder.com/300x400/CCCCCC/666666?text=이미지를+불러올+수+없습니다'
-    }
-
-    // ESC 키로 모달 닫기
-    const handleKeydown = (event) => {
-      if (event.key === 'Escape' && selectedImage.value) {
-        closeImage()
-      }
-    }
-
     onMounted(() => {
       loadGalleryItems()
-      document.addEventListener('keydown', handleKeydown)
     })
 
     return {
@@ -204,8 +167,7 @@ export default {
       filteredItems,
       filterByTag,
       openImage,
-      closeImage,
-      handleImageError
+      closeImage
     }
   }
 }
@@ -218,30 +180,7 @@ export default {
   color: white;
 }
 
-.home-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background: #ce3a24;
-  color: black;
-  border: none;
-  width: 50px;
-  height: 50px;
-  border: 1px solid black;
-  cursor: pointer;
-  z-index: 1000;
-  font-size: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  line-height: 1;
-}
 
-.home-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
 
 .header-section {
   height: 23vw;
