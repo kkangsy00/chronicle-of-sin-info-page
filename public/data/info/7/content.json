@@ -1,8 +1,8 @@
 {
   "name": "천진영",
-  "overlayImage": "./cjy_name.png",
+  "overlayImage": "cjy_name.png",
   "images": [
-    { "id": 1, "name": "실루엣", "src": "./cjy_silhouette.png"}
+    { "id": 1, "name": "실루엣", "src": "cjy_silhouette.png"}
   ],
   "sections": [
     {

@@ -1,9 +1,9 @@
 {
   "name": "양춘호",
-  "overlayImage": "./ych_name.png",
+  "overlayImage": "ych_name.png",
   "images": [
-    { "id": 1, "name": "인장", "src": "./ych_.png", "txt": "Picrew 我流男青年" },
-    { "id": 2, "name": "실루엣", "src": "./ych_silhouette.png"}
+    { "id": 1, "name": "인장", "src": "ych_.png", "txt": "Picrew 我流男青年" },
+    { "id": 2, "name": "실루엣", "src": "ych_silhouette.png"}
   ],
   "sections": [
     {

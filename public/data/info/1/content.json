@@ -1,8 +1,8 @@
 {
   "name": "박영숙",
-  "overlayImage": "./pys_name.png",
+  "overlayImage": "pys_name.png",
   "images": [
-    { "id": 1, "name": "실루엣", "src": "./pys_silhouette.png", "txt": "crepe @ZNMAJJI" }
+    { "id": 1, "name": "실루엣", "src": "pys_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
   "sections": [
     {
