@@ -5,6 +5,7 @@
     { "id": 1, "name": "기본", "src": "hka.png"},
     { "id": 2, "name": "실루엣", "src": "hka_silhouette.png" }
   ],
+  "bgm": [],
   "sections": [
     {
       "header": "주임",

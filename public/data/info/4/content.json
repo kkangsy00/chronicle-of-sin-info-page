@@ -6,6 +6,13 @@
     { "id": 2, "name": "인장", "src": "shs_.png", "txt": "Picrew 긴급! 삼촌 메이커!" },
     { "id": 3, "name": "실루엣", "src": "shs_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
+  "bgm": [
+    {
+      "title": "고양이, 선인장 그리고...", 
+      "url": "https://www.youtube.com/embed/uN0-vVFW5yI?si=Knn0Znd5gG6fWq5D", 
+      "txt": "잃어버린 나의 마음과 사라져가는 별들 그 사이로" 
+    }
+  ],
   "sections": [
     {
       "header": "경사",

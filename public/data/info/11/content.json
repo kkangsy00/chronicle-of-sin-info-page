@@ -6,6 +6,7 @@
     { "id": 2, "name": "기본-전신", "src": "msg_.png"},
     { "id": 3, "name": "실루엣", "src": "msg_silhouette.png" }
   ],
+  "bgm": [],
   "sections": [
     {
       "header": "대리",

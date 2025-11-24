@@ -4,6 +4,7 @@
   "images": [
     { "id": 1, "name": "실루엣", "src": "cjy_silhouette.png"}
   ],
+  "bgm": [],
   "sections": [
     {
       "header": "전무",

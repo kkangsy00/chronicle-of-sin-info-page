@@ -4,6 +4,7 @@
   "images": [
     { "id": 1, "name": "실루엣", "src": "pys_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
+  "bgm": [],
   "sections": [
     {
       "header": "경감",

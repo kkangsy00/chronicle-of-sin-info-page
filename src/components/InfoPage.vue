@@ -46,6 +46,12 @@
               >
                 이미지변경
               </button>
+              <button 
+                :class="['info-tab-button', { active: activeInfoTab === 'bgm' }]"
+                @click="switchInfoTab('bgm')"
+              >
+                BGM
+              </button>
             </div>
 
             <!-- 정보 탭 콘텐츠 -->
@@ -71,6 +77,55 @@
                 >
                   <span>{{ image.name }}</span>
                 </button>
+              </div>
+            </div>
+            <!-- BGM 탭 콘텐츠 -->
+            <div
+              v-if="activeInfoTab === 'bgm'"
+              class="bgm-content fade-transition"
+            >
+              <div class="bgm-list">
+                <div
+                  v-for="(bgm, idx) in currentTab.bgm || []"
+                  :key="idx"
+                  :class="['bgm-item', 'content-card', (idx % 2 === 0) ? 'color-a' : 'color-b']"
+                >
+                  <div class="bgm-left">
+                    <h3 :data-index="(idx + 1).toString().padStart(2, '0')">{{ getBgmLabel(bgm) }}</h3>
+                    <p class="bgm-txt" v-if="bgm.txt">{{ bgm.txt }}</p>
+                  </div>
+                  <button
+                    :class="['bgm-play-btn', { playing: isBgmPlaying && currentSelectedBgmIndex === idx }]"
+                    @click="togglePlayBgm(idx)"
+                    :aria-pressed="isBgmPlaying && currentSelectedBgmIndex === idx"
+                  >
+                    <svg v-if="!(isBgmPlaying && currentSelectedBgmIndex === idx)" class="icon icon-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                      <polygon points="6,4 20,12 6,20" fill="currentColor" />
+                    </svg>
+                    <svg v-else class="icon icon-stop" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true">
+                      <rect x="6" y="6" width="12" height="12" fill="currentColor" />
+                    </svg>
+                    <span class="btn-label">{{ (isBgmPlaying && currentSelectedBgmIndex === idx) ? '정지' : '듣기' }}</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 고정 플레이어 영역: DOM에 항상 존재하도록 하고 내부 콘텐츠만 조건부로 렌더 -->
+              <div class="bgm-player">
+                <div v-if="isBgmPlaying && currentBgmEmbed" class="mini-player">
+                  <div class="mini-left">
+                    <div class="mini-title">{{ getBgmLabel(currentBgmData) }}</div>
+                  </div>
+                  <iframe
+                    class="mini-iframe"
+                    :src="currentBgmEmbed"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    width="140"
+                    height="56"
+                  ></iframe>
+                </div>
               </div>
             </div>
             
@@ -107,6 +162,7 @@ export default {
     const activeTabId = ref(1)
     const activeInfoTab = ref('info')
     const selectedImagePerTab = ref({})
+    const selectedBgmPerTab = ref({})
     const infoContent = ref(null)
     const showImgTxt = ref(false)
     const tabContainer = ref(null)
@@ -141,6 +197,7 @@ export default {
               ? `${baseUrl}data/info/${tabId}/${contentData.overlayImage}`
               : null,
             content: generateContentHTML(contentData),
+            bgm: contentData.bgm || [],
             images: (contentData.images || []).map(img => ({
               ...img,
               src: `${baseUrl}data/info/${tabId}/${img.src}`
@@ -162,12 +219,40 @@ export default {
       selectedImagePerTab.value[activeTabId.value] || 1
     )
 
+    const currentSelectedBgmIndex = computed(() =>
+      typeof selectedBgmPerTab.value[activeTabId.value] === 'number'
+        ? selectedBgmPerTab.value[activeTabId.value]
+        : null
+    )
+
     // 현재 선택된 이미지 정보
     const currentImageData = computed(() => 
       currentTab.value.images?.find(img => img.id === currentSelectedImageId.value) || {}
     )
     const currentImage = computed(() => currentImageData.value.src || '')
     const currentImgTxt = computed(() => currentImageData.value.txt)
+
+    const currentBgmData = computed(() =>
+      (currentTab.value.bgm || [])[currentSelectedBgmIndex.value]
+    )
+
+    const isBgmPlaying = ref(false)
+
+    const getBgmLabel = (bgm) => {
+      if (!bgm) return ''
+      if (typeof bgm === 'string') return bgm
+      return bgm.title || bgm.url || ''
+    }
+
+    const currentBgmEmbed = computed(() => {
+      const data = currentBgmData.value
+      if (!data) return ''
+      const url = typeof data === 'string' ? data : (data.url || '')
+      if (!url) return ''
+      const needsParams = !url.includes('?')
+      const separator = needsParams ? '?' : '&'
+      return `${url}${separator}rel=0&autoplay=1&controls=1&modestbranding=1`
+    })
 
     // 탭 전환
     const switchTab = (tabId) => {
@@ -181,6 +266,20 @@ export default {
     // 이미지 선택
     const selectImage = (imageId) => {
       selectedImagePerTab.value[activeTabId.value] = imageId
+    }
+
+    // BGM 토글(재생/정지)
+    const togglePlayBgm = (index) => {
+      const current = currentSelectedBgmIndex.value
+      if (current === index && isBgmPlaying.value) {
+        // 정지
+        isBgmPlaying.value = false
+        selectedBgmPerTab.value[activeTabId.value] = null
+      } else {
+        // 재생
+        selectedBgmPerTab.value[activeTabId.value] = index
+        isBgmPlaying.value = true
+      }
     }
 
     // 탭 스크롤
@@ -200,12 +299,18 @@ export default {
       currentImage,
       currentImgTxt,
       currentSelectedImageId,
+      currentSelectedBgmIndex,
+      currentBgmEmbed,
+      isBgmPlaying,
+      getBgmLabel,
+      currentBgmData,
       infoContent,
       tabContainer,
       showImgTxt,
       switchTab,
       switchInfoTab,
       selectImage,
+      togglePlayBgm,
       scrollTabs
     }
   }
@@ -516,6 +621,142 @@ export default {
   background: rgba(253, 253, 252, 0.3);
 }
 
+.bgm-content {
+  background: linear-gradient(90deg, rgba(10,10,10,0.6), rgba(40,36,24,0.2));
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.bgm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+.bgm-button {
+  background: rgba(0,0,0,0.35);
+  color: #e8e6d4;
+  border: 1px solid #222;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.bgm-button.active {
+  background: rgba(230,230,228,0.12);
+  border: 1px solid #f2f2f0;
+}
+
+.bgm-player {
+  height: 72px;
+  flex: 0 0 72px;
+  margin-top: 12px;
+}
+
+.bgm-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.bgm-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.bgm-number {
+  background: #2f3128;
+  color: #d8d7c1;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 14px;
+  min-width: 48px;
+  text-align: center;
+}
+
+.bgm-title {
+  color: #f6f4ea;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.bgm-play-btn {
+  background: #666045;
+  color: #d8d7c1;
+  border: 1px solid #000;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bgm-play-btn .icon {
+  display: inline-block;
+}
+
+.bgm-play-btn.playing {
+  background: #ce3a24;
+}
+
+.bgm-play-btn .btn-label {
+  font-weight: 700;
+}
+
+.mini-player {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 10px;
+  background: rgba(20,20,18,0.6);
+  border: 1px solid rgba(0,0,0,0.6);
+}
+
+.mini-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+.mini-title {
+  color: #e6e3d1;
+  font-size: 14px;
+  max-width: 520px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mini-iframe {
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+/* hide the content-card top hairline / divider for bgm items */
+:deep(.bgm-item::before) {
+  display: none;
+}
+
+/* ensure bgm subtitles follow content-card paragraph styling */
+:deep(.bgm-item .bgm-subtitle) {
+  color: #84836e;
+  font-size: 16px;
+  margin: 0 0 10px 12px;
+  line-height: 1;
+}
+
 /* v-html 동적 콘텐츠에 대한 :deep 스타일 통합 */
 :deep(.content-card) {
   padding: 25px 30px;
@@ -587,6 +828,25 @@ export default {
   font-size: 16px;
   margin: 0 0 10px 12px;
   line-height: 1;
+}
+
+/* remove top divider for bgm items so they don't show the hairline */
+:deep(.bgm-item::before) {
+  display: none;
+}
+
+/* bgm text (use same spacing/style as content-card paragraphs) */
+:deep(.bgm-item .bgm-txt) {
+  color: #84836e;
+  font-size: 16px;
+  margin: 0 0 10px 12px;
+  line-height: 1;
+}
+
+/* also hide the h3 underline (content-card h3::after) for bgm items */
+:deep(.bgm-item > h3::after),
+:deep(.bgm-item h3::after) {
+  display: none;
 }
 
 /* 반응형 디자인 - 모바일 가로화면 최적화 포함 */

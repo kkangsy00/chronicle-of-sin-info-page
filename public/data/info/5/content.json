@@ -5,6 +5,7 @@
     { "id": 1, "name": "인장", "src": "ksh_.png", "txt": "Picrew 아홉시오분" },
     { "id": 2, "name": "실루엣", "src": "ksh_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
+  "bgm": [],
   "sections": [
     {
       "header": "경사",
