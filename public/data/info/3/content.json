@@ -7,7 +7,13 @@
     { "id": 3, "name": "인장", "src": "his__.png"},
     { "id": 4, "name": "실루엣", "src": "his_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
-  "bgm": [],
+  "bgm": [
+    {
+      "title": "전쟁터",
+      "url": "https://www.youtube.com/embed/gMXXVS6Hil4?si=Az9bajuMNQUV-e7z",
+      "txt": "여기 전쟁터에선 이명이 끝나면 비명이 들릴 테니까"
+    }
+  ],
   "sections": [
     {
       "header": "경위",

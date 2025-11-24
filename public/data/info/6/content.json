@@ -7,7 +7,13 @@
     { "id": 3, "name": "인장", "src": "sjk_bio.png" },
     { "id": 4, "name": "실루엣", "src": "sjk_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
-  "bgm": [],
+  "bgm": [
+    {
+      "title": "Miiro", 
+      "url": "https://www.youtube.com/embed/fCZUeAmaIzU?si=1I3bZvTQ6dis8Run", 
+      "txt": "잡힐 듯 잡히지 않는 흔적들에 난 붙잡혀 멈춰 서서 하루를 보내" 
+    }
+  ],
   "sections": [
     {
       "header": "경장",

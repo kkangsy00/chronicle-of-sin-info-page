@@ -6,7 +6,13 @@
     { "id": 2, "name": "인장", "src": "jdh_.png"},
     { "id": 3, "name": "실루엣", "src": "jdh_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
-  "bgm": [],
+  "bgm": [
+    {
+      "title": "섬",
+      "url": "https://www.youtube.com/embed/tgxzSWv6kJ0?si=uTd-xhgJKDiOY_15",
+      "txt": "나 가까이 떠있는 섬이 될게"
+    }
+  ],
   "sections": [
     {
       "header": "경위",

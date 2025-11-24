@@ -5,7 +5,13 @@
     { "id": 1, "name": "인장", "src": "ych_.png", "txt": "Picrew 我流男青年" },
     { "id": 2, "name": "실루엣", "src": "ych_silhouette.png"}
   ],
-  "bgm": [],
+  "bgm": [
+    {
+      "title": "checkmate", 
+      "url": "https://www.youtube.com/embed/7fIFgBKdEuc?si=qIRgbX8Bo6pO8Lo4", 
+      "txt": "I saw the way to win this game" 
+    }
+  ],
   "sections": [
     {
       "header": "차장",

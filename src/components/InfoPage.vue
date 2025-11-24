@@ -50,7 +50,7 @@
                 :class="['info-tab-button', { active: activeInfoTab === 'bgm' }]"
                 @click="switchInfoTab('bgm')"
               >
-                BGM
+                사운드
               </button>
             </div>
 
@@ -90,10 +90,6 @@
                   :key="idx"
                   :class="['bgm-item', 'content-card', (idx % 2 === 0) ? 'color-a' : 'color-b']"
                 >
-                  <div class="bgm-left">
-                    <h3 :data-index="(idx + 1).toString().padStart(2, '0')">{{ getBgmLabel(bgm) }}</h3>
-                    <p class="bgm-txt" v-if="bgm.txt">{{ bgm.txt }}</p>
-                  </div>
                   <button
                     :class="['bgm-play-btn', { playing: isBgmPlaying && currentSelectedBgmIndex === idx }]"
                     @click="togglePlayBgm(idx)"
@@ -102,15 +98,17 @@
                     <svg v-if="!(isBgmPlaying && currentSelectedBgmIndex === idx)" class="icon icon-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
                       <polygon points="6,4 20,12 6,20" fill="currentColor" />
                     </svg>
-                    <svg v-else class="icon icon-stop" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true">
-                      <rect x="6" y="6" width="12" height="12" fill="currentColor" />
+                    <svg v-else class="icon icon-stop" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                      <rect x="6" y="6" width="16" height="16" fill="currentColor" />
                     </svg>
                     <span class="btn-label">{{ (isBgmPlaying && currentSelectedBgmIndex === idx) ? '정지' : '듣기' }}</span>
                   </button>
+                  <div class="bgm-left">
+                    <h3 :data-index="(idx + 1).toString().padStart(2, '0')">{{ getBgmLabel(bgm) }}</h3>
+                    <p class="bgm-txt" v-if="bgm.txt">{{ bgm.txt }}</p>
+                  </div>
                 </div>
               </div>
-
-              <!-- 고정 플레이어 영역: DOM에 항상 존재하도록 하고 내부 콘텐츠만 조건부로 렌더 -->
               <div class="bgm-player">
                 <div v-if="isBgmPlaying && currentBgmEmbed" class="mini-player">
                   <div class="mini-left">
@@ -642,8 +640,7 @@ export default {
 .bgm-button {
   background: rgba(0,0,0,0.35);
   color: #e8e6d4;
-  border: 1px solid #222;
-  padding: 8px 12px;
+  border: 1px solid black;
   cursor: pointer;
 }
 
@@ -661,15 +658,15 @@ export default {
 .bgm-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  justify-content: flex-start;
+  gap: 20px; 
 }
 
 .bgm-left {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 6px;
+  flex: 1;
 }
 
 .bgm-number {
@@ -693,7 +690,7 @@ export default {
   background: #666045;
   color: #d8d7c1;
   border: 1px solid #000;
-  padding: 8px 12px;
+  padding: 10px 15px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -841,6 +838,7 @@ export default {
   font-size: 16px;
   margin: 0 0 10px 12px;
   line-height: 1;
+  white-space: pre-wrap; /* preserve newlines in JSON `txt` fields */
 }
 
 /* also hide the h3 underline (content-card h3::after) for bgm items */

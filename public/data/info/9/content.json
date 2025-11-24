@@ -5,7 +5,13 @@
     { "id": 1, "name": "기본", "src": "ln.png" },
     { "id": 2, "name": "실루엣", "src": "ln_silhouette.png" }
   ],
-  "bgm": [],
+  "bgm": [
+    {
+      "title": "Howlin’ 404",
+      "url": "https://www.youtube.com/embed/nWgew4UJ2rE?si=ZDRQqQhzZrE5eO1F",
+      "txt": "Yeah it’s true, true I’m stuck in the loop"
+    }
+  ],
   "sections": [
     {
       "header": "부장",

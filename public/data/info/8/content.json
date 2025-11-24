@@ -5,7 +5,13 @@
     { "id": 1, "name": "기본", "src": "gpj.png", "txt": "crepe @MU___92"},
     { "id": 2, "name": "실루엣", "src": "gpj_silhouette.png"}
   ],
-  "bgm": [],
+  "bgm": [
+    {
+      "title": "그래 빨간달이 떴구나 아무것도 변하지 않는다",
+      "url": "https://www.youtube.com/embed/nWgew4UJ2rE?si=ZDRQqQhzZrE5eO1F",
+      "txt": "누가 시비를 걸쏘냐 누가 다리를 걸쏘냐 그래 빨간 달이 떴구나 아무것도 변하지 않는다"
+    }
+  ],
   "sections": [
     {
       "header": "상무",

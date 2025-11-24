@@ -6,7 +6,13 @@
     { "id": 2, "name": "기본-전신", "src": "msg_.png"},
     { "id": 3, "name": "실루엣", "src": "msg_silhouette.png" }
   ],
-  "bgm": [],
+  "bgm": [
+    {
+      "title": "Mad Hatter", 
+      "url": "https://www.youtube.com/embed/komZ5LCoQCc?si=n4FOK8BUAKQdYbh_", 
+      "txt": "The craziest friend that you've ever had" 
+    }
+  ],
   "sections": [
     {
       "header": "대리",
