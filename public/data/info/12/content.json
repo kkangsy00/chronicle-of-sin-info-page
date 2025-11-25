@@ -5,7 +5,13 @@
     { "id": 1, "name": "기본", "src": "hka.png"},
     { "id": 2, "name": "실루엣", "src": "hka_silhouette.png" }
   ],
-  "bgm": [],
+  "bgm": [
+    {
+      "title": "No Roots", 
+      "url": "https://www.youtube.com/embed/N1rXoRwh_ig?si=9-ZlZa-sUYp9W_Lu", 
+      "txt": "I've got no roots" 
+    }
+  ],
   "sections": [
     {
       "header": "주임",
