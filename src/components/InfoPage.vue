@@ -35,22 +35,17 @@
             <!-- 상단 정보 탭 -->
             <div class="info-tabs">
               <button 
-                :class="['info-tab-button', { active: activeInfoTab === 'info' }]"
-                @click="switchInfoTab('info')"
+                v-for="tab in [
+                  { key: 'info', label: '인물정보' },
+                  { key: 'images', label: '이미지변경' },
+                  { key: 'bgm', label: '사운드' }
+                ]"
+                :key="tab.key"
+                :class="{ active: activeInfoTab === tab.key }"
+                class="info-tab-button"
+                @click="activeInfoTab = tab.key"
               >
-                인물정보
-              </button>
-              <button 
-                :class="['info-tab-button', { active: activeInfoTab === 'images' }]"
-                @click="switchInfoTab('images')"
-              >
-                이미지변경
-              </button>
-              <button 
-                :class="['info-tab-button', { active: activeInfoTab === 'bgm' }]"
-                @click="switchInfoTab('bgm')"
-              >
-                사운드
+                {{ tab.label }}
               </button>
             </div>
 
@@ -80,50 +75,34 @@
               </div>
             </div>
             <!-- BGM 탭 콘텐츠 -->
-            <div
-              v-if="activeInfoTab === 'bgm'"
-              class="bgm-content fade-transition"
-            >
+            <div v-if="activeInfoTab === 'bgm'" class="bgm-content">
               <div class="bgm-list">
                 <div
                   v-for="(bgm, idx) in currentTab.bgm || []"
                   :key="idx"
-                  :class="['bgm-item', 'content-card', (idx % 2 === 0) ? 'color-a' : 'color-b']"
+                  :class="['bgm-item', 'content-card', idx % 2 === 0 ? 'color-a' : 'color-b']"
                 >
                   <button
-                    :class="['bgm-play-btn', { playing: isBgmPlaying && currentSelectedBgmIndex === idx }]"
+                    :class="{ playing: isBgmPlaying && currentSelectedBgmIndex === idx }"
+                    class="bgm-play-btn"
                     @click="togglePlayBgm(idx)"
-                    :aria-pressed="isBgmPlaying && currentSelectedBgmIndex === idx"
                   >
-                    <svg v-if="!(isBgmPlaying && currentSelectedBgmIndex === idx)" class="icon icon-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                      <polygon points="6,4 20,12 6,20" fill="currentColor" />
-                    </svg>
-                    <svg v-else class="icon icon-stop" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                      <rect x="6" y="6" width="16" height="16" fill="currentColor" />
-                    </svg>
-                    <span class="btn-label">{{ (isBgmPlaying && currentSelectedBgmIndex === idx) ? '정지' : '듣기' }}</span>
+                    {{ (isBgmPlaying && currentSelectedBgmIndex === idx) ? '정지' : '듣기' }}
                   </button>
                   <div class="bgm-left">
-                    <h3 :data-index="(idx + 1).toString().padStart(2, '0')">{{ getBgmLabel(bgm) }}</h3>
-                    <p class="bgm-txt" v-if="bgm.txt">{{ bgm.txt }}</p>
+                    <h3 :data-index="String(idx + 1).padStart(2, '0')">{{ getBgmLabel(bgm) }}</h3>
+                    <p v-if="bgm.txt" class="bgm-txt">{{ bgm.txt }}</p>
                   </div>
                 </div>
               </div>
-              <div class="bgm-player">
-                <div v-if="isBgmPlaying && currentBgmEmbed" class="mini-player">
-                  <div class="mini-left">
-                    <div class="mini-title">{{ getBgmLabel(currentBgmData) }}</div>
-                  </div>
-                  <iframe
-                    class="mini-iframe"
-                    :src="currentBgmEmbed"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    width="140"
-                    height="56"
-                  ></iframe>
-                </div>
+              <div v-if="isBgmPlaying && currentBgmEmbed" class="mini-player">
+                <div class="mini-title">{{ getBgmLabel(currentBgmData) }}</div>
+                <iframe
+                  :src="currentBgmEmbed"
+                  width="140"
+                  height="56"
+                  frameborder="0"
+                ></iframe>
               </div>
             </div>
             
@@ -165,46 +144,39 @@ export default {
     const showImgTxt = ref(false)
     const tabContainer = ref(null)
     const tabs = ref([])
+    const isBgmPlaying = ref(false)
 
     // 콘텐츠를 HTML로 변환
-    const generateContentHTML = (contentData) => {
-      return contentData.sections.map((section, index) => {
-        const displayIndex = (index + 1).toString().padStart(2, '0')
-        const colorClass = index % 2 === 0 ? 'color-a' : 'color-b'
-        return `<div class='content-card ${colorClass}'>
-          <h3 data-index="${displayIndex}">${section.header}</h3>
+    const generateContentHTML = (sections) => 
+      sections.map((section, i) => 
+        `<div class='content-card ${i % 2 === 0 ? 'color-a' : 'color-b'}'>
+          <h3 data-index="${String(i + 1).padStart(2, '0')}">${section.header}</h3>
           ${section.content.map(p => `<p>${p}</p>`).join('')}
         </div>`
-      }).join('')
-    }
+      ).join('')
 
     // 탭 데이터 초기화
     const initializeTabs = async () => {
       const baseUrl = import.meta.env.BASE_URL
-      const tabIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
       
-      const tabsWithContent = await Promise.all(
-        tabIds.map(async (tabId) => {
+      tabs.value = await Promise.all(
+        [1,2,3,4,5,6,7,8,9,10,11,12].map(async (tabId) => {
           const response = await fetch(`${baseUrl}data/info/${tabId}/content.json`)
-          const contentData = await response.json()
+          const data = await response.json()
           
           return {
             id: tabId,
-            name: contentData.name,
-            overlayImage: contentData.overlayImage 
-              ? `${baseUrl}data/info/${tabId}/${contentData.overlayImage}`
-              : null,
-            content: generateContentHTML(contentData),
-            bgm: contentData.bgm || [],
-            images: (contentData.images || []).map(img => ({
+            name: data.name,
+            overlayImage: data.overlayImage ? `${baseUrl}data/info/${tabId}/${data.overlayImage}` : null,
+            content: generateContentHTML(data.sections),
+            bgm: data.bgm || [],
+            images: (data.images || []).map(img => ({
               ...img,
               src: `${baseUrl}data/info/${tabId}/${img.src}`
             }))
           }
         })
       )
-      
-      tabs.value = tabsWithContent
     }
 
     // 현재 활성 탭
@@ -234,82 +206,50 @@ export default {
       (currentTab.value.bgm || [])[currentSelectedBgmIndex.value]
     )
 
-    const isBgmPlaying = ref(false)
-
-    const getBgmLabel = (bgm) => {
-      if (!bgm) return ''
-      if (typeof bgm === 'string') return bgm
-      return bgm.title || bgm.url || ''
-    }
+    const getBgmLabel = (bgm) => 
+      typeof bgm === 'string' ? bgm : (bgm?.title || bgm?.url || '')
 
     const currentBgmEmbed = computed(() => {
       const data = currentBgmData.value
       if (!data) return ''
-      const url = typeof data === 'string' ? data : (data.url || '')
-      if (!url) return ''
-      const needsParams = !url.includes('?')
-      const separator = needsParams ? '?' : '&'
-      return `${url}${separator}rel=0&autoplay=1&controls=1&modestbranding=1`
+      const url = typeof data === 'string' ? data : data.url
+      return url ? `${url}${url.includes('?') ? '&' : '?'}rel=0&autoplay=1&controls=1` : ''
     })
 
-    // 탭 전환
     const switchTab = (tabId) => {
       activeTabId.value = tabId
       nextTick(() => infoContent.value?.scrollTo(0, 0))
     }
 
-    // 정보 탭 전환
-    const switchInfoTab = (tabType) => activeInfoTab.value = tabType
-
-    // 이미지 선택
     const selectImage = (imageId) => {
       selectedImagePerTab.value[activeTabId.value] = imageId
     }
 
-    // BGM 토글(재생/정지)
     const togglePlayBgm = (index) => {
-      const current = currentSelectedBgmIndex.value
-      if (current === index && isBgmPlaying.value) {
-        // 정지
+      if (currentSelectedBgmIndex.value === index && isBgmPlaying.value) {
         isBgmPlaying.value = false
         selectedBgmPerTab.value[activeTabId.value] = null
       } else {
-        // 재생
         selectedBgmPerTab.value[activeTabId.value] = index
         isBgmPlaying.value = true
       }
     }
 
-    // 탭 스크롤
     const scrollTabs = (direction) => {
-      if (!tabContainer.value) return
-      const scrollAmount = direction === 'left' ? -100 : 100
-      tabContainer.value.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+      tabContainer.value?.scrollBy({ 
+        left: direction === 'left' ? -100 : 100, 
+        behavior: 'smooth' 
+      })
     }
 
     onMounted(initializeTabs)
 
     return {
-      activeTabId,
-      activeInfoTab,
-      tabs,
-      currentTab,
-      currentImage,
-      currentImgTxt,
-      currentSelectedImageId,
-      currentSelectedBgmIndex,
-      currentBgmEmbed,
-      isBgmPlaying,
-      getBgmLabel,
-      currentBgmData,
-      infoContent,
-      tabContainer,
-      showImgTxt,
-      switchTab,
-      switchInfoTab,
-      selectImage,
-      togglePlayBgm,
-      scrollTabs
+      activeTabId, activeInfoTab, tabs, currentTab,
+      currentImage, currentImgTxt, currentSelectedImageId, currentSelectedBgmIndex,
+      currentBgmEmbed, isBgmPlaying, getBgmLabel, currentBgmData,
+      infoContent, tabContainer, showImgTxt,
+      switchTab, selectImage, togglePlayBgm, scrollTabs
     }
   }
 }
@@ -429,21 +369,16 @@ export default {
   overflow-y: auto;
 }
 
-/* 공통 스크롤바 스타일 */
-.info-content::-webkit-scrollbar,
-.images-content::-webkit-scrollbar {
+/* 공통 스크롤바 */
+.info-content::-webkit-scrollbar, .images-content::-webkit-scrollbar, .bgm-list::-webkit-scrollbar {
   width: 15px;
 }
-
-.info-content::-webkit-scrollbar-track,
-.images-content::-webkit-scrollbar-track {
-  background: #000000;
+.info-content::-webkit-scrollbar-track, .images-content::-webkit-scrollbar-track, .bgm-list::-webkit-scrollbar-track {
+  background: #000;
 }
-
-.info-content::-webkit-scrollbar-thumb,
-.images-content::-webkit-scrollbar-thumb {
+.info-content::-webkit-scrollbar-thumb, .images-content::-webkit-scrollbar-thumb, .bgm-list::-webkit-scrollbar-thumb {
   background: #545042;
-  border: 2px solid #000000;
+  border: 2px solid #000;
 }
 
 /* info-content 내부 기본 스타일은 :deep()에서 처리 */
@@ -491,27 +426,19 @@ export default {
   flex-shrink: 0;
 }
 
-/* 공통 버튼 호버 효과 */
-.scroll-button:hover,
-.tab-button:hover,
-.info-tab-button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #545352;
-}
-
-.scroll-button:active {
-  transform: scale(0.95);
-}
-
-/* 공통 버튼 스타일 */
-.tab-button,
-.info-tab-button {
+/* 공통 버튼 */
+.scroll-button, .tab-button, .info-tab-button {
   border: none;
   color: #8a8777;
   cursor: pointer;
   font-weight: 500;
   transition: all 0.3s ease;
 }
+.scroll-button:hover, .tab-button:hover, .info-tab-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #545352;
+}
+.scroll-button:active { transform: scale(0.95); }
 
 .tab-button {
   background: transparent;
@@ -620,70 +547,26 @@ export default {
 }
 
 .bgm-content {
-  background: linear-gradient(90deg, rgba(10,10,10,0.6), rgba(40,36,24,0.2));
+  background: linear-gradient(90deg, rgba(22, 21, 0, 0.8), rgba(41, 38, 21, 0.3));
   border: 1px solid #000;
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  overflow: hidden;
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
 }
 
 .bgm-list {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  margin: 0;
-  flex: 1 1 auto;
-  overflow-y: auto;
-}
-
-.bgm-button {
-  background: rgba(0,0,0,0.35);
-  color: #e8e6d4;
-  border: 1px solid black;
-  cursor: pointer;
-}
-
-.bgm-button.active {
-  background: rgba(230,230,228,0.12);
-  border: 1px solid #f2f2f0;
-}
-
-.bgm-player {
-  height: 72px;
-  flex: 0 0 72px;
-  margin-top: 12px;
 }
 
 .bgm-item {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 20px; 
+  gap: 20px;
 }
 
 .bgm-left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   flex: 1;
-}
-
-.bgm-number {
-  background: #2f3128;
-  color: #d8d7c1;
-  padding: 8px 12px;
-  border-radius: 10px;
-  font-weight: 800;
-  font-size: 14px;
-  min-width: 48px;
-  text-align: center;
-}
-
-.bgm-title {
-  color: #f6f4ea;
-  font-size: 16px;
-  font-weight: 600;
 }
 
 .bgm-play-btn {
@@ -692,67 +575,28 @@ export default {
   border: 1px solid #000;
   padding: 10px 15px;
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.bgm-play-btn .icon {
-  display: inline-block;
 }
 
 .bgm-play-btn.playing {
   background: #ce3a24;
 }
 
-.bgm-play-btn .btn-label {
-  font-weight: 700;
-}
-
 .mini-player {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 6px 10px;
+  padding: 10px;
   background: rgba(20,20,18,0.6);
-  border: 1px solid rgba(0,0,0,0.6);
+  border: 1px solid #000;
+  margin-top: 20px;
 }
-
-.mini-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-
 
 .mini-title {
   color: #e6e3d1;
   font-size: 14px;
-  max-width: 520px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
-.mini-iframe {
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-}
 
-/* hide the content-card top hairline / divider for bgm items */
-:deep(.bgm-item::before) {
-  display: none;
-}
-
-/* ensure bgm subtitles follow content-card paragraph styling */
-:deep(.bgm-item .bgm-subtitle) {
-  color: #84836e;
-  font-size: 16px;
-  margin: 0 0 10px 12px;
-  line-height: 1;
-}
 
 /* v-html 동적 콘텐츠에 대한 :deep 스타일 통합 */
 :deep(.content-card) {
@@ -827,186 +671,52 @@ export default {
   line-height: 1;
 }
 
-/* remove top divider for bgm items so they don't show the hairline */
-:deep(.bgm-item::before) {
-  display: none;
-}
-
-/* bgm text (use same spacing/style as content-card paragraphs) */
+/* BGM 항목 스타일 */
+:deep(.bgm-item::before), :deep(.bgm-item h3::after) { display: none; }
 :deep(.bgm-item .bgm-txt) {
   color: #84836e;
   font-size: 16px;
   margin: 0 0 10px 12px;
   line-height: 1;
-  white-space: pre-wrap; /* preserve newlines in JSON `txt` fields */
 }
 
-/* also hide the h3 underline (content-card h3::after) for bgm items */
-:deep(.bgm-item > h3::after),
-:deep(.bgm-item h3::after) {
-  display: none;
-}
-
-/* 반응형 디자인 - 모바일 가로화면 최적화 포함 */
+/* 반응형 */
 @media (max-width: 1024px) {
-  .container {
-    min-width: 768px;
-    /* padding: 15px; */
-    gap: 15px;
-  }
-  
-  .main-content {
-    gap: 15px;
-    min-height: 350px;
-  }
-  
-  .image-section {
-    min-width: 240px;
-  }
-  
-  .info-section {
-    min-width: 480px;
-  }
-  
-  .image-container,
-  .info-container {
-    min-height: 280px;
-  }
-  
-  /* 모바일 가로화면용 카드 스타일 */
-  :deep(.content-card) {
-    padding: 15px 25px;
-  }
-  
-  :deep(.content-card h3) {
-    font-size: 22px;
-    margin: 0 0 10px 10px;
-  }
-  
-  :deep(.content-card p) {
-    font-size: 15px;
-    line-height: 1;
-    margin: 0 0 8px 12px;
-  }
+  .container { min-width: 768px; gap: 15px; }
+  .main-content { gap: 15px; min-height: 350px; }
+  .image-section { min-width: 240px; }
+  .info-section { min-width: 480px; }
+  .image-container, .info-container { min-height: 280px; }
+  :deep(.content-card) { padding: 15px 25px; }
+  :deep(.content-card h3) { font-size: 22px; }
+  :deep(.content-card p) { font-size: 15px; }
 }
 
 @media (max-width: 800px) {
-  .container {
-    min-width: 650px;
-    /* padding: 12px; */
-    gap: 12px;
-  }
-  
-  .main-content {
-    gap: 12px;
-    min-height: 320px;
-  }
-  
-  .image-section {
-    min-width: 200px;
-  }
-  
-  .info-section {
-    min-width: 400px;
-  }
-  
-  .image-container,
-  .info-container {
-    min-height: 220px;
-  }
-  
-  .tab-section {
-    min-height: 55px;
-    max-height: 85px;
-  }
-  
-  /* 태블릿/모바일 가로화면 카드 최적화 */
-  :deep(.content-card) {
-    padding: 12px 22px;
-  }
-  
-  :deep(.content-card h3) {
-    font-size: 20px;
-    margin: 0 0 10px 8px;
-  }
-  
-  :deep(.content-card h3::before) {
-    width: 22px;
-    height: 22px;
-    font-size: 18px;
-    padding: 1px 7px 2px 7px;
-  }
-  
-  :deep(.content-card p) {
-    font-size: 14px;
-    line-height: 1;
-    margin: 0 0 8px 10px;
-  }
-  
-  /* 터치 친화적 버튼 크기 */
-  .tab-button {
-    min-width: 80px;
-    font-size: clamp(15px, 2.5vh, 22px);
-  }
-  
-  .info-tab-button {
-    padding: 12px 18px;
-    font-size: 15px;
-  }
+  .container { min-width: 650px; gap: 12px; }
+  .main-content { gap: 12px; min-height: 320px; }
+  .image-section { min-width: 200px; }
+  .info-section { min-width: 400px; }
+  .image-container, .info-container { min-height: 220px; }
+  .tab-section { min-height: 55px; max-height: 85px; }
+  :deep(.content-card) { padding: 12px 22px; }
+  :deep(.content-card h3) { font-size: 20px; }
+  :deep(.content-card h3::before) { width: 22px; height: 22px; font-size: 18px; }
+  :deep(.content-card p) { font-size: 14px; }
+  .tab-button { min-width: 80px; }
+  .info-tab-button { padding: 12px 18px; font-size: 15px; }
 }
 
 @media (max-width: 700px) {
-  .main-content {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .image-section,
-  .info-section {
-    flex: none;
-    min-width: 100%;
-  }
-  
-  .image-container {
-    max-height: 350px;
-    min-height: 250px;
-  }
-  
-  .info-section {
-    min-height: 400px;
-  }
-  
-  .tab-section {
-    min-height: 50px;
-    max-height: 80px;
-  }
-  
-  .tab-button {
-    min-width: 70px;
-    font-size: clamp(13px, 2vh, 20px);
-  }
-  
-  /* 세로 모드 카드 최적화 */
-  :deep(.content-card) {
-    padding: 16px 20px;
-  }
-  
-  :deep(.content-card h3) {
-    font-size: 19px;
-    margin: 0 0 12px 6px;
-  }
-  
-  :deep(.content-card h3::before) {
-    width: 20px;
-    height: 20px;
-    font-size: 16px;
-    padding: 1px 6px 2px 6px;
-  }
-  
-  :deep(.content-card p) {
-    font-size: 13px;
-    line-height: 1;
-    margin: 0 0 10px 8px;
-  }
+  .main-content { flex-direction: column; gap: 15px; }
+  .image-section, .info-section { flex: none; min-width: 100%; }
+  .image-container { max-height: 350px; min-height: 250px; }
+  .info-section { min-height: 400px; }
+  .tab-section { min-height: 50px; max-height: 80px; }
+  .tab-button { min-width: 70px; }
+  :deep(.content-card) { padding: 16px 20px; }
+  :deep(.content-card h3) { font-size: 19px; }
+  :deep(.content-card h3::before) { width: 20px; height: 20px; font-size: 16px; }
+  :deep(.content-card p) { font-size: 13px; }
 }
 </style>
