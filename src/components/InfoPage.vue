@@ -550,13 +550,17 @@ export default {
   background: linear-gradient(90deg, rgba(22, 21, 0, 0.8), rgba(41, 38, 21, 0.3));
   border: 1px solid #000;
   flex: 1;
-  overflow-y: auto;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .bgm-list {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
 }
 
 .bgm-item {
