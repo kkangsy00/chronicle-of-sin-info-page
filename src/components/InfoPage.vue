@@ -100,9 +100,12 @@
                 <div class="mini-title">{{ getBgmLabel(currentBgmData) }}</div>
                 <iframe
                   :src="currentBgmEmbed"
+                  :key="currentBgmEmbed"
                   width="140"
                   height="56"
                   frameborder="0"
+                  allow="autoplay; encrypted-media"
+                  allowfullscreen
                 ></iframe>
               </div>
             </div>
