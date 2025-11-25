@@ -87,6 +87,7 @@
                     class="bgm-play-btn"
                     @click="togglePlayBgm(idx)"
                   >
+                    <span class="btn-icon" :class="isBgmPlaying && currentSelectedBgmIndex === idx ? 'stop-icon' : 'play-icon'"></span>
                     {{ (isBgmPlaying && currentSelectedBgmIndex === idx) ? '정지' : '듣기' }}
                   </button>
                   <div class="bgm-left">
@@ -579,10 +580,31 @@ export default {
   border: 1px solid #000;
   padding: 10px 15px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .bgm-play-btn.playing {
   background: #ce3a24;
+}
+
+.btn-icon {
+  display: inline-block;
+}
+
+.play-icon {
+  width: 0;
+  height: 0;
+  border-left: 8px solid currentColor;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+.stop-icon {
+  width: 8px;
+  height: 8px;
+  background: currentColor;
 }
 
 .mini-player {
