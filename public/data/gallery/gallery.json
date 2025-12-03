@@ -3,6 +3,11 @@
     "1": "서빛청 강력 1팀",
     "2": "적성화파 동구 2팀"
   },
+  "headers": {
+    "default": { "image": "header_0.png", "transition": "fade" },
+    "1": { "image": "header_1.png", "transition": "slide-left" },
+    "2": { "image": "header_2.jpg", "transition": "slide-right" }
+  },
   "images": [
     {
       "filename": "20250907_1.jpg",

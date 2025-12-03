@@ -3,11 +3,11 @@
     <!-- 홈 버튼 -->
     <HomeButton @navigate="(page) => $emit('navigate', page)" />
       <div class="header-section">
-        <transition :name="headerTransition" mode="out-in">
+        <transition :name="headerInfo.transition" mode="out-in">
           <div 
             :key="selectedTag" 
             class="header-image" 
-            :style="{ backgroundImage: `url(${headerImage})` }"
+            :style="{ backgroundImage: `url(${headerInfo.image})` }"
           ></div>
         </transition>
       </div>
@@ -78,11 +78,13 @@ const loadGalleryItems = async () => {
   }))
 }
 
-// 헤더 정보 계산 (이미지 + 전환효과)
+// 헤더 정보 계산 (JSON 데이터 기반)
 const headerInfo = computed(() => {
-  if (!galleryData.value) {
+  const headerBase = `${baseUrl}data/gallery/header/`
+  
+  if (!galleryData.value?.headers) {
     return {
-      image: `${baseUrl}data/gallery/header/header_0.png`,
+      image: `${headerBase}header_0.png`,
       transition: 'fade'
     }
   }
@@ -92,28 +94,14 @@ const headerInfo = computed(() => {
     id => galleryData.value.tagMap[id] === selectedTag.value
   )
   
-  if (tagId) {
-    // header_2는 jpg 확장자
-    const extension = tagId === '2' ? 'jpg' : 'png'
-    const transition = tagId === '1' ? 'slide-left' : 
-                      tagId === '2' ? 'slide-right' : 'fade'
-    
-    return {
-      image: `${baseUrl}data/gallery/header/header_${tagId}.${extension}`,
-      transition
-    }
-  }
+  // 해당 태그의 헤더 정보가 있으면 사용, 없으면 기본값
+  const headerData = galleryData.value.headers[tagId] || galleryData.value.headers.default
   
-  // 기본 헤더 (전체 또는 매칭되지 않는 태그)
   return {
-    image: `${baseUrl}data/gallery/header/header_0.png`,
-    transition: 'fade'
+    image: `${headerBase}${headerData.image}`,
+    transition: headerData.transition
   }
 })
-
-// 개별 속성들 (기존 코드 호환성을 위해)
-const headerImage = computed(() => headerInfo.value.image)
-const headerTransition = computed(() => headerInfo.value.transition)
 
 // 사용 가능한 모든 태그 추출
 const availableTags = computed(() => {
