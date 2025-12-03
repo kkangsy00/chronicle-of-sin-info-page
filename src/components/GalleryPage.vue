@@ -229,9 +229,7 @@ onMounted(loadGalleryItems)
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 8px 16px;
   border-radius: 20px;
-  cursor: pointer;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
   font-size: 14px;
 }
 
@@ -305,7 +303,6 @@ onMounted(loadGalleryItems)
   max-width: 90vw;
   max-height: 90vh;
   background: rgba(0, 0, 0, 0.8);
-  border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }

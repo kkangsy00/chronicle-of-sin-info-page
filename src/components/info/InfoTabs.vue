@@ -33,7 +33,7 @@ defineEmits(['update:activeTab'])
 <style scoped>
 .info-tabs {
   display: flex;
-  width: 60%;
+  width: 70%;
   background: #666045;
   border-top: 1px solid #000000;
   border-left: 1px solid #000000;

@@ -108,7 +108,7 @@ const scrollTabs = (direction) => {
 .tab-button {
   background: transparent;
   border: 1px solid #000000;
-  font-size: clamp(14px, 2vh, 24px);
+  font-size: clamp(16px, 2vh, 26px);
   position: relative;
   min-width: 100px;
   flex: 1;
@@ -123,7 +123,7 @@ const scrollTabs = (direction) => {
 }
 
 .pct-txt {
-  font-size: 0.7em;
+  font-size: 1em;
   opacity: 0.7;
 }
 
