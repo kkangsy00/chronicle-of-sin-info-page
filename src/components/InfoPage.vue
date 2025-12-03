@@ -51,7 +51,7 @@
 
             <!-- 정보 탭 콘텐츠 -->
             <div 
-              v-if="activeInfoTab === 'info'"
+              v-show="activeInfoTab === 'info'"
               class="info-content fade-transition" 
               ref="infoContent"
               v-html="currentTab.content"
@@ -59,7 +59,7 @@
 
             <!-- 이미지 탭 콘텐츠 -->
             <div 
-              v-if="activeInfoTab === 'images'"
+              v-show="activeInfoTab === 'images'"
               class="images-content fade-transition"
             >
               <div class="image-buttons">
@@ -75,7 +75,7 @@
               </div>
             </div>
             <!-- BGM 탭 콘텐츠 -->
-            <div v-if="activeInfoTab === 'bgm'" class="bgm-content">
+            <div v-show="activeInfoTab === 'bgm'" class="bgm-content">
               <div class="bgm-list">
                 <div
                   v-for="(bgm, idx) in currentTab.bgm || []"
