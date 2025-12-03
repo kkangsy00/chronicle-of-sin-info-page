@@ -4,7 +4,13 @@
   "images": [
     { "id": 1, "name": "실루엣", "src": "pys_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
-  "bgm": [],
+  "bgm": [
+    {
+      "title": "TIMELESS",
+      "url": "https://www.youtube.com/embed/MDvl5nf-oTQ?si=Mv_K_4GV6GQBYXu7",
+      "txt": "점점 멀어져 멀리 흩어져 보인다 해도"
+    }
+  ],
   "sections": [
     {
       "header": "경감",

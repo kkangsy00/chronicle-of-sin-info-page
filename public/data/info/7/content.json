@@ -4,7 +4,13 @@
   "images": [
     { "id": 1, "name": "실루엣", "src": "cjy_silhouette.png"}
   ],
-  "bgm": [],
+  "bgm": [
+    {
+      "title": "Sound Off the Sirens",
+      "url": "https://www.youtube.com/embed/gOMsN0FNg2Y?si=wboQ_WgqvGlqLdg-",
+      "txt": "It's do or die"
+    }
+  ],
   "sections": [
     {
       "header": "전무",
