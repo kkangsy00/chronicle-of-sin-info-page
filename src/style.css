@@ -1,5 +1,29 @@
 /* 전체 초기화 */
 
+/* CSS 변수 정의 */
+:root {
+  /* 색상 */
+  --color-text-secondary: #84836e;
+  --color-text-muted: #bdb7a0;
+  
+  /* 스크롤바 */
+  --scrollbar-width: 15px;
+  --scrollbar-track: #000;
+  --scrollbar-thumb: #545042;
+  
+  /* 간격 */
+  --spacing-xs: 10px;
+  --spacing-sm: 15px;
+  --spacing-md: 20px;
+  --spacing-lg: 30px;
+  
+  /* 트랜지션 */
+  --transition-normal: 0.3s ease;
+  
+  /* 브레이크포인트 (참조용, 미디어 쿼리에서는 직접 값 사용) */
+  /* mobile: 480px, tablet: 768px, desktop: 1024px */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -57,29 +81,6 @@ body::after {
   opacity: 0;
 }
 
-/* 공통 홈 버튼 스타일 */
-.home-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background: #ce3a24;
-  color: black;
-  border: 1px solid black;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  z-index: 1000;
-  font-size: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  line-height: 1;
-}
-
-.home-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
+/* 홈 버튼 스타일은 HomeButton.vue 컴포넌트에서 관리 */
 
 

@@ -25,11 +25,8 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HomePage',
-  emits: ['navigate']
-}
+<script setup>
+defineEmits(['navigate'])
 </script>
 
 <style scoped>
@@ -117,7 +114,8 @@ p {
   font-size: 0.8vw;
 }
 
-@media (max-width: 650px) {
+/* 반응형 - 통일된 브레이크포인트 */
+@media (max-width: 768px) {
   .nav-buttons {
     flex-direction: column;
     align-items: center;
@@ -127,13 +125,13 @@ p {
   .nav-btn {
     width: 180px;
     height: 180px;
-    padding: 15px;
+    padding: var(--spacing-sm);
   }
   
   .btn-image {
     width: 100px;
     height: 100px;
-    margin-bottom: 10px;
+    margin-bottom: var(--spacing-xs);
   }
   
   .btn-text {
@@ -145,7 +143,7 @@ p {
   .nav-btn {
     width: 160px;
     height: 160px;
-    padding: 10px;
+    padding: var(--spacing-xs);
   }
   
   .btn-image {

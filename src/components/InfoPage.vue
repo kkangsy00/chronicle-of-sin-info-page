@@ -1,9 +1,7 @@
 <template>
   <div class="info-page">
     <!-- 홈 버튼 -->
-    <button class="home-btn" @click="$emit('go-home')" title="돌아가기">
-      ×
-    </button>
+    <HomeButton @navigate="(page) => $emit('navigate', page)" />
     
     <div class="container">
       <!-- 메인 콘텐츠 영역 -->
@@ -133,130 +131,119 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, computed, onMounted, nextTick } from 'vue'
+import HomeButton from './HomeButton.vue'
 
-export default {
-  name: 'InfoPage',
-  emits: ['go-home'],
-  setup() {
-    const activeTabId = ref(1)
-    const activeInfoTab = ref('info')
-    const selectedImagePerTab = ref({})
-    const selectedBgmPerTab = ref({})
-    const infoContent = ref(null)
-    const showImgTxt = ref(false)
-    const tabContainer = ref(null)
-    const tabs = ref([])
-    const isBgmPlaying = ref(false)
+defineEmits(['navigate'])
 
-    // 콘텐츠를 HTML로 변환
-    const generateContentHTML = (sections) => 
-      sections.map((section, i) => 
-        `<div class='content-card ${i % 2 === 0 ? 'color-a' : 'color-b'}'>
-          <h3 data-index="${String(i + 1).padStart(2, '0')}">${section.header}</h3>
-          ${section.content.map(p => `<p>${p}</p>`).join('')}
-        </div>`
-      ).join('')
+const activeTabId = ref(1)
+const activeInfoTab = ref('info')
+const selectedImagePerTab = ref({})
+const selectedBgmPerTab = ref({})
+const infoContent = ref(null)
+const showImgTxt = ref(false)
+const tabContainer = ref(null)
+const tabs = ref([])
+const isBgmPlaying = ref(false)
 
-    // 탭 데이터 초기화
-    const initializeTabs = async () => {
-      const baseUrl = import.meta.env.BASE_URL
+// 콘텐츠를 HTML로 변환
+const generateContentHTML = (sections) => 
+  sections.map((section, i) => 
+    `<div class='content-card ${i % 2 === 0 ? 'color-a' : 'color-b'}'>
+      <h3 data-index="${String(i + 1).padStart(2, '0')}">${section.header}</h3>
+      ${section.content.map(p => `<p>${p}</p>`).join('')}
+    </div>`
+  ).join('')
+
+// 탭 데이터 초기화
+const initializeTabs = async () => {
+  const baseUrl = import.meta.env.BASE_URL
+  
+  tabs.value = await Promise.all(
+    [1,2,3,4,5,6,7,8,9,10,11,12].map(async (tabId) => {
+      const response = await fetch(`${baseUrl}data/info/${tabId}/content.json`)
+      const data = await response.json()
       
-      tabs.value = await Promise.all(
-        [1,2,3,4,5,6,7,8,9,10,11,12].map(async (tabId) => {
-          const response = await fetch(`${baseUrl}data/info/${tabId}/content.json`)
-          const data = await response.json()
-          
-          return {
-            id: tabId,
-            name: data.name,
-            overlayImage: data.overlayImage ? `${baseUrl}data/info/${tabId}/${data.overlayImage}` : null,
-            content: generateContentHTML(data.sections),
-            bgm: data.bgm || [],
-            images: (data.images || []).map(img => ({
-              ...img,
-              src: `${baseUrl}data/info/${tabId}/${img.src}`
-            }))
-          }
-        })
-      )
-    }
-
-    // 현재 활성 탭
-    const currentTab = computed(() => 
-      tabs.value.find(tab => tab.id === activeTabId.value) || tabs.value[0] || {}
-    )
-
-    // 현재 선택된 이미지 ID
-    const currentSelectedImageId = computed(() => 
-      selectedImagePerTab.value[activeTabId.value] || 1
-    )
-
-    const currentSelectedBgmIndex = computed(() =>
-      typeof selectedBgmPerTab.value[activeTabId.value] === 'number'
-        ? selectedBgmPerTab.value[activeTabId.value]
-        : null
-    )
-
-    // 현재 선택된 이미지 정보
-    const currentImageData = computed(() => 
-      currentTab.value.images?.find(img => img.id === currentSelectedImageId.value) || {}
-    )
-    const currentImage = computed(() => currentImageData.value.src || '')
-    const currentImgTxt = computed(() => currentImageData.value.txt)
-
-    const currentBgmData = computed(() =>
-      (currentTab.value.bgm || [])[currentSelectedBgmIndex.value]
-    )
-
-    const getBgmLabel = (bgm) => 
-      typeof bgm === 'string' ? bgm : (bgm?.title || bgm?.url || '')
-
-    const currentBgmEmbed = computed(() => {
-      const data = currentBgmData.value
-      if (!data) return ''
-      const url = typeof data === 'string' ? data : data.url
-      return url ? `${url}${url.includes('?') ? '&' : '?'}rel=0&autoplay=1&controls=1` : ''
-    })
-
-    const switchTab = (tabId) => {
-      activeTabId.value = tabId
-      nextTick(() => infoContent.value?.scrollTo(0, 0))
-    }
-
-    const selectImage = (imageId) => {
-      selectedImagePerTab.value[activeTabId.value] = imageId
-    }
-
-    const togglePlayBgm = (index) => {
-      if (currentSelectedBgmIndex.value === index && isBgmPlaying.value) {
-        isBgmPlaying.value = false
-        selectedBgmPerTab.value[activeTabId.value] = null
-      } else {
-        selectedBgmPerTab.value[activeTabId.value] = index
-        isBgmPlaying.value = true
+      return {
+        id: tabId,
+        name: data.name,
+        overlayImage: data.overlayImage ? `${baseUrl}data/info/${tabId}/${data.overlayImage}` : null,
+        content: generateContentHTML(data.sections),
+        bgm: data.bgm || [],
+        images: (data.images || []).map(img => ({
+          ...img,
+          src: `${baseUrl}data/info/${tabId}/${img.src}`
+        }))
       }
-    }
+    })
+  )
+}
 
-    const scrollTabs = (direction) => {
-      tabContainer.value?.scrollBy({ 
-        left: direction === 'left' ? -100 : 100, 
-        behavior: 'smooth' 
-      })
-    }
+// 현재 활성 탭
+const currentTab = computed(() => 
+  tabs.value.find(tab => tab.id === activeTabId.value) || tabs.value[0] || {}
+)
 
-    onMounted(initializeTabs)
+// 현재 선택된 이미지 ID
+const currentSelectedImageId = computed(() => 
+  selectedImagePerTab.value[activeTabId.value] || 1
+)
 
-    return {
-      activeTabId, activeInfoTab, tabs, currentTab,
-      currentImage, currentImgTxt, currentSelectedImageId, currentSelectedBgmIndex,
-      currentBgmEmbed, isBgmPlaying, getBgmLabel, currentBgmData,
-      infoContent, tabContainer, showImgTxt,
-      switchTab, selectImage, togglePlayBgm, scrollTabs
-    }
+const currentSelectedBgmIndex = computed(() =>
+  typeof selectedBgmPerTab.value[activeTabId.value] === 'number'
+    ? selectedBgmPerTab.value[activeTabId.value]
+    : null
+)
+
+// 현재 선택된 이미지 정보
+const currentImageData = computed(() => 
+  currentTab.value.images?.find(img => img.id === currentSelectedImageId.value) || {}
+)
+const currentImage = computed(() => currentImageData.value.src || '')
+const currentImgTxt = computed(() => currentImageData.value.txt)
+
+const currentBgmData = computed(() =>
+  (currentTab.value.bgm || [])[currentSelectedBgmIndex.value]
+)
+
+const getBgmLabel = (bgm) => 
+  typeof bgm === 'string' ? bgm : (bgm?.title || bgm?.url || '')
+
+const currentBgmEmbed = computed(() => {
+  const data = currentBgmData.value
+  if (!data) return ''
+  const url = typeof data === 'string' ? data : data.url
+  return url ? `${url}${url.includes('?') ? '&' : '?'}rel=0&autoplay=1&controls=1` : ''
+})
+
+const switchTab = (tabId) => {
+  activeTabId.value = tabId
+  nextTick(() => infoContent.value?.scrollTo(0, 0))
+}
+
+const selectImage = (imageId) => {
+  selectedImagePerTab.value[activeTabId.value] = imageId
+}
+
+const togglePlayBgm = (index) => {
+  if (currentSelectedBgmIndex.value === index && isBgmPlaying.value) {
+    isBgmPlaying.value = false
+    selectedBgmPerTab.value[activeTabId.value] = null
+  } else {
+    selectedBgmPerTab.value[activeTabId.value] = index
+    isBgmPlaying.value = true
   }
 }
+
+const scrollTabs = (direction) => {
+  tabContainer.value?.scrollBy({ 
+    left: direction === 'left' ? -100 : 100, 
+    behavior: 'smooth' 
+  })
+}
+
+onMounted(initializeTabs)
 </script>
 
 <style scoped>
@@ -373,16 +360,24 @@ export default {
   overflow-y: auto;
 }
 
-/* 공통 스크롤바 */
-.info-content::-webkit-scrollbar, .images-content::-webkit-scrollbar, .bgm-list::-webkit-scrollbar {
-  width: 15px;
+/* 스크롤바 - CSS 변수 사용 */
+.info-content::-webkit-scrollbar,
+.images-content::-webkit-scrollbar,
+.bgm-list::-webkit-scrollbar {
+  width: var(--scrollbar-width);
 }
-.info-content::-webkit-scrollbar-track, .images-content::-webkit-scrollbar-track, .bgm-list::-webkit-scrollbar-track {
-  background: #000;
+
+.info-content::-webkit-scrollbar-track,
+.images-content::-webkit-scrollbar-track,
+.bgm-list::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
 }
-.info-content::-webkit-scrollbar-thumb, .images-content::-webkit-scrollbar-thumb, .bgm-list::-webkit-scrollbar-thumb {
-  background: #545042;
-  border: 2px solid #000;
+
+.info-content::-webkit-scrollbar-thumb,
+.images-content::-webkit-scrollbar-thumb,
+.bgm-list::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border: 2px solid var(--scrollbar-track);
 }
 
 /* info-content 내부 기본 스타일은 :deep()에서 처리 */
@@ -709,19 +704,19 @@ export default {
   line-height: 1;
 }
 
-/* 반응형 */
+/* 반응형 - 통일된 브레이크포인트 사용 */
 @media (max-width: 1024px) {
-  .container { min-width: 768px; gap: 15px; }
-  .main-content { gap: 15px; min-height: 350px; }
+  .container { min-width: 768px; gap: var(--spacing-sm); }
+  .main-content { gap: var(--spacing-sm); min-height: 350px; }
   .image-section { min-width: 240px; }
   .info-section { min-width: 480px; }
   .image-container, .info-container { min-height: 280px; }
-  :deep(.content-card) { padding: 15px 25px; }
+  :deep(.content-card) { padding: var(--spacing-sm) 25px; }
   :deep(.content-card h3) { font-size: 22px; }
   :deep(.content-card p) { font-size: 15px; }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   .container { min-width: 650px; gap: 12px; }
   .main-content { gap: 12px; min-height: 320px; }
   .image-section { min-width: 200px; }
@@ -736,8 +731,8 @@ export default {
   .info-tab-button { padding: 12px 18px; font-size: 15px; }
 }
 
-@media (max-width: 700px) {
-  .main-content { flex-direction: column; gap: 15px; }
+@media (max-width: 480px) {
+  .main-content { flex-direction: column; gap: var(--spacing-sm); }
   .image-section, .info-section { flex: none; min-width: 100%; }
   .image-container { max-height: 350px; min-height: 250px; }
   .info-section { min-height: 400px; }

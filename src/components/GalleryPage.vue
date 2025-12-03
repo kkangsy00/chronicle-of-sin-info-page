@@ -1,9 +1,7 @@
 <template>
   <div class="gallery-page">
     <!-- 홈 버튼 -->
-    <button class="home-btn" @click="$emit('go-home')" title="돌아가기">
-      ×
-    </button>
+    <HomeButton @navigate="(page) => $emit('navigate', page)" />
       <div class="header-section">
         <transition :name="headerTransition" mode="out-in">
           <div 
@@ -53,124 +51,105 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, computed, onMounted } from 'vue'
+import HomeButton from './HomeButton.vue'
 
-export default {
-  name: 'GalleryPage',
-  emits: ['go-home'],
-  setup() {
-    const galleryItems = ref([])
-    const selectedImage = ref(null)
-    const selectedTag = ref('all')
-    const baseUrl = import.meta.env.BASE_URL
-    const galleryData = ref(null)
+defineEmits(['navigate'])
 
-    // 갤러리 아이템 로드
-    const loadGalleryItems = async () => {
-      const response = await fetch(`${baseUrl}data/gallery/gallery.json`)
-      const data = await response.json()
-      
-      galleryData.value = data
-      
-      galleryItems.value = data.images.map((img, index) => ({
-        id: index + 1,
-        tags: img.tags.map(tagId => data.tagMap[tagId.toString()]),
-        thumbnail: `${baseUrl}data/gallery/images/${img.filename}`,
-        fullImage: `${baseUrl}data/gallery/images/${img.filename}`
-      }))
-    }
+const galleryItems = ref([])
+const selectedImage = ref(null)
+const selectedTag = ref('all')
+const baseUrl = import.meta.env.BASE_URL
+const galleryData = ref(null)
 
-    // 헤더 정보 계산 (이미지 + 전환효과)
-    const headerInfo = computed(() => {
-      if (!galleryData.value) {
-        return {
-          image: `${baseUrl}data/gallery/header/header_0.png`,
-          transition: 'fade'
-        }
-      }
-      
-      // tagMap에서 현재 선택된 태그에 해당하는 ID 찾기
-      const tagId = Object.keys(galleryData.value.tagMap).find(
-        id => galleryData.value.tagMap[id] === selectedTag.value
-      )
-      
-      if (tagId) {
-        // header_2는 jpg 확장자
-        const extension = tagId === '2' ? 'jpg' : 'png'
-        const transition = tagId === '1' ? 'slide-left' : 
-                          tagId === '2' ? 'slide-right' : 'fade'
-        
-        return {
-          image: `${baseUrl}data/gallery/header/header_${tagId}.${extension}`,
-          transition
-        }
-      }
-      
-      // 기본 헤더 (전체 또는 매칭되지 않는 태그)
-      return {
-        image: `${baseUrl}data/gallery/header/header_0.png`,
-        transition: 'fade'
-      }
-    })
+// 갤러리 아이템 로드
+const loadGalleryItems = async () => {
+  const response = await fetch(`${baseUrl}data/gallery/gallery.json`)
+  const data = await response.json()
+  
+  galleryData.value = data
+  
+  galleryItems.value = data.images.map((img, index) => ({
+    id: index + 1,
+    tags: img.tags.map(tagId => data.tagMap[tagId.toString()]),
+    thumbnail: `${baseUrl}data/gallery/images/${img.filename}`,
+    fullImage: `${baseUrl}data/gallery/images/${img.filename}`
+  }))
+}
 
-    // 개별 속성들 (기존 코드 호환성을 위해)
-    const headerImage = computed(() => headerInfo.value.image)
-    const headerTransition = computed(() => headerInfo.value.transition)
-
-    // 사용 가능한 모든 태그 추출
-    const availableTags = computed(() => {
-      const allTags = new Set()
-      galleryItems.value.forEach(item => {
-        item.tags.forEach(tag => allTags.add(tag))
-      })
-      return Array.from(allTags).sort()
-    })
-
-    // 필터된 아이템들
-    const filteredItems = computed(() => {
-      if (selectedTag.value === 'all') {
-        return galleryItems.value
-      }
-      return galleryItems.value.filter(item => 
-        item.tags.includes(selectedTag.value)
-      )
-    })
-
-    // 태그로 필터링
-    const filterByTag = (tag) => {
-      selectedTag.value = tag
-    }
-
-    // 이미지 모달 열기
-    const openImage = (item) => {
-      selectedImage.value = item
-    }
-
-    // 이미지 모달 닫기
-    const closeImage = () => {
-      selectedImage.value = null
-    }
-
-    onMounted(() => {
-      loadGalleryItems()
-    })
-
+// 헤더 정보 계산 (이미지 + 전환효과)
+const headerInfo = computed(() => {
+  if (!galleryData.value) {
     return {
-      galleryItems,
-      galleryData,
-      selectedImage,
-      headerImage,
-      headerTransition,
-      selectedTag,
-      availableTags,
-      filteredItems,
-      filterByTag,
-      openImage,
-      closeImage
+      image: `${baseUrl}data/gallery/header/header_0.png`,
+      transition: 'fade'
     }
   }
+  
+  // tagMap에서 현재 선택된 태그에 해당하는 ID 찾기
+  const tagId = Object.keys(galleryData.value.tagMap).find(
+    id => galleryData.value.tagMap[id] === selectedTag.value
+  )
+  
+  if (tagId) {
+    // header_2는 jpg 확장자
+    const extension = tagId === '2' ? 'jpg' : 'png'
+    const transition = tagId === '1' ? 'slide-left' : 
+                      tagId === '2' ? 'slide-right' : 'fade'
+    
+    return {
+      image: `${baseUrl}data/gallery/header/header_${tagId}.${extension}`,
+      transition
+    }
+  }
+  
+  // 기본 헤더 (전체 또는 매칭되지 않는 태그)
+  return {
+    image: `${baseUrl}data/gallery/header/header_0.png`,
+    transition: 'fade'
+  }
+})
+
+// 개별 속성들 (기존 코드 호환성을 위해)
+const headerImage = computed(() => headerInfo.value.image)
+const headerTransition = computed(() => headerInfo.value.transition)
+
+// 사용 가능한 모든 태그 추출
+const availableTags = computed(() => {
+  const allTags = new Set()
+  galleryItems.value.forEach(item => {
+    item.tags.forEach(tag => allTags.add(tag))
+  })
+  return Array.from(allTags).sort()
+})
+
+// 필터된 아이템들
+const filteredItems = computed(() => {
+  if (selectedTag.value === 'all') {
+    return galleryItems.value
+  }
+  return galleryItems.value.filter(item => 
+    item.tags.includes(selectedTag.value)
+  )
+})
+
+// 태그로 필터링
+const filterByTag = (tag) => {
+  selectedTag.value = tag
 }
+
+// 이미지 모달 열기
+const openImage = (item) => {
+  selectedImage.value = item
+}
+
+// 이미지 모달 닫기
+const closeImage = () => {
+  selectedImage.value = null
+}
+
+onMounted(loadGalleryItems)
 </script>
 
 <style scoped>
@@ -374,21 +353,20 @@ export default {
   object-fit: contain;
 }
 
-
-
-@media (max-width: 650px) {
+/* 반응형 - 통일된 브레이크포인트 */
+@media (max-width: 768px) {
   .gallery-page {
-    padding: 15px 0 15px 15px;
+    padding: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-sm);
   }
   
   .gallery-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    padding: 0 10px;
+    padding: 0 var(--spacing-xs);
   }
   
   .gallery-container {
-    padding-top: 15px;
+    padding-top: var(--spacing-sm);
   }
   
   .modal-content {

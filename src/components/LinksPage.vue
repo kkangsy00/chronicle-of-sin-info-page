@@ -1,9 +1,7 @@
 <template>
   <div class="links-page">
     <!-- 홈 버튼 -->
-    <button class="home-btn" @click="$emit('go-home')" title="돌아가기">
-      ×
-    </button>
+    <HomeButton @navigate="(page) => $emit('navigate', page)" />
     <div class="container">
       <div class="links-content">
         <div v-for="category in linkData.categories" :key="category.id" class="link-section">
@@ -27,23 +25,18 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, onMounted } from 'vue'
+import HomeButton from './HomeButton.vue'
 
-export default {
-  name: 'LinksPage',
-  emits: ['go-home'],
-  setup() {
-    const linkData = ref({ categories: [] })
-    
-    onMounted(async () => {
-      const response = await fetch(`${import.meta.env.BASE_URL}data/links.json`)
-      linkData.value = await response.json()
-    })
-    
-    return { linkData }
-  }
-}
+defineEmits(['navigate'])
+
+const linkData = ref({ categories: [] })
+
+onMounted(async () => {
+  const response = await fetch(`${import.meta.env.BASE_URL}data/links.json`)
+  linkData.value = await response.json()
+})
 </script>
 
 <style scoped>
@@ -126,24 +119,24 @@ export default {
 }
 
 .link-desc {
-  color: #84836e;
+  color: var(--color-text-secondary);
   font-size: 14px;
   line-height: 1.4;
-  transition: color 0.3s ease;
+  transition: color var(--transition-normal);
 }
 
 .link-item:hover .link-desc {
-  color: #bdb7a0;
+  color: var(--color-text-muted);
 }
 
-/* 반응형 디자인 */
+/* 반응형 - 통일된 브레이크포인트 */
 @media (max-width: 768px) {
   .container {
-    padding: 30px 15px;
+    padding: var(--spacing-lg) var(--spacing-sm);
   }
   
   .link-section {
-    padding: 20px;
+    padding: var(--spacing-md);
   }
   
   .link-section h2 {
@@ -151,7 +144,7 @@ export default {
   }
   
   .link-item {
-    padding: 15px 18px;
+    padding: var(--spacing-sm) 18px;
   }
   
   .link-title {
@@ -165,15 +158,15 @@ export default {
 
 @media (max-width: 480px) {
   .links-content {
-    gap: 30px;
+    gap: var(--spacing-lg);
   }
   
   .link-section {
-    padding: 15px;
+    padding: var(--spacing-sm);
   }
   
   .link-item {
-    padding: 12px 15px;
+    padding: 12px var(--spacing-sm);
   }
   
   .link-item:hover {

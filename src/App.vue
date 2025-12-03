@@ -4,42 +4,26 @@
     <HomePage v-if="currentPage === 'home'" @navigate="navigateTo" />
     
     <!-- 정보 페이지 -->
-    <InfoPage v-if="currentPage === 'info'" @go-home="navigateTo('home')" />
+    <InfoPage v-if="currentPage === 'info'" @navigate="navigateTo" />
     
     <!-- 갤러리 페이지 -->
-    <GalleryPage v-if="currentPage === 'gallery'" @go-home="navigateTo('home')" />
+    <GalleryPage v-if="currentPage === 'gallery'" @navigate="navigateTo" />
     
     <!-- 링크 페이지 -->
-    <LinksPage v-if="currentPage === 'links'" @go-home="navigateTo('home')" />
+    <LinksPage v-if="currentPage === 'links'" @navigate="navigateTo" />
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 import HomePage from './components/HomePage.vue'
 import InfoPage from './components/InfoPage.vue'
 import GalleryPage from './components/GalleryPage.vue'
 import LinksPage from './components/LinksPage.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HomePage,
-    InfoPage,
-    GalleryPage,
-    LinksPage
-  },
-  setup() {
-    const currentPage = ref('home') // 기본값: 홈 페이지
-    
-    const navigateTo = (page) => {
-      currentPage.value = page
-    }
-    
-    return {
-      currentPage,
-      navigateTo
-    }
-  }
+const currentPage = ref('home')
+
+const navigateTo = (page) => {
+  currentPage.value = page
 }
 </script>
