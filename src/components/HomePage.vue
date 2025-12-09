@@ -151,7 +151,7 @@ p {
 
 /* 반응형 - 소형 화면 */
 @media (max-width: 768px) {
-  .nav-buttons { flex-direction: column; gap: 3vh; margin: 3vh 0; }
+  .nav-buttons { gap: 3vh; margin: 5vh 0; }
   .nav-btn { width: 22vw; height: 22vw; padding: 2vw; }
   .btn-image { margin-bottom: 1.2vh; }
   .nav-btn span { font-size: 2.5vw; }

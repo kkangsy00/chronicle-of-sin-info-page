@@ -83,9 +83,9 @@ const togglePlay = (index) => {
 <style scoped>
 .bgm-content {
   background: linear-gradient(90deg, rgba(22, 21, 0, 0.8), rgba(41, 38, 21, 0.3));
-  border: 1px solid #000;
+  border: 0.05vw solid #000;
   flex: 1;
-  padding: 20px;
+  padding: 1.2vw;
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -108,13 +108,13 @@ const togglePlay = (index) => {
 
 .bgm-list::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb);
-  border: 2px solid var(--scrollbar-track);
+  border: 0.1vw solid var(--scrollbar-track);
 }
 
 .bgm-item {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 1.2vw;
 }
 
 .bgm-left {
@@ -124,12 +124,13 @@ const togglePlay = (index) => {
 .bgm-play-btn {
   background: #666045;
   color: #d8d7c1;
-  border: 1px solid #000;
-  padding: 10px 15px;
+  border: 0.05vw solid #000;
+  padding: 0.6vw 1vw;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.4vw;
+  font-size: 0.9vw;
 }
 
 .bgm-play-btn.playing {
@@ -143,14 +144,14 @@ const togglePlay = (index) => {
 .play-icon {
   width: 0;
   height: 0;
-  border-left: 8px solid currentColor;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
+  border-left: 0.5vw solid currentColor;
+  border-top: 0.3vw solid transparent;
+  border-bottom: 0.3vw solid transparent;
 }
 
 .stop-icon {
-  width: 8px;
-  height: 8px;
+  width: 0.5vw;
+  height: 0.5vw;
   background: currentColor;
 }
 
@@ -158,26 +159,26 @@ const togglePlay = (index) => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 0.6vw;
   background: rgba(20,20,18,0.6);
-  border: 1px solid #000;
-  margin-top: 20px;
+  border: 0.05vw solid #000;
+  margin-top: 1.2vw;
 }
 
 .mini-title {
   color: #e6e3d1;
-  font-size: 14px;
+  font-size: 0.9vw;
 }
 
 /* content-card 스타일 */
 .content-card {
-  padding: 25px 30px;
+  padding: 1.5vw 1.8vw;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  border-left: 1px solid #000000;
-  border-right: 1px solid #000000;
+  border-bottom: 0.05vw solid rgba(0, 0, 0, 0.05);
+  border-left: 0.05vw solid #000000;
+  border-right: 0.05vw solid #000000;
 }
 
 .content-card.color-a {
@@ -190,8 +191,8 @@ const togglePlay = (index) => {
 
 .content-card h3 {
   color: #d8d7c1;
-  margin: 0 0 12px 10px;
-  font-size: 24px;
+  margin: 0 0 0.7vw 0.6vw;
+  font-size: 1.5vw;
   display: block;
   position: relative;
 }
@@ -199,16 +200,16 @@ const togglePlay = (index) => {
 .content-card h3::before {
   content: attr(data-index);
   display: inline-block;
-  width: 24px;
-  height: 24px;
+  width: 1.5vw;
+  height: 1.5vw;
   background: #4c4d3e;
   color: #3d3b2f;
-  font-size: 20px;
-  border-radius: 7px;
-  padding: 1px 8px 2px 8px;
-  margin-right: 8px;
+  font-size: 1.2vw;
+  border-radius: 0.4vw;
+  padding: 0.05vw 0.5vw 0.1vw 0.5vw;
+  margin-right: 0.5vw;
   text-align: center;
-  line-height: 24px;
+  line-height: 1.5vw;
   vertical-align: middle;
 }
 
@@ -219,97 +220,57 @@ const togglePlay = (index) => {
 
 .bgm-txt {
   color: #84836e;
-  font-size: 16px;
-  margin: 0 0 10px 12px;
+  font-size: 1vw;
+  margin: 0 0 0.6vw 0.7vw;
   line-height: 1;
 }
 
 /* 반응형 - 대형 화면 */
 @media (min-width: 2561px) {
-  .bgm-content { padding: 40px; }
-  .bgm-item { gap: 30px; }
-  .bgm-play-btn { padding: 18px 25px; font-size: 20px; gap: 10px; }
-  .play-icon { border-left-width: 12px; border-top-width: 7px; border-bottom-width: 7px; }
-  .stop-icon { width: 12px; height: 12px; }
-  .content-card { padding: 35px 40px; }
-  .content-card h3 { font-size: 32px; margin: 0 0 16px 14px; }
-  .content-card h3::before { width: 32px; height: 32px; font-size: 26px; line-height: 32px; padding: 2px 12px; }
-  .bgm-txt { font-size: 20px; }
-  .mini-player { padding: 18px; margin-top: 30px; }
-  .mini-title { font-size: 18px; }
+  .bgm-content { padding: 2.2vw; }
+  .bgm-item { gap: 1.8vw; }
+  .bgm-play-btn { padding: 1vw 1.5vw; font-size: 1.2vw; gap: 0.6vw; }
+  .play-icon { border-left-width: 0.7vw; border-top-width: 0.4vw; border-bottom-width: 0.4vw; }
+  .stop-icon { width: 0.7vw; height: 0.7vw; }
+  .content-card { padding: 2vw 2.3vw; }
+  .content-card h3 { font-size: 1.9vw; margin-bottom: 0.9vw; }
+  .content-card h3::before { width: 1.9vw; height: 1.9vw; font-size: 1.5vw; line-height: 1.9vw; }
+  .bgm-txt { font-size: 1.2vw; }
+  .mini-player { padding: 1vw; margin-top: 1.8vw; }
+  .mini-title { font-size: 1.1vw; }
 }
 
 @media (min-width: 1921px) {
-  .bgm-content { padding: 30px; }
-  .bgm-item { gap: 25px; }
-  .bgm-play-btn { padding: 14px 20px; font-size: 18px; gap: 8px; }
-  .play-icon { border-left-width: 10px; border-top-width: 6px; border-bottom-width: 6px; }
-  .stop-icon { width: 10px; height: 10px; }
-  .content-card { padding: 30px 35px; }
-  .content-card h3 { font-size: 28px; margin: 0 0 14px 12px; }
-  .content-card h3::before { width: 28px; height: 28px; font-size: 22px; line-height: 28px; padding: 2px 10px; }
-  .bgm-txt { font-size: 18px; }
-  .mini-player { padding: 14px; margin-top: 25px; }
-  .mini-title { font-size: 16px; }
+  .bgm-content { padding: 1.8vw; }
+  .bgm-item { gap: 1.5vw; }
+  .bgm-play-btn { padding: 0.8vw 1.2vw; font-size: 1.1vw; }
+  .content-card { padding: 1.8vw 2vw; }
+  .content-card h3 { font-size: 1.7vw; }
+  .bgm-txt { font-size: 1.1vw; }
 }
 
 /* 반응형 - 소형 화면 */
-@media (max-width: 1280px) {
-  .bgm-content { padding: 18px; }
-  .bgm-item { gap: 18px; }
-  .bgm-play-btn { padding: 9px 14px; }
-  .content-card { padding: 22px 28px; }
-  .content-card h3 { font-size: 22px; }
-  .bgm-txt { font-size: 15px; }
-}
-
-@media (max-width: 1024px) {
-  .bgm-content { padding: 16px; }
-  .bgm-item { gap: 16px; }
-  .bgm-play-btn { padding: 8px 12px; font-size: 15px; }
-  .content-card { padding: 20px 25px; }
-  .content-card h3 { font-size: 21px; }
-  .content-card h3::before { width: 22px; height: 22px; font-size: 18px; line-height: 22px; }
-  .bgm-txt { font-size: 15px; }
-  .mini-player { padding: 8px; margin-top: 16px; }
-  .mini-title { font-size: 13px; }
-}
-
 @media (max-width: 768px) {
-  .bgm-content { padding: 14px; }
-  .bgm-item { gap: 14px; }
-  .bgm-play-btn { padding: 8px 10px; font-size: 14px; gap: 5px; }
-  .play-icon { border-left-width: 7px; border-top-width: 4px; border-bottom-width: 4px; }
-  .stop-icon { width: 7px; height: 7px; }
-  .content-card { padding: 16px 20px; }
-  .content-card h3 { font-size: 20px; margin: 0 0 10px 8px; }
-  .content-card h3::before { width: 20px; height: 20px; font-size: 16px; line-height: 20px; padding: 1px 6px; }
-  .bgm-txt { font-size: 14px; margin: 0 0 8px 10px; }
-  .mini-player { padding: 8px; margin-top: 14px; }
-  .mini-title { font-size: 12px; }
-}
-
-@media (max-width: 640px) {
-  .bgm-content { padding: 12px; }
-  .bgm-item { gap: 12px; }
-  .bgm-play-btn { padding: 7px 9px; font-size: 13px; }
-  .content-card { padding: 14px 18px; }
-  .content-card h3 { font-size: 18px; }
-  .bgm-txt { font-size: 13px; }
-  .mini-player { margin-top: 12px; }
+  .bgm-content { padding: 1.5vw; }
+  .bgm-item { gap: 1.5vw; }
+  .bgm-play-btn { padding: 0.8vw 1vw; font-size: 1.4vw; }
+  .content-card { padding: 1.6vw 2vw; }
+  .content-card h3 { font-size: 2vw; }
+  .bgm-txt { font-size: 1.4vw; }
+  .mini-title { font-size: 1.2vw; }
 }
 
 @media (max-width: 480px) {
-  .bgm-content { padding: 10px; }
-  .bgm-item { gap: 10px; flex-wrap: wrap; }
-  .bgm-play-btn { padding: 6px 8px; font-size: 12px; gap: 4px; }
-  .play-icon { border-left-width: 6px; border-top-width: 4px; border-bottom-width: 4px; }
-  .stop-icon { width: 6px; height: 6px; }
-  .content-card { padding: 12px 16px; }
-  .content-card h3 { font-size: 17px; margin: 0 0 8px 6px; }
-  .content-card h3::before { width: 18px; height: 18px; font-size: 14px; line-height: 18px; padding: 1px 5px; }
-  .bgm-txt { font-size: 12px; margin: 0 0 6px 8px; }
-  .mini-player { flex-direction: column; gap: 8px; padding: 8px; margin-top: 10px; }
-  .mini-title { font-size: 11px; }
+  .bgm-content { padding: 2vw; }
+  .bgm-item { gap: 2vw; flex-wrap: wrap; }
+  .bgm-play-btn { padding: 1.2vw 1.5vw; font-size: 2vw; gap: 0.8vw; }
+  .play-icon { border-left-width: 1vw; border-top-width: 0.6vw; border-bottom-width: 0.6vw; }
+  .stop-icon { width: 1vw; height: 1vw; }
+  .content-card { padding: 2.5vw 3vw; }
+  .content-card h3 { font-size: 2.8vw; margin-bottom: 1.5vw; }
+  .content-card h3::before { width: 2.8vw; height: 2.8vw; font-size: 2.2vw; line-height: 2.8vw; }
+  .bgm-txt { font-size: 2vw; }
+  .mini-player { flex-direction: column; gap: 1.5vw; padding: 1.5vw; margin-top: 2vw; }
+  .mini-title { font-size: 1.8vw; }
 }
 </style>
