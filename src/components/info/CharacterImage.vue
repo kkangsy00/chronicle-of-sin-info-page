@@ -178,7 +178,7 @@ const showImgTxt = ref(false)
 
 @media (max-width: 480px) {
   .image-section { flex: none; min-width: 100%; }
-  .image-container { max-width: 100%; min-width: 80vw; max-height: 50vh; min-height: 35vh; }
+  .image-container { min-width: 80vw; max-height: 50vh; min-height: 35vh; }
   .main-image { min-height: 40vh; }
   .main-image-txt { padding: 6px; font-size: 11px; }
   .overlay-image { max-width: 100px; min-width: 35px; }

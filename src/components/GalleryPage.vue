@@ -336,27 +336,18 @@ onMounted(loadGalleryItems)
 
 /* 반응형 - 대형 화면 */
 @media (min-width: 2561px) {
-  .tag-btn { padding: 1vw 2vw; font-size: 2vw; border-radius: 2.4vw; border: 0.15vw solid rgba(255, 255, 255, 0.2); }
+  .tag-btn { padding: 1.2vw 1.8vw; font-size: 1.6vw; border-radius: 2.4vw; border: 0.15vw solid rgba(255, 255, 255, 0.2); }
   .close-btn { width: 3vw; height: 3vw; font-size: 3vw; }
 }
 
 @media (min-width: 1921px) {
-  .tag-btn { padding: 0.8vw 1.5vw; font-size: 1.8vw; border-radius: 2.2vw; border: 0.1vw solid rgba(255, 255, 255, 0.2); }
+  .tag-btn { padding: 1vw 1.5vw; font-size: 1.2vw; border-radius: 2.2vw; border: 0.1vw solid rgba(255, 255, 255, 0.2); }
   .close-btn { width: 2.8vw; height: 2.8vw; font-size: 2.8vw; }
 }
 
 /* 반응형 - 중형 화면 */
 @media (max-width: 1280px) {
-  .tag-btn { font-size: 1vw; }
-}
-
-@media (max-width: 1024px) {
-  .tag-btn { font-size: 1.2vw; padding: 0.7vw 1.2vw; }
-}
-
-/* 반응형 - 소형 화면 */
-@media (max-width: 768px) {
-  .close-btn { width: 8vw; height: 8vw; font-size: 6vw; top: 2vw; right: 2vw; }
+  .tag-btn { padding: 0.7vw 1.2vw; font-size: 1.2vw; }
 }
 
 @media (max-width: 640px) {
@@ -364,6 +355,8 @@ onMounted(loadGalleryItems)
 }
 
 @media (max-width: 480px) {
+  .tag-btn { padding: 1.5vw 2vw; font-size: 2.2vw; border-radius: 3vw; }
   .close-btn { width: 12vw; height: 12vw; font-size: 8vw; }
+  .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr)); }
 }
 </style>

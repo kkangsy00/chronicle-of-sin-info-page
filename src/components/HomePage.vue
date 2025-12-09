@@ -89,8 +89,8 @@ p {
 }
 
 .btn-image {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -151,7 +151,7 @@ p {
 
 /* 반응형 - 소형 화면 */
 @media (max-width: 768px) {
-  .nav-buttons { flex-direction: column; align-items: center; gap: 3vh; margin: 3vh 0; }
+  .nav-buttons { flex-direction: column; gap: 3vh; margin: 3vh 0; }
   .nav-btn { width: 22vw; height: 22vw; padding: 2vw; }
   .btn-image { margin-bottom: 1.2vh; }
   .nav-btn span { font-size: 2.5vw; }
