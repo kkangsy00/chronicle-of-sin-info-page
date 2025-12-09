@@ -43,8 +43,8 @@ defineEmits(['update:activeTab'])
 .info-tab-button {
   flex: 1;
   background: rgba(101, 94, 68, 0.6);
-  font-size: 16px;
-  padding: 15px 20px;
+  font-size: 1.2vw;
+  padding: 2vw 3vw;
   border: none;
   color: #8a8777;
   cursor: pointer;
@@ -64,32 +64,29 @@ defineEmits(['update:activeTab'])
 }
 
 /* 반응형 - 대형 화면 */
-@media (min-width: 2561px) {
-  .info-tab-button { padding: 25px 35px; font-size: 22px; }
+@media (min-width: 1921px) {
+  .info-tab-button { padding: 1.2vw 2.5vw; font-size: 1.2vw; }
 }
 
-@media (min-width: 1921px) {
-  .info-tab-button { padding: 20px 28px; font-size: 19px; }
+@media (max-width: 1921px) {
+  .info-tab-button { padding: 1vw 2vw; font-size: 1vw; }
 }
+
 
 /* 반응형 - 소형 화면 */
-@media (max-width: 1280px) {
-  .info-tab-button { padding: 14px 18px; font-size: 15px; }
-}
-
 @media (max-width: 1024px) {
-  .info-tab-button { padding: 13px 16px; font-size: 15px; }
+  .info-tab-button { padding: 1vw 2.5vw; font-size: 1.5vw; }
 }
 
 @media (max-width: 768px) {
-  .info-tab-button { padding: 12px 14px; font-size: 14px; }
+  .info-tab-button { font-size: 1.8vw; }
 }
 
 @media (max-width: 640px) {
-  .info-tab-button { padding: 10px 12px; font-size: 13px; }
+  .info-tab-button { font-size: 3.5vw; }
 }
 
 @media (max-width: 480px) {
-  .info-tab-button { padding: 10px 8px; font-size: 12px; }
-}
+  .info-tab-button { padding: 2vw 3.5vw; font-size: 3.2vw; }
+} 
 </style>

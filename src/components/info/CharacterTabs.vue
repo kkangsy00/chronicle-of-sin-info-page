@@ -45,8 +45,6 @@ const scrollTabs = (direction) => {
 <style scoped>
 .tab-section {
   height: 8vh;
-  min-height: 4vh;
-  max-height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -128,26 +126,31 @@ const scrollTabs = (direction) => {
 }
 
 /* 반응형 - 대형 화면 */
-@media (min-width: 2561px) {
-  .scroll-button { font-size: 3vw; }
-  .tab-button { min-width: 7vw; font-size: 1.4vw; }
+@media (min-width: 1921px) {
+  .tab-section { height: 10vh; }
+  .tab-button { min-width: 8vw; font-size: 1.4vw; }
   .pct-txt { font-size: 1.2em; }
 }
 
-@media (min-width: 1921px) {
-  .scroll-button { font-size: 2.7vw; }
-  .tab-button { min-width: 6.5vw; font-size: 1.3vw; }
+@media (max-width: 1921px) {
+  .tab-section { height: 9vh; }
+  .tab-button { min-width: 7vw; font-size: 1.3vw; }
 }
 
 /* 반응형 - 소형 화면 */
+@media (max-width: 1024px) {
+  .tab-section { height: 6vw; }
+  .tab-button { min-width: 12vw; font-size: 1.8vw; }
+}
+
 @media (max-width: 768px) {
-  .scroll-button { font-size: 3.5vw; }
-  .tab-button { min-width: 10vw; font-size: 1.8vw; }
+  .tab-section { height: 6vw; }
+  .tab-button { min-width: 12vw; font-size: 2vw; }
 }
 
 @media (max-width: 480px) {
-  .scroll-button { font-size: 4vw; width: 12%; }
-  .tab-button { min-width: 12vw; font-size: 2vw; }
+  .tab-section { height: 6vh; }
+  .tab-button { min-width: 14vw; font-size: 3vw; }
   .pct-txt { font-size: 0.85em; }
 }
 </style>

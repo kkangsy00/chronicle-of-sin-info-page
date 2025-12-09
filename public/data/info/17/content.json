@@ -1,7 +1,9 @@
 {
   "name": "전여월",
   "overlayImage": "",
-  "images": [],
+  "images": [
+    { "id": 1, "name": "인장", "src": "jyy.png",  "txt": "Picrew 중노년 픽크루"}
+  ],
   "bgm": [
     {
       "title": "우리 앞의 생이 끝나갈 때",
@@ -13,8 +15,8 @@
     {
       "header": "경위",
       "content": [
-        "aaaaaaaaaaaaaaaaa",
-        "aaaaaaaaaaaaaaaaa"
+        "서빛지방경찰청 경위.",
+        "불법 폭력 조직의 감시를 위해 비밀리 발탁된 형사다."
       ]
     },
     {

@@ -55,7 +55,7 @@ const showImgTxt = ref(false)
   flex: 1;
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 40vw;
   height: 100%;
   position: relative;
   z-index: 1;
@@ -86,7 +86,6 @@ const showImgTxt = ref(false)
 
 /* 정사각형 이미지 (인장) */
 .main-image.square {
-  width: 100%;
   height: auto;
   min-height: 40vh; 
   max-height: 50vh;
@@ -124,7 +123,7 @@ const showImgTxt = ref(false)
 }
 
 /* 반응형 - 대형 화면 */
-@media (min-width: 2561px) {
+@media (min-width: 1921px) {
   .image-section { min-width: 18vw; }
   .image-container { max-width: 40vw; min-width: 16vw; min-height: 50vh;}
   .main-image { min-height: 75vh; }
@@ -132,7 +131,7 @@ const showImgTxt = ref(false)
   .overlay-image { max-width: 300px; }
 }
 
-@media (min-width: 1921px) {
+@media (max-width: 1921px) {
   .image-section { min-width: 19vw; }
   .image-container { max-width: 38vw; min-width: 15vw; min-height: 45vh;  }
   .main-image { min-height: 72vh; }
@@ -172,9 +171,10 @@ const showImgTxt = ref(false)
 }
 
 @media (max-width: 480px) {
-  .image-section { flex: none; min-width: 100%; }
+  .image-section { flex: none; min-width: 100%; max-height: 50vh;}
   .image-container { min-width: 80vw; max-height: 50vh; min-height: 35vh; }
   .main-image { min-height: 40vh; }
+  .main-image.square { max-height: 15vh; }
   .main-image-txt { padding: 6px; font-size: 11px; }
   .overlay-image { max-width: 100px; min-width: 35px; }
 }

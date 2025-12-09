@@ -175,7 +175,7 @@ onMounted(initializeTabs)
 }
 
 /* 반응형 - 대형 화면 */
-@media (min-width: 2561px) {
+/* @media (min-width: 2561px) {
   .container { max-width: 92vw; gap: 2vw; }
   .main-content { gap: 2vw; min-height: 55vh; }
   .info-section { min-width: 28vw; padding: 0.8vw; }
@@ -187,7 +187,7 @@ onMounted(initializeTabs)
   .main-content { gap: 1.8vw; min-height: 52vh; }
   .info-section { min-width: 26vw; padding: 0.7vw; }
   .info-container { min-height: 38vh; }
-}
+} */
 
 /* 반응형 - 소형 화면 */
 @media (max-width: 1280px) {

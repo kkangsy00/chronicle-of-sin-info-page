@@ -267,9 +267,9 @@ const togglePlay = (index) => {
   .play-icon { border-left-width: 1vw; border-top-width: 0.6vw; border-bottom-width: 0.6vw; }
   .stop-icon { width: 1vw; height: 1vw; }
   .content-card { padding: 2.5vw 3vw; }
-  .content-card h3 { font-size: 2.8vw; margin-bottom: 1.5vw; }
-  .content-card h3::before { width: 2.8vw; height: 2.8vw; font-size: 2.2vw; line-height: 2.8vw; }
-  .bgm-txt { font-size: 2vw; }
+  .content-card h3 { font-size: 3.5vw; margin-bottom: 1.5vw; }
+  .content-card h3::before { width: 2.2vw; height: 2.8vw; font-size: 2.5vw; line-height: 2.8vw; padding: 0.7vw 1.6vw; margin-right: 1.5vw; }
+  .bgm-txt { font-size: 3vw; }
   .mini-player { flex-direction: column; gap: 1.5vw; padding: 1.5vw; margin-top: 2vw; }
   .mini-title { font-size: 1.8vw; }
 }
