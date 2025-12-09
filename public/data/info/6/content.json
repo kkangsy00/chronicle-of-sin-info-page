@@ -4,7 +4,7 @@
   "images": [
     { "id": 1, "name": "기본", "src": "sjk.png" },
     { "id": 2, "name": "부상", "src": "sjk_w.png" },
-    { "id": 3, "name": "인장", "src": "sjk_bio.png" },
+    { "id": 3, "name": "인장", "src": "sjk_bio.png", "type": "square" },
     { "id": 4, "name": "실루엣", "src": "sjk_silhouette.png", "txt": "crepe @ZNMAJJI" }
   ],
   "bgm": [

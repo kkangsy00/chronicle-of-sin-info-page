@@ -63,8 +63,33 @@ defineEmits(['update:activeTab'])
   color: #d8d7c1;
 }
 
-/* 반응형 */
+/* 반응형 - 대형 화면 */
+@media (min-width: 2561px) {
+  .info-tab-button { padding: 25px 35px; font-size: 22px; }
+}
+
+@media (min-width: 1921px) {
+  .info-tab-button { padding: 20px 28px; font-size: 19px; }
+}
+
+/* 반응형 - 소형 화면 */
+@media (max-width: 1280px) {
+  .info-tab-button { padding: 14px 18px; font-size: 15px; }
+}
+
+@media (max-width: 1024px) {
+  .info-tab-button { padding: 13px 16px; font-size: 15px; }
+}
+
 @media (max-width: 768px) {
-  .info-tab-button { padding: 12px 18px; font-size: 15px; }
+  .info-tab-button { padding: 12px 14px; font-size: 14px; }
+}
+
+@media (max-width: 640px) {
+  .info-tab-button { padding: 10px 12px; font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+  .info-tab-button { padding: 10px 8px; font-size: 12px; }
 }
 </style>

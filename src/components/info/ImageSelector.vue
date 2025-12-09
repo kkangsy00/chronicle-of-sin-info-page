@@ -108,4 +108,49 @@ defineEmits(['select'])
 .image-button.active::before {
   background: rgba(253, 253, 252, 0.3);
 }
+
+
+/* 반응형 - 대형 화면 */
+@media (min-width: 2561px) {
+  .images-content { padding: 40px; }
+  .image-buttons { gap: 25px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+  .image-button { width: 250px; height: 250px; font-size: 20px; padding: 25px 18px; }
+}
+
+@media (min-width: 1921px) {
+  .images-content { padding: 30px; }
+  .image-buttons { gap: 20px; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .image-button { width: 200px; height: 200px; font-size: 18px; padding: 20px 15px; }
+}
+
+/* 반응형 - 소형 화면 */
+@media (max-width: 1280px) {
+  .images-content { padding: 18px; }
+  .image-buttons { gap: 14px; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .image-button { width: 140px; height: 140px; font-size: 15px; padding: 14px 10px; }
+}
+
+@media (max-width: 1024px) {
+  .images-content { padding: 16px; }
+  .image-buttons { gap: 12px; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+  .image-button { width: 130px; height: 130px; font-size: 15px; padding: 12px 8px; }
+}
+
+@media (max-width: 768px) {
+  .images-content { padding: 14px; }
+  .image-buttons { gap: 10px; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+  .image-button { width: 120px; height: 120px; font-size: 14px; padding: 10px 8px; }
+}
+
+@media (max-width: 640px) {
+  .images-content { padding: 12px; }
+  .image-buttons { gap: 10px; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+  .image-button { width: 110px; height: 110px; font-size: 13px; padding: 10px 6px; }
+}
+
+@media (max-width: 480px) {
+  .images-content { padding: 10px; }
+  .image-buttons { gap: 8px; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+  .image-button { width: 100px; height: 100px; font-size: 12px; padding: 8px 6px; }
+}
 </style>

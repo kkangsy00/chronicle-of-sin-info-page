@@ -120,24 +120,58 @@ defineExpose({
   line-height: 1;
 }
 
-/* 반응형 */
+/* 반응형 - 대형 화면 */
+@media (min-width: 1921px) {
+  :deep(.content-card) { padding: 30px 38px; }
+  :deep(.content-card h3) { font-size: 28px; margin: 0 0 14px 12px; }
+  :deep(.content-card h3::before) { width: 28px; height: 28px; font-size: 22px; line-height: 28px; padding: 2px 10px; }
+  :deep(.content-card h3::after) { margin: 6px 0 14px 0; }
+  :deep(.content-card p) { font-size: 18px; margin: 0 0 12px 14px; }
+}
+
+@media (min-width: 2561px) {
+  :deep(.content-card) { padding: 38px 48px; }
+  :deep(.content-card h3) { font-size: 32px; margin: 0 0 16px 14px; }
+  :deep(.content-card h3::before) { width: 32px; height: 32px; font-size: 26px; line-height: 32px; padding: 2px 12px; }
+  :deep(.content-card h3::after) { margin: 8px 0 16px 0; }
+  :deep(.content-card p) { font-size: 20px; margin: 0 0 14px 16px; }
+}
+
+/* 반응형 - 소형 화면 */
+@media (max-width: 1280px) {
+  :deep(.content-card) { padding: 22px 28px; }
+  :deep(.content-card h3) { font-size: 23px; }
+  :deep(.content-card h3::before) { width: 23px; height: 23px; font-size: 19px; line-height: 23px; }
+  :deep(.content-card p) { font-size: 15px; }
+}
+
 @media (max-width: 1024px) {
   :deep(.content-card) { padding: var(--spacing-sm) 25px; }
   :deep(.content-card h3) { font-size: 22px; }
+  :deep(.content-card h3::before) { width: 22px; height: 22px; font-size: 18px; line-height: 22px; }
   :deep(.content-card p) { font-size: 15px; }
 }
 
 @media (max-width: 768px) {
   :deep(.content-card) { padding: 12px 22px; }
-  :deep(.content-card h3) { font-size: 20px; }
-  :deep(.content-card h3::before) { width: 22px; height: 22px; font-size: 18px; }
-  :deep(.content-card p) { font-size: 14px; }
+  :deep(.content-card h3) { font-size: 20px; margin: 0 0 10px 8px; }
+  :deep(.content-card h3::before) { width: 20px; height: 20px; font-size: 16px; line-height: 20px; padding: 1px 6px; }
+  :deep(.content-card h3::after) { margin: 4px 0 10px 0; }
+  :deep(.content-card p) { font-size: 14px; margin: 0 0 8px 10px; }
+}
+
+@media (max-width: 640px) {
+  :deep(.content-card) { padding: 10px 18px; }
+  :deep(.content-card h3) { font-size: 18px; margin: 0 0 8px 6px; }
+  :deep(.content-card h3::before) { width: 18px; height: 18px; font-size: 14px; line-height: 18px; padding: 1px 5px; }
+  :deep(.content-card p) { font-size: 13px; margin: 0 0 7px 8px; }
 }
 
 @media (max-width: 480px) {
-  :deep(.content-card) { padding: 16px 20px; }
-  :deep(.content-card h3) { font-size: 19px; }
-  :deep(.content-card h3::before) { width: 20px; height: 20px; font-size: 16px; }
-  :deep(.content-card p) { font-size: 13px; }
+  :deep(.content-card) { padding: 10px 16px; }
+  :deep(.content-card h3) { font-size: 17px; margin: 0 0 8px 5px; }
+  :deep(.content-card h3::before) { width: 17px; height: 17px; font-size: 13px; line-height: 17px; padding: 1px 4px; margin-right: 6px; }
+  :deep(.content-card h3::after) { margin: 3px 0 8px 0; }
+  :deep(.content-card p) { font-size: 12px; margin: 0 0 6px 6px; }
 }
 </style>

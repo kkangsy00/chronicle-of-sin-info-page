@@ -7,7 +7,7 @@
     >
       <img 
         :src="imageSrc" 
-        class="fade-transition main-image"
+        :class="['fade-transition', 'main-image', imageType]"
         alt="캐릭터 이미지"
       >
       <transition name="fade">
@@ -40,6 +40,10 @@ defineProps({
   overlayImage: {
     type: String,
     default: null
+  },
+  imageType: {
+    type: String,
+    default: 'portrait' // 'portrait' (세로) 또는 'square' (인장)
   }
 })
 
@@ -51,8 +55,9 @@ const showImgTxt = ref(false)
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: left;
-  min-width: 300px;
+  align-items: center;
+  min-width: 20vw;
+  max-height: 90vh;
   position: relative;
   z-index: 1;
 }
@@ -60,11 +65,11 @@ const showImgTxt = ref(false)
 .image-container {
   background: transparent;
   width: 100%;
-  max-width: 500px;
-  min-width: 220px;
+  max-width: 35vw;
+  min-width: 15vw;
   height: 100%;
-  max-height: 1000px;
-  min-height: 300px;
+  max-height: 85vh;
+  min-height: 40vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,10 +77,24 @@ const showImgTxt = ref(false)
 }
 
 .main-image {
+  width: auto;
+  height: 100%;
+  min-height: 70vh;
   max-width: 150%;
   max-height: 100%;
   object-fit: contain;
   transition: transform 0.3s ease;
+}
+
+/* 세로로 긴 이미지 (기본) - .main-image 기본 스타일 사용 */
+
+/* 정사각형 이미지 (인장) */
+.main-image.square {
+  width: 100%;
+  height: auto;
+  min-height: auto;
+  max-width: 80%;
+  max-height: 20vh;
 }
 
 .main-image-txt {
@@ -110,19 +129,68 @@ const showImgTxt = ref(false)
   transition: opacity 0.2s;
 }
 
-/* 반응형 */
+/* 반응형 - 대형 화면 */
+@media (min-width: 2561px) {
+  .image-section { min-width: 18vw; max-height: 85vh; }
+  .image-container { max-width: 40vw; min-width: 16vw; min-height: 50vh; max-height: 82vh; }
+  .main-image { min-height: 75vh; }
+  .main-image.square { max-height: 40vh; }
+  .main-image-txt { padding: 18px; font-size: 18px; }
+  .overlay-image { max-width: 300px; }
+}
+
+@media (min-width: 1921px) {
+  .image-section { min-width: 19vw; max-height: 88vh; }
+  .image-container { max-width: 38vw; min-width: 15vw; min-height: 45vh; max-height: 85vh; }
+  .main-image { min-height: 72vh; }
+  .main-image.square { max-height: 40vh; }
+  .main-image-txt { padding: 14px; font-size: 16px; }
+  .overlay-image { max-width: 250px; }
+}
+
+/* 반응형 - 소형 화면 */
+@media (max-width: 1280px) {
+  .image-section { min-width: 22vw; }
+  .image-container { max-width: 32vw; min-width: 18vw; min-height: 38vh; }
+  .main-image { min-height: 65vh; }
+  .main-image.square { max-height: 30vh; }
+  .main-image-txt { padding: 9px; font-size: 13px; }
+  .overlay-image { max-width: 180px; }
+}
+
 @media (max-width: 1024px) {
-  .image-section { min-width: 240px; }
-  .image-container { min-height: 280px; }
+  .image-section { min-width: 24vw; }
+  .image-container { max-width: 30vw; min-width: 20vw; min-height: 35vh; }
+  .main-image { min-height: 60vh; }
+  .main-image.square { max-height: 20vh; }
+  .main-image-txt { padding: 8px; font-size: 13px; }
+  .overlay-image { max-width: 160px; }
 }
 
 @media (max-width: 768px) {
-  .image-section { min-width: 200px; }
-  .image-container { min-height: 220px; }
+  .image-section { min-width: 26vw; }
+  .image-container { max-width: 35vw; min-width: 22vw; min-height: 30vh; }
+  .main-image { min-height: 55vh; }
+  .main-image.square { max-height: 20vh; }
+  .main-image-txt { padding: 8px; font-size: 12px; }
+  .overlay-image { max-width: 140px; }
+}
+
+@media (max-width: 640px) {
+  .image-section { min-width: 28vw; }
+  .image-container { max-width: 40vw; min-width: 25vw; min-height: 28vh; }
+  .main-image { min-height: 50vh; }
+  .main-image.square { max-height: 40vh; }
+  .main-image-txt { padding: 6px; font-size: 11px; }
+  .overlay-image { max-width: 120px; }
 }
 
 @media (max-width: 480px) {
   .image-section { flex: none; min-width: 100%; }
-  .image-container { max-height: 350px; min-height: 250px; }
+  .image-container { max-width: 100%; min-width: 80vw; max-height: 50vh; min-height: 35vh; }
+  .main-image { min-height: 40vh; }
+  .main-image.square { max-height: 40vh; }
+  .main-image-txt { padding: 6px; font-size: 11px; }
+  .overlay-image { max-width: 100px; min-width: 35px; }
 }
 </style>
