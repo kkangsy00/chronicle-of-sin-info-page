@@ -45,13 +45,13 @@ const scrollTabs = (direction) => {
 <style scoped>
 .tab-section {
   height: 8vh;
-  min-height: 60px;
-  max-height: 100px;
+  min-height: 4vh;
+  max-height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0;
-  box-shadow: 0 3px 30px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0.2vw 1.5vw rgba(0, 0, 0, 0.8);
   background: linear-gradient(180deg, #514f40, #3b423b);
 }
 
@@ -73,10 +73,10 @@ const scrollTabs = (direction) => {
 
 .scroll-button {
   background: linear-gradient(180deg, #514f40, #3b423b);
-  border: 1px solid #000000;
+  border: 0.05vw solid #000000;
   color: #252317;
   cursor: pointer;
-  font-size: clamp(30px, 4vh, 60px);
+  font-size: 2.5vw;
   width: 10%;
   height: 100%;
   display: flex;
@@ -107,10 +107,10 @@ const scrollTabs = (direction) => {
 
 .tab-button {
   background: transparent;
-  border: 1px solid #000000;
-  font-size: clamp(16px, 2vh, 26px);
+  border: 0.05vw solid #000000;
+  font-size: 1.2vw;
   position: relative;
-  min-width: 100px;
+  min-width: 6vw;
   flex: 1;
   text-align: center;
   height: 100%;
@@ -119,7 +119,7 @@ const scrollTabs = (direction) => {
 .tab-button.active {
   background: linear-gradient(180deg, #fdfdfc, #bdb7a0);
   color: #545352;
-  transform: translateY(-1px);
+  transform: translateY(-0.05vw);
 }
 
 .pct-txt {
@@ -129,48 +129,25 @@ const scrollTabs = (direction) => {
 
 /* 반응형 - 대형 화면 */
 @media (min-width: 2561px) {
-  .tab-section { min-height: 80px; max-height: 140px; }
-  .scroll-button { font-size: clamp(40px, 6vh, 80px); }
-  .tab-button { min-width: 160px; font-size: clamp(20px, 3vh, 34px); }
+  .scroll-button { font-size: 3vw; }
+  .tab-button { min-width: 7vw; font-size: 1.4vw; }
   .pct-txt { font-size: 1.2em; }
 }
 
 @media (min-width: 1921px) {
-  .tab-section { min-height: 70px; max-height: 120px; }
-  .scroll-button { font-size: clamp(35px, 5vh, 70px); }
-  .tab-button { min-width: 130px; font-size: clamp(18px, 2.5vh, 30px); }
-  .pct-txt { font-size: 1.1em; }
+  .scroll-button { font-size: 2.7vw; }
+  .tab-button { min-width: 6.5vw; font-size: 1.3vw; }
 }
 
 /* 반응형 - 소형 화면 */
-@media (max-width: 1280px) {
-  .tab-section { min-height: 58px; max-height: 95px; }
-  .tab-button { min-width: 95px; }
-}
-
-@media (max-width: 1024px) {
-  .tab-section { min-height: 56px; max-height: 90px; }
-  .scroll-button { font-size: clamp(26px, 3.5vh, 50px); }
-  .tab-button { min-width: 90px; font-size: clamp(15px, 1.8vh, 24px); }
-}
-
 @media (max-width: 768px) {
-  .tab-section { min-height: 55px; max-height: 85px; }
-  .scroll-button { font-size: clamp(24px, 3vh, 45px); }
-  .tab-button { min-width: 80px; font-size: clamp(14px, 1.6vh, 22px); }
-}
-
-@media (max-width: 640px) {
-  .tab-section { min-height: 52px; max-height: 80px; }
-  .scroll-button { font-size: clamp(22px, 2.8vh, 40px); }
-  .tab-button { min-width: 75px; font-size: clamp(13px, 1.5vh, 20px); }
-  .pct-txt { font-size: 0.9em; }
+  .scroll-button { font-size: 3.5vw; }
+  .tab-button { min-width: 10vw; font-size: 1.8vw; }
 }
 
 @media (max-width: 480px) {
-  .tab-section { min-height: 50px; max-height: 75px; }
-  .scroll-button { font-size: clamp(20px, 2.5vh, 35px); width: 12%; }
-  .tab-button { min-width: 70px; font-size: clamp(12px, 1.4vh, 18px); }
+  .scroll-button { font-size: 4vw; width: 12%; }
+  .tab-button { min-width: 12vw; font-size: 2vw; }
   .pct-txt { font-size: 0.85em; }
 }
 </style>

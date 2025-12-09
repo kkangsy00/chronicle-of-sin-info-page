@@ -32,8 +32,8 @@ defineEmits(['select'])
 <style scoped>
 .images-content {
   background: linear-gradient(90deg, rgba(22, 21, 0, 0.8) 0%, rgba(41, 38, 21, 0.3) 100%);
-  border: 1px solid #000000;
-  padding: 20px;
+  border: 0.05vw solid #000000;
+  padding: 1.2vw;
   flex: 1;
   overflow-y: auto;
 }
@@ -48,13 +48,13 @@ defineEmits(['select'])
 
 .images-content::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb);
-  border: 2px solid var(--scrollbar-track);
+  border: 0.1vw solid var(--scrollbar-track);
 }
 
 .image-buttons {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(9vw, 1fr));
+  gap: 1vw;
 }
 
 .image-button {
@@ -62,18 +62,18 @@ defineEmits(['select'])
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
-  border: 1px solid #000000;
+  border: 0.05vw solid #000000;
   color: #ffffff;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1vw;
   font-weight: 700;
-  padding: 15px 10px;
+  padding: 1vw 0.6vw;
   transition: all 0.3s ease;
-  border-radius: 2px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  border-radius: 0.12vw;
+  text-shadow: 0.12vw 0.12vw 0.24vw rgba(0, 0, 0, 0.8);
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 9vw;
+  height: 9vw;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -87,7 +87,7 @@ defineEmits(['select'])
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
+  border-radius: 0.24vw;
   z-index: 1;
 }
 
@@ -101,56 +101,37 @@ defineEmits(['select'])
 }
 
 .image-button.active {
-  border: 2px solid #fdfdfc;
-  transform: translateY(-1px);
+  border: 0.12vw solid #fdfdfc;
+  transform: translateY(-0.05vw);
 }
 
 .image-button.active::before {
   background: rgba(253, 253, 252, 0.3);
 }
 
-
 /* 반응형 - 대형 화면 */
 @media (min-width: 2561px) {
-  .images-content { padding: 40px; }
-  .image-buttons { gap: 25px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
-  .image-button { width: 250px; height: 250px; font-size: 20px; padding: 25px 18px; }
+  .images-content { padding: 2vw; }
+  .image-buttons { gap: 1.5vw; grid-template-columns: repeat(auto-fill, minmax(12vw, 1fr)); }
+  .image-button { width: 12vw; height: 12vw; font-size: 1.2vw; padding: 1.5vw 1vw; }
 }
 
 @media (min-width: 1921px) {
-  .images-content { padding: 30px; }
-  .image-buttons { gap: 20px; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-  .image-button { width: 200px; height: 200px; font-size: 18px; padding: 20px 15px; }
+  .images-content { padding: 1.6vw; }
+  .image-buttons { gap: 1.2vw; grid-template-columns: repeat(auto-fill, minmax(10vw, 1fr)); }
+  .image-button { width: 10vw; height: 10vw; font-size: 1.1vw; padding: 1.2vw 0.8vw; }
 }
 
 /* 반응형 - 소형 화면 */
-@media (max-width: 1280px) {
-  .images-content { padding: 18px; }
-  .image-buttons { gap: 14px; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
-  .image-button { width: 140px; height: 140px; font-size: 15px; padding: 14px 10px; }
-}
-
-@media (max-width: 1024px) {
-  .images-content { padding: 16px; }
-  .image-buttons { gap: 12px; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
-  .image-button { width: 130px; height: 130px; font-size: 15px; padding: 12px 8px; }
-}
-
 @media (max-width: 768px) {
-  .images-content { padding: 14px; }
-  .image-buttons { gap: 10px; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
-  .image-button { width: 120px; height: 120px; font-size: 14px; padding: 10px 8px; }
-}
-
-@media (max-width: 640px) {
-  .images-content { padding: 12px; }
-  .image-buttons { gap: 10px; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
-  .image-button { width: 110px; height: 110px; font-size: 13px; padding: 10px 6px; }
+  .images-content { padding: 1.5vw; }
+  .image-buttons { gap: 1.2vw; grid-template-columns: repeat(auto-fill, minmax(15vw, 1fr)); }
+  .image-button { width: 15vw; height: 15vw; font-size: 1.6vw; padding: 1.2vw 1vw; }
 }
 
 @media (max-width: 480px) {
-  .images-content { padding: 10px; }
-  .image-buttons { gap: 8px; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
-  .image-button { width: 100px; height: 100px; font-size: 12px; padding: 8px 6px; }
+  .images-content { padding: 2vw; }
+  .image-buttons { gap: 1.5vw; grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr)); }
+  .image-button { width: 20vw; height: 20vw; font-size: 2vw; padding: 1.5vw 1.2vw; }
 }
 </style>

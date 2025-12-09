@@ -88,8 +88,8 @@ const showImgTxt = ref(false)
 .main-image.square {
   width: 100%;
   height: auto;
-  min-height: 18vh; 
-  max-height: 20vh;
+  min-height: 40vh; 
+  max-height: 50vh;
 }
 
 .main-image-txt {
@@ -128,7 +128,6 @@ const showImgTxt = ref(false)
   .image-section { min-width: 18vw; }
   .image-container { max-width: 40vw; min-width: 16vw; min-height: 50vh;}
   .main-image { min-height: 75vh; }
-  .main-image.square { min-height: 45vh; max-height: 60vh; }
   .main-image-txt { padding: 18px; font-size: 18px; }
   .overlay-image { max-width: 300px; }
 }
@@ -137,7 +136,6 @@ const showImgTxt = ref(false)
   .image-section { min-width: 19vw; }
   .image-container { max-width: 38vw; min-width: 15vw; min-height: 45vh;  }
   .main-image { min-height: 72vh; }
-  .main-image.square { min-height: 40vh; max-height: 50vh; }
   .main-image-txt { padding: 14px; font-size: 16px; }
   .overlay-image { max-width: 250px; }
 }
@@ -147,7 +145,6 @@ const showImgTxt = ref(false)
   .image-section { min-width: 22vw; }
   .image-container { max-width: 32vw; min-width: 18vw; min-height: 38vh; }
   .main-image { min-height: 65vh; }
-  .main-image.square { min-height: 30vh; max-height: 40vh; }
   .main-image-txt { padding: 9px; font-size: 13px; }
   .overlay-image { max-width: 180px; }
 }
@@ -156,14 +153,12 @@ const showImgTxt = ref(false)
   .image-section { min-width: 24vw; }
   .image-container { max-width: 30vw; min-width: 20vw; min-height: 35vh; }
   .main-image { min-height: 60vh; }
-  .main-image.square { min-height: 20vh; max-height: 40vh; }
   .main-image-txt { padding: 8px; font-size: 13px; }
   .overlay-image { max-width: 160px; }
 }
 
 @media (max-width: 768px) {
   .image-container { max-width: 40vw; }
-  .main-image.square { min-height: 18vh; max-height: 28vh; }
   .main-image-txt { padding: 8px; font-size: 12px; }
   .overlay-image { max-width: 140px; }
 }
