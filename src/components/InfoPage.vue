@@ -148,7 +148,7 @@ onMounted(initializeTabs)
   display: flex;
   flex: 1;
   gap: 1.5vw;
-  height: 100vh;
+  height: 95vh;
   min-height: 50vh;
 }
 

@@ -143,18 +143,15 @@ onMounted(loadGalleryItems)
 <style scoped>
 .gallery-page {
   min-height: 100vh;
-  padding: 20px 0 20px 20px;
   color: white;
 }
-
-
 
 .header-section {
   height: 23vw;
   position: relative;
   overflow: hidden;
-  margin-bottom: 20px;
-  margin-left: -20px;
+  margin-bottom: 1.5vw;
+  margin-left: -1.2vw;
 }
 
 .header-image {
@@ -206,13 +203,13 @@ onMounted(loadGalleryItems)
 }
 
 .gallery-container {
-  max-width: 1400px;
+  max-width: 90vw;
   margin: 0 auto;
-  padding-top: 20px;
+  padding-top: 1.5vw;
 }
 
 .filter-section {
-  margin-bottom: 2rem;
+  margin-bottom: 2vw;
   text-align: center;
 }
 
@@ -220,23 +217,24 @@ onMounted(loadGalleryItems)
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.5vw;
 }
 
 .tag-btn {
   background: rgba(0, 0, 0, 0.3);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 8px 16px;
-  border-radius: 20px;
+  border: 0.05vw solid rgba(255, 255, 255, 0.2);
+  padding: 0.5vw 1vw;
+  border-radius: 1.2vw;
   transition: all 0.3s ease;
-  font-size: 14px;
+  font-size: 0.9vw;
+  cursor: pointer;
 }
 
 .tag-btn:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(-1px);
+  transform: translateY(-0.1vw);
 }
 
 .tag-btn.active {
@@ -248,31 +246,31 @@ onMounted(loadGalleryItems)
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 0 20px;
+  grid-template-columns: repeat(auto-fill, minmax(18vw, 1fr));
+  gap: 2vw;
+  padding: 0 1.5vw;
 }
 
 .gallery-card {
   position: relative;
   background: rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
+  border-radius: 0.8vw;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 0.05vw solid rgba(255, 255, 255, 0.1);
 }
 
 .gallery-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transform: translateY(-0.3vw);
+  box-shadow: 0 0.8vw 2vw rgba(0, 0, 0, 0.5);
   border-color: rgba(255, 255, 255, 0.3);
 }
 
 .gallery-card img {
   width: 100%;
-  height: 300px;
+  height: 20vw;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
@@ -280,8 +278,6 @@ onMounted(loadGalleryItems)
 .gallery-card:hover img {
   transform: scale(1.05);
 }
-
-
 
 /* 이미지 모달 */
 .image-modal {
@@ -309,16 +305,16 @@ onMounted(loadGalleryItems)
 
 .close-btn {
   position: absolute;
-  top: 15px;
-  right: 20px;
+  top: 1vw;
+  right: 1.2vw;
   background: none;
   border: none;
   color: white;
-  font-size: 2rem;
+  font-size: 2.5vw;
   cursor: pointer;
   z-index: 2001;
-  width: 40px;
-  height: 40px;
+  width: 2.5vw;
+  height: 2.5vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -334,38 +330,40 @@ onMounted(loadGalleryItems)
 .modal-content img {
   width: 100%;
   height: auto;
-  max-height: 70vh;
+  max-height: 80vh;
   object-fit: contain;
 }
 
-/* 반응형 - 통일된 브레이크포인트 */
+/* 반응형 - 대형 화면 */
+@media (min-width: 2561px) {
+  .tag-btn { padding: 1vw 2vw; font-size: 2vw; border-radius: 2.4vw; border: 0.15vw solid rgba(255, 255, 255, 0.2); }
+  .close-btn { width: 3vw; height: 3vw; font-size: 3vw; }
+}
+
+@media (min-width: 1921px) {
+  .tag-btn { padding: 0.8vw 1.5vw; font-size: 1.8vw; border-radius: 2.2vw; border: 0.1vw solid rgba(255, 255, 255, 0.2); }
+  .close-btn { width: 2.8vw; height: 2.8vw; font-size: 2.8vw; }
+}
+
+/* 반응형 - 중형 화면 */
+@media (max-width: 1280px) {
+  .tag-btn { font-size: 1vw; }
+}
+
+@media (max-width: 1024px) {
+  .tag-btn { font-size: 1.2vw; padding: 0.7vw 1.2vw; }
+}
+
+/* 반응형 - 소형 화면 */
 @media (max-width: 768px) {
-  .gallery-page {
-    padding: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-sm);
-  }
-  
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 0 var(--spacing-xs);
-  }
-  
-  .gallery-container {
-    padding-top: var(--spacing-sm);
-  }
-  
-  .modal-content {
-    max-width: 95vw;
-    max-height: 95vh;
-  }
-  
-  .tag-filters {
-    gap: 0.3rem;
-  }
-  
-  .tag-btn {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
+  .close-btn { width: 8vw; height: 8vw; font-size: 6vw; top: 2vw; right: 2vw; }
+}
+
+@media (max-width: 640px) {
+  .close-btn { width: 10vw; height: 10vw; font-size: 7vw; }
+}
+
+@media (max-width: 480px) {
+  .close-btn { width: 12vw; height: 12vw; font-size: 8vw; }
 }
 </style>

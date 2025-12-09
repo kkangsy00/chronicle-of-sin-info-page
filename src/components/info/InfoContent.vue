@@ -121,20 +121,20 @@ defineExpose({
 }
 
 /* 반응형 - 대형 화면 */
-@media (min-width: 1921px) {
-  :deep(.content-card) { padding: 30px 38px; }
-  :deep(.content-card h3) { font-size: 28px; margin: 0 0 14px 12px; }
-  :deep(.content-card h3::before) { width: 28px; height: 28px; font-size: 22px; line-height: 28px; padding: 2px 10px; }
-  :deep(.content-card h3::after) { margin: 6px 0 14px 0; }
-  :deep(.content-card p) { font-size: 18px; margin: 0 0 12px 14px; }
-}
-
 @media (min-width: 2561px) {
   :deep(.content-card) { padding: 38px 48px; }
   :deep(.content-card h3) { font-size: 32px; margin: 0 0 16px 14px; }
   :deep(.content-card h3::before) { width: 32px; height: 32px; font-size: 26px; line-height: 32px; padding: 2px 12px; }
   :deep(.content-card h3::after) { margin: 8px 0 16px 0; }
   :deep(.content-card p) { font-size: 20px; margin: 0 0 14px 16px; }
+}
+
+@media (min-width: 1921px) {
+  :deep(.content-card) { padding: 30px 38px; }
+  :deep(.content-card h3) { font-size: 28px; margin: 0 0 14px 12px; }
+  :deep(.content-card h3::before) { width: 28px; height: 28px; font-size: 22px; line-height: 28px; padding: 2px 10px; }
+  :deep(.content-card h3::after) { margin: 6px 0 14px 0; }
+  :deep(.content-card p) { font-size: 18px; margin: 0 0 12px 14px; }
 }
 
 /* 반응형 - 소형 화면 */

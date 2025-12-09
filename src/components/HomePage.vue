@@ -49,36 +49,37 @@ defineEmits(['navigate'])
 
 h1 {
   font-family: 'KotraDoYak', sans-serif;
-  font-size: clamp(3rem, 12vw, 8rem);
+  font-size: 8vw;
   margin-bottom: 1rem;
   color: rgba(255, 255, 255, 0.8);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-shadow: 0.15vw 0.15vw 0.3vw rgba(0, 0, 0, 0.8);
 }
 
 p {
-  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-size: 2vw;
   font-family: "Nanum Myeongjo", serif;
   color: #bdb7a0;
 }
 
 .nav-buttons {
   display: flex;
-  gap: 3rem;
-  margin: 3rem 0;
+  gap: 3vw;
+  margin: 3vh 0;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .nav-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 200px;
-  height: 200px;
-  border: 3px solid black;
+  width: 12vw;
+  height: 12vw;
+  border: 0.15vw solid black;
   background: rgba(0, 0, 0, 0.4);
   cursor: pointer;
   transition: all 0.3s ease;
-  padding: 20px;
+  padding: 1.2vw;
 }
 
 .nav-btn:hover {
@@ -88,12 +89,12 @@ p {
 }
 
 .btn-image {
-  width: 120px;
-  height: 120px;
+  width: 100%;
+  height: 100%;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  margin-bottom: 15px;
+  margin-bottom: 0.8vw;
 }
 
 .info-image { background-image: url('/data/statics/info.png'); }
@@ -102,7 +103,7 @@ p {
 
 .nav-btn span {
   color: #bdb7a0;
-  font-size: 1.3rem;
+  font-size: 1.2vw;
 }
 
 .nav-btn:hover span {
@@ -112,47 +113,61 @@ p {
 .bottom-txt {
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.8vw;
+  padding: 0 2vw;
 }
 
-/* 반응형 - 통일된 브레이크포인트 */
+/* 반응형 - 대형 화면 */
+@media (min-width: 2561px) {
+  h1 { font-size: 10vw; }
+  p { font-size: 2.5vw; }
+  .nav-buttons { gap: 4vw; margin: 4vh 0; }
+  .nav-btn { width: 14vw; height: 14vw; padding: 1.5vw; border-width: 0.2vw; }
+  .btn-image { margin-bottom: 1vw; }
+  .nav-btn span { font-size: 1.5vw; }
+  .bottom-txt { font-size: 1vw; padding: 3vw; }
+}
+
+@media (min-width: 1921px) {
+  h1 { font-size: 9vw; }
+  p { font-size: 2.2vw; }
+  .nav-buttons { gap: 3.5vw; }
+  .nav-btn { width: 13vw; height: 13vw; padding: 1.3vw; border-width: 0.18vw; }
+  .nav-btn span { font-size: 1.3vw; }
+  .bottom-txt { font-size: 0.9vw; padding: 2.5vw; }
+}
+
+/* 반응형 - 중형 화면 */
+@media (max-width: 1280px) {
+  .nav-buttons { gap: 2.5vw; }
+  .nav-btn { width: 13vw; height: 13vw; padding: 1.2vw; }
+  .nav-btn span { font-size: 1.3vw; }
+}
+
+@media (max-width: 1024px) {
+  .nav-buttons { gap: 2vw; }
+  .nav-btn { width: 14vw; height: 14vw; padding: 1vw; }
+  .nav-btn span { font-size: 1.4vw; }
+}
+
+/* 반응형 - 소형 화면 */
 @media (max-width: 768px) {
-  .nav-buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-  
-  .nav-btn {
-    width: 180px;
-    height: 180px;
-    padding: var(--spacing-sm);
-  }
-  
-  .btn-image {
-    width: 100px;
-    height: 100px;
-    margin-bottom: var(--spacing-xs);
-  }
-  
-  .btn-text {
-    font-size: 1rem;
-  }
+  .nav-buttons { flex-direction: column; align-items: center; gap: 3vh; margin: 3vh 0; }
+  .nav-btn { width: 22vw; height: 22vw; padding: 2vw; }
+  .btn-image { margin-bottom: 1.2vh; }
+  .nav-btn span { font-size: 2.5vw; }
+  .bottom-txt { font-size: 1.5vw; }
+}
+
+@media (max-width: 640px) {
+  .nav-btn { width: 24vw; height: 24vw; padding: 1.8vw; }
+  .nav-btn span { font-size: 2.8vw; }
+  .bottom-txt { font-size: 1.8vw; }
 }
 
 @media (max-width: 480px) {
-  .nav-btn {
-    width: 160px;
-    height: 160px;
-    padding: var(--spacing-xs);
-  }
-  
-  .btn-image {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .btn-text {
-    font-size: 0.9rem;
-  }
+  .nav-btn { width: 28vw; height: 28vw; padding: 1.5vw; border-width: 0.3vw; }
+  .btn-image { margin-bottom: 1vh; }
+  .nav-btn span { font-size: 3.2vw; }
+  .bottom-txt { font-size: 2vw; }
 }
 </style>
