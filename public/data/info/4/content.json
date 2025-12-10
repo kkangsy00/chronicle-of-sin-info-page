@@ -8,9 +8,14 @@
   ],
   "bgm": [
     {
-      "title": "고양이, 선인장 그리고...", 
-      "url": "https://www.youtube.com/embed/uN0-vVFW5yI?si=Knn0Znd5gG6fWq5D", 
-      "txt": "무엇을 잃어버린 지도 잊고서 한참을 돌아다녀 봐도 모르겠고" 
+      "title": "고양이, 선인장 그리고...",
+      "url": "https://www.youtube.com/embed/uN0-vVFW5yI?si=Knn0Znd5gG6fWq5D",
+      "txt": "무엇을 잃어버린 지도 잊고서 한참을 돌아다녀 봐도 모르겠고"
+    },
+    {
+      "title": "Dive",
+      "url": "https://www.youtube.com/embed/Rvdo0FY7qC0?si=VKDG1vocMwW0gAXk", 
+      "txt": "무겁게 굳은 나와 참을 수 없이 가벼운 나" 
     }
   ],
   "sections": [
