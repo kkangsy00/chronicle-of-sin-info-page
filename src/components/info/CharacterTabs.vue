@@ -86,7 +86,7 @@ const scrollTabs = (direction) => {
 
 .scroll-button,
 .tab-button {
-  border: none;
+  border: 0.05vw solid #000000;
   color: #8a8777;
   cursor: pointer;
   font-weight: 500;

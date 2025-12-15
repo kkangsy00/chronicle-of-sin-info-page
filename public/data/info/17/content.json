@@ -1,8 +1,8 @@
 {
   "name": "전여월",
-  "overlayImage": "",
+  "overlayImage": "jyw_name.png",
   "images": [
-    { "id": 1, "name": "인장", "src": "jyy.png",  "txt": "Picrew 중노년 픽크루"}
+    { "id": 1, "name": "인장", "src": "jyw.png", "txt": "Picrew 중노년 픽크루", "type": "square" }
   ],
   "bgm": [
     {
