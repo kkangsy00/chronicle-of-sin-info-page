@@ -146,25 +146,11 @@ defineExpose({
 } */
 
 @media (max-width: 1024px) {
-  :deep(.content-card) { padding: var(--spacing-sm) 25px; }
-  :deep(.content-card h3) { font-size: 22px; }
-  :deep(.content-card h3::before) { width: 22px; height: 22px; font-size: 18px; line-height: 22px; }
-  :deep(.content-card p) { font-size: 1.5vw; }
-}
-
-@media (max-width: 768px) {
   :deep(.content-card h3) { font-size: 2vw; }
   :deep(.content-card h3::before) { width: 1.6vw; height: 1.8vw; font-size: 1.6vw; line-height: 1.6vw; padding: 0.4vw 0.8vw; margin-right: 1vw; }
   :deep(.content-card h3::after) { margin: 1vw 0 1.5vw 0; }
   :deep(.content-card p) { font-size: 1.5vw; margin: 0 0 1vw 1vw; }
 }
-
-/* @media (max-width: 640px) {
-  :deep(.content-card) { padding: 10px 18px; }
-  :deep(.content-card h3) { font-size: 18px; margin: 0 0 8px 6px; }
-  :deep(.content-card h3::before) { width: 18px; height: 18px; font-size: 14px; line-height: 18px; padding: 1px 5px; }
-  :deep(.content-card p) { font-size: 13px; margin: 0 0 7px 8px; }
-} */
 
 @media (max-width: 480px) {
   :deep(.content-card) { padding: 2.5vw 3vw; }
