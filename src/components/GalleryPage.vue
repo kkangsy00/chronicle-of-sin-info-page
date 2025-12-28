@@ -253,10 +253,9 @@ onMounted(loadGalleryItems)
 
 .gallery-card {
   position: relative;
-  background: rgba(0, 0, 0, 0.3);
   border-radius: 0.8vw;
   overflow: hidden;
-  cursor: pointer;
+  height: 20vw;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   border: 0.05vw solid rgba(255, 255, 255, 0.1);
