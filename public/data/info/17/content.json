@@ -4,7 +4,18 @@
   "images": [
     { "id": 1, "name": "기본", "src": "jje.png", "type": "square" }
   ],
-  "bgm": [],
+  "bgm": [
+    {
+      "title": "생존약속", 
+      "url": "https://www.youtube.com/embed/R9bvs42tko0?si=HL58kgNXWbtET0H6", 
+      "txt": "우린 영혼을 뺏긴 뒤에도 살아남는 법들을 새롭게 배운다"
+      },
+    {
+      "title": "괴물이 피는 숲", 
+      "url": "https://www.youtube.com/embed/96DBF2TzZ4c?si=99HLebmXIj0AX8Gf", 
+      "txt": "우리를 찾아온 이 불길이 또다시 마지막을 불러도"
+      }
+  ],
   "sections": [
     {
       "header": "외동",
