@@ -3,7 +3,8 @@
   "overlayImage": "gpj_name.png",
   "images": [
     { "id": 1, "name": "기본", "src": "gpj.png", "txt": "crepe @MU___92"},
-    { "id": 2, "name": "실루엣", "src": "gpj_silhouette.png"}
+    { "id": 2, "name": "인장", "src": "gpj_.png", "txt": "Picrew 아저씨 내놔", "type": "square"},
+    { "id": 3, "name": "실루엣", "src": "gpj_silhouette.png"}
   ],
   "bgm": [
     {

@@ -105,11 +105,16 @@ const headerInfo = computed(() => {
 
 // 사용 가능한 모든 태그 추출
 const availableTags = computed(() => {
-  const allTags = new Set()
-  galleryItems.value.forEach(item => {
-    item.tags.forEach(tag => allTags.add(tag))
-  })
-  return Array.from(allTags).sort()
+  const map = galleryData.value?.tagMap
+  if (map) {
+    return Object.keys(map)
+      .map(k => ({ id: Number(k), name: map[k] }))
+      .sort((a, b) => a.id - b.id)
+      .map(x => x.name)
+  }
+  const s = new Set()
+  galleryItems.value.forEach(i => i.tags.forEach(t => s.add(t)))
+  return Array.from(s).sort()
 })
 
 // 필터된 아이템들
