@@ -3,7 +3,8 @@
   "overlayImage": "hka_name.png",
   "images": [
     { "id": 1, "name": "기본", "src": "hka.png"},
-    { "id": 2, "name": "실루엣", "src": "hka_silhouette.png" }
+    { "id": 2, "name": "실루엣", "src": "hka_silhouette.png" },
+    { "id": 3, "name": "3년 전", "src": "hka3.png", "txt": " neka KIRAKIRA~⭐3•0", "type": "square" }
   ],
   "bgm": [
     {

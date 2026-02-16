@@ -1,7 +1,9 @@
 {
   "name": "박한서",
   "overlayImage": "",
-  "images": [],
+  "images": [
+    { "id": 1, "name": "3년 전", "src": "phs3.png", "txt": " Picrew 디딤달공장", "type": "square" }
+  ],
   "bgm": [],
   "sections": [
     {

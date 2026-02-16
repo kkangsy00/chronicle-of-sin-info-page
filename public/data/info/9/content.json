@@ -4,7 +4,8 @@
   "images": [
     { "id": 1, "name": "기본", "src": "ln.png" },
     { "id": 2, "name": "인장", "src": "ln_.png", "type": "square" },
-    { "id": 3, "name": "실루엣", "src": "ln_silhouette.png" }
+    { "id": 3, "name": "실루엣", "src": "ln_silhouette.png" },
+    { "id": 4, "name": "3년 전", "src": "ln3.png"}
   ],
   "bgm": [
     {
@@ -26,6 +27,11 @@
       "title": "어리석은 나는",
       "url": "https://www.youtube.com/embed/75bUoGjlIXI?si=T-j5dW-CqO7yt8rG",
       "txt": "발이 닿은 곳에 머물지 못하고 머물지 못하고"
+    },
+    {
+      "title": "Through The Ghost",
+      "url": "https://www.youtube.com/embed/CNfYcPpgzgw?si=BkfDulvjEoPeGVYa",
+      "txt": "Did you finally find a place above the shadows"
     }
   ],
   "sections": [
