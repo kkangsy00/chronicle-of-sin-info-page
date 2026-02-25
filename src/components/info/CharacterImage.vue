@@ -6,9 +6,11 @@
       @mouseleave="showImgTxt = false"
     >
       <img 
+        :key="imageSrc"
         :src="imageSrc" 
-        :class="['fade-transition', 'main-image', imageType]"
+        :class="['main-image', imageType]"
         alt="캐릭터 이미지"
+        @load="e => e.target.style.opacity = '1'"
       >
       <transition name="fade">
         <div v-if="showImgTxt && imageTxt" class="main-image-txt">
@@ -29,21 +31,12 @@
 import { ref } from 'vue'
 
 defineProps({
-  imageSrc: {
-    type: String,
-    default: ''
-  },
-  imageTxt: {
-    type: String,
-    default: ''
-  },
-  overlayImage: {
-    type: String,
-    default: null
-  },
+  imageSrc: String,
+  imageTxt: String,
+  overlayImage: String,
   imageType: {
     type: String,
-    default: 'portrait' // 'portrait' (세로) 또는 'square' (인장)
+    default: 'portrait'
   }
 })
 
@@ -79,10 +72,9 @@ const showImgTxt = ref(false)
   width: auto;
   height: 100%;
   object-fit: contain;
-  transition: transform 0.3s ease;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
-
-/* 세로로 긴 이미지 (기본) - .main-image 기본 스타일 사용 */
 
 /* 정사각형 이미지 (인장) */
 .main-image.square {
