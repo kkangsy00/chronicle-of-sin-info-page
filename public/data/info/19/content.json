@@ -1,6 +1,6 @@
 {
   "name": "엄태환",
-  "overlayImage": "",
+  "overlayImage": "uth_name.png",
   "images": [
     { "id": 1, "name": "인장", "src": "uth.png", "txt": "Picrew おさかなの男", "type": "square" }
   ],

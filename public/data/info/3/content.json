@@ -7,7 +7,9 @@
     { "id": 3, "name": "인장", "src": "his__.png", "type": "square"},
     { "id": 4, "name": "실루엣", "src": "his_silhouette.png", "txt": "crepe @ZNMAJJI" },
     { "id": 5, "name": "3년 전", "src": "his3.png"},
-    { "id": 6, "name": "3년 전 (2)", "src": "his3_.png", "type": "square"}
+    { "id": 6, "name": "3년 전 (2)", "src": "his3_.png", "type": "square"},
+    { "id": 7, "name": "경사", "src": "his_sg.png" },
+    { "id": 8, "name": "어린이", "src": "his_chi.png" }
   ],
   "bgm": [
     {
