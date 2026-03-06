@@ -179,6 +179,7 @@ const togglePlay = (index) => {
 /* content-card 스타일 */
 .content-card {
   padding: 1.5vw 1.8vw;
+  min-height: 7.5vw;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -260,7 +261,7 @@ const togglePlay = (index) => {
   .bgm-content { padding: 1.5vw; }
   .bgm-item { gap: 1.5vw; }
   .bgm-play-btn { padding: 0.8vw 1vw; font-size: 1.4vw; }
-  .content-card { padding: 1.6vw 2vw; }
+  .content-card { padding: 1.6vw 2vw; min-height: 9vw; }
   .content-card h3 { font-size: 2vw; }
   .bgm-txt { font-size: 1.4vw; }
   .mini-title { font-size: 1.2vw; }
@@ -272,11 +273,13 @@ const togglePlay = (index) => {
   .bgm-play-btn { padding: 1.2vw 1.5vw; font-size: 2vw; gap: 0.8vw; }
   .play-icon { border-left-width: 1vw; border-top-width: 0.6vw; border-bottom-width: 0.6vw; }
   .stop-icon { width: 1vw; height: 1vw; }
-  .content-card { padding: 2.5vw 3vw; }
+  .content-card { padding: 2.5vw 3vw; min-height: 12vw; }
   .content-card h3 { font-size: 3.5vw; margin-bottom: 1.5vw; }
   .content-card h3::before { width: 2.2vw; height: 2.8vw; font-size: 2.5vw; line-height: 2.8vw; padding: 0.7vw 1.6vw; margin-right: 1.5vw; }
   .bgm-txt { font-size: 3vw; }
   .mini-player { flex-direction: column; gap: 1.5vw; padding: 1.5vw; }
   .mini-title { font-size: 1.8vw; }
 }
+
+
 </style>

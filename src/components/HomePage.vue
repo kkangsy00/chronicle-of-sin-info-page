@@ -16,6 +16,10 @@
         <div class="btn-image links-image"></div>
         <span>링크</span>
       </button>
+      <button class="nav-btn" @click="$emit('navigate', 'hotspot')">
+        <div class="btn-image hotspot-image"></div>
+        <span>장면</span>
+      </button>
     </div>
     
     <div class="bottom-txt"> 

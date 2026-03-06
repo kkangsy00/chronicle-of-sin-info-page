@@ -174,21 +174,6 @@ onMounted(initializeTabs)
   z-index: 10;
 }
 
-/* 반응형 - 대형 화면 */
-/* @media (min-width: 2561px) {
-  .container { max-width: 92vw; gap: 2vw; }
-  .main-content { gap: 2vw; min-height: 55vh; }
-  .info-section { min-width: 28vw; padding: 0.8vw; }
-  .info-container { min-height: 40vh; }
-}
-
-@media (min-width: 1921px) {
-  .container { max-width: 93vw; gap: 1.8vw; }
-  .main-content { gap: 1.8vw; min-height: 52vh; }
-  .info-section { min-width: 26vw; padding: 0.7vw; }
-  .info-container { min-height: 38vh; }
-} */
-
 /* 반응형 - 소형 화면 */
 @media (max-width: 1280px) {
   .container { max-width: 96vw; min-width: 50vw; gap: 1.4vw; }

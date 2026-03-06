@@ -11,6 +11,9 @@
     
     <!-- 링크 페이지 -->
     <LinksPage v-if="currentPage === 'links'" @navigate="navigateTo" />
+
+    <!-- 핫스팟 페이지 -->
+    <HotspotPage v-if="currentPage === 'hotspot'" @navigate="navigateTo" />
   </div>
 </template>
 
@@ -20,6 +23,7 @@ import HomePage from './components/HomePage.vue'
 import InfoPage from './components/InfoPage.vue'
 import GalleryPage from './components/GalleryPage.vue'
 import LinksPage from './components/LinksPage.vue'
+import HotspotPage from './components/HotspotPage.vue'
 
 const currentPage = ref('home')
 

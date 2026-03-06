@@ -120,31 +120,6 @@ defineExpose({
   line-height: 1;
 }
 
-/* 반응형 - 대형 화면 */
-/* @media (min-width: 2561px) {
-  :deep(.content-card) { padding: 2vw 2.3vw; }
-  :deep(.content-card h3) { font-size: 1.9vw; margin-bottom: 0.9vw; }
-  :deep(.content-card h3::before) { width: 1.9vw; height: 1.9vw; font-size: 1.5vw; line-height: 1.9vw; }
-  :deep(.content-card h3::after) { margin: 8px 0 16px 0; }
-  :deep(.content-card p) { font-size: 1.2vw; }
-}
-
-@media (min-width: 1921px) {
-  :deep(.content-card) { padding: 30px 38px; }
-  :deep(.content-card h3) { padding: 1.8vw 2vw; }
-  :deep(.content-card h3::before) { font-size: 1.7vw; }
-  :deep(.content-card h3::after) { margin: 6px 0 14px 0; }
-  :deep(.content-card p) { font-size: 18px; margin: 0 0 12px 14px; }
-} */
-
-/* 반응형 - 소형 화면 */
-/* @media (max-width: 1280px) {
-  :deep(.content-card) { padding: 22px 28px; }
-  :deep(.content-card h3) { font-size: 23px; }
-  :deep(.content-card h3::before) { width: 23px; height: 23px; font-size: 19px; line-height: 23px; }
-  :deep(.content-card p) { font-size: 15px; }
-} */
-
 @media (max-width: 1024px) {
   :deep(.content-card h3) { font-size: 2vw; }
   :deep(.content-card h3::before) { width: 1.6vw; height: 1.8vw; font-size: 1.6vw; line-height: 1.6vw; padding: 0.4vw 0.8vw; margin-right: 1vw; }

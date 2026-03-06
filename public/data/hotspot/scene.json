@@ -1,0 +1,35 @@
+{
+  "baseImage": "/data/hotspot/base.svg",
+  "hotspots": [
+    {
+      "id": "a",
+      "label": "보물 상자",
+      "description": "낡은 목재 상자.\n금속 밴드로 단단히 묶여 있으며,\n자물쇠가 잠겨 있다.",
+      "overlay": "/data/hotspot/a.svg",
+      "x": 10,
+      "y": 53,
+      "width": 20,
+      "height": 29
+    },
+    {
+      "id": "b",
+      "label": "테이블",
+      "description": "오래된 원목 테이블.\n표면에 깊은 흠집과 얼룩이 남아 있다.\n무슨 일이 있었던 걸까.",
+      "overlay": "/data/hotspot/b.svg",
+      "x": 39,
+      "y": 54,
+      "width": 22,
+      "height": 32
+    },
+    {
+      "id": "c",
+      "label": "플로어 램프",
+      "description": "희미한 불빛을 내는 낡은 램프.\n이 방의 유일한 광원이다.",
+      "overlay": "/data/hotspot/c.svg",
+      "x": 76,
+      "y": 32,
+      "width": 11,
+      "height": 56
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+
+  <!-- 배경: 어두운 방 -->
+  <rect width="800" height="500" fill="#1c1a2e"/>
+  <!-- 바닥 -->
+  <rect x="0" y="430" width="800" height="70" fill="#141220"/>
+  <!-- 바닥선 -->
+  <line x1="0" y1="430" x2="800" y2="430" stroke="#2a2845" stroke-width="2"/>
+
+  <!-- ===== 오브젝트 A: 보물 상자 ===== -->
+  <!-- 상자 몸통 -->
+  <rect x="80" y="305" width="150" height="100" rx="4" fill="#6b3d11"/>
+  <rect x="85" y="310" width="140" height="90" rx="3" fill="#7c4818"/>
+  <!-- 상자 뚜껑 -->
+  <rect x="80" y="268" width="150" height="40" rx="4" fill="#8b5513"/>
+  <rect x="85" y="271" width="140" height="34" rx="3" fill="#9c6020"/>
+  <!-- 금속 밴드 (가로) -->
+  <rect x="80" y="265" width="150" height="5" fill="#b8922a"/>
+  <rect x="80" y="302" width="150" height="5" fill="#b8922a"/>
+  <rect x="80" y="400" width="150" height="5" fill="#b8922a"/>
+  <!-- 금속 밴드 (세로) -->
+  <rect x="80"  y="265" width="5" height="140" fill="#b8922a"/>
+  <rect x="225" y="265" width="5" height="140" fill="#b8922a"/>
+  <!-- 자물쇠 -->
+  <rect x="148" y="300" width="14" height="12" rx="2" fill="#c8a020"/>
+  <path d="M152,300 A5,5 0 0,1 162,300" fill="none" stroke="#c8a020" stroke-width="2.5"/>
+  <!-- 레이블 -->
+  <text x="155" y="256" text-anchor="middle" fill="rgba(200,180,100,0.35)"
+        font-size="12" font-family="sans-serif" font-style="italic">A</text>
+
+  <!-- ===== 오브젝트 B: 테이블 ===== -->
+  <!-- 상판 -->
+  <rect x="310" y="272" width="180" height="16" rx="3" fill="#8b5e30"/>
+  <rect x="313" y="274" width="174" height="11" rx="2" fill="#9b6e3a"/>
+  <!-- 왼쪽 다리 -->
+  <rect x="328" y="288" width="16" height="142" fill="#6b4820"/>
+  <!-- 오른쪽 다리 -->
+  <rect x="456" y="288" width="16" height="142" fill="#6b4820"/>
+  <!-- 하단 가로대 -->
+  <rect x="338" y="388" width="124" height="10" rx="2" fill="#5d3a1a"/>
+  <!-- 레이블 -->
+  <text x="400" y="262" text-anchor="middle" fill="rgba(200,180,100,0.35)"
+        font-size="12" font-family="sans-serif" font-style="italic">B</text>
+
+  <!-- ===== 오브젝트 C: 플로어 램프 ===== -->
+  <!-- 받침대 -->
+  <ellipse cx="650" cy="435" rx="38" ry="8" fill="#3a3a4a"/>
+  <rect x="631" y="428" width="38" height="10" rx="3" fill="#4a4a5a"/>
+  <!-- 기둥 -->
+  <rect x="645" y="162" width="10" height="268" fill="#5a5a6a"/>
+  <!-- 갓 외부 -->
+  <polygon points="608,162 692,162 678,228 622,228" fill="#c68b2a"/>
+  <!-- 갓 내부 밝기 -->
+  <polygon points="614,165 686,165 674,225 626,225" fill="#e8a033"/>
+  <!-- 전구 빛 효과 -->
+  <ellipse cx="650" cy="228" rx="28" ry="5" fill="#ffcc44" opacity="0.45"/>
+  <!-- 바닥 빛 번짐 -->
+  <polygon points="622,228 678,228 730,430 570,430" fill="#c8920a" opacity="0.07"/>
+  <!-- 레이블 -->
+  <text x="650" y="150" text-anchor="middle" fill="rgba(200,180,100,0.35)"
+        font-size="12" font-family="sans-serif" font-style="italic">C</text>
+
+</svg>
