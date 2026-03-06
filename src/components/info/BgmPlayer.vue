@@ -89,6 +89,7 @@ const togglePlay = (index) => {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  position: relative;
 }
 
 .bgm-list {
@@ -96,6 +97,7 @@ const togglePlay = (index) => {
   flex-direction: column;
   flex: 1;
   overflow-y: auto;
+  padding-bottom: 5vw;
 }
 
 .bgm-list::-webkit-scrollbar {
@@ -156,13 +158,17 @@ const togglePlay = (index) => {
 }
 
 .mini-player {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.6vw;
-  background: rgba(20,20,18,0.6);
-  border: 0.05vw solid #000;
-  margin-top: 1.2vw;
+  padding: 0.6vw 1.2vw;
+  background: rgba(20, 20, 18, 0.92);
+  border-top: 0.05vw solid #000;
+  z-index: 10;
 }
 
 .mini-title {
@@ -237,7 +243,7 @@ const togglePlay = (index) => {
   .content-card h3::before { width: 1.9vw; height: 1.9vw; font-size: 1.5vw; line-height: 1.9vw; }
   .bgm-txt { font-size: 1.2vw; }
   .mini-player { padding: 1vw; margin-top: 1.8vw; }
-  .mini-title { font-size: 1.1vw; }
+  .mini-player { padding: 1vw 2.2vw; }
 }
 
 @media (min-width: 1921px) {
@@ -270,7 +276,7 @@ const togglePlay = (index) => {
   .content-card h3 { font-size: 3.5vw; margin-bottom: 1.5vw; }
   .content-card h3::before { width: 2.2vw; height: 2.8vw; font-size: 2.5vw; line-height: 2.8vw; padding: 0.7vw 1.6vw; margin-right: 1.5vw; }
   .bgm-txt { font-size: 3vw; }
-  .mini-player { flex-direction: column; gap: 1.5vw; padding: 1.5vw; margin-top: 2vw; }
+  .mini-player { flex-direction: column; gap: 1.5vw; padding: 1.5vw; }
   .mini-title { font-size: 1.8vw; }
 }
 </style>
