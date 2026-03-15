@@ -45,8 +45,7 @@
       <!-- ④ 설명 패널 (클릭 시 이미지 하단에 고정 표시) -->
       <Transition name="fade">
         <div v-if="selectedHotspot" class="info-panel">
-          <button class="close-btn" @click.stop="selectedId = null">×</button>
-          <div class="info-title">{{ selectedHotspot.label }}</div>
+          <div class="info-title"><span class="info-title-text">{{ selectedHotspot.label }}</span></div>
           <div class="info-desc">{{ selectedHotspot.description }}</div>
         </div>
       </Transition>
@@ -94,6 +93,7 @@ const selectedHotspot = computed(() =>
   position: relative;
   display: inline-block; /* 이미지 크기에 맞게 축소 */
   user-select: none;
+  aspect-ratio: 2828 / 4536;
 }
 
 /* ── 기본 이미지 ── */
@@ -109,7 +109,7 @@ const selectedHotspot = computed(() =>
   inset: 0;           /* top/right/bottom/left 모두 0 */
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: fill;
   pointer-events: none;   /* 마우스 이벤트가 아래 hotspot div로 통과 */
   opacity: 0;
   transition: opacity 0.2s ease;
@@ -133,40 +133,39 @@ const selectedHotspot = computed(() =>
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.82);
   color: #fff;
-  border-top: 1px solid rgba(255, 220, 50, 0.4);
-  padding: 0.7rem 2.5rem 0.7rem 1rem;
   white-space: pre-wrap;
 }
 
 .info-title {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
-  margin-bottom: 0.3rem;
-  color: #ffd700;
+  color: #a77061;
+  padding: 2rem 0.5rem 0.5rem 0.8rem;
+  margin-bottom: -3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.info-title::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/data/hotspot/bk_t.png');
+  background-size: cover;
+  background-position: left;
+  z-index: -1;
+}
+
+.info-title-text {
+  display: block;
+  transform: translateY(-1.5rem);
 }
 
 .info-desc {
-  font-size: 0.85rem;
-  opacity: 0.9;
-  line-height: 1.5;
-}
-
-.close-btn {
-  position: absolute;
-  top: 0.4rem;
-  right: 0.5rem;
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.5);
   font-size: 1.2rem;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0;
-}
-.close-btn:hover {
-  color: #fff;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 5%, rgba(0, 0, 0, 0.85) 20%, rgba(0, 0, 0, 0.9));
+  padding: 2.5rem 2rem 2.5rem 1rem;
 }
 
 /* ── 툴팁 등장 애니메이션 ── */

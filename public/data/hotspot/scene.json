@@ -1,35 +1,65 @@
 {
-  "baseImage": "/data/hotspot/base.svg",
+  "baseImage": "/data/hotspot/base.png",
   "hotspots": [
     {
-      "id": "a",
-      "label": "보물 상자",
-      "description": "낡은 목재 상자.\n금속 밴드로 단단히 묶여 있으며,\n자물쇠가 잠겨 있다.",
-      "overlay": "/data/hotspot/a.svg",
-      "x": 10,
-      "y": 53,
-      "width": 20,
-      "height": 29
+      "id": "his",
+      "label": "하인성",
+      "description": "이거 참, 꽤 골치 아프겠네.",
+      "overlay": "/data/hotspot/cha_his.png",
+      "x": 5,
+      "y": 39,
+      "width": 27,
+      "height": 46
     },
     {
-      "id": "b",
-      "label": "테이블",
-      "description": "오래된 원목 테이블.\n표면에 깊은 흠집과 얼룩이 남아 있다.\n무슨 일이 있었던 걸까.",
-      "overlay": "/data/hotspot/b.svg",
-      "x": 39,
-      "y": 54,
-      "width": 22,
-      "height": 32
+      "id": "jdh",
+      "label": "주대현",
+      "description": "목 좀 축이면서 합시다~",
+      "overlay": "/data/hotspot/cha_jdh.png",
+      "x": 21,
+      "y": 20,
+      "width": 25,
+      "height": 20
     },
     {
-      "id": "c",
-      "label": "플로어 램프",
-      "description": "희미한 불빛을 내는 낡은 램프.\n이 방의 유일한 광원이다.",
-      "overlay": "/data/hotspot/c.svg",
-      "x": 76,
-      "y": 32,
-      "width": 11,
-      "height": 56
+      "id": "shs",
+      "label": "손효성",
+      "description": "각본 정도는 짜고 들어가야지.",
+      "overlay": "/data/hotspot/cha_shs.png",
+      "x": 42,
+      "y": 14,
+      "width": 24,
+      "height": 22
+    },
+    {
+      "id": "sjk",
+      "label": "심재경",
+      "description": "말씀하신 자료들 가져왔습니다.",
+      "overlay": "/data/hotspot/cha_sjk.png",
+      "x": 67,
+      "y": 2,
+      "width": 28,
+      "height": 30
+    },
+    {
+      "id": "pys",
+      "label": "박영숙",
+      "description": "피해는 최소한으로. 다들 알고 있겠지?",
+      "overlay": "/data/hotspot/cha_pys.png",
+      "x": 74,
+      "y": 31,
+      "width": 21,
+      "height": 47
+    },
+    {
+      "id": "ksh",
+      "label": "강세현",
+      "description": "준비는 다 해뒀어요~!",
+      "overlay": "/data/hotspot/cha_ksh.png",
+      "x": 47,
+      "y": 50,
+      "width": 24,
+      "height": 40
     }
   ]
 }

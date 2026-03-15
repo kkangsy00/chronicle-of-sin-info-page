@@ -104,6 +104,7 @@ p {
 .info-image { background-image: url('/data/statics/info.png'); }
 .gallery-image { background-image: url('/data/statics/gallery.png'); }
 .links-image { background-image: url('/data/statics/links.png'); }
+.hotspot-image { background-image: url('/data/statics/hotspot.png'); }
 
 .nav-btn span {
   color: #bdb7a0;
