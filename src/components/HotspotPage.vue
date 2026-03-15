@@ -138,11 +138,11 @@ const selectedHotspot = computed(() =>
 }
 
 .info-title {
-  font-size: 1.2rem;
+  font-size: 1.2vw;
   font-weight: bold;
   color: #a77061;
-  padding: 2rem 0.5rem 0.5rem 0.8rem;
-  margin-bottom: -3rem;
+  padding: 2vw 0.5vw 0.5vw 0.8vw;
+  margin-bottom: -3vw;
   position: relative;
   z-index: 1;
 }
@@ -159,13 +159,13 @@ const selectedHotspot = computed(() =>
 
 .info-title-text {
   display: block;
-  transform: translateY(-1.5rem);
+  transform: translateY(-1.5vw);
 }
 
 .info-desc {
-  font-size: 1.2rem;
+  font-size: 1.2vw;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 5%, rgba(0, 0, 0, 0.85) 20%, rgba(0, 0, 0, 0.9));
-  padding: 2.5rem 2rem 2.5rem 1rem;
+  padding: 2.5vw 2vw 2.5vw 1vw;
 }
 
 /* ── 툴팁 등장 애니메이션 ── */
@@ -177,4 +177,137 @@ const selectedHotspot = computed(() =>
 .fade-leave-to {
   opacity: 0;
 }
+
+/* 반응형 - 대형 화면 (QHD) */
+@media (min-width: 2561px) {
+  .info-title {
+    font-size: 1.5vw;
+    padding: 2.5vw 0.6vw 0.6vw 1vw;
+    margin-bottom: -3.5vw;
+  }
+
+  .info-title-text {
+    transform: translateY(-1.8vw);
+  }
+
+  .info-desc {
+    font-size: 1.5vw;
+    padding: 3vw 2.5vw 3vw 1.2vw;
+  }
+}
+
+/* 반응형 - 고급 화면 (FHD) */
+@media (min-width: 1921px) {
+  .info-title {
+    font-size: 1.3vw;
+    padding: 2.2vw 0.55vw 0.55vw 0.9vw;
+    margin-bottom: -3.2vw;
+  }
+
+  .info-title-text {
+    transform: translateY(-1.6vw);
+  }
+
+  .info-desc {
+    font-size: 1.3vw;
+    padding: 2.8vw 2.2vw 2.8vw 1.1vw;
+  }
+}
+
+/* 반응형 - 모바일 가로 화면 */
+@media (max-width: 1024px) {
+  .info-title {
+    font-size: 1.5vw;
+    padding: 2.5vw 0.8vw 0.8vw 1vw;
+    margin-bottom: -3vw;
+  }
+
+  .info-title-text {
+    transform: translateY(-1.5vw);
+  }
+
+  .info-desc {
+    font-size: 1.5vw;
+    padding: 2.5vw 2vw 2.5vw 1.2vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .hotspot-page {
+    padding: 1.5rem;
+  }
+
+  .base-image {
+    max-width: 95vw;
+    max-height: 90vh;
+  }
+
+  .info-title {
+    font-size: 2vw;
+    padding: 3vw 1vw 1vw 1.2vw;
+    margin-bottom: -3.5vw;
+  }
+
+  .info-title-text {
+    transform: translateY(-2vw);
+  }
+
+  .info-desc {
+    font-size: 2vw;
+    padding: 3vw 2.5vw 3vw 1.5vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .hotspot-page {
+    padding: 1rem;
+  }
+
+  .base-image {
+    max-width: 98vw;
+    max-height: 85vh;
+  }
+
+  .info-title {
+    font-size: 2.5vw;
+    padding: 3.5vw 1.2vw 1.2vw 1.5vw;
+    margin-bottom: -4vw;
+  }
+
+  .info-title-text {
+    transform: translateY(-2.5vw);
+  }
+
+  .info-desc {
+    font-size: 2.5vw;
+    padding: 3.5vw 3vw 3.5vw 1.8vw;
+  }
+}
+
+/* 반응형 - 모바일 세로 화면 (높이 제약) */
+@media (orientation: portrait) and (max-height: 800px) {
+  .hotspot-page {
+    padding: 1rem;
+    min-height: auto;
+    align-items: flex-start;
+    padding-top: 0.5rem;
+  }
+
+  .info-title {
+    font-size: 3vw;
+    padding: 2.5vw 1vw 0.8vw 1.2vw;
+    margin-bottom: -3.5vw;
+  }
+
+  .info-title-text {
+    transform: translateY(-1.8vw);
+  }
+
+  .info-desc {
+    font-size: 3vw;
+    padding: 3.5vw 2.5vw 5vw 1.8vw;
+    line-height: 1.5;
+  }
+}
+
 </style>
