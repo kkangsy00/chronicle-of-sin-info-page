@@ -61,10 +61,23 @@ defineEmits(['navigate'])
 
 /* ───── 데이터 로드 ───── */
 const sceneData = ref({ baseImage: '', hotspots: [] })
+const baseUrl = import.meta.env.BASE_URL
 
-fetch('/data/hotspot/scene.json')
+// CSS v-bind용 배경 이미지 URL
+const titleBgUrl = `url(${baseUrl}data/hotspot/bk_t.png)`
+
+// 절대 경로('/data/...')를 BASE_URL 기준 상대 경로로 변환
+const toBase = (path) => baseUrl + path.replace(/^\//, '')
+
+fetch(`${baseUrl}data/hotspot/scene.json`)
   .then(r => r.json())
-  .then(data => { sceneData.value = data })
+  .then(data => {
+    sceneData.value = {
+      ...data,
+      baseImage: toBase(data.baseImage),
+      hotspots: data.hotspots.map(h => ({ ...h, overlay: toBase(h.overlay) }))
+    }
+  })
 
 /* ───── hover 상태 (오버레이 표시용) ───── */
 const hoverId = ref(null)
@@ -151,7 +164,7 @@ const selectedHotspot = computed(() =>
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/data/hotspot/bk_t.png');
+  background-image: v-bind(titleBgUrl);
   background-size: cover;
   background-position: left;
   z-index: -1;
