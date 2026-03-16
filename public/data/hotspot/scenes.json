@@ -1,0 +1,10 @@
+{
+  "scenes": [
+    {
+      "id": "scene1",
+      "title": "다시 준비된 무대. 뒤틀린 인과 끝에 막이 오른다.",
+      "description": "Case Number: 250903 (@BEF0RE_THE_D4WN)",
+      "scenePath": "/data/hotspot/scene_1/scene.json"
+    }
+  ]
+}

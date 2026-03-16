@@ -1,6 +1,6 @@
 <template>
   <div class="hotspot-page">
-    <HomeButton @navigate="$emit('navigate', 'home')" />
+    <HomeButton @navigate="$emit('navigate', 'scene')" />
 
     <div
       class="image-container"
@@ -57,6 +57,13 @@
 import { ref, computed } from 'vue'
 import HomeButton from './HomeButton.vue'
 
+const props = defineProps({
+  scenePath: {
+    type: String,
+    default: '/data/hotspot/scene_1/scene.json'
+  }
+})
+
 defineEmits(['navigate'])
 
 /* ───── 데이터 로드 ───── */
@@ -64,12 +71,13 @@ const sceneData = ref({ baseImage: '', hotspots: [] })
 const baseUrl = import.meta.env.BASE_URL
 
 // CSS v-bind용 배경 이미지 URL
-const titleBgUrl = `url(${baseUrl}data/hotspot/bk_t.png)`
+const titleBgUrl = `url(${baseUrl}data/hotspot/background_name.png)`
 
 // 절대 경로('/data/...')를 BASE_URL 기준 상대 경로로 변환
 const toBase = (path) => baseUrl + path.replace(/^\//, '')
 
-fetch(`${baseUrl}data/hotspot/scene.json`)
+const fetchPath = baseUrl + props.scenePath.replace(/^\//, '')
+fetch(fetchPath)
   .then(r => r.json())
   .then(data => {
     sceneData.value = {
