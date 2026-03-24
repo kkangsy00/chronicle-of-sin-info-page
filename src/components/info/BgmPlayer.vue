@@ -281,5 +281,9 @@ const togglePlay = (index) => {
   .mini-title { font-size: 1.8vw; }
 }
 
+@media (orientation: landscape) and (max-height: 500px) {
+  .content-card { min-height: 20vh; }
+}
+
 
 </style>
