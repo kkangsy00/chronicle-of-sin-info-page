@@ -92,6 +92,37 @@
           "url": "https://youtu.be/FIdcZrpmn8U?si=P3HCFpqp3RxnvDbn"
         }
       ]
+    },
+    {
+      "id": "survey",
+      "title": "SURVEY",
+      "links": [
+        {
+          "title": "26.05.04 정모 - 설문조사 1",
+          "desc": "내 직장상사면 좋을/싫은 캐릭터",
+          "url": "https://docs.google.com/document/d/1YDJHvgmZhvY17XeQwhJoJOuLkys2LUQjz0f17VpId-g/edit?usp=sharing"
+        },
+        {
+          "title": "26.05.04 정모 - 설문조사 2",
+          "desc": "가장 연애하고 싶은/하기 싫은 캐릭터",
+          "url": "https://docs.google.com/document/d/1QZqbc1GelW8c88QemEG14XeLeS_rFeSan5VUZjXHklw/edit?usp=sharing"
+        },
+        {
+          "title": "26.05.04 정모 - 설문조사 3",
+          "desc": "가장 결혼하고 싶은/하기 싫은 캐릭터",
+          "url": "https://docs.google.com/document/d/1qv8kWCu-mVu2cEey8UlVqh9i8FqpAONAQAlDVF87HtQ/edit?usp=sharing"
+        },
+        {
+          "title": "26.05.04 정모 - 설문조사 어워드",
+          "desc": "시상식",
+          "url": "https://docs.google.com/document/d/1XlPnRd-k1TeXCZ-WcGYqjnVR-peR4Cs1LX68Gddm84o/edit?usp=sharing"
+        },
+        {
+          "title": "26.05.04 정모 - 사랑의 작대기",
+          "desc": "캐릭터 이입 설문조사",
+          "url": "https://docs.google.com/document/d/1wDmCaUhYP7tRV091JB8OwLX4gXo_8D5gO-IlDtm_qtY/edit?usp=sharing"
+        }
+      ]
     }
   ]
 }
