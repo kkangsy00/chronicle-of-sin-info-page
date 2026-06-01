@@ -1,0 +1,21 @@
+{
+  "records": [
+    {
+      "id": 1,
+      "title": "기록 1",
+      "description": "첫 번째 기록",
+      "images": [
+        "/data/records/record_1/image1.jpg",
+        "/data/records/record_1/image2.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "기록 2",
+      "description": "두 번째 기록",
+      "images": [
+        "/data/records/record_2/image1.jpg"
+      ]
+    }
+  ]
+}

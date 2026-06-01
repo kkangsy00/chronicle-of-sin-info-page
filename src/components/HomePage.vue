@@ -20,6 +20,10 @@
         <div class="btn-image hotspot-image"></div>
         <span>장면</span>
       </button>
+      <button class="nav-btn" @click="$emit('navigate', 'records')">
+        <div class="btn-image records-image"></div>
+        <span>기록</span>
+      </button>
     </div>
     
     <div class="bottom-txt"> 
@@ -105,6 +109,7 @@ p {
 .gallery-image { background-image: url('/data/statics/gallery.png'); }
 .links-image { background-image: url('/data/statics/links.png'); }
 .hotspot-image { background-image: url('/data/statics/hotspot.png'); }
+.records-image { background-image: url('/data/statics/records.png'); }
 
 .nav-btn span {
   color: #bdb7a0;
