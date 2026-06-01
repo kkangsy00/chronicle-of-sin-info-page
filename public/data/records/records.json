@@ -2,19 +2,23 @@
   "records": [
     {
       "id": 1,
-      "title": "기록 1",
-      "description": "첫 번째 기록",
+      "title": "장래희망",
+      "description": "2025.12.08　심재경 × 서은주",
       "images": [
-        "/data/records/1/image1.jpg",
-        "/data/records/1/image2.jpg"
+        "/data/records/1/1.png",
+        "/data/records/1/2.png",
+        "/data/records/1/3.png"
       ]
     },
     {
       "id": 2,
-      "title": "기록 2",
-      "description": "두 번째 기록",
+      "title": "인과응보",
+      "description": "2026.05.27　벌금님(@Beocm21) 커미션",
       "images": [
-        "/data/records/2/image1.jpg"
+        "/data/records/2/20260527_111030312.png",
+        "/data/records/2/20260527_111030312_01.png",
+        "/data/records/2/20260527_111030312_02.png",
+        "/data/records/2/20260530_210253043.png"
       ]
     }
   ]

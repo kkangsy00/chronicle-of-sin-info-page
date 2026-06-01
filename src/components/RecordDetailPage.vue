@@ -4,9 +4,6 @@
     <div class="container">
       <div class="detail-content">
         <div class="record-viewer">
-          <h2>{{ record.title }}</h2>
-          <p v-if="record.description" class="record-description">{{ record.description }}</p>
-          
           <!-- 이미지 그리드 -->
           <div class="image-grid">
             <div 
@@ -27,48 +24,48 @@
       <button class="close-btn" @click="closeImage">&times;</button>
       
       <div class="modal-content" @click.stop>
-        <!-- 이전 버튼 -->
-        <button 
-          v-if="record.images && record.images.length > 1"
-          class="nav-arrow prev-arrow"
-          @click.stop="previousImage"
-        >
-          ◀
-        </button>
-        
         <!-- 이미지 표시 -->
-        <img 
+        <img
           :src="record.images[selectedImageIndex]"
           :alt="`${record.title} - ${selectedImageIndex + 1}`"
           class="modal-image"
         />
-        
-        <!-- 다음 버튼 -->
-        <button 
-          v-if="record.images && record.images.length > 1"
-          class="nav-arrow next-arrow"
-          @click.stop="nextImage"
-        >
-          ▶
-        </button>
-
-        <!-- 모바일 세로 모드용 위/아래 버튼 -->
-        <button 
-          v-if="record.images && record.images.length > 1"
-          class="nav-arrow mobile-prev-arrow"
-          @click.stop="previousImage"
-        >
-          ▲
-        </button>
-        
-        <button 
-          v-if="record.images && record.images.length > 1"
-          class="nav-arrow mobile-next-arrow"
-          @click.stop="nextImage"
-        >
-          ▼
-        </button>
       </div>
+
+      <!-- 이전 버튼 -->
+      <button
+        v-if="record.images && record.images.length > 1"
+        class="nav-arrow prev-arrow"
+        @click.stop="previousImage"
+      >
+        ◀
+      </button>
+
+      <!-- 다음 버튼 -->
+      <button
+        v-if="record.images && record.images.length > 1"
+        class="nav-arrow next-arrow"
+        @click.stop="nextImage"
+      >
+        ▶
+      </button>
+
+      <!-- 모바일 세로 모드용 위/아래 버튼 -->
+      <button
+        v-if="record.images && record.images.length > 1"
+        class="nav-arrow mobile-prev-arrow"
+        @click.stop="previousImage"
+      >
+        ▲
+      </button>
+
+      <button
+        v-if="record.images && record.images.length > 1"
+        class="nav-arrow mobile-next-arrow"
+        @click.stop="nextImage"
+      >
+        ▼
+      </button>
       
       <!-- 이미지 카운터 -->
       <div v-if="record.images && record.images.length > 1" class="image-counter">
@@ -134,17 +131,6 @@ const nextImage = () => {
   text-align: center;
 }
 
-.record-viewer h2 {
-  font-size: 2.5vw;
-  margin-bottom: 1vw;
-  color: #fdfdfc;
-}
-
-.record-description {
-  font-size: 1vw;
-  color: #bdb7a0;
-  margin-bottom: 2vw;
-}
 
 /* 이미지 그리드 */
 .image-grid {
@@ -237,7 +223,7 @@ const nextImage = () => {
 
 /* 네비게이션 화살표 */
 .nav-arrow {
-  position: absolute;
+  position: fixed;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.5);
@@ -252,14 +238,15 @@ const nextImage = () => {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2001;
 }
 
 .prev-arrow {
-  left: 1vw;
+  left: 2vw;
 }
 
 .next-arrow {
-  right: 1vw;
+  right: 2vw;
 }
 
 .mobile-prev-arrow,
