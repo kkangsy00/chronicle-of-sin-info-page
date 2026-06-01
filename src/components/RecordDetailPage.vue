@@ -6,13 +6,13 @@
         <div class="record-viewer">
           <!-- 이미지 그리드 -->
           <div class="image-grid">
-            <div 
-              v-for="(image, index) in record.images" 
+            <div
+              v-for="(image, index) in recordWithImages?.images"
               :key="index"
               class="grid-item"
               @click="openImage(index)"
             >
-              <img :src="image" :alt="`${record.title} - ${index + 1}`" class="grid-image">
+              <img :src="image" :alt="`${recordWithImages?.title} - ${index + 1}`" class="grid-image">
             </div>
           </div>
         </div>
@@ -22,19 +22,19 @@
     <!-- 이미지 뷰어 모달 -->
     <div v-if="selectedImageIndex !== null" class="image-modal" @click="closeImage">
       <button class="close-btn" @click="closeImage">&times;</button>
-      
+
       <div class="modal-content" @click.stop>
         <!-- 이미지 표시 -->
         <img
-          :src="record.images[selectedImageIndex]"
-          :alt="`${record.title} - ${selectedImageIndex + 1}`"
+          :src="recordWithImages?.images[selectedImageIndex]"
+          :alt="`${recordWithImages?.title} - ${selectedImageIndex + 1}`"
           class="modal-image"
         />
       </div>
 
       <!-- 이전 버튼 -->
       <button
-        v-if="record.images && record.images.length > 1"
+        v-if="recordWithImages?.images && recordWithImages.images.length > 1"
         class="nav-arrow prev-arrow"
         @click.stop="previousImage"
       >
@@ -43,7 +43,7 @@
 
       <!-- 다음 버튼 -->
       <button
-        v-if="record.images && record.images.length > 1"
+        v-if="recordWithImages?.images && recordWithImages.images.length > 1"
         class="nav-arrow next-arrow"
         @click.stop="nextImage"
       >
@@ -52,7 +52,7 @@
 
       <!-- 모바일 세로 모드용 위/아래 버튼 -->
       <button
-        v-if="record.images && record.images.length > 1"
+        v-if="recordWithImages?.images && recordWithImages.images.length > 1"
         class="nav-arrow mobile-prev-arrow"
         @click.stop="previousImage"
       >
@@ -60,31 +60,42 @@
       </button>
 
       <button
-        v-if="record.images && record.images.length > 1"
+        v-if="recordWithImages?.images && recordWithImages.images.length > 1"
         class="nav-arrow mobile-next-arrow"
         @click.stop="nextImage"
       >
         ▼
       </button>
-      
+
       <!-- 이미지 카운터 -->
-      <div v-if="record.images && record.images.length > 1" class="image-counter">
-        {{ selectedImageIndex + 1 }} / {{ record.images.length }}
+      <div v-if="recordWithImages?.images && recordWithImages.images.length > 1" class="image-counter">
+        {{ selectedImageIndex + 1 }} / {{ recordWithImages.images.length }}
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import HomeButton from './HomeButton.vue'
 
 defineEmits(['navigate'])
 
 const selectedImageIndex = ref(null)
+const baseUrl = import.meta.env.BASE_URL
 
 const props = defineProps({
   record: Object
+})
+
+const recordWithImages = computed(() => {
+  if (!props.record) return null
+  return {
+    ...props.record,
+    images: (props.record.images || []).map(img =>
+      img.startsWith('http') ? img : `${baseUrl}${img.startsWith('/') ? img.slice(1) : img}`
+    )
+  }
 })
 
 const openImage = (index) => {
@@ -102,7 +113,7 @@ const previousImage = () => {
 }
 
 const nextImage = () => {
-  if (props.record?.images && selectedImageIndex.value < props.record.images.length - 1) {
+  if (recordWithImages.value?.images && selectedImageIndex.value < recordWithImages.value.images.length - 1) {
     selectedImageIndex.value++
   }
 }
