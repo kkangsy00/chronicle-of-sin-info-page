@@ -301,11 +301,15 @@ const nextImage = () => {
     width: 5vw;
     height: 5vw;
     font-size: 1.8vw;
+  }
+
+  .prev-arrow {
     left: 0.8vw;
   }
 
   .next-arrow {
     right: 0.8vw;
+    left: auto;
   }
 
   .modal-image {
@@ -342,6 +346,7 @@ const nextImage = () => {
 
   .next-arrow {
     right: 1vw;
+    left: auto;
   }
 
   .nav-arrow:hover {
