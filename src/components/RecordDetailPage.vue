@@ -50,23 +50,6 @@
         ▶
       </button>
 
-      <!-- 모바일 세로 모드용 위/아래 버튼 -->
-      <button
-        v-if="recordWithImages?.images && recordWithImages.images.length > 1"
-        class="nav-arrow mobile-prev-arrow"
-        @click.stop="previousImage"
-      >
-        ▲
-      </button>
-
-      <button
-        v-if="recordWithImages?.images && recordWithImages.images.length > 1"
-        class="nav-arrow mobile-next-arrow"
-        @click.stop="nextImage"
-      >
-        ▼
-      </button>
-
       <!-- 이미지 카운터 -->
       <div v-if="recordWithImages?.images && recordWithImages.images.length > 1" class="image-counter">
         {{ selectedImageIndex + 1 }} / {{ recordWithImages.images.length }}
@@ -260,10 +243,6 @@ const nextImage = () => {
   right: 2vw;
 }
 
-.mobile-prev-arrow,
-.mobile-next-arrow {
-  display: none;
-}
 
 .nav-arrow:hover {
   background: rgba(255, 255, 255, 0.2);
@@ -350,33 +329,23 @@ const nextImage = () => {
     grid-template-columns: repeat(auto-fill, minmax(25vw, 1fr));
   }
 
-  .prev-arrow,
+  .nav-arrow {
+    width: 8vw;
+    height: 8vw;
+    font-size: 2.5vw;
+    position: fixed;
+  }
+
+  .prev-arrow {
+    left: 1vw;
+  }
+
   .next-arrow {
-    display: none;
+    right: 1vw;
   }
 
-  .mobile-prev-arrow,
-  .mobile-next-arrow {
-    display: flex;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 7vw;
-    height: 7vw;
-    font-size: 2vw;
-  }
-
-  .mobile-prev-arrow {
-    top: 1vw;
-  }
-
-  .mobile-next-arrow {
-    bottom: 4vw;
-  }
-
-  .mobile-prev-arrow:hover,
-  .mobile-next-arrow:hover {
-    transform: translateX(-50%) scale(1.1);
+  .nav-arrow:hover {
+    transform: translateY(-50%) scale(1.1);
   }
 
   .close-btn {
@@ -388,7 +357,7 @@ const nextImage = () => {
   }
 
   .modal-image {
-    max-width: 95vw;
+    max-width: 75vw;
     max-height: 70vh;
   }
 
