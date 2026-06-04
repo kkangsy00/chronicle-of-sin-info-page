@@ -4,8 +4,18 @@
     <div class="container">
       <div class="detail-content">
         <div class="record-viewer">
+          <!-- 유튜브 영상 -->
+          <div v-if="props.record?.videoUrl" class="video-container">
+            <iframe
+              :src="props.record.videoUrl"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
           <!-- 이미지 그리드 -->
-          <div class="image-grid">
+          <div v-else class="image-grid">
             <div
               v-for="(image, index) in recordWithImages?.images"
               :key="index"
@@ -125,6 +135,20 @@ const nextImage = () => {
   text-align: center;
 }
 
+
+/* 유튜브 영상 */
+.video-container {
+  width: 100%;
+  max-width: 70vw;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5vw;
+}
 
 /* 이미지 그리드 */
 .image-grid {

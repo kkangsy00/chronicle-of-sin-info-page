@@ -23,6 +23,12 @@
         "/data/records/2/20260603_213108966_01.png",
         "/data/records/2/20260603_213108966_02.png"
       ]
+    },
+    {
+      "id": 3,
+      "title": "○○는 수신기입니다",
+      "description": "セカイのカケラ ワタシはカケラ",
+      "videoUrl": "https://www.youtube.com/embed/ZlKVBfRcnOE?si=_AlIlmOWqlqtDYuP"
     }
   ]
 }
