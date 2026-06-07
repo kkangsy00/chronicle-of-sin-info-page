@@ -29,6 +29,16 @@
       "title": "○○는 수신기입니다",
       "description": "2026.06.04　セカイのカケラ ワタシはカケラ",
       "videoUrl": "https://www.youtube.com/embed/ZlKVBfRcnOE"
+    },
+    {
+      "id": 4,
+      "title": "있을 곳",
+      "description": "2026.06.06　발이 닿은 곳에 머물지 못하고",
+      "images": [
+        "/data/records/4/1.png",
+        "/data/records/4/2.png",
+        "/data/records/4/3.png"
+      ]
     }
   ]
 }
