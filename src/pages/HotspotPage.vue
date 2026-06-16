@@ -55,7 +55,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import HomeButton from './HomeButton.vue'
+import HomeButton from '../components/HomeButton.vue'
 
 const props = defineProps({
   scenePath: {

@@ -54,7 +54,7 @@
 
 <script setup>
 import { ref, computed, onMounted, nextTick } from 'vue'
-import HomeButton from './HomeButton.vue'
+import HomeButton from '../components/HomeButton.vue'
 import CharacterImage from './info/CharacterImage.vue'
 import InfoTabs from './info/InfoTabs.vue'
 import InfoContent from './info/InfoContent.vue'

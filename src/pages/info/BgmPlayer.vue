@@ -176,60 +176,16 @@ const togglePlay = (index) => {
   font-size: var(--fs-xs);
 }
 
-/* content-card 스타일 */
-.content-card {
-  padding: 1.5vw 1.8vw;
+/* .content-card 공용 스타일은 전역 styles/content-card.css.
+   여기선 BGM 카드만의 차이만 둔다. (.bgm-txt 의 p 스타일도 전역 .content-card p 가 처리) */
+.bgm-item {
   min-height: 7.5vw;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  border-bottom: var(--border-hair) solid rgba(0, 0, 0, 0.05);
-  border-left: var(--border-hair) solid #000000;
-  border-right: var(--border-hair) solid #000000;
 }
 
-.content-card.color-a {
-  background: linear-gradient(90deg, rgba(22, 22, 0, 1) 0%, rgba(41, 38, 21, 0.5) 100%);
-}
-
-.content-card.color-b {
-  background: linear-gradient(90deg, rgba(22, 21, 0, 0.8) 0%, rgba(41, 38, 21, 0.3) 100%);
-}
-
-.content-card h3 {
-  color: #d8d7c1;
-  margin: 0 0 0.7vw 0.6vw;
-  font-size: var(--fs-md);
-  display: block;
-  position: relative;
-}
-
-.content-card h3::before {
-  content: attr(data-index);
-  display: inline-block;
-  width: 1.5vw;
-  height: 1.5vw;
-  background: #4c4d3e;
-  color: #3d3b2f;
-  font-size: 1.2vw;
-  border-radius: 0.4vw;
-  padding: 0.05vw 0.5vw 0.1vw 0.5vw;
-  margin-right: 0.5vw;
-  text-align: center;
-  line-height: 1.5vw;
-  vertical-align: middle;
-}
-
+/* BGM 카드는 상단 가로선·제목 밑줄을 쓰지 않음 */
 .bgm-item::before,
 .bgm-item h3::after {
   display: none;
-}
-
-.bgm-txt {
-  color: #84836e;
-  font-size: var(--fs-sm);
-  margin: 0 0 0.6vw 0.7vw;
-  line-height: 1.4;
 }
 
 /* 반응형 — 폰트는 토큰(clamp)으로 처리. 패딩·아이콘 도형·여백 등 레이아웃만 조정 */
@@ -239,9 +195,6 @@ const togglePlay = (index) => {
   .bgm-play-btn { padding: 1vw 1.5vw; gap: 0.6vw; }
   .play-icon { border-left-width: 0.7vw; border-top-width: 0.4vw; border-bottom-width: 0.4vw; }
   .stop-icon { width: 0.7vw; height: 0.7vw; }
-  .content-card { padding: 2vw 2.3vw; }
-  .content-card h3 { margin-bottom: 0.9vw; }
-  .content-card h3::before { width: 1.9vw; height: 1.9vw; font-size: 1.5vw; line-height: 1.9vw; }
   .mini-player { padding: 1vw 2.2vw; }
 }
 
@@ -249,31 +202,26 @@ const togglePlay = (index) => {
   .bgm-content { padding: 1.8vw; }
   .bgm-item { gap: 1.5vw; }
   .bgm-play-btn { padding: 0.8vw 1.2vw; }
-  .content-card { padding: 1.8vw 2vw; }
 }
 
 /* 반응형 - 소형 화면 */
 @media (max-width: 768px) {
   .bgm-content { padding: 1.5vw; }
-  .bgm-item { gap: 1.5vw; }
+  .bgm-item { gap: 1.5vw; min-height: 9vw; }
   .bgm-play-btn { padding: 0.8vw 1vw; }
-  .content-card { padding: 1.6vw 2vw; min-height: 9vw; }
 }
 
 @media (max-width: 480px) {
   .bgm-content { padding: 2vw; }
-  .bgm-item { gap: 2vw; flex-wrap: wrap; }
+  .bgm-item { gap: 2vw; min-height: 12vw; flex-wrap: wrap; }
   .bgm-play-btn { padding: 1.2vw 1.5vw; gap: 0.8vw; }
   .play-icon { border-left-width: 1vw; border-top-width: 0.6vw; border-bottom-width: 0.6vw; }
   .stop-icon { width: 1vw; height: 1vw; }
-  .content-card { padding: 2.5vw 3vw; min-height: 12vw; }
-  .content-card h3 { margin-bottom: 1.5vw; }
-  .content-card h3::before { width: 2.2vw; height: 2.8vw; font-size: 2.5vw; line-height: 2.8vw; padding: 0.7vw 1.6vw; margin-right: 1.5vw; }
   .mini-player { flex-direction: column; gap: 1.5vw; padding: 1.5vw; }
 }
 
 @media (orientation: landscape) and (max-height: 500px) {
-  .content-card { min-height: 20vh; }
+  .bgm-item { min-height: 20vh; }
 }
 
 

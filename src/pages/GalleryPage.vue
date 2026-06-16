@@ -41,19 +41,20 @@
       </div>
       
       <!-- 이미지 뷰어 모달 -->
-      <div v-if="selectedImage" class="image-modal" @click="closeImage">
-        <div class="modal-content" @click.stop>
-          <button class="close-btn" @click="closeImage">&times;</button>
-          <img :src="selectedImage.fullImage" :alt="selectedImage.title">
-        </div>
-      </div>
+      <ImageModal
+        v-if="selectedImage"
+        :images="[selectedImage.fullImage]"
+        :alt="selectedImage.title"
+        @close="closeImage"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import HomeButton from './HomeButton.vue'
+import HomeButton from '../components/HomeButton.vue'
+import ImageModal from '../components/ImageModal.vue'
 
 defineEmits(['navigate'])
 
@@ -283,62 +284,7 @@ onMounted(loadGalleryItems)
   transform: scale(1.05);
 }
 
-/* 이미지 모달 */
-.image-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  backdrop-filter: blur(5px);
-}
-
-.modal-content {
-  position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
-  background: rgba(0, 0, 0, 0.8);
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.close-btn {
-  position: absolute;
-  top: 1vw;
-  right: 1.2vw;
-  border: none;
-  color: white;
-  font-size: clamp(1.5rem, 2.5vw, 2.6rem);
-  cursor: pointer;
-  z-index: 2001;
-  width: clamp(40px, 2.5vw, 56px);
-  height: clamp(40px, 2.5vw, 56px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.5);
-  transition: background 0.3s ease;
-}
-
-.close-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.modal-content img {
-  width: 100%;
-  height: auto;
-  max-height: 80vh;
-  object-fit: contain;
-}
-
-/* 반응형 — 태그/닫기 버튼 폰트·크기는 토큰·clamp로 처리.
-   패딩·라운드·그리드 등 레이아웃만 조정 */
+/* 반응형 — 태그 버튼 폰트는 토큰으로 처리. 패딩·라운드·그리드 등 레이아웃만 조정 */
 @media (min-width: 2561px) {
   .tag-btn { padding: 1.2vw 1.8vw; border-radius: 2.4vw; }
 }

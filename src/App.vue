@@ -36,14 +36,14 @@
 
 <script setup>
 import { ref } from 'vue'
-import HomePage from './components/HomePage.vue'
-import InfoPage from './components/InfoPage.vue'
-import GalleryPage from './components/GalleryPage.vue'
-import LinksPage from './components/LinksPage.vue'
-import ScenePage from './components/ScenePage.vue'
-import RecordsPage from './components/RecordsPage.vue'
-import RecordDetailPage from './components/RecordDetailPage.vue'
-import HotspotPage from './components/HotspotPage.vue'
+import HomePage from './pages/HomePage.vue'
+import InfoPage from './pages/InfoPage.vue'
+import GalleryPage from './pages/GalleryPage.vue'
+import LinksPage from './pages/LinksPage.vue'
+import ScenePage from './pages/ScenePage.vue'
+import RecordsPage from './pages/RecordsPage.vue'
+import RecordDetailPage from './pages/RecordDetailPage.vue'
+import HotspotPage from './pages/HotspotPage.vue'
 
 const currentPage = ref('home')
 const currentScenePath = ref('/data/hotspot/scene.json')
