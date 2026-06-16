@@ -55,7 +55,7 @@ onMounted(async () => {
 
 .link-section {
   background: rgba(0, 0, 0, 0.3);
-  border: 0.05vw solid rgba(255, 255, 255, 0.1);
+  border: var(--border-hair) solid rgba(255, 255, 255, 0.1);
   border-radius: 0.5vw;
   padding: 2vw;
   backdrop-filter: blur(10px);
@@ -63,11 +63,11 @@ onMounted(async () => {
 }
 
 .link-section h2 {
-  font-size: 1.5vw;
+  font-size: var(--fs-md);
   color: #d8d7c1;
   margin-bottom: 1.2vw;
   padding-bottom: 0.6vw;
-  border-bottom: 0.12vw solid rgba(255, 255, 255, 0.2);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .link-list {
@@ -79,8 +79,8 @@ onMounted(async () => {
   display: block;
   padding: 1.2vw 1.5vw;
   background: linear-gradient(90deg, rgba(22, 21, 0, 0.8) 0%, rgba(41, 38, 21, 0.3) 100%);
-  border: 0.05vw solid #000000;
-  border-left: 0.25vw solid #4c4d3e;
+  border: var(--border-hair) solid #000000;
+  border-left: 3px solid #4c4d3e;
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
@@ -93,7 +93,7 @@ onMounted(async () => {
   top: 0;
   left: 0;
   right: 0;
-  height: 0.05vw;
+  height: 1px;
   background: rgba(0, 0, 0, 0.8);
   opacity: 0.6;
 }
@@ -108,7 +108,7 @@ onMounted(async () => {
 .link-title {
   display: block;
   color: #d8d7c1;
-  font-size: 1.2vw;
+  font-size: var(--fs-base);
   font-weight: 500;
   margin-bottom: 0.4vw;
   transition: color 0.3s ease;
@@ -120,7 +120,7 @@ onMounted(async () => {
 
 .link-desc {
   color: var(--color-text-secondary);
-  font-size: 0.9vw;
+  font-size: var(--fs-xs);
   line-height: 1.4;
   transition: color var(--transition-normal);
 }
@@ -129,76 +129,59 @@ onMounted(async () => {
   color: var(--color-text-muted);
 }
 
-/* 반응형 - 대형 화면 */
+/* 반응형 — 폰트/테두리는 토큰·헤어라인으로 처리. 레이아웃 비율만 조정 */
 @media (min-width: 2561px) {
   .container { max-width: 70vw; padding: 5vw 2vw; }
   .link-section { padding: 2.5vw; margin-bottom: 2vw; border-radius: 0.6vw; }
-  .link-section h2 { font-size: 1.8vw; margin-bottom: 1.5vw; padding-bottom: 0.8vw; }
+  .link-section h2 { margin-bottom: 1.5vw; padding-bottom: 0.8vw; }
   .link-list { gap: 1vw; }
-  .link-item { padding: 1.5vw 2vw; border-left-width: 0.3vw; }
+  .link-item { padding: 1.5vw 2vw; }
   .link-item:hover { transform: translateX(0.6vw); }
-  .link-title { font-size: 1.4vw; margin-bottom: 0.5vw; }
-  .link-desc { font-size: 1vw; }
 }
 
 @media (min-width: 1921px) {
   .container { max-width: 72vw; padding: 4.5vw 1.8vw; }
   .link-section { padding: 2.2vw; margin-bottom: 1.8vw; }
-  .link-section h2 { font-size: 1.6vw; margin-bottom: 1.3vw; }
+  .link-section h2 { margin-bottom: 1.3vw; }
   .link-item { padding: 1.3vw 1.7vw; }
-  .link-title { font-size: 1.3vw; }
-  .link-desc { font-size: 0.95vw; }
 }
 
-/* 반응형 - 중형 화면 */
 @media (max-width: 1280px) {
   .container { max-width: 80vw; padding: 4vw 1.5vw; }
   .link-section { padding: 2vw; }
-  .link-section h2 { font-size: 1.6vw; }
   .link-item { padding: 1.3vw 1.6vw; }
-  .link-title { font-size: 1.3vw; }
-  .link-desc { font-size: 1vw; }
 }
 
 @media (max-width: 1024px) {
   .container { max-width: 85vw; padding: 4vw 2vw; }
   .link-section { padding: 2.5vw; }
-  .link-section h2 { font-size: 1.8vw; }
   .link-item { padding: 1.5vw 2vw; }
-  .link-title { font-size: 1.5vw; }
-  .link-desc { font-size: 1.1vw; }
 }
 
 /* 반응형 - 소형 화면 */
 @media (max-width: 768px) {
   .container { max-width: 90vw; padding: 5vw 2.5vw; }
   .link-section { padding: 3vw; margin-bottom: 3vw; border-radius: 1vw; }
-  .link-section h2 { font-size: 2.5vw; margin-bottom: 2vw; padding-bottom: 1vw; border-bottom-width: 0.2vw; }
+  .link-section h2 { margin-bottom: 2vw; padding-bottom: 1vw; }
   .link-list { gap: 1.5vw; }
-  .link-item { padding: 2vw 2.5vw; border-left-width: 0.4vw; }
+  .link-item { padding: 2vw 2.5vw; }
   .link-item:hover { transform: translateX(1vw); }
-  .link-title { font-size: 2vw; margin-bottom: 0.6vw; }
-  .link-desc { font-size: 1.6vw; }
 }
 
 @media (max-width: 640px) {
   .container { max-width: 92vw; padding: 6vw 3vw; }
   .link-section { padding: 3.5vw; margin-bottom: 3.5vw; }
-  .link-section h2 { font-size: 3vw; margin-bottom: 2.5vw; }
+  .link-section h2 { margin-bottom: 2.5vw; }
   .link-list { gap: 2vw; }
-  .link-item { padding: 2.5vw 3vw; border-left-width: 0.5vw; }
-  .link-title { font-size: 2.5vw; }
-  .link-desc { font-size: 2vw; }
+  .link-item { padding: 2.5vw 3vw; }
 }
 
 @media (max-width: 480px) {
   .container { max-width: 95vw; padding: 7vw 3vw; }
   .link-section { padding: 4vw; margin-bottom: 4vw; border-radius: 1.5vw; }
-  .link-section h2 { font-size: 3.5vw; margin-bottom: 3vw; padding-bottom: 1.5vw; }
+  .link-section h2 { margin-bottom: 3vw; padding-bottom: 1.5vw; }
   .link-list { gap: 2.5vw; }
-  .link-item { padding: 3vw 3.5vw; border-left-width: 0.6vw; border-width: 0.1vw; }
+  .link-item { padding: 3vw 3.5vw; }
   .link-item:hover { transform: translateX(1.5vw); }
-  .link-title { font-size: 3vw; margin-bottom: 0.8vw; }
-  .link-desc { font-size: 2.3vw; }
 }
 </style>

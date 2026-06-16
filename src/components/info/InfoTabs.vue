@@ -43,12 +43,13 @@ defineEmits(['update:activeTab'])
 .info-tab-button {
   flex: 1;
   background: rgba(101, 94, 68, 0.6);
-  font-size: 1.2vw;
+  font-size: var(--fs-base);
   padding: 2vw 3vw;
   border: none;
   color: #8a8777;
   cursor: pointer;
   font-weight: 500;
+  white-space: nowrap;
   transition: all 0.3s ease;
 }
 
@@ -63,30 +64,23 @@ defineEmits(['update:activeTab'])
   color: #d8d7c1;
 }
 
-/* 반응형 - 대형 화면 */
+/* 반응형 — 폰트는 토큰(clamp)으로 처리. 패딩만 조정
+   (기존 min/max 1921 경계가 겹치던 버그도 1920으로 분리해 해소) */
 @media (min-width: 1921px) {
-  .info-tab-button { padding: 1.2vw 2.5vw; font-size: 1.2vw; }
+  .info-tab-button { padding: 1.2vw 2.5vw; }
 }
 
-@media (max-width: 1921px) {
-  .info-tab-button { padding: 1vw 2vw; font-size: 1vw; }
+@media (max-width: 1920px) {
+  .info-tab-button { padding: 1vw 2vw; }
 }
 
-
-/* 반응형 - 소형 화면 */
 @media (max-width: 1024px) {
-  .info-tab-button { padding: 1vw 2.5vw; font-size: 1.5vw; }
-}
-
-@media (max-width: 768px) {
-  .info-tab-button { font-size: 1.8vw; }
-}
-
-@media (max-width: 640px) {
-  .info-tab-button { font-size: 3.5vw; }
+  .info-tab-button { padding: 1vw 2.5vw; }
 }
 
 @media (max-width: 480px) {
-  .info-tab-button { padding: 2vw 3.5vw; font-size: 3.2vw; }
-} 
+  /* 좁은 화면에서 '이미지변경' 줄바꿈 방지: 탭 영역을 넓히고 좌우 패딩 축소 */
+  .info-tabs { width: 80%; }
+  .info-tab-button { padding: 2vw 1vw; }
+}
 </style>

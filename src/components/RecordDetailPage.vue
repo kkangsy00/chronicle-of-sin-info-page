@@ -116,7 +116,7 @@ const nextImage = () => {
 
 .detail-content {
   background: rgba(0, 0, 0, 0.3);
-  border: 0.05vw solid rgba(255, 255, 255, 0.1);
+  border: var(--border-hair) solid rgba(255, 255, 255, 0.1);
   padding: 2vw;
   border-radius: 0.5vw;
 }
@@ -141,7 +141,7 @@ const nextImage = () => {
   aspect-ratio: 1;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 0.05vw solid rgba(255, 255, 255, 0.1);
+  border: var(--border-hair) solid rgba(255, 255, 255, 0.1);
 }
 
 .grid-item:hover {
@@ -199,11 +199,11 @@ const nextImage = () => {
   background: rgba(0, 0, 0, 0.5);
   border: none;
   color: white;
-  font-size: 2.5vw;
+  font-size: clamp(1.5rem, 2.5vw, 2.6rem);
   cursor: pointer;
   z-index: 2002;
-  width: 3vw;
-  height: 3vw;
+  width: clamp(40px, 3vw, 60px);
+  height: clamp(40px, 3vw, 60px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -221,11 +221,11 @@ const nextImage = () => {
   top: 50%;
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.5);
-  border: 0.1vw solid rgba(255, 255, 255, 0.2);
+  border: var(--border-hair) solid rgba(255, 255, 255, 0.2);
   color: #fdfdfc;
-  width: 3.5vw;
-  height: 3.5vw;
-  font-size: 1.5vw;
+  width: clamp(44px, 3.5vw, 64px);
+  height: clamp(44px, 3.5vw, 64px);
+  font-size: clamp(1rem, 1.5vw, 1.8rem);
   cursor: pointer;
   border-radius: 0.3vw;
   transition: all 0.3s ease;
@@ -256,7 +256,7 @@ const nextImage = () => {
   bottom: 2vw;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 1.2vw;
+  font-size: var(--fs-base);
   color: #bdb7a0;
   background: rgba(0, 0, 0, 0.5);
   padding: 0.5vw 1.5vw;
@@ -264,16 +264,11 @@ const nextImage = () => {
   z-index: 2001;
 }
 
-/* 반응형 */
+/* 반응형 — 화살표/닫기/카운터의 크기·폰트는 clamp·토큰으로 처리.
+   그리드 열·이미지 최대치·화살표 위치 등 레이아웃만 조정 */
 @media (max-width: 1024px) {
   .image-grid {
     grid-template-columns: repeat(auto-fill, minmax(18vw, 1fr));
-  }
-
-  .nav-arrow {
-    width: 4.5vw;
-    height: 4.5vw;
-    font-size: 1.8vw;
   }
 }
 
@@ -283,24 +278,10 @@ const nextImage = () => {
     padding: 2vw 1vw;
   }
 
-  .record-viewer h2 {
-    font-size: 3vw;
-  }
-
-  .record-description {
-    font-size: 1.2vw;
-  }
-
   .image-grid {
     grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
     gap: 1vw;
     padding: 0;
-  }
-
-  .nav-arrow {
-    width: 5vw;
-    height: 5vw;
-    font-size: 1.8vw;
   }
 
   .prev-arrow {
@@ -317,27 +298,15 @@ const nextImage = () => {
     max-height: 75vh;
   }
 
-  .image-counter {
-    font-size: 1.3vw;
-  }
-
   .close-btn {
-    width: 2.5vw;
-    height: 2.5vw;
-    font-size: 2vw;
+    top: 1vw;
+    right: 1vw;
   }
 }
 
 @media (max-width: 480px) {
   .image-grid {
     grid-template-columns: repeat(auto-fill, minmax(25vw, 1fr));
-  }
-
-  .nav-arrow {
-    width: 8vw;
-    height: 8vw;
-    font-size: 2.5vw;
-    position: fixed;
   }
 
   .prev-arrow {
@@ -349,25 +318,12 @@ const nextImage = () => {
     left: auto;
   }
 
-  .nav-arrow:hover {
-    transform: translateY(-50%) scale(1.1);
-  }
-
-  .close-btn {
-    width: 10vw;
-    height: 10vw;
-    font-size: 6vw;
-    top: 1vw;
-    right: 1vw;
-  }
-
   .modal-image {
     max-width: 75vw;
     max-height: 70vh;
   }
 
   .image-counter {
-    font-size: 1.5vw;
     padding: 0.8vw 1.2vw;
   }
 }

@@ -71,10 +71,10 @@ const scrollTabs = (direction) => {
 
 .scroll-button {
   background: linear-gradient(180deg, #514f40, #3b423b);
-  border: 0.05vw solid #000000;
+  border: var(--border-hair) solid #000000;
   color: #252317;
   cursor: pointer;
-  font-size: 2.5vw;
+  font-size: clamp(1.2rem, 2.5vw, 2.8rem);
   width: 10%;
   height: 100%;
   display: flex;
@@ -86,7 +86,7 @@ const scrollTabs = (direction) => {
 
 .scroll-button,
 .tab-button {
-  border: 0.05vw solid #000000;
+  border: var(--border-hair) solid #000000;
   color: #8a8777;
   cursor: pointer;
   font-weight: 500;
@@ -105,8 +105,8 @@ const scrollTabs = (direction) => {
 
 .tab-button {
   background: transparent;
-  border: 0.05vw solid #000000;
-  font-size: 1.2vw;
+  border: var(--border-hair) solid #000000;
+  font-size: var(--fs-base);
   position: relative;
   min-width: 6vw;
   flex: 1;
@@ -125,32 +125,32 @@ const scrollTabs = (direction) => {
   opacity: 0.7;
 }
 
-/* 반응형 - 대형 화면 */
+/* 반응형 — 탭 폰트는 토큰(clamp)으로 처리. 높이·너비만 조정
+   (min/max 1921 경계 중첩 버그도 1920으로 분리해 해소) */
 @media (min-width: 1921px) {
   .tab-section { height: 10vh; }
-  .tab-button { min-width: 8vw; font-size: 1.4vw; }
+  .tab-button { min-width: 8vw; }
   .pct-txt { font-size: 1.2em; }
 }
 
-@media (max-width: 1921px) {
+@media (max-width: 1920px) {
   .tab-section { height: 9vh; }
-  .tab-button { min-width: 7vw; font-size: 1.3vw; }
+  .tab-button { min-width: 7vw; }
 }
 
-/* 반응형 - 소형 화면 */
 @media (max-width: 1024px) {
   .tab-section { height: 6vw; }
-  .tab-button { min-width: 12vw; font-size: 1.8vw; }
+  .tab-button { min-width: 12vw; }
 }
 
 @media (max-width: 768px) {
   .tab-section { height: 6vw; }
-  .tab-button { min-width: 12vw; font-size: 2vw; }
+  .tab-button { min-width: 12vw; }
 }
 
 @media (max-width: 480px) {
   .tab-section { height: 6vh; }
-  .tab-button { min-width: 14vw; font-size: 3vw; }
+  .tab-button { min-width: 22vw; }
   .pct-txt { font-size: 0.85em; }
 }
 </style>

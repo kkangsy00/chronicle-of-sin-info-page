@@ -32,7 +32,7 @@ defineEmits(['select'])
 <style scoped>
 .images-content {
   background: linear-gradient(90deg, rgba(22, 21, 0, 0.8) 0%, rgba(41, 38, 21, 0.3) 100%);
-  border: 0.05vw solid #000000;
+  border: var(--border-hair) solid #000000;
   padding: 1.2vw;
   flex: 1;
   overflow-y: auto;
@@ -48,7 +48,7 @@ defineEmits(['select'])
 
 .images-content::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb);
-  border: 0.1vw solid var(--scrollbar-track);
+  border: 2px solid var(--scrollbar-track);
 }
 
 .image-buttons {
@@ -62,15 +62,15 @@ defineEmits(['select'])
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
-  border: 0.05vw solid #000000;
+  border: var(--border-hair) solid #000000;
   color: #ffffff;
   cursor: pointer;
-  font-size: 1vw;
+  font-size: var(--fs-sm);
   font-weight: 700;
   padding: 1vw 0.6vw;
   transition: all 0.3s ease;
   border-radius: 0.12vw;
-  text-shadow: 0.12vw 0.12vw 0.24vw rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   position: relative;
   width: 9vw;
   height: 9vw;
@@ -101,7 +101,7 @@ defineEmits(['select'])
 }
 
 .image-button.active {
-  border: 0.12vw solid #fdfdfc;
+  border: 2px solid #fdfdfc;
   transform: translateY(-0.05vw);
 }
 
@@ -109,29 +109,29 @@ defineEmits(['select'])
   background: rgba(253, 253, 252, 0.3);
 }
 
-/* 반응형 - 대형 화면 */
+/* 반응형 — 버튼 라벨 폰트는 토큰(clamp)으로 처리. 그리드·크기만 조정 */
 @media (min-width: 2561px) {
   .images-content { padding: 2vw; }
   .image-buttons { gap: 1.5vw; grid-template-columns: repeat(auto-fill, minmax(12vw, 1fr)); }
-  .image-button { width: 12vw; height: 12vw; font-size: 1.2vw; padding: 1.5vw 1vw; }
+  .image-button { width: 12vw; height: 12vw; padding: 1.5vw 1vw; }
 }
 
 @media (min-width: 1921px) {
   .images-content { padding: 1.6vw; }
   .image-buttons { gap: 1.2vw; grid-template-columns: repeat(auto-fill, minmax(10vw, 1fr)); }
-  .image-button { width: 10vw; height: 10vw; font-size: 1.1vw; padding: 1.2vw 0.8vw; }
+  .image-button { width: 10vw; height: 10vw; padding: 1.2vw 0.8vw; }
 }
 
 /* 반응형 - 소형 화면 */
 @media (max-width: 768px) {
   .images-content { padding: 1.5vw; }
   .image-buttons { gap: 1.2vw; grid-template-columns: repeat(auto-fill, minmax(15vw, 1fr)); }
-  .image-button { width: 15vw; height: 15vw; font-size: 1.6vw; padding: 1.2vw 1vw; }
+  .image-button { width: 15vw; height: 15vw; padding: 1.2vw 1vw; }
 }
 
 @media (max-width: 480px) {
   .images-content { padding: 2vw; }
   .image-buttons { gap: 1.5vw; grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr)); }
-  .image-button { width: 20vw; height: 20vw; font-size: 2vw; padding: 1.5vw 1.2vw; }
+  .image-button { width: 20vw; height: 20vw; padding: 1.5vw 1.2vw; }
 }
 </style>

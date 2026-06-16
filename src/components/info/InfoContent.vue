@@ -55,9 +55,9 @@ defineExpose({
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  border-bottom: 0.05vw solid rgba(0, 0, 0, 0.05);
-  border-left: 0.05vw solid #000000;
-  border-right: 0.05vw solid #000000;
+  border-bottom: var(--border-hair) solid rgba(0, 0, 0, 0.05);
+  border-left: var(--border-hair) solid #000000;
+  border-right: var(--border-hair) solid #000000;
 }
 
 :deep(.content-card::before) {
@@ -82,7 +82,7 @@ defineExpose({
 :deep(.content-card h3) {
   color: #d8d7c1;
   margin: 0 0 0.7vw 0.6vw;
-  font-size: 1.5vw;
+  font-size: var(--fs-md);
   display: block;
   position: relative;
 }
@@ -115,23 +115,24 @@ defineExpose({
 
 :deep(.content-card p) {
   color: #84836e;
-  font-size: 1vw;
+  font-size: var(--fs-sm);
   margin: 0 0 0.6vw 0.7vw;
-  line-height: 1;
+  line-height: 1.4;
 }
 
+/* 반응형 — h3/p 폰트는 토큰(clamp)으로 처리. 번호 배지·여백 등 레이아웃만 조정 */
 @media (max-width: 1024px) {
-  :deep(.content-card h3) { font-size: 2vw; }
   :deep(.content-card h3::before) { width: 1.6vw; height: 1.8vw; font-size: 1.6vw; line-height: 1.6vw; padding: 0.4vw 0.8vw; margin-right: 1vw; }
   :deep(.content-card h3::after) { margin: 1vw 0 1.5vw 0; }
-  :deep(.content-card p) { font-size: 1.5vw; margin: 0 0 1vw 1vw; }
+  /* 모바일(가로·세로)은 글자가 작고 줄이 짧아 행간이 비어 보임 → 좁힘 */
+  :deep(.content-card p) { margin: 0 0 1vw 1vw; line-height: 1.25; }
 }
 
 @media (max-width: 480px) {
   :deep(.content-card) { padding: 2.5vw 3vw; }
-  :deep(.content-card h3) { font-size: 3.5vw; margin-bottom: 1.5vw; }
+  :deep(.content-card h3) { margin-bottom: 1.5vw; }
   :deep(.content-card h3::before) { width: 2.2vw; height: 2.8vw; font-size: 2.5vw; line-height: 2.8vw; padding: 0.7vw 1.6vw; margin-right: 1.5vw; }
   :deep(.content-card h3::after) { margin: 1vw 0 2vw 0; }
-  :deep(.content-card p) { font-size: 3vw; margin: 0 0 2vw 2vw; }
+  :deep(.content-card p) { margin: 0 0 2vw 2vw; }
 }
 </style>

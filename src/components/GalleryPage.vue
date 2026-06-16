@@ -228,11 +228,11 @@ onMounted(loadGalleryItems)
 .tag-btn {
   background: rgba(0, 0, 0, 0.3);
   color: white;
-  border: 0.05vw solid rgba(255, 255, 255, 0.2);
+  border: var(--border-hair) solid rgba(255, 255, 255, 0.2);
   padding: 0.5vw 1vw;
   border-radius: 1.2vw;
   transition: all 0.3s ease;
-  font-size: 0.9vw;
+  font-size: var(--fs-xs);
   cursor: pointer;
 }
 
@@ -263,7 +263,7 @@ onMounted(loadGalleryItems)
   height: 20vw;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
-  border: 0.05vw solid rgba(255, 255, 255, 0.1);
+  border: var(--border-hair) solid rgba(255, 255, 255, 0.1);
 }
 
 .gallery-card:hover {
@@ -311,14 +311,13 @@ onMounted(loadGalleryItems)
   position: absolute;
   top: 1vw;
   right: 1.2vw;
-  background: none;
   border: none;
   color: white;
-  font-size: 2.5vw;
+  font-size: clamp(1.5rem, 2.5vw, 2.6rem);
   cursor: pointer;
   z-index: 2001;
-  width: 2.5vw;
-  height: 2.5vw;
+  width: clamp(40px, 2.5vw, 56px);
+  height: clamp(40px, 2.5vw, 56px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -338,29 +337,22 @@ onMounted(loadGalleryItems)
   object-fit: contain;
 }
 
-/* 반응형 - 대형 화면 */
+/* 반응형 — 태그/닫기 버튼 폰트·크기는 토큰·clamp로 처리.
+   패딩·라운드·그리드 등 레이아웃만 조정 */
 @media (min-width: 2561px) {
-  .tag-btn { padding: 1.2vw 1.8vw; font-size: 1.6vw; border-radius: 2.4vw; border: 0.15vw solid rgba(255, 255, 255, 0.2); }
-  .close-btn { width: 3vw; height: 3vw; font-size: 3vw; }
+  .tag-btn { padding: 1.2vw 1.8vw; border-radius: 2.4vw; }
 }
 
 @media (min-width: 1921px) {
-  .tag-btn { padding: 1vw 1.5vw; font-size: 1.2vw; border-radius: 2.2vw; border: 0.1vw solid rgba(255, 255, 255, 0.2); }
-  .close-btn { width: 2.8vw; height: 2.8vw; font-size: 2.8vw; }
+  .tag-btn { padding: 1vw 1.5vw; border-radius: 2.2vw; }
 }
 
-/* 반응형 - 중형 화면 */
 @media (max-width: 1280px) {
-  .tag-btn { padding: 0.7vw 1.2vw; font-size: 1.2vw; }
-}
-
-@media (max-width: 640px) {
-  .close-btn { width: 10vw; height: 10vw; font-size: 7vw; }
+  .tag-btn { padding: 0.7vw 1.2vw; }
 }
 
 @media (max-width: 480px) {
-  .tag-btn { padding: 1.5vw 2vw; font-size: 2.2vw; border-radius: 3vw; }
-  .close-btn { width: 12vw; height: 12vw; font-size: 8vw; }
+  .tag-btn { padding: 1.5vw 2vw; border-radius: 3vw; }
   .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr)); }
 }
 </style>

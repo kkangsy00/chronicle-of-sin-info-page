@@ -57,14 +57,14 @@ defineEmits(['navigate'])
 
 h1 {
   font-family: 'KotraDoYak', sans-serif;
-  font-size: 8vw;
+  font-size: var(--fs-xl);
   margin-bottom: 1rem;
   color: rgba(255, 255, 255, 0.8);
-  text-shadow: 0.15vw 0.15vw 0.3vw rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 p {
-  font-size: 2vw;
+  font-size: var(--fs-lg);
   font-family: "Nanum Myeongjo", serif;
   color: #bdb7a0;
 }
@@ -83,7 +83,7 @@ p {
   align-items: center;
   width: 12vw;
   height: 12vw;
-  border: 0.15vw solid black;
+  border: var(--border-hair) solid black;
   background: rgba(0, 0, 0, 0.4);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -113,7 +113,7 @@ p {
 
 .nav-btn span {
   color: #bdb7a0;
-  font-size: 1.2vw;
+  font-size: var(--fs-base);
 }
 
 .nav-btn:hover span {
@@ -122,62 +122,47 @@ p {
 
 .bottom-txt {
   color: rgba(255, 255, 255, 0.7);
-  font-size: 0.8vw;
+  font-size: var(--fs-xs);
   padding: 0 2vw;
 }
 
-/* 반응형 - 대형 화면 */
+/* 반응형 — 폰트/테두리는 토큰(clamp)·헤어라인으로 처리되므로
+   여기서는 버튼 크기·간격 등 레이아웃 비율만 조정한다 */
 @media (min-width: 2561px) {
-  h1 { font-size: 10vw; }
-  p { font-size: 2.5vw; }
   .nav-buttons { gap: 4vw; margin: 4vh 0; }
-  .nav-btn { width: 14vw; height: 14vw; padding: 1.5vw; border-width: 0.2vw; }
+  .nav-btn { width: 14vw; height: 14vw; padding: 1.5vw; }
   .btn-image { margin-bottom: 1vw; }
-  .nav-btn span { font-size: 1.5vw; }
-  .bottom-txt { font-size: 1vw; padding: 3vw; }
+  .bottom-txt { padding: 3vw; }
 }
 
 @media (min-width: 1921px) {
-  h1 { font-size: 9vw; }
-  p { font-size: 2.2vw; }
   .nav-buttons { gap: 3.5vw; }
-  .nav-btn { width: 13vw; height: 13vw; padding: 1.3vw; border-width: 0.18vw; }
-  .nav-btn span { font-size: 1.3vw; }
-  .bottom-txt { font-size: 0.9vw; padding: 2.5vw; }
+  .nav-btn { width: 13vw; height: 13vw; padding: 1.3vw; }
+  .bottom-txt { padding: 2.5vw; }
 }
 
-/* 반응형 - 중형 화면 */
 @media (max-width: 1280px) {
   .nav-buttons { gap: 2.5vw; }
   .nav-btn { width: 13vw; height: 13vw; padding: 1.2vw; }
-  .nav-btn span { font-size: 1.3vw; }
 }
 
 @media (max-width: 1024px) {
   .nav-buttons { gap: 2vw; }
   .nav-btn { width: 14vw; height: 14vw; padding: 1vw; }
-  .nav-btn span { font-size: 1.4vw; }
 }
 
-/* 반응형 - 소형 화면 */
 @media (max-width: 768px) {
   .nav-buttons { gap: 3vh; margin: 5vh 0; }
   .nav-btn { width: 22vw; height: 22vw; padding: 2vw; }
   .btn-image { margin-bottom: 1.2vh; }
-  .nav-btn span { font-size: 2.5vw; }
-  .bottom-txt { font-size: 1.5vw; }
 }
 
 @media (max-width: 640px) {
   .nav-btn { width: 24vw; height: 24vw; padding: 1.8vw; }
-  .nav-btn span { font-size: 2.8vw; }
-  .bottom-txt { font-size: 1.8vw; }
 }
 
 @media (max-width: 480px) {
-  .nav-btn { width: 28vw; height: 28vw; padding: 1.5vw; border-width: 0.3vw; }
+  .nav-btn { width: 28vw; height: 28vw; padding: 1.5vw; }
   .btn-image { margin-bottom: 1vh; }
-  .nav-btn span { font-size: 3.2vw; }
-  .bottom-txt { font-size: 2vw; }
 }
 </style>

@@ -83,7 +83,7 @@ const togglePlay = (index) => {
 <style scoped>
 .bgm-content {
   background: linear-gradient(90deg, rgba(22, 21, 0, 0.8), rgba(41, 38, 21, 0.3));
-  border: 0.05vw solid #000;
+  border: var(--border-hair) solid #000;
   flex: 1;
   padding: 1.2vw;
   display: flex;
@@ -110,7 +110,7 @@ const togglePlay = (index) => {
 
 .bgm-list::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb);
-  border: 0.1vw solid var(--scrollbar-track);
+  border: 2px solid var(--scrollbar-track);
 }
 
 .bgm-item {
@@ -126,13 +126,13 @@ const togglePlay = (index) => {
 .bgm-play-btn {
   background: #666045;
   color: #d8d7c1;
-  border: 0.05vw solid #000;
+  border: var(--border-hair) solid #000;
   padding: 0.6vw 1vw;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 0.4vw;
-  font-size: 0.9vw;
+  font-size: var(--fs-xs);
 }
 
 .bgm-play-btn.playing {
@@ -167,13 +167,13 @@ const togglePlay = (index) => {
   justify-content: space-between;
   padding: 0.6vw 1.2vw;
   background: rgba(20, 20, 18, 0.92);
-  border-top: 0.05vw solid #000;
+  border-top: var(--border-hair) solid #000;
   z-index: 10;
 }
 
 .mini-title {
   color: #e6e3d1;
-  font-size: 0.9vw;
+  font-size: var(--fs-xs);
 }
 
 /* content-card 스타일 */
@@ -183,9 +183,9 @@ const togglePlay = (index) => {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  border-bottom: 0.05vw solid rgba(0, 0, 0, 0.05);
-  border-left: 0.05vw solid #000000;
-  border-right: 0.05vw solid #000000;
+  border-bottom: var(--border-hair) solid rgba(0, 0, 0, 0.05);
+  border-left: var(--border-hair) solid #000000;
+  border-right: var(--border-hair) solid #000000;
 }
 
 .content-card.color-a {
@@ -199,7 +199,7 @@ const togglePlay = (index) => {
 .content-card h3 {
   color: #d8d7c1;
   margin: 0 0 0.7vw 0.6vw;
-  font-size: 1.5vw;
+  font-size: var(--fs-md);
   display: block;
   position: relative;
 }
@@ -227,58 +227,49 @@ const togglePlay = (index) => {
 
 .bgm-txt {
   color: #84836e;
-  font-size: 1vw;
+  font-size: var(--fs-sm);
   margin: 0 0 0.6vw 0.7vw;
-  line-height: 1;
+  line-height: 1.4;
 }
 
-/* 반응형 - 대형 화면 */
+/* 반응형 — 폰트는 토큰(clamp)으로 처리. 패딩·아이콘 도형·여백 등 레이아웃만 조정 */
 @media (min-width: 2561px) {
   .bgm-content { padding: 2.2vw; }
   .bgm-item { gap: 1.8vw; }
-  .bgm-play-btn { padding: 1vw 1.5vw; font-size: 1.2vw; gap: 0.6vw; }
+  .bgm-play-btn { padding: 1vw 1.5vw; gap: 0.6vw; }
   .play-icon { border-left-width: 0.7vw; border-top-width: 0.4vw; border-bottom-width: 0.4vw; }
   .stop-icon { width: 0.7vw; height: 0.7vw; }
   .content-card { padding: 2vw 2.3vw; }
-  .content-card h3 { font-size: 1.9vw; margin-bottom: 0.9vw; }
+  .content-card h3 { margin-bottom: 0.9vw; }
   .content-card h3::before { width: 1.9vw; height: 1.9vw; font-size: 1.5vw; line-height: 1.9vw; }
-  .bgm-txt { font-size: 1.2vw; }
-  .mini-player { padding: 1vw; margin-top: 1.8vw; }
   .mini-player { padding: 1vw 2.2vw; }
 }
 
 @media (min-width: 1921px) {
   .bgm-content { padding: 1.8vw; }
   .bgm-item { gap: 1.5vw; }
-  .bgm-play-btn { padding: 0.8vw 1.2vw; font-size: 1.1vw; }
+  .bgm-play-btn { padding: 0.8vw 1.2vw; }
   .content-card { padding: 1.8vw 2vw; }
-  .content-card h3 { font-size: 1.7vw; }
-  .bgm-txt { font-size: 1.1vw; }
 }
 
 /* 반응형 - 소형 화면 */
 @media (max-width: 768px) {
   .bgm-content { padding: 1.5vw; }
   .bgm-item { gap: 1.5vw; }
-  .bgm-play-btn { padding: 0.8vw 1vw; font-size: 1.4vw; }
+  .bgm-play-btn { padding: 0.8vw 1vw; }
   .content-card { padding: 1.6vw 2vw; min-height: 9vw; }
-  .content-card h3 { font-size: 2vw; }
-  .bgm-txt { font-size: 1.4vw; }
-  .mini-title { font-size: 1.2vw; }
 }
 
 @media (max-width: 480px) {
   .bgm-content { padding: 2vw; }
   .bgm-item { gap: 2vw; flex-wrap: wrap; }
-  .bgm-play-btn { padding: 1.2vw 1.5vw; font-size: 2vw; gap: 0.8vw; }
+  .bgm-play-btn { padding: 1.2vw 1.5vw; gap: 0.8vw; }
   .play-icon { border-left-width: 1vw; border-top-width: 0.6vw; border-bottom-width: 0.6vw; }
   .stop-icon { width: 1vw; height: 1vw; }
   .content-card { padding: 2.5vw 3vw; min-height: 12vw; }
-  .content-card h3 { font-size: 3.5vw; margin-bottom: 1.5vw; }
+  .content-card h3 { margin-bottom: 1.5vw; }
   .content-card h3::before { width: 2.2vw; height: 2.8vw; font-size: 2.5vw; line-height: 2.8vw; padding: 0.7vw 1.6vw; margin-right: 1.5vw; }
-  .bgm-txt { font-size: 3vw; }
   .mini-player { flex-direction: column; gap: 1.5vw; padding: 1.5vw; }
-  .mini-title { font-size: 1.8vw; }
 }
 
 @media (orientation: landscape) and (max-height: 500px) {

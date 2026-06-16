@@ -159,7 +159,7 @@ const selectedHotspot = computed(() =>
 }
 
 .info-title {
-  font-size: 1.2vw;
+  font-size: var(--fs-base);
   font-weight: bold;
   color: #a77061;
   padding: 2vw 0.5vw 0.5vw 0.8vw;
@@ -184,7 +184,7 @@ const selectedHotspot = computed(() =>
 }
 
 .info-desc {
-  font-size: 1.2vw;
+  font-size: var(--fs-base);
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 5%, rgba(0, 0, 0, 0.85) 20%, rgba(0, 0, 0, 0.9));
   padding: 2.5vw 2vw 2.5vw 1vw;
 }
@@ -199,10 +199,10 @@ const selectedHotspot = computed(() =>
   opacity: 0;
 }
 
-/* 반응형 - 대형 화면 (QHD) */
+/* 반응형 — 패널 폰트는 토큰(clamp)으로 처리.
+   이미지 위에 패널을 겹쳐 배치하는 padding/margin/transform(vw)은 그대로 유지 */
 @media (min-width: 2561px) {
   .info-title {
-    font-size: 1.5vw;
     padding: 2.5vw 0.6vw 0.6vw 1vw;
     margin-bottom: -3.5vw;
   }
@@ -212,15 +212,12 @@ const selectedHotspot = computed(() =>
   }
 
   .info-desc {
-    font-size: 1.5vw;
     padding: 3vw 2.5vw 3vw 1.2vw;
   }
 }
 
-/* 반응형 - 고급 화면 (FHD) */
 @media (min-width: 1921px) {
   .info-title {
-    font-size: 1.3vw;
     padding: 2.2vw 0.55vw 0.55vw 0.9vw;
     margin-bottom: -3.2vw;
   }
@@ -230,7 +227,6 @@ const selectedHotspot = computed(() =>
   }
 
   .info-desc {
-    font-size: 1.3vw;
     padding: 2.8vw 2.2vw 2.8vw 1.1vw;
   }
 }
@@ -238,7 +234,6 @@ const selectedHotspot = computed(() =>
 /* 반응형 - 모바일 가로 화면 */
 @media (max-width: 1024px) {
   .info-title {
-    font-size: 1.5vw;
     padding: 2.5vw 0.8vw 0.8vw 1vw;
     margin-bottom: -3vw;
   }
@@ -248,7 +243,6 @@ const selectedHotspot = computed(() =>
   }
 
   .info-desc {
-    font-size: 1.5vw;
     padding: 2.5vw 2vw 2.5vw 1.2vw;
   }
 }
@@ -264,7 +258,6 @@ const selectedHotspot = computed(() =>
   }
 
   .info-title {
-    font-size: 2vw;
     padding: 3vw 1vw 1vw 1.2vw;
     margin-bottom: -3.5vw;
   }
@@ -274,7 +267,6 @@ const selectedHotspot = computed(() =>
   }
 
   .info-desc {
-    font-size: 2vw;
     padding: 3vw 2.5vw 3vw 1.5vw;
   }
 }
@@ -290,7 +282,6 @@ const selectedHotspot = computed(() =>
   }
 
   .info-title {
-    font-size: 2.5vw;
     padding: 3.5vw 1.2vw 1.2vw 1.5vw;
     margin-bottom: -4vw;
   }
@@ -300,7 +291,6 @@ const selectedHotspot = computed(() =>
   }
 
   .info-desc {
-    font-size: 2.5vw;
     padding: 3.5vw 3vw 3.5vw 1.8vw;
   }
 }
@@ -315,7 +305,6 @@ const selectedHotspot = computed(() =>
   }
 
   .info-title {
-    font-size: 3vw;
     padding: 2.5vw 1vw 0.8vw 1.2vw;
     margin-bottom: -3.5vw;
   }
@@ -325,7 +314,6 @@ const selectedHotspot = computed(() =>
   }
 
   .info-desc {
-    font-size: 3vw;
     padding: 3.5vw 2.5vw 5vw 1.8vw;
     line-height: 1.5;
   }

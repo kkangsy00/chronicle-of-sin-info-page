@@ -47,7 +47,7 @@ onMounted(async () => {
 
 .records-content {
   background: rgba(0, 0, 0, 0.3);
-  border: 0.05vw solid rgba(255, 255, 255, 0.1);
+  border: var(--border-hair) solid rgba(255, 255, 255, 0.1);
   padding: 2vw;
   border-radius: 0.5vw;
 }
@@ -65,7 +65,7 @@ onMounted(async () => {
   justify-content: center;
   padding: 1.5vw 2vw;
   background: rgba(0, 0, 0, 0.2);
-  border: 0.05vw solid rgba(255, 255, 255, 0.1);
+  border: var(--border-hair) solid rgba(255, 255, 255, 0.1);
   border-radius: 0.3vw;
   color: white;
   cursor: pointer;
@@ -80,18 +80,18 @@ onMounted(async () => {
 }
 
 .record-title {
-  font-size: 1.5vw;
+  font-size: var(--fs-md);
   font-weight: bold;
   color: #fdfdfc;
   margin-bottom: 0.5vw;
 }
 
 .record-desc {
-  font-size: 1vw;
+  font-size: var(--fs-sm);
   color: #bdb7a0;
 }
 
-/* 반응형 */
+/* 반응형 — 폰트는 토큰(clamp)으로 처리. 레이아웃 비율만 조정 */
 @media (max-width: 768px) {
   .container {
     max-width: 90vw;
@@ -105,27 +105,11 @@ onMounted(async () => {
   .record-item {
     padding: 1.2vw 1.5vw;
   }
-
-  .record-title {
-    font-size: 2vw;
-  }
-
-  .record-desc {
-    font-size: 1.3vw;
-  }
 }
 
 @media (max-width: 480px) {
   .record-item {
     padding: 1vw;
-  }
-
-  .record-title {
-    font-size: 2.5vw;
-  }
-
-  .record-desc {
-    font-size: 1.5vw;
   }
 }
 </style>

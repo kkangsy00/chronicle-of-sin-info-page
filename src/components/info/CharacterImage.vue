@@ -90,7 +90,7 @@ const showImgTxt = ref(false)
   bottom: 0;
   color: #fff;
   padding: 10px;
-  font-size: 14px;
+  font-size: clamp(0.7rem, 1vw, 1.15rem);
   text-align: center;
   opacity: 1;
   z-index: 3;
@@ -114,20 +114,21 @@ const showImgTxt = ref(false)
   transition: opacity 0.2s;
 }
 
-/* 반응형 - 대형 화면 */
+/* 반응형 — 캡션 폰트는 clamp로 처리. 이미지 영역 비율·여백만 조정
+   (min/max 1921 경계 중첩 버그도 1920으로 분리해 해소) */
 @media (min-width: 1921px) {
   .image-section { min-width: 18vw; }
   .image-container { max-width: 40vw; min-width: 16vw; min-height: 50vh;}
   .main-image { min-height: 75vh; }
-  .main-image-txt { padding: 18px; font-size: 18px; }
+  .main-image-txt { padding: 18px; }
   .overlay-image { max-width: 300px; }
 }
 
-@media (max-width: 1921px) {
+@media (max-width: 1920px) {
   .image-section { min-width: 19vw; }
   .image-container { max-width: 38vw; min-width: 15vw; min-height: 45vh;  }
   .main-image { min-height: 72vh; }
-  .main-image-txt { padding: 14px; font-size: 16px; }
+  .main-image-txt { padding: 14px; }
   .overlay-image { max-width: 250px; }
 }
 
@@ -136,7 +137,7 @@ const showImgTxt = ref(false)
   .image-section { min-width: 22vw; }
   .image-container { max-width: 32vw; min-width: 18vw; min-height: 38vh; }
   .main-image { min-height: 65vh; }
-  .main-image-txt { padding: 9px; font-size: 13px; }
+  .main-image-txt { padding: 9px; }
   .overlay-image { max-width: 180px; }
 }
 
@@ -144,13 +145,13 @@ const showImgTxt = ref(false)
   .image-section { min-width: 24vw; }
   .image-container { max-width: 30vw; min-width: 20vw; min-height: 35vh; }
   .main-image { min-height: 60vh; }
-  .main-image-txt { padding: 8px; font-size: 13px; }
+  .main-image-txt { padding: 8px; }
   .overlay-image { max-width: 160px; }
 }
 
 @media (max-width: 768px) {
   .image-container { max-width: 40vw; }
-  .main-image-txt { padding: 8px; font-size: 12px; }
+  .main-image-txt { padding: 8px; }
   .overlay-image { max-width: 140px; }
 }
 
@@ -158,7 +159,7 @@ const showImgTxt = ref(false)
   .image-section { min-width: 28vw; }
   .image-container { max-width: 40vw; min-width: 25vw; min-height: 28vh; }
   .main-image { min-height: 50vh; }
-  .main-image-txt { padding: 6px; font-size: 11px; }
+  .main-image-txt { padding: 6px; }
   .overlay-image { max-width: 120px; }
 }
 
@@ -167,7 +168,7 @@ const showImgTxt = ref(false)
   .image-container { min-width: 80vw; max-height: 50vh; min-height: 35vh; }
   .main-image { min-height: 40vh; }
   .main-image.square { max-height: 15vh; }
-  .main-image-txt { padding: 6px; font-size: 11px; }
+  .main-image-txt { padding: 6px; }
   .overlay-image { max-width: 100px; min-width: 35px; }
 }
 </style>
