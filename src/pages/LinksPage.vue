@@ -1,7 +1,7 @@
 <template>
   <div class="links-page">
     <!-- 홈 버튼 -->
-    <HomeButton @navigate="(page) => $emit('navigate', page)" />
+    <HomeButton @navigate="$emit('navigate', $event)" />
     <div class="container">
       <div class="links-content">
         <div v-for="category in linkData.categories" :key="category.id" class="link-section">

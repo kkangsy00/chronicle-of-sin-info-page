@@ -189,15 +189,7 @@ const selectedHotspot = computed(() =>
   padding: 2.5vw 2vw 2.5vw 1vw;
 }
 
-/* ── 툴팁 등장 애니메이션 ── */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.15s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
+/* 설명 패널 등장 애니메이션(name="fade")은 전역 style.css 의 .fade-* 사용 */
 
 /* 반응형 — 패널 폰트는 토큰(clamp)으로 처리.
    이미지 위에 패널을 겹쳐 배치하는 padding/margin/transform(vw)은 그대로 유지 */

@@ -1,7 +1,7 @@
 <template>
   <div class="gallery-page">
     <!-- 홈 버튼 -->
-    <HomeButton @navigate="(page) => $emit('navigate', page)" />
+    <HomeButton @navigate="$emit('navigate', $event)" />
       <div class="header-section">
         <transition :name="headerInfo.transition" mode="out-in">
           <div 
@@ -104,18 +104,14 @@ const headerInfo = computed(() => {
   }
 })
 
-// 사용 가능한 모든 태그 추출
+// 사용 가능한 모든 태그 추출 (tagMap 기준, id 순 정렬)
 const availableTags = computed(() => {
   const map = galleryData.value?.tagMap
-  if (map) {
-    return Object.keys(map)
-      .map(k => ({ id: Number(k), name: map[k] }))
-      .sort((a, b) => a.id - b.id)
-      .map(x => x.name)
-  }
-  const s = new Set()
-  galleryItems.value.forEach(i => i.tags.forEach(t => s.add(t)))
-  return Array.from(s).sort()
+  if (!map) return []
+  return Object.keys(map)
+    .map(k => ({ id: Number(k), name: map[k] }))
+    .sort((a, b) => a.id - b.id)
+    .map(x => x.name)
 })
 
 // 필터된 아이템들

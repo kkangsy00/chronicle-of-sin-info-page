@@ -88,6 +88,20 @@ body::after {
   opacity: 0;
 }
 
+/* 커스텀 스크롤바 — 스크롤 영역에 .custom-scroll 클래스로 적용 (info/이미지/bgm 공용) */
+.custom-scroll::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border: 2px solid var(--scrollbar-track);
+}
+
 /* 홈 버튼 스타일은 HomeButton.vue 컴포넌트에서 관리 */
 
 

@@ -1,6 +1,6 @@
 <template>
   <div class="record-detail-page">
-    <HomeButton @navigate="(page) => $emit('navigate', page)" />
+    <HomeButton @navigate="$emit('navigate', 'records')" />
     <div class="container">
       <div class="detail-content">
         <div class="record-viewer">

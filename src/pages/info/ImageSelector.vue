@@ -1,5 +1,5 @@
 <template>
-  <div class="images-content fade-transition">
+  <div class="images-content fade-transition custom-scroll">
     <div class="image-buttons">
       <button
         v-for="image in images"
@@ -38,18 +38,7 @@ defineEmits(['select'])
   overflow-y: auto;
 }
 
-.images-content::-webkit-scrollbar {
-  width: var(--scrollbar-width);
-}
-
-.images-content::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-}
-
-.images-content::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-  border: 2px solid var(--scrollbar-track);
-}
+/* 스크롤바는 전역 .custom-scroll 사용 */
 
 .image-buttons {
   display: grid;

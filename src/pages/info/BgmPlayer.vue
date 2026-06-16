@@ -1,6 +1,6 @@
 <template>
   <div class="bgm-content">
-    <div class="bgm-list">
+    <div class="bgm-list custom-scroll">
       <div
         v-for="(bgm, idx) in bgmList"
         :key="idx"
@@ -100,18 +100,7 @@ const togglePlay = (index) => {
   padding-bottom: 5vw;
 }
 
-.bgm-list::-webkit-scrollbar {
-  width: var(--scrollbar-width);
-}
-
-.bgm-list::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-}
-
-.bgm-list::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-  border: 2px solid var(--scrollbar-track);
-}
+/* 스크롤바는 전역 .custom-scroll 사용 */
 
 .bgm-item {
   display: flex;

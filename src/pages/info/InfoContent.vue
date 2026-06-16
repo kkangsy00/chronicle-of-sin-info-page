@@ -1,6 +1,6 @@
 <template>
-  <div 
-    class="info-content fade-transition" 
+  <div
+    class="info-content fade-transition custom-scroll"
     ref="contentRef"
     v-html="content"
   ></div>
@@ -36,18 +36,5 @@ defineExpose({
   overflow-y: auto;
 }
 
-.info-content::-webkit-scrollbar {
-  width: var(--scrollbar-width);
-}
-
-.info-content::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-}
-
-.info-content::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-  border: 2px solid var(--scrollbar-track);
-}
-
-/* .content-card 스타일은 전역 styles/content-card.css 에서 공용 관리 (v-html 대응) */
+/* 스크롤바는 전역 .custom-scroll, .content-card 는 전역 styles/content-card.css 사용 */
 </style>

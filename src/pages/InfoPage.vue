@@ -1,6 +1,6 @@
 <template>
   <div class="info-page">
-    <HomeButton @navigate="(page) => $emit('navigate', page)" />
+    <HomeButton @navigate="$emit('navigate', $event)" />
     
     <div class="container">
       <div class="main-content">

@@ -1,6 +1,6 @@
 <template>
   <div class="records-page">
-    <HomeButton @navigate="(page) => $emit('navigate', page)" />
+    <HomeButton @navigate="$emit('navigate', $event)" />
     <div class="container">
       <div class="records-content">
         <CardList
