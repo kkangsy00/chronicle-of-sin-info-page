@@ -150,7 +150,6 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   z-index: 2001;
 }
 
-/* 반응형 — 버튼 크기·폰트는 clamp로 처리. 위치·이미지 최대치만 조정 */
 @media (max-width: 768px) {
   .prev-arrow { left: 0.8vw; }
   .next-arrow { right: 0.8vw; left: auto; }

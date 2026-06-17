@@ -2,28 +2,35 @@
   <div
     class="info-content fade-transition custom-scroll"
     ref="contentRef"
-    v-html="content"
-  ></div>
+  >
+    <div
+      v-for="(section, i) in sections"
+      :key="i"
+      class="content-card"
+      :class="i % 2 === 0 ? 'color-a' : 'color-b'"
+    >
+      <h3 :data-index="String(i + 1).padStart(2, '0')">{{ section.header }}</h3>
+      <p v-for="(para, j) in section.content" :key="j">{{ para }}</p>
+    </div>
+  </div>
 </template>
 
 <script setup>
 import { ref, watch } from 'vue'
 
 const props = defineProps({
-  content: {
-    type: String,
-    default: ''
+  sections: {
+    type: Array,
+    default: () => []
   }
 })
 
 const contentRef = ref(null)
 
-// 콘텐츠 변경 시 스크롤 맨 위로
-watch(() => props.content, () => {
+watch(() => props.sections, () => {
   contentRef.value?.scrollTo(0, 0)
 })
 
-// 외부에서 스크롤 리셋 호출 가능
 defineExpose({
   scrollToTop: () => contentRef.value?.scrollTo(0, 0)
 })
@@ -35,6 +42,4 @@ defineExpose({
   flex: 1;
   overflow-y: auto;
 }
-
-/* 스크롤바는 전역 .custom-scroll, .content-card 는 전역 styles/content-card.css 사용 */
 </style>

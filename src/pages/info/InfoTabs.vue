@@ -1,6 +1,6 @@
 <template>
   <div class="info-tabs">
-    <button 
+    <button
       v-for="tab in tabs"
       :key="tab.key"
       :class="['info-tab-button', { active: activeTab === tab.key }]"
@@ -64,8 +64,6 @@ defineEmits(['update:activeTab'])
   color: #d8d7c1;
 }
 
-/* 반응형 — 폰트는 토큰(clamp)으로 처리. 패딩만 조정
-   (기존 min/max 1921 경계가 겹치던 버그도 1920으로 분리해 해소) */
 @media (min-width: 1921px) {
   .info-tab-button { padding: 1.2vw 2.5vw; }
 }
@@ -79,7 +77,6 @@ defineEmits(['update:activeTab'])
 }
 
 @media (max-width: 480px) {
-  /* 좁은 화면에서 '이미지변경' 줄바꿈 방지: 탭 영역을 넓히고 좌우 패딩 축소 */
   .info-tabs { width: 80%; }
   .info-tab-button { padding: 2vw 1vw; }
 }

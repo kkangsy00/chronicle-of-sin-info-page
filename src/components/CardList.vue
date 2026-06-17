@@ -23,12 +23,12 @@ defineProps({
     type: Array,
     default: () => []
   },
-  // 'button' → click 시 select 이벤트 / 'link' → <a> 새 탭
+
   as: {
     type: String,
     default: 'button'
   },
-  // 'accent' (장면·링크: 그라데이션+좌측 강조선) / 'plain' (기록: 단색)
+
   variant: {
     type: String,
     default: 'accent'
@@ -45,7 +45,6 @@ defineEmits(['select'])
   gap: 0.8vw;
 }
 
-/* ── 공통 ── */
 .card-item {
   display: flex;
   flex-direction: column;
@@ -74,7 +73,6 @@ defineEmits(['select'])
   transition: color 0.3s ease;
 }
 
-/* ── accent 변형 (장면·링크) ── */
 .card-item.accent {
   background: linear-gradient(90deg, rgba(22, 21, 0, 0.8) 0%, rgba(41, 38, 21, 0.3) 100%);
   border: var(--border-hair) solid #000000;
@@ -115,7 +113,6 @@ defineEmits(['select'])
   color: var(--color-text-muted, #bdb7a0);
 }
 
-/* ── plain 변형 (기록) ── */
 .card-item.plain {
   justify-content: center;
   background: rgba(0, 0, 0, 0.2);
@@ -142,7 +139,6 @@ defineEmits(['select'])
   color: #bdb7a0;
 }
 
-/* ── 반응형 — 폰트/테두리는 토큰·헤어라인으로 처리. 간격·패딩만 조정 ── */
 @media (min-width: 2561px) {
   .card-list { gap: 1vw; }
   .card-item { padding: 1.5vw 2vw; }

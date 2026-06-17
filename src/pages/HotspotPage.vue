@@ -6,7 +6,7 @@
       class="image-container"
       @click.self="selectedId = null"
     >
-      <!-- ① 기본 이미지 (가장 아래 레이어) -->
+
       <img
         :src="sceneData.baseImage"
         class="base-image"
@@ -15,7 +15,6 @@
         @click="selectedId = null"
       />
 
-      <!-- ② 오버레이 이미지들 (hover 시 표시) -->
       <img
         v-for="hotspot in sceneData.hotspots"
         :key="'overlay-' + hotspot.id"
@@ -26,7 +25,6 @@
         draggable="false"
       />
 
-      <!-- ③ Hotspot 영역 (투명 div) -->
       <div
         v-for="hotspot in sceneData.hotspots"
         :key="'hotspot-' + hotspot.id"
@@ -42,7 +40,6 @@
         @click.stop="selectedId = hotspot.id"
       />
 
-      <!-- ④ 설명 패널 (클릭 시 이미지 하단에 고정 표시) -->
       <Transition name="fade">
         <div v-if="selectedHotspot" class="info-panel">
           <div class="info-title"><span class="info-title-text">{{ selectedHotspot.label }}</span></div>
@@ -66,14 +63,11 @@ const props = defineProps({
 
 defineEmits(['navigate'])
 
-/* ───── 데이터 로드 ───── */
 const sceneData = ref({ baseImage: '', hotspots: [] })
 const baseUrl = import.meta.env.BASE_URL
 
-// CSS v-bind용 배경 이미지 URL
 const titleBgUrl = `url(${baseUrl}data/hotspot/background_name.png)`
 
-// 절대 경로('/data/...')를 BASE_URL 기준 상대 경로로 변환
 const toBase = (path) => baseUrl + path.replace(/^\//, '')
 
 const fetchPath = baseUrl + props.scenePath.replace(/^\//, '')
@@ -87,10 +81,8 @@ fetch(fetchPath)
     }
   })
 
-/* ───── hover 상태 (오버레이 표시용) ───── */
 const hoverId = ref(null)
 
-/* ───── 클릭 상태 (설명 패널 표시용) ───── */
 const selectedId = ref(null)
 
 const selectedHotspot = computed(() =>
@@ -99,7 +91,6 @@ const selectedHotspot = computed(() =>
 </script>
 
 <style scoped>
-/* ── 페이지 전체 ── */
 .hotspot-page {
   min-height: 100vh;
   display: flex;
@@ -109,29 +100,26 @@ const selectedHotspot = computed(() =>
   box-sizing: border-box;
 }
 
-/* ── 이미지 + 레이어들이 쌓이는 컨테이너 ── */
 .image-container {
   position: relative;
-  display: inline-block; /* 이미지 크기에 맞게 축소 */
+  display: inline-block;
   user-select: none;
   aspect-ratio: 2828 / 4536;
 }
 
-/* ── 기본 이미지 ── */
 .base-image {
   display: block;
   max-width: 90vw;
   max-height: 85vh;
 }
 
-/* ── 오버레이 이미지 ── */
 .overlay-image {
   position: absolute;
-  inset: 0;           /* top/right/bottom/left 모두 0 */
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: fill;
-  pointer-events: none;   /* 마우스 이벤트가 아래 hotspot div로 통과 */
+  pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -139,15 +127,13 @@ const selectedHotspot = computed(() =>
   opacity: 1;
 }
 
-/* ── Hotspot 투명 영역 ── */
 .hotspot {
   position: absolute;
   cursor: pointer;
-  /* 개발 중 위치 확인이 필요하면 아래 주석을 해제하세요 */
+  /* 위치 디버그: 주석 해제하면 영역이 보임 */
   /* background: rgba(255, 0, 0, 0.2); */
 }
 
-/* ── 설명 패널 (클릭 시 이미지 하단에 고정) ── */
 .info-panel {
   position: absolute;
   bottom: 0;
@@ -189,10 +175,6 @@ const selectedHotspot = computed(() =>
   padding: 2.5vw 2vw 2.5vw 1vw;
 }
 
-/* 설명 패널 등장 애니메이션(name="fade")은 전역 style.css 의 .fade-* 사용 */
-
-/* 반응형 — 패널 폰트는 토큰(clamp)으로 처리.
-   이미지 위에 패널을 겹쳐 배치하는 padding/margin/transform(vw)은 그대로 유지 */
 @media (min-width: 2561px) {
   .info-title {
     padding: 2.5vw 0.6vw 0.6vw 1vw;
@@ -223,7 +205,6 @@ const selectedHotspot = computed(() =>
   }
 }
 
-/* 반응형 - 모바일 가로 화면 */
 @media (max-width: 1024px) {
   .info-title {
     padding: 2.5vw 0.8vw 0.8vw 1vw;
@@ -287,7 +268,6 @@ const selectedHotspot = computed(() =>
   }
 }
 
-/* 반응형 - 모바일 세로 화면 (높이 제약) */
 @media (orientation: portrait) and (max-height: 800px) {
   .hotspot-page {
     padding: 1rem;
@@ -310,5 +290,4 @@ const selectedHotspot = computed(() =>
     line-height: 1.5;
   }
 }
-
 </style>

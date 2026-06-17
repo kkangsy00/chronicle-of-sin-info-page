@@ -2,7 +2,7 @@
   <div class="home-page">
     <h1>죄의 연대기</h1>
     <p>완전한 선인도 완전한 악인도 없다</p>
-    
+
     <div class="nav-buttons">
       <button class="nav-btn" @click="$emit('navigate', 'info')">
         <div class="btn-image info-image"></div>
@@ -25,8 +25,8 @@
         <span>기록</span>
       </button>
     </div>
-    
-    <div class="bottom-txt"> 
+
+    <div class="bottom-txt">
       본 페이지는 크툴루의 부름 7판 팬메이드 시나리오 「죄의 연대기」의 스포일러를 포함합니다.
       <br/> 디자인 요소는 모바일 게임 「회색도시 2」를 참고하여 제작되었습니다.
     </div>
@@ -126,8 +126,6 @@ p {
   padding: 0 2vw;
 }
 
-/* 반응형 — 폰트/테두리는 토큰(clamp)·헤어라인으로 처리되므로
-   여기서는 버튼 크기·간격 등 레이아웃 비율만 조정한다 */
 @media (min-width: 2561px) {
   .nav-buttons { gap: 4vw; margin: 4vh 0; }
   .nav-btn { width: 14vw; height: 14vw; padding: 1.5vw; }

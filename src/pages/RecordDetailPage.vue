@@ -4,7 +4,7 @@
     <div class="container">
       <div class="detail-content">
         <div class="record-viewer">
-          <!-- 이미지 그리드 -->
+
           <div class="image-grid">
             <div
               v-for="(image, index) in recordWithImages?.images"
@@ -19,7 +19,6 @@
       </div>
     </div>
 
-    <!-- 이미지 뷰어 모달 -->
     <ImageModal
       v-if="selectedImageIndex !== null"
       :images="recordWithImages?.images || []"
@@ -86,8 +85,6 @@ const closeImage = () => {
   text-align: center;
 }
 
-
-/* 이미지 그리드 */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15vw, 1fr));
@@ -122,7 +119,6 @@ const closeImage = () => {
   transform: scale(1.05);
 }
 
-/* 반응형 — 그리드 열만 조정 (모달 스타일은 ImageModal) */
 @media (max-width: 1024px) {
   .image-grid {
     grid-template-columns: repeat(auto-fill, minmax(18vw, 1fr));

@@ -47,7 +47,6 @@ onMounted(async () => {
   border-radius: 0.5vw;
 }
 
-/* 반응형 — 컨테이너·래퍼 여백만 조정 (카드 스타일은 CardList) */
 @media (max-width: 768px) {
   .container {
     max-width: 90vw;

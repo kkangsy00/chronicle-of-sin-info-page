@@ -1,10 +1,10 @@
 <template>
   <div class="info-page">
     <HomeButton @navigate="$emit('navigate', $event)" />
-    
+
     <div class="container">
       <div class="main-content">
-        <!-- 좌측 이미지 영역 -->
+
         <CharacterImage
           :image-src="currentImage"
           :image-txt="currentImgTxt"
@@ -12,20 +12,17 @@
           :image-type="currentImageType"
         />
 
-        <!-- 우측 정보 영역 -->
         <div class="info-section">
           <div class="info-container">
-            <!-- 상단 정보 탭 -->
+
             <InfoTabs v-model:active-tab="activeInfoTab" />
 
-            <!-- 정보 탭 콘텐츠 -->
             <InfoContent
               v-show="activeInfoTab === 'info'"
-              :content="currentTab.content"
+              :sections="currentTab.sections || []"
               ref="infoContentRef"
             />
 
-            <!-- 이미지 탭 콘텐츠 -->
             <ImageSelector
               v-show="activeInfoTab === 'images'"
               :images="currentTab.images"
@@ -33,13 +30,11 @@
               @select="selectImage"
             />
 
-            <!-- BGM 탭 콘텐츠 -->
             <BgmPlayer
               v-show="activeInfoTab === 'bgm'"
               :bgm-list="currentTab.bgm || []"
             />
-            
-            <!-- 하단 캐릭터 탭 -->
+
             <CharacterTabs
               :tabs="tabs"
               :active-tab-id="activeTabId"
@@ -70,29 +65,19 @@ const selectedImagePerTab = ref({})
 const infoContentRef = ref(null)
 const tabs = ref([])
 
-// 콘텐츠를 HTML로 변환
-const generateContentHTML = (sections) => 
-  sections.map((section, i) => 
-    `<div class='content-card ${i % 2 === 0 ? 'color-a' : 'color-b'}'>
-      <h3 data-index="${String(i + 1).padStart(2, '0')}">${section.header}</h3>
-      ${section.content.map(p => `<p>${p}</p>`).join('')}
-    </div>`
-  ).join('')
-
-// 탭 데이터 초기화
 const initializeTabs = async () => {
   const baseUrl = import.meta.env.BASE_URL
-  
+
   tabs.value = await Promise.all(
     [1,2,3,4,5,6,7,8,9,10,11,12,13,16,17,18,19].map(async (tabId) => {
       const response = await fetch(`${baseUrl}data/info/${tabId}/content.json`)
       const data = await response.json()
-      
+
       return {
         id: tabId,
         name: data.name,
         overlayImage: data.overlayImage ? `${baseUrl}data/info/${tabId}/${data.overlayImage}` : null,
-        content: generateContentHTML(data.sections),
+        sections: data.sections || [],
         bgm: data.bgm || [],
         images: (data.images || []).map(img => ({
           ...img,
@@ -103,18 +88,15 @@ const initializeTabs = async () => {
   )
 }
 
-// 현재 활성 탭
-const currentTab = computed(() => 
+const currentTab = computed(() =>
   tabs.value.find(tab => tab.id === activeTabId.value) || tabs.value[0] || {}
 )
 
-// 현재 선택된 이미지 ID
-const currentSelectedImageId = computed(() => 
+const currentSelectedImageId = computed(() =>
   selectedImagePerTab.value[activeTabId.value] || 1
 )
 
-// 현재 선택된 이미지 정보
-const currentImageData = computed(() => 
+const currentImageData = computed(() =>
   currentTab.value.images?.find(img => img.id === currentSelectedImageId.value) || {}
 )
 const currentImage = computed(() => currentImageData.value.src || '')
@@ -174,7 +156,6 @@ onMounted(initializeTabs)
   z-index: 10;
 }
 
-/* 반응형 - 소형 화면 */
 @media (max-width: 1280px) {
   .container { max-width: 96vw; min-width: 50vw; gap: 1.4vw; }
   .main-content { gap: 1.4vw; min-height: 48vh; }

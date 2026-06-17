@@ -2,8 +2,8 @@
   <div class="tab-section">
     <button class="scroll-button scroll-left" @click="scrollTabs('left')">&lt;</button>
     <div class="tab-container" ref="tabContainer">
-      <button 
-        v-for="tab in tabs" 
+      <button
+        v-for="tab in tabs"
         :key="tab.id"
         :class="['tab-button', { active: activeTabId === tab.id }]"
         @click="$emit('select', tab.id)"
@@ -35,9 +35,9 @@ defineEmits(['select'])
 const tabContainer = ref(null)
 
 const scrollTabs = (direction) => {
-  tabContainer.value?.scrollBy({ 
-    left: direction === 'left' ? -100 : 100, 
-    behavior: 'smooth' 
+  tabContainer.value?.scrollBy({
+    left: direction === 'left' ? -100 : 100,
+    behavior: 'smooth'
   })
 }
 </script>
@@ -125,8 +125,6 @@ const scrollTabs = (direction) => {
   opacity: 0.7;
 }
 
-/* 반응형 — 탭 폰트는 토큰(clamp)으로 처리. 높이·너비만 조정
-   (min/max 1921 경계 중첩 버그도 1920으로 분리해 해소) */
 @media (min-width: 1921px) {
   .tab-section { height: 10vh; }
   .tab-button { min-width: 8vw; }

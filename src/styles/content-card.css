@@ -1,7 +1,3 @@
-/* 콘텐츠 카드 — 인물정보(InfoContent)·사운드(BgmPlayer) 탭 공용.
-   InfoContent는 v-html로 마크업을 주입하므로 scoped/:deep 로는 공유가 안 된다.
-   따라서 전역 스타일로 두고 두 컴포넌트가 같은 규칙을 쓴다.
-   BgmPlayer는 자신만의 차이(min-height, 상단선·밑줄 숨김)만 scoped 로 덧붙인다. */
 .content-card {
   padding: 1.5vw 1.8vw;
   transition: all 0.3s ease;
@@ -72,11 +68,9 @@
   line-height: 1.4;
 }
 
-/* 반응형 — h3/p 폰트는 토큰(clamp)으로 처리. 번호 배지·여백만 조정 */
 @media (max-width: 1024px) {
   .content-card h3::before { width: 1.6vw; height: 1.8vw; font-size: 1.6vw; line-height: 1.6vw; padding: 0.4vw 0.8vw; margin-right: 1vw; }
   .content-card h3::after { margin: 1vw 0 1.5vw 0; }
-  /* 모바일(가로·세로)은 글자가 작고 줄이 짧아 행간이 비어 보임 → 좁힘 */
   .content-card p { margin: 0 0 1vw 1vw; line-height: 1.25; }
 }
 

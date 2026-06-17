@@ -38,8 +38,6 @@ defineEmits(['select'])
   overflow-y: auto;
 }
 
-/* 스크롤바는 전역 .custom-scroll 사용 */
-
 .image-buttons {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9vw, 1fr));
@@ -98,7 +96,6 @@ defineEmits(['select'])
   background: rgba(253, 253, 252, 0.3);
 }
 
-/* 반응형 — 버튼 라벨 폰트는 토큰(clamp)으로 처리. 그리드·크기만 조정 */
 @media (min-width: 2561px) {
   .images-content { padding: 2vw; }
   .image-buttons { gap: 1.5vw; grid-template-columns: repeat(auto-fill, minmax(12vw, 1fr)); }
@@ -111,7 +108,6 @@ defineEmits(['select'])
   .image-button { width: 10vw; height: 10vw; padding: 1.2vw 0.8vw; }
 }
 
-/* 반응형 - 소형 화면 */
 @media (max-width: 768px) {
   .images-content { padding: 1.5vw; }
   .image-buttons { gap: 1.2vw; grid-template-columns: repeat(auto-fill, minmax(15vw, 1fr)); }

@@ -1,33 +1,20 @@
-/* 전체 초기화 */
-
-/* CSS 변수 정의 */
 :root {
-  /* 색상 */
   --color-text-secondary: #84836e;
   --color-text-muted: #bdb7a0;
-  
-  /* 스크롤바 */
+
   --scrollbar-width: 15px;
   --scrollbar-track: #000;
   --scrollbar-thumb: #545042;
 
-  /* 트랜지션 */
   --transition-normal: 0.3s ease;
 
-  /* 유동 타입 스케일 — clamp(최소, 뷰포트 유동, 최대)
-     vw 한 가지 대신 상·하한으로 묶어 좁은/넓은 화면 양극단을 방어한다.
-     기존 컴포넌트의 브레이크포인트별 vw 값에서 px 범위를 역산해 산정. */
-  /* 하한(rem): 모바일에서 vw가 7~8px로 깨지던 가독성 문제를 방어
-     중간항(vw): 기존 디자인의 뷰포트 비례 스케일을 유지
-     상한(rem): 기존 2561px 브레이크포인트 크기에 맞춰, 초대형 화면에서만 캡 */
-  --fs-xs:   clamp(0.78rem, 0.9vw, 1.8rem);   /* 보조 설명, 캡션 */
-  --fs-sm:   clamp(0.85rem, 1vw,   2rem);     /* 본문 작은 글자 */
-  --fs-base: clamp(0.95rem, 1.2vw, 2.5rem);   /* 기본 본문 */
-  --fs-md:   clamp(1.1rem,  1.5vw, 3rem);     /* 소제목 h3 */
-  --fs-lg:   clamp(1.3rem,  2vw,   3.8rem);   /* 섹션 제목 h2 */
-  --fs-xl:   clamp(2.5rem,  8vw,   13rem);    /* 히어로 h1 */
+  --fs-xs:   clamp(0.78rem, 0.9vw, 1.8rem);
+  --fs-sm:   clamp(0.85rem, 1vw,   2rem);
+  --fs-base: clamp(0.95rem, 1.2vw, 2.5rem);
+  --fs-md:   clamp(1.1rem,  1.5vw, 3rem);
+  --fs-lg:   clamp(1.3rem,  2vw,   3.8rem);
+  --fs-xl:   clamp(2.5rem,  8vw,   13rem);
 
-  /* 테두리 — vw 미세값(0.05vw)은 화면폭 따라 0~1px로 들쭉날쭉하므로 고정 px */
   --border-hair: 1px;
 }
 
@@ -75,7 +62,6 @@ body::after {
   height: 100vh;
 }
 
-/* Vue 전환 애니메이션 - 글로벌 */
 .fade-transition {
   transition: opacity 0.3s ease;
 }
@@ -88,7 +74,6 @@ body::after {
   opacity: 0;
 }
 
-/* 커스텀 스크롤바 — 스크롤 영역에 .custom-scroll 클래스로 적용 (info/이미지/bgm 공용) */
 .custom-scroll::-webkit-scrollbar {
   width: var(--scrollbar-width);
 }
@@ -101,7 +86,4 @@ body::after {
   background: var(--scrollbar-thumb);
   border: 2px solid var(--scrollbar-track);
 }
-
-/* 홈 버튼 스타일은 HomeButton.vue 컴포넌트에서 관리 */
-
 

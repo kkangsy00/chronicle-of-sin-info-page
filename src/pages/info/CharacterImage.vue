@@ -1,13 +1,13 @@
 <template>
   <div class="image-section">
-    <div 
+    <div
       :class="['image-container', imageType]"
-      @mouseenter="showImgTxt = true" 
+      @mouseenter="showImgTxt = true"
       @mouseleave="showImgTxt = false"
     >
-      <img 
+      <img
         :key="imageSrc"
-        :src="imageSrc" 
+        :src="imageSrc"
         :class="['main-image', imageType]"
         alt="캐릭터 이미지"
         @load="e => e.target.style.opacity = '1'"
@@ -63,7 +63,6 @@ const showImgTxt = ref(false)
   position: relative;
 }
 
-/* 인장(square)일 때는 중앙 정렬 */
 .image-container.square {
   align-items: center;
 }
@@ -76,10 +75,9 @@ const showImgTxt = ref(false)
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* 정사각형 이미지 (인장) */
 .main-image.square {
   height: auto;
-  min-height: 40vh; 
+  min-height: 40vh;
   max-height: 50vh;
 }
 
@@ -114,8 +112,6 @@ const showImgTxt = ref(false)
   transition: opacity 0.2s;
 }
 
-/* 반응형 — 캡션 폰트는 clamp로 처리. 이미지 영역 비율·여백만 조정
-   (min/max 1921 경계 중첩 버그도 1920으로 분리해 해소) */
 @media (min-width: 1921px) {
   .image-section { min-width: 18vw; }
   .image-container { max-width: 40vw; min-width: 16vw; min-height: 50vh;}
@@ -132,7 +128,6 @@ const showImgTxt = ref(false)
   .overlay-image { max-width: 250px; }
 }
 
-/* 반응형 - 소형 화면 */
 @media (max-width: 1280px) {
   .image-section { min-width: 22vw; }
   .image-container { max-width: 32vw; min-width: 18vw; min-height: 38vh; }

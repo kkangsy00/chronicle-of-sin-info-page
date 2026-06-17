@@ -1,28 +1,28 @@
 <template>
   <div class="gallery-page">
-    <!-- 홈 버튼 -->
+
     <HomeButton @navigate="$emit('navigate', $event)" />
       <div class="header-section">
         <transition :name="headerInfo.transition" mode="out-in">
-          <div 
-            :key="selectedTag" 
-            class="header-image" 
+          <div
+            :key="selectedTag"
+            class="header-image"
             :style="{ backgroundImage: `url(${headerInfo.image})` }"
           ></div>
         </transition>
       </div>
      <div class="gallery-container">
-      <!-- 태그 필터 -->
+
       <div class="filter-section">
         <div class="tag-filters">
-          <button 
+          <button
             :class="['tag-btn', { active: selectedTag === 'all' }]"
             @click="filterByTag('all')"
           >
             전체
           </button>
-          <button 
-            v-for="tag in availableTags" 
+          <button
+            v-for="tag in availableTags"
             :key="tag"
             :class="['tag-btn', { active: selectedTag === tag }]"
             @click="filterByTag(tag)"
@@ -31,7 +31,7 @@
           </button>
         </div>
       </div>
-      
+
       <div class="gallery-grid">
         <div v-for="item in filteredItems" :key="item.id" class="gallery-item">
           <div class="gallery-card" @click="openImage(item)">
@@ -39,8 +39,7 @@
           </div>
         </div>
       </div>
-      
-      <!-- 이미지 뷰어 모달 -->
+
       <ImageModal
         v-if="selectedImage"
         :images="[selectedImage.fullImage]"
@@ -64,13 +63,12 @@ const selectedTag = ref('all')
 const baseUrl = import.meta.env.BASE_URL
 const galleryData = ref(null)
 
-// 갤러리 아이템 로드
 const loadGalleryItems = async () => {
   const response = await fetch(`${baseUrl}data/gallery/gallery.json`)
   const data = await response.json()
-  
+
   galleryData.value = data
-  
+
   galleryItems.value = data.images.map((img, index) => ({
     id: index + 1,
     tags: img.tags.map(tagId => data.tagMap[tagId.toString()]),
@@ -79,32 +77,28 @@ const loadGalleryItems = async () => {
   }))
 }
 
-// 헤더 정보 계산 (JSON 데이터 기반)
 const headerInfo = computed(() => {
   const headerBase = `${baseUrl}data/gallery/header/`
-  
+
   if (!galleryData.value?.headers) {
     return {
       image: `${headerBase}header_0.png`,
       transition: 'fade'
     }
   }
-  
-  // tagMap에서 현재 선택된 태그에 해당하는 ID 찾기
+
   const tagId = Object.keys(galleryData.value.tagMap).find(
     id => galleryData.value.tagMap[id] === selectedTag.value
   )
-  
-  // 해당 태그의 헤더 정보가 있으면 사용, 없으면 기본값
+
   const headerData = galleryData.value.headers[tagId] || galleryData.value.headers.default
-  
+
   return {
     image: `${headerBase}${headerData.image}`,
     transition: headerData.transition
   }
 })
 
-// 사용 가능한 모든 태그 추출 (tagMap 기준, id 순 정렬)
 const availableTags = computed(() => {
   const map = galleryData.value?.tagMap
   if (!map) return []
@@ -114,27 +108,23 @@ const availableTags = computed(() => {
     .map(x => x.name)
 })
 
-// 필터된 아이템들
 const filteredItems = computed(() => {
   if (selectedTag.value === 'all') {
     return galleryItems.value
   }
-  return galleryItems.value.filter(item => 
+  return galleryItems.value.filter(item =>
     item.tags.includes(selectedTag.value)
   )
 })
 
-// 태그로 필터링
 const filterByTag = (tag) => {
   selectedTag.value = tag
 }
 
-// 이미지 모달 열기
 const openImage = (item) => {
   selectedImage.value = item
 }
 
-// 이미지 모달 닫기
 const closeImage = () => {
   selectedImage.value = null
 }
@@ -176,7 +166,6 @@ onMounted(loadGalleryItems)
   background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
 }
 
-/* 헤더 전환 효과 */
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.2s ease;
 }
@@ -280,7 +269,6 @@ onMounted(loadGalleryItems)
   transform: scale(1.05);
 }
 
-/* 반응형 — 태그 버튼 폰트는 토큰으로 처리. 패딩·라운드·그리드 등 레이아웃만 조정 */
 @media (min-width: 2561px) {
   .tag-btn { padding: 1.2vw 1.8vw; border-radius: 2.4vw; }
 }

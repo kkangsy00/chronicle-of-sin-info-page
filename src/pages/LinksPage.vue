@@ -1,6 +1,6 @@
 <template>
   <div class="links-page">
-    <!-- 홈 버튼 -->
+
     <HomeButton @navigate="$emit('navigate', $event)" />
     <div class="container">
       <div class="links-content">
@@ -57,7 +57,6 @@ onMounted(async () => {
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-/* 반응형 — 섹션·제목 여백만 조정 (링크 카드 스타일은 CardList) */
 @media (min-width: 2561px) {
   .container { max-width: 70vw; padding: 5vw 2vw; }
   .link-section { padding: 2.5vw; margin-bottom: 2vw; border-radius: 0.6vw; }

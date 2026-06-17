@@ -11,8 +11,7 @@ defineEmits(['navigate'])
 <style scoped>
 .home-btn {
   position: fixed;
-  /* clamp 하한(44px)이 모바일 최소 터치 영역을 보장하고, 상한이 초대형 화면을 캡한다.
-     → 기존 7개 미디어쿼리가 이 한 줄로 대체됨 */
+
   top: clamp(12px, 1.2vw, 24px);
   left: clamp(12px, 1.2vw, 24px);
   width: clamp(44px, 4vw, 64px);

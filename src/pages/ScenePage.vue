@@ -47,7 +47,6 @@ onMounted(async () => {
   backdrop-filter: blur(10px);
 }
 
-/* 반응형 — 컨테이너·래퍼 여백만 조정 (카드 스타일은 CardList) */
 @media (min-width: 2561px) {
   .container { max-width: 70vw; padding: 5vw 2vw; }
   .scene-content { padding: 2.5vw; border-radius: 0.6vw; }

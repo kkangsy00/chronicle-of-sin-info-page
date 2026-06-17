@@ -11,8 +11,8 @@
           class="bgm-play-btn"
           @click="togglePlay(idx)"
         >
-          <span 
-            class="btn-icon" 
+          <span
+            class="btn-icon"
             :class="isPlaying && selectedIndex === idx ? 'stop-icon' : 'play-icon'"
           ></span>
           {{ (isPlaying && selectedIndex === idx) ? '정지' : '듣기' }}
@@ -51,14 +51,14 @@ const props = defineProps({
 const isPlaying = ref(false)
 const selectedIndex = ref(null)
 
-const getBgmLabel = (bgm) => 
+const getBgmLabel = (bgm) =>
   typeof bgm === 'string' ? bgm : (bgm?.title || bgm?.url || '')
 
-const currentBgm = computed(() => 
+const currentBgm = computed(() =>
   props.bgmList[selectedIndex.value]
 )
 
-const currentBgmLabel = computed(() => 
+const currentBgmLabel = computed(() =>
   currentBgm.value ? getBgmLabel(currentBgm.value) : ''
 )
 
@@ -99,8 +99,6 @@ const togglePlay = (index) => {
   overflow-y: auto;
   padding-bottom: 5vw;
 }
-
-/* 스크롤바는 전역 .custom-scroll 사용 */
 
 .bgm-item {
   display: flex;
@@ -165,19 +163,15 @@ const togglePlay = (index) => {
   font-size: var(--fs-xs);
 }
 
-/* .content-card 공용 스타일은 전역 styles/content-card.css.
-   여기선 BGM 카드만의 차이만 둔다. (.bgm-txt 의 p 스타일도 전역 .content-card p 가 처리) */
 .bgm-item {
   min-height: 7.5vw;
 }
 
-/* BGM 카드는 상단 가로선·제목 밑줄을 쓰지 않음 */
 .bgm-item::before,
 .bgm-item h3::after {
   display: none;
 }
 
-/* 반응형 — 폰트는 토큰(clamp)으로 처리. 패딩·아이콘 도형·여백 등 레이아웃만 조정 */
 @media (min-width: 2561px) {
   .bgm-content { padding: 2.2vw; }
   .bgm-item { gap: 1.8vw; }
@@ -193,7 +187,6 @@ const togglePlay = (index) => {
   .bgm-play-btn { padding: 0.8vw 1.2vw; }
 }
 
-/* 반응형 - 소형 화면 */
 @media (max-width: 768px) {
   .bgm-content { padding: 1.5vw; }
   .bgm-item { gap: 1.5vw; min-height: 9vw; }
@@ -212,6 +205,4 @@ const togglePlay = (index) => {
 @media (orientation: landscape) and (max-height: 500px) {
   .bgm-item { min-height: 20vh; }
 }
-
-
 </style>
